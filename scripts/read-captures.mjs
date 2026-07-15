@@ -27,11 +27,15 @@ for (const b of blobs) {
   const res = await get(b.pathname, { access: 'private', useCache: false, token });
   if (res?.statusCode === 200) caps.push(JSON.parse(await new Response(res.stream).text()));
 }
+const weekLabel = (w) =>
+  w == null ? '' : w >= 1 ? `Week ${w}` : w === -1 ? 'The final week before birth' : `${Math.abs(w)} weeks before birth`;
+
 const kept = caps.filter((c) => c.ts >= since).sort((a, b) => a.ts - b.ts);
 console.log(`# ${kept.length} capture(s)${days ? ` from the last ${days} day(s)` : ''}\n`);
 for (const c of kept) {
   const when = new Date(c.ts).toLocaleString('en-CA', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-  console.log(`## ${when}${c.mood ? `  ·  mood: ${c.mood}` : ''}${c.tags?.length ? `  ·  ${c.tags.join(', ')}` : ''}`);
+  const wk = weekLabel(c.week);
+  console.log(`## ${when}${wk ? `  ·  ${wk}` : ''}${c.mood ? `  ·  mood: ${c.mood}` : ''}${c.tags?.length ? `  ·  ${c.tags.join(', ')}` : ''}`);
   if (c.text) console.log(c.text);
   for (const p of c.photos ?? []) console.log(`[photo] /api/capture-photo/${p}`);
   console.log('');

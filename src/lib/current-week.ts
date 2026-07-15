@@ -34,6 +34,27 @@ export function currentDayNumber(now: Date = new Date()): number {
   return days + 1;
 }
 
+/**
+ * The week a given date belongs to, relative to birth.
+ *   >= 1  → week of life (week 1 = the first 7 days after birth)
+ *   -1    → the final week before birth (the 7 days up to the due date)
+ *   -2,-3 → earlier prep weeks before birth
+ */
+export function weekForDate(d: Date): number {
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const diffDays = Math.floor((d.getTime() - BIRTH_ANCHOR.getTime()) / msPerDay);
+  if (diffDays >= 0) return Math.floor(diffDays / 7) + 1;
+  const daysBefore = Math.ceil((BIRTH_ANCHOR.getTime() - d.getTime()) / msPerDay);
+  return -Math.ceil(daysBefore / 7);
+}
+
+/** Human label for a week number from weekForDate(). */
+export function weekLabel(week: number): string {
+  if (week >= 1) return `Week ${week}`;
+  if (week === -1) return 'The final week before birth';
+  return `${Math.abs(week)} weeks before birth`;
+}
+
 /** Days until birth anchor (0 if in the past). A partial day counts as 1. */
 export function daysUntilBirth(now: Date = new Date()): number {
   const msPerDay = 1000 * 60 * 60 * 24;

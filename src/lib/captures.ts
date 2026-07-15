@@ -6,21 +6,23 @@
  */
 import { get, put, del, list } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from 'astro:env/server';
+import { weekForDate } from './current-week';
 
 const token = BLOB_READ_WRITE_TOKEN || undefined;
 const CAP_PREFIX = 'journal-captures/';
 const PHOTO_PREFIX = 'journal-photos/';
 const MAX_TEXT = 5000;
-const MAX_PHOTOS = 10;
-const MAX_PHOTO_BYTES = 15 * 1024 * 1024;
 
 export interface Capture {
   id: string;
+  /** When the moment happened (may be backdated), ms epoch. */
   ts: number;
   text: string;
   tags: string[];
   mood?: string;
   photos: string[];
+  /** Week this belongs to (see weekForDate): >=1 week of life, <0 pre-birth. */
+  week: number;
 }
 
 function cleanText(s: string): string {
@@ -58,15 +60,21 @@ export async function addCapture(data: {
   tags: string[];
   mood?: string;
   photos: string[];
+  /** Optional backdate (ms epoch). Defaults to now. */
+  ts?: number;
+  /** Optional explicit week; otherwise derived from the date. */
+  week?: number;
 }): Promise<Capture> {
   const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  const ts = data.ts && Number.isFinite(data.ts) ? data.ts : Date.now();
   const capture: Capture = {
     id,
-    ts: Date.now(),
+    ts,
     text: cleanText(data.text),
     tags: data.tags.slice(0, 12),
     mood: data.mood || undefined,
-    photos: data.photos.slice(0, MAX_PHOTOS),
+    photos: data.photos,
+    week: data.week ?? weekForDate(new Date(ts)),
   };
   await put(`${CAP_PREFIX}${id}.json`, JSON.stringify(capture), {
     access: 'private',
@@ -86,9 +94,10 @@ export async function deleteCapture(id: string): Promise<void> {
   await del(`${CAP_PREFIX}${id}.json`, { token });
 }
 
-/** Store one uploaded photo privately; returns its id (used in the URL path). */
+/** Store one uploaded photo privately; returns its id (used in the URL path).
+ *  No size cap — photos are kept at full quality (compressed client-side). */
 export async function savePhoto(file: File): Promise<string | null> {
-  if (file.size === 0 || file.size > MAX_PHOTO_BYTES) return null;
+  if (file.size === 0) return null;
   if (!file.type.startsWith('image/')) return null;
   const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
   const id = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}.${ext}`;

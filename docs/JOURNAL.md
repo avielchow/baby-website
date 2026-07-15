@@ -83,8 +83,16 @@ to **three prompts**: bespoke trios for days 1–30 + milestone days (40, 50, 60
   From-address is `onboarding@resend.dev` (works to the Resend account owner's own email
   without domain verification; verify a domain later for a custom sender).
 
-Photos attached at `/write` are **compressed in the browser before upload** (max 2000px,
-JPEG q0.82 — ~78% smaller) so storage stays tiny and well inside the free tier.
+Each capture also has a **date** (backdate-able; defaults to today) and a **week**:
+"Auto" derives the week from the date, or pick explicitly — including pre-birth prep weeks
+("3 / 2 weeks before birth", "the final week before birth") and any week of life. Stored as
+`Capture.week` (>=1 week of life, <0 pre-birth) via `weekForDate()`; used to file each note
+into the right week's post.
+
+Photos at `/write`: **multiple, no size or count limit**, compressed in the browser before
+upload at **near-lossless** quality (max 4096px, JPEG q0.95) — phone photos keep full quality;
+only enormous files shrink. (To store completely untouched originals, drop the `compress()`
+call in `write.astro`.)
 
 ## Weekly prompts
 
