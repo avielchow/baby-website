@@ -142,7 +142,7 @@ const weekSlug = (n: number) => String(n).padStart(2, '0');
         <ul class="journal-list">
           {recentJournal.map((entry, i) => (
             <li class="card card-lift journal-item reveal" style={`--reveal-delay: ${i * 80}ms`}>
-              <p class="journal-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p class="journal-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
               <h3 class="journal-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h3>
               {entry.data.teaser && <p class="journal-teaser">{entry.data.teaser}</p>}
             </li>

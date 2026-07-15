@@ -17,7 +17,7 @@ const entries = (await getCollection('journal', ({ data }) => !data.draft))
     <ul class="entry-list">
       {entries.map((entry) => (
         <li class="entry">
-          <p class="entry-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p class="entry-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
           <h2 class="entry-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h2>
           {entry.data.teaser && <p class="entry-teaser">{entry.data.teaser}</p>}
           {entry.data.tags.length > 0 && (

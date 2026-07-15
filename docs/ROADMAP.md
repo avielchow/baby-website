@@ -100,7 +100,9 @@
 - [x] Weeks 5–8 content (shipped 2026-07-15, full v2 standard: rich sourced content,
       verified videos, gear w/ pros-cons, diagrams, distinct vignettes); nav renamed
       "Weeks" → "Weekly Guide", guide page retitled for new parents
-- [ ] Weeks 9–12 content; decide month-4+ cadence
+- [x] Weeks 9–12 content (shipped 2026-07-15, full v2 standard + distinct vignettes) —
+      the first year's first quarter (weeks 1–12) is now complete
+- [ ] Weeks 13+ / decide month-4+ cadence (fortnightly or monthly)
 - [ ] Monthly letter-to-Baby entries
 
 ## Later / maybe
