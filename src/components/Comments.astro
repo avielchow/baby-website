@@ -1,22 +1,25 @@
 ---
 /**
- * Per-week comment section (docs/CONTENT.md § Comments). Name-only, no login —
+ * Per-page comment section (docs/CONTENT.md § Comments). Name-only, no login —
  * the site is already behind the shared family password. SSR-rendered from the
- * private Blob store; posts go through /api/comments. Lives in the week template
- * so every week — now and future — gets it automatically.
+ * private Blob store; posts go through /api/comments keyed by `pageId`
+ * ("week-3" / "month-6" / …). Lives in the week + month templates so every page
+ * gets it automatically.
  */
 import { COMMENT_ADMIN_KEY } from 'astro:env/server';
 import { getComments, relativeTime } from '../lib/comments';
 
 interface Props {
-  week: number;
+  /** e.g. "week-3" or "month-6". */
+  pageId: string;
+  /** Path to return to after posting (this page's URL path). */
+  backPath: string;
 }
-const { week } = Astro.props;
+const { pageId, backPath } = Astro.props;
 
-const comments = await getComments(week);
+const comments = await getComments(pageId);
 const now = Date.now();
 
-// ?admin=<COMMENT_ADMIN_KEY> reveals per-comment delete buttons (moderation).
 const adminParam = Astro.url.searchParams.get('admin');
 const isAdmin = !!adminParam && !!COMMENT_ADMIN_KEY && adminParam === COMMENT_ADMIN_KEY;
 const hadError = Astro.url.searchParams.get('commentError') === '1';
@@ -35,14 +38,15 @@ const count = comments.length;
   </p>
 
   <form class="comment-form card" method="POST" action="/api/comments">
-    <input type="hidden" name="week" value={week} />
+    <input type="hidden" name="pageId" value={pageId} />
+    <input type="hidden" name="back" value={backPath} />
     <div class="field">
       <label for="c-name">Your name</label>
       <input id="c-name" name="name" type="text" maxlength="40" required autocomplete="name" placeholder="e.g. Grandma Ruth" />
     </div>
     <div class="field">
       <label for="c-body">Your note</label>
-      <textarea id="c-body" name="body" maxlength="1000" rows="3" required placeholder="What's your experience or tip for this week?"></textarea>
+      <textarea id="c-body" name="body" maxlength="1000" rows="3" required placeholder="What's your experience or tip for this stage?"></textarea>
     </div>
     {hadError && <p class="comment-error" role="alert">A name and a note are both needed — give it another go.</p>}
     <div class="form-actions">
@@ -66,7 +70,8 @@ const count = comments.length;
             {isAdmin && (
               <form method="POST" action="/api/comments" class="comment-del">
                 <input type="hidden" name="_action" value="delete" />
-                <input type="hidden" name="week" value={week} />
+                <input type="hidden" name="pageId" value={pageId} />
+                <input type="hidden" name="back" value={backPath} />
                 <input type="hidden" name="id" value={c.id} />
                 <input type="hidden" name="adminKey" value={adminParam} />
                 <button type="submit" aria-label="Delete comment">Delete</button>
@@ -81,7 +86,6 @@ const count = comments.length;
 </section>
 
 <script>
-  // Remember the commenter's name across weeks (name-only, no accounts).
   function initCommentName() {
     const input = document.getElementById('c-name') as HTMLInputElement | null;
     if (!input) return;
@@ -138,16 +142,8 @@ const count = comments.length;
     gap: var(--space-1);
   }
 
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-
-  .field label {
-    font-weight: 700;
-    font-size: var(--fs-small);
-  }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field label { font-weight: 700; font-size: var(--fs-small); }
 
   .field input,
   .field textarea {
@@ -168,29 +164,10 @@ const count = comments.length;
     border-color: var(--sage);
   }
 
-  .form-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    flex-wrap: wrap;
-  }
-
-  .form-hint {
-    font-size: var(--fs-small);
-    color: var(--text-secondary);
-  }
-
-  .comment-error {
-    margin: 0;
-    color: var(--error);
-    font-size: var(--fs-small);
-    font-weight: 600;
-  }
-
-  .comments-empty {
-    color: var(--text-secondary);
-    font-style: italic;
-  }
+  .form-actions { display: flex; align-items: center; gap: var(--space-1); flex-wrap: wrap; }
+  .form-hint { font-size: var(--fs-small); color: var(--text-secondary); }
+  .comment-error { margin: 0; color: var(--error); font-size: var(--fs-small); font-weight: 600; }
+  .comments-empty { color: var(--text-secondary); font-style: italic; }
 
   .comment-list {
     list-style: none;
@@ -201,9 +178,7 @@ const count = comments.length;
     gap: var(--space-1);
   }
 
-  .comment {
-    padding: var(--space-1) var(--space-2);
-  }
+  .comment { padding: var(--space-1) var(--space-2); }
 
   .comment-head {
     display: flex;
@@ -225,23 +200,11 @@ const count = comments.length;
     font-weight: 600;
   }
 
-  .comment-meta {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25;
-  }
-
+  .comment-meta { display: flex; flex-direction: column; line-height: 1.25; }
   .comment-name { font-weight: 800; }
+  .comment-time { font-size: var(--fs-small); color: var(--text-secondary); }
 
-  .comment-time {
-    font-size: var(--fs-small);
-    color: var(--text-secondary);
-  }
-
-  .comment-del {
-    margin-left: auto;
-  }
-
+  .comment-del { margin-left: auto; }
   .comment-del button {
     font-size: var(--fs-small);
     font-weight: 700;
@@ -253,9 +216,5 @@ const count = comments.length;
     cursor: pointer;
   }
 
-  .comment-body {
-    margin: 0;
-    max-width: none;
-    white-space: pre-line;
-  }
+  .comment-body { margin: 0; max-width: none; white-space: pre-line; }
 </style>

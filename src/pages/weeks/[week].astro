@@ -177,7 +177,7 @@ const sections = [
     </section>
   )}
 
-  <Comments week={d.weekNumber} />
+  <Comments pageId={`week-${d.weekNumber}`} backPath={`/weeks/${weekParam}/`} />
 
   <p class="week-nav">
     <a href="/weeks/">&larr; All weeks</a>

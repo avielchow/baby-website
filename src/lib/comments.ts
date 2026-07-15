@@ -1,15 +1,14 @@
 /**
- * Per-week comments, stored in a private Vercel Blob store (one JSON array per
- * week at `comments/week-<n>.json`). Name-only, no login — the whole site is
- * already behind the shared family password. Reads bypass the CDN cache so a
- * freshly posted comment shows on reload; writes are read-modify-write, which is
- * safe at this volume (a family site, a handful of comments). See docs/CONTENT.md.
+ * Per-page comments, stored in a private Vercel Blob store (one JSON array per
+ * page at `comments/<pageId>.json`, e.g. `comments/week-3.json` or
+ * `comments/month-6.json`). Name-only, no login — the whole site is already
+ * behind the shared family password. Reads bypass the CDN cache so a freshly
+ * posted comment shows on reload; writes are read-modify-write, safe at this
+ * volume (a family site, a handful of comments). See docs/CONTENT.md.
  */
 import { get, put } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from 'astro:env/server';
 
-// astro:env resolves the token in both dev (.env.local) and prod (Vercel),
-// unlike the SDK's bare process.env read which misses Astro's dev env.
 const token = BLOB_READ_WRITE_TOKEN || undefined;
 
 export interface Comment {
@@ -21,7 +20,12 @@ export interface Comment {
 
 const MAX_NAME = 40;
 const MAX_BODY = 1000;
-const pathFor = (week: number) => `comments/week-${week}.json`;
+
+/** page ids are like "week-3" / "month-6" — restrict to a safe charset. */
+export function isValidPageId(id: string): boolean {
+  return /^[a-z0-9][a-z0-9-]{0,40}$/.test(id);
+}
+const pathFor = (pageId: string) => `comments/${pageId}.json`;
 
 /** Strip HTML tags + control chars (keep tab/newline), collapse whitespace, trim, cap. */
 function clean(s: string, max: number): string {
@@ -29,33 +33,28 @@ function clean(s: string, max: number): string {
   let out = '';
   for (const ch of noTags) {
     const code = ch.codePointAt(0) ?? 0;
-    if (code === 9 || code === 10) { out += ch; continue; } // tab, newline
-    if (code < 32 || code === 127) continue;                // other control chars
+    if (code === 9 || code === 10) { out += ch; continue; }
+    if (code < 32 || code === 127) continue;
     out += ch;
   }
-  return out
-    .replace(/[ \t]+/g, ' ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim()
-    .slice(0, max);
+  return out.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim().slice(0, max);
 }
 
-export async function getComments(week: number): Promise<Comment[]> {
+export async function getComments(pageId: string): Promise<Comment[]> {
+  if (!isValidPageId(pageId)) return [];
   try {
-    const res = await get(pathFor(week), { access: 'private', useCache: false, token });
+    const res = await get(pathFor(pageId), { access: 'private', useCache: false, token });
     if (!res || res.statusCode !== 200) return [];
-    const text = await new Response(res.stream).text();
-    const arr = JSON.parse(text) as unknown;
+    const arr = JSON.parse(await new Response(res.stream).text()) as unknown;
     if (!Array.isArray(arr)) return [];
     return (arr as Comment[]).sort((a, b) => b.ts - a.ts);
   } catch {
-    // Not-created-yet or a transient read error: fail soft, never break the page.
     return [];
   }
 }
 
-async function save(week: number, comments: Comment[]): Promise<void> {
-  await put(pathFor(week), JSON.stringify(comments), {
+async function save(pageId: string, comments: Comment[]): Promise<void> {
+  await put(pathFor(pageId), JSON.stringify(comments), {
     access: 'private',
     contentType: 'application/json',
     addRandomSuffix: false,
@@ -64,12 +63,12 @@ async function save(week: number, comments: Comment[]): Promise<void> {
   });
 }
 
-/** Returns the new comment, or null if the input was empty after cleaning. */
-export async function addComment(week: number, nameRaw: string, bodyRaw: string): Promise<Comment | null> {
+export async function addComment(pageId: string, nameRaw: string, bodyRaw: string): Promise<Comment | null> {
+  if (!isValidPageId(pageId)) return null;
   const name = clean(nameRaw, MAX_NAME);
   const body = clean(bodyRaw, MAX_BODY);
   if (!name || !body) return null;
-  const comments = await getComments(week);
+  const comments = await getComments(pageId);
   const comment: Comment = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
     name,
@@ -77,13 +76,14 @@ export async function addComment(week: number, nameRaw: string, bodyRaw: string)
     ts: Date.now(),
   };
   comments.unshift(comment);
-  await save(week, comments);
+  await save(pageId, comments);
   return comment;
 }
 
-export async function deleteComment(week: number, id: string): Promise<void> {
-  const comments = await getComments(week);
-  await save(week, comments.filter((c) => c.id !== id));
+export async function deleteComment(pageId: string, commentId: string): Promise<void> {
+  if (!isValidPageId(pageId)) return;
+  const comments = await getComments(pageId);
+  await save(pageId, comments.filter((c) => c.id !== commentId));
 }
 
 /** "just now" / "3 hours ago" / "2 days ago" / a date for older. */
@@ -96,5 +96,5 @@ export function relativeTime(ts: number, now: number = Date.now()): string {
   if (h < 24) return `${h} hour${h === 1 ? '' : 's'} ago`;
   const d = Math.round(h / 24);
   if (d < 14) return `${d} day${d === 1 ? '' : 's'} ago`;
-  return new Date(ts).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+  return new Date(ts).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 }

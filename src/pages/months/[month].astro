@@ -1,0 +1,246 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import MonthVignette from '../../components/illustrations/MonthVignette.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import Comments from '../../components/Comments.astro';
+import SafeSleepSetup from '../../components/illustrations/diagrams/SafeSleepSetup.astro';
+import DiaperDashboard from '../../components/illustrations/diagrams/DiaperDashboard.astro';
+import CryingCurve from '../../components/illustrations/diagrams/CryingCurve.astro';
+import HungerCues from '../../components/illustrations/diagrams/HungerCues.astro';
+import TummyTime from '../../components/illustrations/diagrams/TummyTime.astro';
+
+const diagramComponents = {
+  'safe-sleep': SafeSleepSetup,
+  'diaper-dashboard': DiaperDashboard,
+  'crying-curve': CryingCurve,
+  'hunger-cues': HungerCues,
+  'tummy-time': TummyTime,
+} as const;
+
+const monthParam = Astro.params.month;
+const monthNum = monthParam ? parseInt(monthParam, 10) : NaN;
+if (!Number.isFinite(monthNum)) return Astro.redirect('/months/', 302);
+
+const all = await getCollection('months', ({ data }) => !data.draft);
+const month = all.find((m) => m.data.monthNumber === monthNum);
+if (!month) return new Response('Month not found', { status: 404 });
+
+const d = month.data;
+
+// Related deep-dive topics (slug → title/ageRange).
+const topicEntries = await getCollection('topics', ({ data }) => !data.draft);
+const topicMap = new Map(topicEntries.map((t) => [t.id, t.data]));
+const relatedTopics = d.topics.map((slug) => ({ slug, ...topicMap.get(slug) })).filter((t) => t.title);
+
+const icon = (p: string) =>
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const icons: Record<string, string> = {
+  milestones: icon('<path d="M12 3l2.4 5.4 5.6.6-4.2 3.9 1.2 5.6L12 15.6 7 18.5l1.2-5.6L4 9l5.6-.6z"/>'),
+  developmentAndPlay: icon('<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><path d="M17.5 13v7M14 16.5h7"/>'),
+  feeding: icon('<path d="M6 3v7a2 2 0 0 0 4 0V3M8 10v11M15 3c-1.5 0-2 2-2 5s.5 4 2 4 2-1 2-4-.5-5-2-5zM17 12v9"/>'),
+  sleep: icon('<path d="M20 13.5A8.5 8.5 0 0 1 10.5 4 8.5 8.5 0 1 0 20 13.5z"/>'),
+  safetyOnTheMove: icon('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>'),
+  healthAndCheckups: icon('<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 13l2 2 4-4"/>'),
+  redFlags: icon('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
+  also: icon('<path d="M12 4l1.5 3.7L17 9l-3.5 1.3L12 14l-1.5-3.7L7 9l3.5-1.3z"/><path d="M18.5 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>'),
+};
+
+const sections = [
+  { key: 'milestones', label: 'Milestones', items: d.milestones },
+  { key: 'developmentAndPlay', label: 'Development & play', items: d.developmentAndPlay },
+  { key: 'feeding', label: 'Feeding', items: d.feeding },
+  { key: 'sleep', label: 'Sleep', items: d.sleep },
+  { key: 'safetyOnTheMove', label: 'Safety on the move', items: d.safetyOnTheMove },
+  { key: 'healthAndCheckups', label: 'Health & checkups', items: d.healthAndCheckups },
+  { key: 'redFlags', label: 'When to call the doctor', items: d.redFlags },
+  { key: 'also', label: 'Also worth knowing', items: d.alsoWorthKnowing },
+];
+
+// Map month sections onto the diagram `section` enum for placement.
+const diagramSectionFor: Record<string, string> = {
+  milestones: 'milestones', feeding: 'feeding', sleep: 'sleep', redFlags: 'redFlags', also: 'also',
+  developmentAndPlay: 'milestones', safetyOnTheMove: 'redFlags', healthAndCheckups: 'todos',
+};
+---
+
+<ContentLayout eyebrow={`Month ${d.monthNumber}`} title={d.title} description={d.description} lastUpdated={d.lastUpdated}>
+  <MonthVignette slot="art" month={d.monthNumber} size={148} />
+
+  {relatedTopics.length > 0 && (
+    <p class="topic-links reveal">
+      Deep dive:
+      {relatedTopics.map((t) => (
+        <a class="topic-chip" href={`/guide/topics/${t.slug}/`}>{t.title}{t.ageRange ? ` · ${t.ageRange}` : ''} &rarr;</a>
+      ))}
+    </p>
+  )}
+
+  {sections.map((section) => (
+    section.items.length > 0 && (
+      <section class="week-section reveal" id={section.key}>
+        <h2 class:list={['section-head', { 'is-flag': section.key === 'redFlags' }]}>
+          <span class="section-icon" set:html={icons[section.key]} />
+          {section.label}
+        </h2>
+        <ul class="bullet-list">
+          {section.items.map((item) => (
+            <li class="bullet">
+              <p class="bullet-title">{item.title}</p>
+              {item.detail && <p class="bullet-detail">{item.detail}</p>}
+              {item.sources.length > 0 && (
+                <p class="bullet-sources">
+                  {item.sources.map((s) =>
+                    s.url ? <a class="source-chip" href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                         : <span class="source-chip">{s.label}</span>
+                  )}
+                </p>
+              )}
+              {item.video && <VideoCard title={item.video.title} url={item.video.url} channel={item.video.channel} />}
+            </li>
+          ))}
+        </ul>
+        {d.diagrams
+          .filter((dia) => dia.section === diagramSectionFor[section.key])
+          .map((dia) => {
+            const Diagram = diagramComponents[dia.key];
+            return <Diagram />;
+          })}
+      </section>
+    )
+  ))}
+
+  {d.gear.length > 0 && (
+    <section class="week-section gear reveal" id="gear">
+      <h2 class="section-head is-gear">
+        <span class="section-icon" set:html={'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>'} />
+        Worth buying this month
+      </h2>
+      <p class="gear-disclaimer">Our picks — honest opinions, not sponsored, no affiliate links. For safety gear, correct use matters more than the brand, so watch the how-to.</p>
+      <div class="gear-list">
+        {d.gear.map((g) => (
+          <article class="gear-card">
+            <h3 class="gear-item">{g.item}</h3>
+            <p class="gear-why">{g.why}</p>
+            {g.sources.length > 0 && (
+              <p class="bullet-sources">
+                {g.sources.map((s) => s.url ? <a class="source-chip" href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a> : <span class="source-chip">{s.label}</span>)}
+              </p>
+            )}
+            {g.brands.length > 0 && (
+              <ol class="brand-list">
+                {g.brands.map((b, i) => (
+                  <li class="brand">
+                    <span class="brand-rank">{i + 1}</span>
+                    <div class="brand-body">
+                      <p class="brand-head">
+                        <span class="brand-name">{b.name}</span>
+                        {b.url && (
+                          <a class="brand-link" href={b.url} target="_blank" rel="noopener noreferrer">
+                            Visit site
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+                          </a>
+                        )}
+                      </p>
+                      {b.note && <p class="brand-note">{b.note}</p>}
+                      {(b.pros.length > 0 || b.cons.length > 0) && (
+                        <div class="proscons">
+                          {b.pros.length > 0 && <ul class="pros">{b.pros.map((p) => <li>{p}</li>)}</ul>}
+                          {b.cons.length > 0 && <ul class="cons">{b.cons.map((c) => <li>{c}</li>)}</ul>}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            )}
+            {g.video && <VideoCard title={g.video.title} url={g.video.url} channel={g.video.channel} />}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {d.sources.length > 0 && (
+    <section class="week-section sources reveal" id="sources">
+      <h2>Sources</h2>
+      <ul>
+        {d.sources.map((s) => (
+          <li>{s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <Comments pageId={`month-${d.monthNumber}`} backPath={`/months/${monthParam}/`} />
+
+  <p class="week-nav"><a href="/months/">&larr; All months</a></p>
+</ContentLayout>
+
+<style>
+  .topic-links {
+    background: color-mix(in srgb, var(--butter) 22%, var(--ivory));
+    border-radius: var(--radius-button);
+    padding: var(--space-1);
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: 700;
+    color: var(--sage-deep);
+  }
+  .topic-chip {
+    font-weight: 700;
+    text-decoration: none;
+    background: #fff;
+    padding: 0.3em 0.8em;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-soft);
+  }
+  .topic-chip:hover { color: var(--accent-primary); }
+
+  .week-section { margin-block: var(--space-3); }
+  .section-head { display: flex; align-items: center; gap: var(--space-half); font-size: var(--fs-h2); margin-bottom: var(--space-1); }
+  .section-icon { display: inline-flex; width: 2.4rem; height: 2.4rem; padding: 0.5rem; border-radius: var(--radius-pill); background: var(--sage-wash); color: var(--sage-deep); flex-shrink: 0; }
+  .section-icon :global(svg) { width: 100%; height: 100%; }
+  .section-head.is-flag .section-icon { background: color-mix(in srgb, var(--rose) 30%, #fff); color: var(--rose-deep); }
+  .section-head.is-gear .section-icon { background: color-mix(in srgb, var(--butter) 55%, #fff); color: #9a7b2e; }
+
+  .bullet-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+  .bullet { padding: var(--space-1); background: var(--surface-raised); border-left: 3px solid var(--leaf); border-radius: var(--radius-card); box-shadow: var(--shadow-soft); }
+  .week-section#redFlags .bullet { border-left-color: var(--rose-deep); background: color-mix(in srgb, var(--rose) 10%, var(--surface-raised)); }
+  .bullet-title { margin: 0; font-family: var(--font-body); font-weight: 700; color: var(--text-primary); }
+  .bullet-detail { margin: var(--space-half) 0 0; color: var(--text-secondary); max-width: none; }
+
+  .bullet-sources { margin: var(--space-half) 0 0; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .source-chip { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; color: var(--sage-deep); background: var(--sage-wash); padding: 0.2em 0.7em; border-radius: var(--radius-pill); text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
+  a.source-chip:hover { background: var(--sage); color: #fff; }
+  .week-section#redFlags .source-chip { color: var(--rose-deep); background: color-mix(in srgb, var(--rose) 24%, #fff); }
+
+  .gear-disclaimer { margin: calc(-1 * var(--space-half)) 0 var(--space-1); font-size: var(--fs-small); color: var(--text-secondary); max-width: none; }
+  .gear-list { display: flex; flex-direction: column; gap: var(--space-1); }
+  .gear-card { padding: var(--space-2); background: var(--surface-raised); border-radius: var(--radius-card); box-shadow: var(--shadow-soft); border-top: 4px solid var(--butter); }
+  .gear-item { margin: 0 0 var(--space-half); font-size: var(--fs-h3); }
+  .gear-why { margin: 0 0 var(--space-1); color: var(--text-secondary); max-width: none; }
+  .brand-list { list-style: none; padding: 0; margin: var(--space-1) 0 0; display: flex; flex-direction: column; gap: var(--space-half); }
+  .brand { display: flex; align-items: flex-start; gap: var(--space-1); padding: var(--space-1); background: color-mix(in srgb, var(--butter) 16%, var(--ivory)); border-radius: var(--radius-button); }
+  .brand-rank { flex-shrink: 0; width: 1.9rem; height: 1.9rem; display: grid; place-items: center; font-family: var(--font-heading); font-weight: 600; color: #fff; background: var(--sage); border-radius: var(--radius-pill); font-size: 0.95rem; }
+  .brand-body { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+  .brand-head { margin: 0; max-width: none; display: flex; align-items: baseline; gap: var(--space-1); flex-wrap: wrap; }
+  .brand-name { font-weight: 800; color: var(--text-primary); }
+  .brand-link { display: inline-flex; align-items: center; gap: 0.25rem; font-size: var(--fs-small); font-weight: 700; text-decoration: none; color: var(--sage-deep); }
+  .brand-link:hover { text-decoration: underline; }
+  .brand-note { margin: 0; max-width: none; color: var(--text-secondary); font-size: var(--fs-small); }
+  .proscons { display: flex; flex-wrap: wrap; gap: 0.35rem var(--space-2); margin-top: 0.2rem; }
+  .proscons ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.15rem; font-size: var(--fs-small); min-width: 12rem; flex: 1; }
+  .proscons li { position: relative; padding-left: 1.4rem; color: var(--text-secondary); }
+  .proscons .pros li::before { content: ''; position: absolute; left: 0; top: 0.15em; width: 0.95rem; height: 0.95rem; background: var(--sage); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .proscons .cons li::before { content: ''; position: absolute; left: 0; top: 0.15em; width: 0.95rem; height: 0.95rem; background: var(--rose-deep); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+  .sources ul { padding-left: 1.25rem; margin: 0; color: var(--text-secondary); }
+  .sources li { margin-bottom: 0.5em; }
+  .week-nav { margin-top: var(--space-3); font-weight: 700; }
+  .week-nav a { text-decoration: none; }
+  .week-nav a:hover { text-decoration: underline; }
+</style>

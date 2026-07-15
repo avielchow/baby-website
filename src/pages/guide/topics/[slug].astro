@@ -1,0 +1,51 @@
+---
+import { getEntry, render } from 'astro:content';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import Comments from '../../../components/Comments.astro';
+
+const slug = Astro.params.slug;
+if (!slug) return Astro.redirect('/guide/', 302);
+
+const entry = await getEntry('topics', slug);
+if (!entry || entry.data.draft) return new Response('Topic not found', { status: 404 });
+
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<ContentLayout eyebrow={d.ageRange ?? 'Deep dive'} title={d.title} description={d.teaser} lastUpdated={d.lastUpdated}>
+  <div class="topic-prose">
+    <Content />
+  </div>
+
+  {d.sources.length > 0 && (
+    <section class="sources" id="sources">
+      <h2>Sources</h2>
+      <ul>
+        {d.sources.map((s) => (
+          <li>{s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <Comments pageId={`topic-${slug}`} backPath={`/guide/topics/${slug}/`} />
+
+  <p class="topic-nav"><a href="/guide/">&larr; Back to the guide</a></p>
+</ContentLayout>
+
+<style>
+  .topic-prose { font-size: var(--fs-body-lg); line-height: 1.7; }
+  .topic-prose :global(p) { margin-bottom: var(--space-paragraph); max-width: none; }
+  .topic-prose :global(h2) { margin-top: var(--space-3); font-size: var(--fs-h2); }
+  .topic-prose :global(h3) { margin-top: var(--space-2); font-size: var(--fs-h3); }
+  .topic-prose :global(ul), .topic-prose :global(ol) { max-width: none; margin-bottom: var(--space-paragraph); padding-left: 1.4rem; }
+  .topic-prose :global(li) { margin-bottom: 0.4rem; }
+  .topic-prose :global(blockquote) { margin: var(--space-2) 0; padding-left: var(--space-1); border-left: 3px solid var(--sage); color: var(--text-secondary); font-style: italic; }
+  .topic-prose :global(a) { color: var(--accent-primary); }
+  .sources { margin-top: var(--space-3); }
+  .sources ul { padding-left: 1.25rem; margin: 0; color: var(--text-secondary); }
+  .sources li { margin-bottom: 0.5em; }
+  .topic-nav { margin-top: var(--space-3); font-weight: 700; }
+  .topic-nav a { text-decoration: none; }
+</style>

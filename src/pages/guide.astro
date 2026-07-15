@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeafSprig from '../components/illustrations/LeafSprig.astro';
+import WeekVignette from '../components/illustrations/WeekVignette.astro';
+import MonthVignette from '../components/illustrations/MonthVignette.astro';
+import MoonStars from '../components/illustrations/MoonStars.astro';
+
+const weeks = await getCollection('weeks', ({ data }) => !data.draft);
+const months = await getCollection('months', ({ data }) => !data.draft);
+const topics = (await getCollection('topics', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout title="Baby Guide" description="A sourced, week-by-week then month-by-month guide through the first year.">
+  <section class="hero band">
+    <div class="container">
+      <p class="eyebrow">The Baby Guide</p>
+      <h1 class="display">The first year, without the panic-Googling.</h1>
+      <p class="hero-sub">A calm, sourced guide through every stage — week by week for the newborn months, then month by month to one year. Milestones, feeding, sleep, safety, and honest picks on what to buy.</p>
+      <LeafSprig width={72} />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="paths">
+        <a class="card card-lift path" href="/weeks/">
+          <WeekVignette week={1} size={104} />
+          <h2 class="path-title">Newborn Weeks</h2>
+          <p class="path-tag">The first 3 months</p>
+          <p class="path-desc">A page for every week 1–12 — surviving the shock, feeding and sleep, the crying curve, first smiles, the 2-month shots.</p>
+          <span class="path-go">Start here &rarr;</span>
+        </a>
+
+        <a class="card card-lift path" href="/months/">
+          <MonthVignette month={6} size={104} />
+          <h2 class="path-title">Month by Month</h2>
+          <p class="path-tag">4–12 months</p>
+          <p class="path-desc">{months.length > 0 ? 'Rolling, sitting, solids, crawling, cruising, first words — a page per month through the first birthday.' : 'Rolling, sitting, solids, first steps — one page per month. Being written now.'}</p>
+          <span class="path-go">{months.length > 0 ? 'Explore the months' : 'Coming soon'} &rarr;</span>
+        </a>
+
+        <a class="card card-lift path" href="/milestones/">
+          <MoonStars width={96} />
+          <h2 class="path-title">Milestone Timeline</h2>
+          <p class="path-tag">The whole year at a glance</p>
+          <p class="path-desc">The growing-vine view of the year — every month's headline milestones, and a tap into the full page.</p>
+          <span class="path-go">See the timeline &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {topics.length > 0 && (
+    <section class="band band-wash">
+      <div class="container">
+        <div class="band-head">
+          <h2>Deep dives</h2>
+          <LeafSprig width={56} />
+        </div>
+        <p class="deep-intro">The big topics get their own richly-sourced page.</p>
+        <ul class="topic-cards">
+          {topics.map((t) => (
+            <li class="card card-lift topic-card">
+              <a href={`/guide/topics/${t.id}/`}>
+                {t.data.ageRange && <span class="topic-age">{t.data.ageRange}</span>}
+                <span class="topic-title">{t.data.title}</span>
+                {t.data.teaser && <span class="topic-teaser">{t.data.teaser}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero { background: linear-gradient(180deg, #EDF5E8 0%, var(--ivory) 100%); padding-block: var(--space-4) var(--space-3); }
+  .hero-sub { font-size: var(--fs-body-lg); color: var(--text-secondary); max-width: 44rem; margin-bottom: var(--space-2); }
+
+  .paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-2); }
+  .path { display: flex; flex-direction: column; align-items: flex-start; padding: var(--space-2); text-decoration: none; color: var(--text-primary); }
+  .path-title { margin: var(--space-1) 0 0; }
+  .path-tag { font-size: var(--fs-eyebrow); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage-deep); margin: 0.2rem 0 var(--space-half); }
+  .path-desc { color: var(--text-secondary); max-width: none; }
+  .path-go { margin-top: auto; font-weight: 700; color: var(--accent-primary); }
+
+  .band-head { display: flex; align-items: baseline; gap: var(--space-1); margin-bottom: var(--space-half); }
+  .band-head h2 { margin: 0; }
+  .deep-intro { color: var(--text-secondary); margin-bottom: var(--space-2); }
+  .topic-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--space-1); }
+  .topic-card a { display: flex; flex-direction: column; gap: 0.3rem; padding: var(--space-2); text-decoration: none; color: var(--text-primary); }
+  .topic-age { font-size: var(--fs-eyebrow); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage-deep); }
+  .topic-title { font-family: var(--font-heading); font-weight: 560; font-size: var(--fs-h3); }
+  .topic-teaser { color: var(--text-secondary); }
+</style>

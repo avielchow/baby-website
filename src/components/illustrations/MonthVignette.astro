@@ -1,0 +1,150 @@
+---
+/**
+ * Per-month illustrated vignette (months 4–12), keyed to each month's theme.
+ * Icon-style scenes in the fresh-meadow palette; parallels WeekVignette.
+ */
+interface Props {
+  month: number;
+  size?: number;
+  class?: string;
+}
+const { month, size = 96, class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 120 120"
+  fill="none"
+  aria-hidden="true"
+>
+  <rect width="120" height="120" rx="26" fill="var(--sage-wash, #E8F0E3)" />
+
+  {month === 4 && (
+    <g>
+      {/* Rolling over — a baby blob mid-roll with a motion arc */}
+      <path d="M34 40 A34 34 0 0 1 92 52" stroke="var(--sage, #6B9A5F)" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="1 9" />
+      <path d="M88 44 l6 8 -10 2 Z" fill="var(--sage, #6B9A5F)" />
+      <ellipse cx="58" cy="74" rx="30" ry="18" fill="var(--leaf, #8FBC85)" />
+      <circle cx="40" cy="70" r="11" fill="var(--butter, #F2DFA8)" />
+      <circle cx="37" cy="68" r="1.8" fill="var(--ink, #3D443A)" />
+      <circle cx="43" cy="68" r="1.8" fill="var(--ink, #3D443A)" />
+      <path d="M37 73 q3 3 6 0" stroke="var(--ink, #3D443A)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+    </g>
+  )}
+
+  {month === 5 && (
+    <g>
+      {/* Sitting with support + blowing raspberries */}
+      <ellipse cx="60" cy="94" rx="26" ry="8" fill="var(--leaf, #8FBC85)" opacity="0.5" />
+      <path d="M44 90 Q46 66 60 60 Q74 66 76 90 Z" fill="var(--sage, #6B9A5F)" />
+      <circle cx="60" cy="50" r="18" fill="var(--butter, #F2DFA8)" />
+      <circle cx="54" cy="47" r="2.4" fill="var(--ink, #3D443A)" />
+      <circle cx="66" cy="47" r="2.4" fill="var(--ink, #3D443A)" />
+      <circle cx="60" cy="55" r="4" fill="var(--rose, #E8B4B4)" />
+    </g>
+  )}
+
+  {month === 6 && (
+    <g>
+      {/* Starting solids — bowl + spoon */}
+      <path d="M30 58 h60 a30 26 0 0 1 -60 0 Z" fill="var(--sage, #6B9A5F)" />
+      <rect x="28" y="54" width="64" height="6" rx="3" fill="var(--sage-deep, #557B4B)" />
+      <circle cx="60" cy="66" r="6" fill="var(--butter, #F2DFA8)" />
+      <path d="M92 30 q10 4 6 16 q-2 8 -8 8 l-2 -14 Z" fill="var(--leaf, #8FBC85)" />
+      <line x1="90" y1="52" x2="86" y2="78" stroke="var(--sage-deep, #557B4B)" stroke-width="3.5" stroke-linecap="round" />
+    </g>
+  )}
+
+  {month === 7 && (
+    <g>
+      {/* Sitting steadily */}
+      <ellipse cx="60" cy="96" rx="28" ry="8" fill="var(--leaf, #8FBC85)" opacity="0.5" />
+      <path d="M40 92 Q42 62 60 56 Q78 62 80 92 Z" fill="var(--sage, #6B9A5F)" />
+      <ellipse cx="38" cy="84" rx="8" ry="5" transform="rotate(30 38 84)" fill="var(--sage, #6B9A5F)" />
+      <ellipse cx="82" cy="84" rx="8" ry="5" transform="rotate(-30 82 84)" fill="var(--sage, #6B9A5F)" />
+      <circle cx="60" cy="44" r="18" fill="var(--butter, #F2DFA8)" />
+      <circle cx="54" cy="42" r="2.4" fill="var(--ink, #3D443A)" />
+      <circle cx="66" cy="42" r="2.4" fill="var(--ink, #3D443A)" />
+      <path d="M54 49 q6 5 12 0" stroke="var(--ink, #3D443A)" stroke-width="2" stroke-linecap="round" fill="none" />
+    </g>
+  )}
+
+  {month === 8 && (
+    <g>
+      {/* Crawling */}
+      <ellipse cx="60" cy="92" rx="30" ry="7" fill="var(--leaf, #8FBC85)" opacity="0.5" />
+      <path d="M36 84 Q40 56 66 58 Q86 60 86 78" stroke="var(--sage, #6B9A5F)" stroke-width="16" stroke-linecap="round" fill="none" />
+      <line x1="44" y1="70" x2="42" y2="88" stroke="var(--sage, #6B9A5F)" stroke-width="7" stroke-linecap="round" />
+      <line x1="80" y1="72" x2="82" y2="88" stroke="var(--sage, #6B9A5F)" stroke-width="7" stroke-linecap="round" />
+      <circle cx="34" cy="58" r="15" fill="var(--butter, #F2DFA8)" />
+      <circle cx="30" cy="57" r="2.2" fill="var(--ink, #3D443A)" />
+      <path d="M26 63 q4 3 8 1" stroke="var(--ink, #3D443A)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    </g>
+  )}
+
+  {month === 9 && (
+    <g>
+      {/* Pulling to stand at a bar */}
+      <rect x="26" y="44" width="68" height="6" rx="3" fill="var(--sage-deep, #557B4B)" />
+      <rect x="30" y="50" width="6" height="46" rx="3" fill="var(--sage-deep, #557B4B)" opacity="0.5" />
+      <rect x="84" y="50" width="6" height="46" rx="3" fill="var(--sage-deep, #557B4B)" opacity="0.5" />
+      <rect x="54" y="60" width="16" height="36" rx="8" fill="var(--sage, #6B9A5F)" />
+      <line x1="56" y1="52" x2="56" y2="62" stroke="var(--sage, #6B9A5F)" stroke-width="6" stroke-linecap="round" />
+      <line x1="68" y1="52" x2="68" y2="62" stroke="var(--sage, #6B9A5F)" stroke-width="6" stroke-linecap="round" />
+      <circle cx="62" cy="42" r="15" fill="var(--butter, #F2DFA8)" />
+      <circle cx="57" cy="41" r="2.2" fill="var(--ink, #3D443A)" />
+      <circle cx="67" cy="41" r="2.2" fill="var(--ink, #3D443A)" />
+      <path d="M57 46 q5 4 10 0" stroke="var(--ink, #3D443A)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+    </g>
+  )}
+
+  {month === 10 && (
+    <g>
+      {/* Cruising — a step along furniture */}
+      <rect x="24" y="46" width="72" height="6" rx="3" fill="var(--sage-deep, #557B4B)" />
+      <rect x="52" y="58" width="16" height="34" rx="8" fill="var(--sage, #6B9A5F)" />
+      <line x1="54" y1="90" x2="46" y2="98" stroke="var(--sage, #6B9A5F)" stroke-width="7" stroke-linecap="round" />
+      <line x1="66" y1="90" x2="74" y2="96" stroke="var(--sage, #6B9A5F)" stroke-width="7" stroke-linecap="round" />
+      <line x1="55" y1="54" x2="55" y2="62" stroke="var(--sage, #6B9A5F)" stroke-width="6" stroke-linecap="round" />
+      <circle cx="60" cy="40" r="15" fill="var(--butter, #F2DFA8)" />
+      <circle cx="55" cy="39" r="2.2" fill="var(--ink, #3D443A)" />
+      <circle cx="65" cy="39" r="2.2" fill="var(--ink, #3D443A)" />
+      <path d="M55 44 q5 4 10 0" stroke="var(--ink, #3D443A)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+      <circle cx="98" cy="30" r="3" fill="var(--butter, #F2DFA8)" />
+    </g>
+  )}
+
+  {month === 11 && (
+    <g>
+      {/* First shoes / first steps — a little shoe + footprints */}
+      <path d="M34 66 h30 q14 0 16 12 q1 6 -6 6 H36 q-6 0 -6 -8 Z" fill="var(--sage, #6B9A5F)" />
+      <rect x="30" y="82" width="52" height="6" rx="3" fill="var(--sage-deep, #557B4B)" />
+      <path d="M40 66 q2 -8 10 -8 q8 0 8 8" stroke="var(--sage-deep, #557B4B)" stroke-width="3" fill="none" stroke-linecap="round" />
+      <ellipse cx="90" cy="46" rx="6" ry="9" transform="rotate(20 90 46)" fill="var(--leaf, #8FBC85)" />
+      <ellipse cx="96" cy="66" rx="5" ry="8" transform="rotate(20 96 66)" fill="var(--leaf, #8FBC85)" opacity="0.7" />
+    </g>
+  )}
+
+  {month === 12 && (
+    <g>
+      {/* One year — a first-birthday cupcake with a candle */}
+      <path d="M40 60 h40 l-6 34 a4 4 0 0 1 -4 3 H50 a4 4 0 0 1 -4 -3 Z" fill="var(--rose, #E8B4B4)" />
+      <path d="M36 60 q0 -16 24 -16 q24 0 24 16 q-8 -6 -16 0 q-8 -6 -16 0 q-8 -6 -16 0 Z" fill="var(--butter, #F2DFA8)" />
+      <rect x="57" y="24" width="6" height="16" rx="2" fill="var(--sage, #6B9A5F)" />
+      <path d="M60 14 q7 6 0 12 q-7 -6 0 -12 Z" fill="#F2A65A" />
+      <circle cx="52" cy="76" r="2.5" fill="#fff" />
+      <circle cx="66" cy="82" r="2.5" fill="#fff" />
+    </g>
+  )}
+
+  {(month < 4 || month > 12) && (
+    <g>
+      <path d="M32 88 Q56 78 84 46" stroke="var(--sage-deep, #557B4B)" stroke-width="3" stroke-linecap="round" fill="none" />
+      <ellipse cx="46" cy="80" rx="11" ry="5" transform="rotate(-22 46 80)" fill="var(--leaf, #8FBC85)" />
+      <ellipse cx="62" cy="68" rx="11" ry="5" transform="rotate(-32 62 68)" fill="var(--sage, #6B9A5F)" />
+      <path d="M88 34 l2.4 5.8 5.8 2.4 -5.8 2.4 -2.4 5.8 -2.4 -5.8 -5.8 -2.4 5.8 -2.4 Z" fill="var(--butter, #F2DFA8)" />
+    </g>
+  )}
+</svg>

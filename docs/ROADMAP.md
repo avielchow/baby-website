@@ -104,13 +104,16 @@
       the first year's first quarter (weeks 1–12) is now complete
 - [x] Decided month-4+ cadence → **monthly** (see MONTHLY.md, spec'd 2026-07-15)
 - [x] Renamed "Weekly Guide" → "Newborn Weeks" (weeks 1–12 = the first 3 months)
-- [ ] **Month-by-month guide** (see MONTHLY.md build plan A–F):
+- [x] **Month-by-month guide** (shipped 2026-07-15, MONTHLY.md build plan A–F):
   - [x] A — rename to Newborn Weeks
-  - [ ] B — `/guide` "Baby Guide" hub + nav → "Baby Guide"
-  - [ ] C — `months` collection + schema (adapted sections) + `/months/NN` template
-  - [ ] D — author months 4–12 (content-v2 standard, verified)
-  - [ ] E — `/milestones` growing-vine timeline as the visual index into months
-  - [ ] F — deep-dive topic pages: Starting Solids (~6mo), the 4-Month Sleep Shift
+  - [x] B — `/guide` "Baby Guide" hub + nav → "Baby Guide"
+  - [x] C — `months` collection + schema (adapted sections) + `/months/NN` template
+        + MonthVignette; comments generalized to per-page ids (week-/month-/topic-)
+  - [x] D — months 4–12 authored (content-v2, verified; several Alberta-vaccine
+        corrections caught along the way, e.g. Men-C-C at 4mo, no 9mo dose)
+  - [x] E — `/milestones` growing-vine timeline (visual index into the months)
+  - [x] F — deep-dive topic pages: Starting Solids (~6mo), the 4-Month Sleep Shift
+- [ ] Year two (months 13–24, quarterly) — deferred per MONTHLY.md
 - [ ] Monthly letter-to-Baby entries
 
 ## Later / maybe

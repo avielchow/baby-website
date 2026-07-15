@@ -101,6 +101,62 @@ const weeks = defineCollection({
   }),
 });
 
+/**
+ * Monthly guide (months 4–12), adapted for older babies (see docs/MONTHLY.md).
+ * Reuses the same bullet/gear/diagram/source pieces as weeks; sections differ.
+ */
+const months = defineCollection({
+  loader: collectionLoader('months'),
+  schema: z.object({
+    /** Month of life, 4–12 (month 1 = the first month). */
+    monthNumber: z.number().int().min(1).max(24),
+    title: z.string(),
+    description: z.string().optional(),
+    /** By domain (motor/social/language/feeding/sleep), range-framed. Feeds the timeline. */
+    milestones: z.array(bullet).default([]),
+    /** What they're learning + how to engage it. */
+    developmentAndPlay: z.array(bullet).default([]),
+    feeding: z.array(bullet).default([]),
+    sleep: z.array(bullet).default([]),
+    /** Babyproofing/safety scaling with mobility. */
+    safetyOnTheMove: z.array(bullet).default([]),
+    /** Well-child visit + vaccines + growth for the month. */
+    healthAndCheckups: z.array(bullet).default([]),
+    redFlags: z.array(bullet).default([]),
+    alsoWorthKnowing: z.array(bullet).default([]),
+    gear: z.array(gearItem).default([]),
+    diagrams: z.array(diagramRef).default([]),
+    /** Links to deep-dive topic pages relevant this month (topics collection slugs). */
+    topics: z.array(z.string()).default([]),
+    sources: z.array(z.object({
+      label: z.string(),
+      url: z.string().url().optional(),
+    })).default([]),
+    lastUpdated: z.coerce.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+/** Deep-dive topic pages (Starting Solids, the 4-Month Sleep Shift, …). Markdown body. */
+const topics = defineCollection({
+  loader: collectionLoader('topics'),
+  schema: z.object({
+    title: z.string(),
+    /** One-line teaser for the hub/index. */
+    teaser: z.string().optional(),
+    /** Age range shown as an eyebrow, e.g. "Around 6 months". */
+    ageRange: z.string().optional(),
+    /** Ordering on the topics index. */
+    order: z.number().default(0),
+    sources: z.array(z.object({
+      label: z.string(),
+      url: z.string().url().optional(),
+    })).default([]),
+    lastUpdated: z.coerce.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const journalSchema = z.object({
   title: z.string(),
   /** Date the entry describes (used for sorting + display). */
@@ -125,5 +181,7 @@ const journal = defineCollection({
 
 export const collections = {
   weeks,
+  months,
+  topics,
   journal,
 };

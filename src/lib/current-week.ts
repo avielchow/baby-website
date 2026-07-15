@@ -34,6 +34,14 @@ export function currentDayNumber(now: Date = new Date()): number {
   return days + 1;
 }
 
+/** 1-indexed month of life (month 1 = the first ~30 days). 0 if not yet born. */
+export function currentMonthNumber(now: Date = new Date()): number {
+  if (isPreBirth(now)) return 0;
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const days = Math.floor((now.getTime() - BIRTH_ANCHOR.getTime()) / msPerDay);
+  return Math.floor(days / 30.4375) + 1;
+}
+
 /**
  * The week a given date belongs to, relative to birth.
  *   >= 1  → week of life (week 1 = the first 7 days after birth)
