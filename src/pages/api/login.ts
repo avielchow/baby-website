@@ -13,13 +13,13 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const password = String(form.get('password') ?? '');
   const next = String(form.get('next') ?? '/');
 
-  const ok = await verifyPassword(password);
-  if (!ok) {
+  const tier = await verifyPassword(password);
+  if (!tier) {
     const back = `/login?error=invalid&next=${encodeURIComponent(next)}`;
     return redirect(back, 303);
   }
 
-  cookies.set(GATE_COOKIE, issueGateCookie(), cookieOptions);
+  cookies.set(GATE_COOKIE, issueGateCookie(tier), cookieOptions);
   cookies.set(SESSION_FLAG_COOKIE, '1', sessionFlagCookieOptions);
   return redirect(next, 303);
 };

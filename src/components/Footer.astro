@@ -1,9 +1,12 @@
 ---
+import LeafSprig from './illustrations/LeafSprig.astro';
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container footer-inner">
+    <LeafSprig width={72} class="footer-sprig" />
     <p class="footer-copy">&copy; {year} Aviel Chow · A private family site.</p>
     <p class="footer-disclaimer">
       This site is a personal record and reference, not medical advice. If you have concerns about your baby's health, contact your pediatrician or call HealthLink at 811.
@@ -13,10 +16,9 @@ const year = new Date().getFullYear();
 
 <style>
   .site-footer {
-    background: var(--surface-muted);
-    padding-block: var(--space-2);
+    background: var(--sage-wash);
+    padding-block: var(--space-3) var(--space-2);
     margin-top: var(--space-3);
-    border-top: 1px solid var(--border-hairline);
   }
 
   .footer-inner {
@@ -27,7 +29,8 @@ const year = new Date().getFullYear();
 
   .footer-copy {
     font-size: var(--fs-small);
-    color: var(--text-secondary);
+    font-weight: 700;
+    color: var(--sage-deep);
     margin: 0;
   }
 

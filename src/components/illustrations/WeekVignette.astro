@@ -1,0 +1,85 @@
+---
+/**
+ * Per-week illustrated vignette, keyed to each week's theme:
+ *   1 — first days/nights: crescent moon, stars, little cloud
+ *   2 — growth & the weight check: sprout on a mound, rising sun
+ *   3 — hungrier and louder: sun with sound-arcs
+ *   4 — nearly one month: climbing vine with four leaves, star on top
+ *   other — leaf sprig + star (fallback until a scene exists)
+ */
+interface Props {
+  week: number;
+  size?: number;
+  class?: string;
+}
+const { week, size = 96, class: className } = Astro.props;
+const maskId = `wv-moon-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 120 120"
+  fill="none"
+  aria-hidden="true"
+>
+  <rect width="120" height="120" rx="26" fill="var(--sage-wash, #E8F0E3)" />
+
+  {week === 1 && (
+    <g>
+      <mask id={maskId}>
+        <rect width="120" height="120" fill="white" />
+        <circle cx="72" cy="44" r="24" fill="black" />
+      </mask>
+      <circle cx="60" cy="52" r="26" fill="var(--butter, #F2DFA8)" mask={`url(#${maskId})`} />
+      <path d="M88 30 l2.2 5.4 5.4 2.2 -5.4 2.2 -2.2 5.4 -2.2 -5.4 -5.4 -2.2 5.4 -2.2 Z" fill="var(--sage, #6B9A5F)" />
+      <circle cx="30" cy="34" r="2.5" fill="var(--rose, #E8B4B4)" />
+      <ellipse cx="44" cy="92" rx="22" ry="8" fill="#FFFFFF" />
+      <ellipse cx="62" cy="86" rx="15" ry="6.5" fill="#FFFFFF" />
+    </g>
+  )}
+
+  {week === 2 && (
+    <g>
+      <circle cx="88" cy="32" r="14" fill="var(--butter, #F2DFA8)" />
+      <circle cx="88" cy="32" r="20" stroke="var(--butter, #F2DFA8)" stroke-width="2" stroke-dasharray="1.5 9" stroke-linecap="round" />
+      <ellipse cx="56" cy="94" rx="30" ry="9" fill="var(--leaf, #8FBC85)" opacity="0.5" />
+      <path d="M56 92 Q54 68 58 54" stroke="var(--sage-deep, #557B4B)" stroke-width="3.5" stroke-linecap="round" />
+      <ellipse cx="46" cy="66" rx="13" ry="6" transform="rotate(-32 46 66)" fill="var(--sage, #6B9A5F)" />
+      <ellipse cx="68" cy="58" rx="13" ry="6" transform="rotate(28 68 58)" fill="var(--leaf, #8FBC85)" />
+      <circle cx="58" cy="50" r="4.5" fill="var(--butter, #F2DFA8)" />
+    </g>
+  )}
+
+  {week === 3 && (
+    <g>
+      <circle cx="44" cy="60" r="20" fill="var(--butter, #F2DFA8)" />
+      <circle cx="44" cy="60" r="27" stroke="var(--butter, #F2DFA8)" stroke-width="2.5" stroke-dasharray="2 11" stroke-linecap="round" />
+      <path d="M76 46 q10 14 0 28" stroke="var(--sage, #6B9A5F)" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <path d="M86 38 q16 22 0 44" stroke="var(--sage, #6B9A5F)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.65" />
+      <path d="M96 30 q22 30 0 60" stroke="var(--sage, #6B9A5F)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.35" />
+    </g>
+  )}
+
+  {week === 4 && (
+    <g>
+      <path d="M60 100 Q52 82 62 68 Q72 54 58 40 Q50 30 58 20" stroke="var(--sage-deep, #557B4B)" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="48" cy="86" rx="11" ry="5" transform="rotate(-30 48 86)" fill="var(--sage, #6B9A5F)" />
+      <ellipse cx="74" cy="66" rx="11" ry="5" transform="rotate(26 74 66)" fill="var(--leaf, #8FBC85)" />
+      <ellipse cx="46" cy="46" rx="11" ry="5" transform="rotate(-24 46 46)" fill="var(--leaf, #8FBC85)" />
+      <ellipse cx="70" cy="30" rx="10" ry="4.5" transform="rotate(22 70 30)" fill="var(--sage, #6B9A5F)" />
+      <path d="M58 12 l2.4 5.8 5.8 2.4 -5.8 2.4 -2.4 5.8 -2.4 -5.8 -5.8 -2.4 5.8 -2.4 Z" fill="var(--butter, #F2DFA8)" transform="translate(0,-4)" />
+    </g>
+  )}
+
+  {(week < 1 || week > 4) && (
+    <g>
+      <path d="M32 88 Q56 78 84 46" stroke="var(--sage-deep, #557B4B)" stroke-width="3" stroke-linecap="round" fill="none" />
+      <ellipse cx="46" cy="80" rx="11" ry="5" transform="rotate(-22 46 80)" fill="var(--leaf, #8FBC85)" />
+      <ellipse cx="62" cy="68" rx="11" ry="5" transform="rotate(-32 62 68)" fill="var(--sage, #6B9A5F)" />
+      <ellipse cx="76" cy="55" rx="10" ry="4.5" transform="rotate(-38 76 55)" fill="var(--leaf, #8FBC85)" />
+      <path d="M88 34 l2.4 5.8 5.8 2.4 -5.8 2.4 -2.4 5.8 -2.4 -5.8 -5.8 -2.4 5.8 -2.4 Z" fill="var(--butter, #F2DFA8)" />
+    </g>
+  )}
+</svg>

@@ -1,0 +1,248 @@
+---
+/**
+ * The home-hero scene, studio pass (docs/DESIGN.md § v2.1):
+ *  - three hill layers with atmospheric perspective + scroll parallax hooks
+ *  - time-of-day lighting: day (sun/clouds/butterfly), golden hour, night
+ *    (moon/stars/fireflies) — same geometry, different light
+ *  - Sprout, the site's character, watching from the near hill
+ * All motion CSS-only, disabled under prefers-reduced-motion.
+ */
+import Sprout from './Sprout.astro';
+
+interface Props {
+  mode?: 'day' | 'golden' | 'night';
+  class?: string;
+}
+const { mode = 'day', class: className } = Astro.props;
+const glowId = `glow-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+<div class:list={['hero-scene', className]} data-scene={mode}>
+  <svg viewBox="0 0 1200 400" fill="none" aria-hidden="true" class="scene-svg">
+    <defs>
+      <radialGradient id={glowId}>
+        <stop offset="0%" stop-color="var(--scene-glow)" stop-opacity="0.55" />
+        <stop offset="100%" stop-color="var(--scene-glow)" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+
+    <!-- Celestial glow -->
+    <circle cx={mode === 'golden' ? 980 : 1000} cy={mode === 'golden' ? 210 : 96} r="150" fill={`url(#${glowId})`} />
+
+    {mode !== 'night' ? (
+      <g class="anim-float" style="transform-box: fill-box; transform-origin: center;">
+        <circle cx={mode === 'golden' ? 980 : 1000} cy={mode === 'golden' ? 210 : 96} r={mode === 'golden' ? 52 : 44} fill="var(--scene-sun)" />
+        <circle cx={mode === 'golden' ? 980 : 1000} cy={mode === 'golden' ? 210 : 96} r={mode === 'golden' ? 68 : 58} stroke="var(--scene-sun)" stroke-width="3" stroke-dasharray="2 18" stroke-linecap="round" />
+      </g>
+    ) : (
+      <g>
+        <g class="anim-float" style="transform-box: fill-box; transform-origin: center;">
+          <circle cx="1000" cy="96" r="40" fill="var(--butter, #F2DFA8)" />
+          <circle cx="1014" cy="86" r="34" fill="var(--scene-sky-deep)" />
+          <circle cx="988" cy="88" r="5" fill="var(--butter, #F2DFA8)" opacity="0.4" />
+        </g>
+        {[
+          [140, 70, 3], [260, 130, 2], [420, 60, 2.5], [560, 120, 2], [700, 50, 3],
+          [820, 150, 2], [340, 170, 2], [90, 180, 2.2], [640, 190, 2.4], [880, 90, 2.2],
+        ].map(([x, y, r], i) => (
+          <circle cx={x} cy={y} r={r} fill="var(--butter, #F2DFA8)" class="star" style={`animation-delay: ${i * 0.7}s`} />
+        ))}
+      </g>
+    )}
+
+    {mode !== 'night' && (
+      <g>
+        <g class="anim-drift" opacity="0.95">
+          <ellipse cx="230" cy="86" rx="70" ry="26" fill="var(--scene-cloud)" />
+          <ellipse cx="288" cy="72" rx="48" ry="20" fill="var(--scene-cloud)" />
+          <ellipse cx="180" cy="72" rx="40" ry="17" fill="var(--scene-cloud)" />
+        </g>
+        <g class="anim-drift-slow" opacity="0.8">
+          <ellipse cx="640" cy="60" rx="55" ry="19" fill="var(--scene-cloud)" />
+          <ellipse cx="688" cy="48" rx="36" ry="14" fill="var(--scene-cloud)" />
+        </g>
+        <path d="M470 110 q8 -9 16 0 q8 -9 16 0" stroke="var(--scene-bird)" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M520 88 q6 -7 12 0 q6 -7 12 0" stroke="var(--scene-bird)" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+      </g>
+    )}
+
+    <!-- Hills: far (hazy) → mid → near; parallax factors far-to-near -->
+    <g data-plx="0.06">
+      <path d="M0 296 Q260 224 560 272 T1200 250 V520 H0 Z" fill="var(--scene-hill-far)" opacity="0.6" />
+    </g>
+    <g data-plx="0.12">
+      <path d="M0 320 Q220 240 480 296 T1200 276 V520 H0 Z" fill="var(--scene-hill-mid)" opacity="0.75" />
+    </g>
+    <g data-plx="0.2">
+      <path d="M0 356 Q300 284 620 336 T1200 330 V520 H0 Z" fill="var(--scene-hill-near)" />
+
+      <g class="anim-sway" style="transform-box: fill-box; transform-origin: 50% 100%;">
+        <path d="M310 342 Q306 306 318 282" stroke="var(--scene-stem)" stroke-width="3.5" stroke-linecap="round" />
+        <ellipse cx="304" cy="312" rx="13" ry="6" transform="rotate(-30 304 312)" fill="var(--scene-stem)" />
+        <ellipse cx="326" cy="298" rx="12" ry="5.5" transform="rotate(24 326 298)" fill="var(--scene-stem)" opacity="0.8" />
+        <circle cx="319" cy="278" r="6" fill="var(--butter, #F2DFA8)" />
+      </g>
+      <g class="anim-sway" style="transform-box: fill-box; transform-origin: 50% 100%; animation-delay: -4s;">
+        <path d="M986 352 Q990 320 982 300" stroke="var(--scene-flora)" stroke-width="3" stroke-linecap="round" />
+        <circle cx="982" cy="296" r="7" fill="var(--rose, #E8B4B4)" />
+        <circle cx="982" cy="296" r="2.5" fill="#FFFFFF" />
+      </g>
+      <g class="anim-sway" style="transform-box: fill-box; transform-origin: 50% 100%; animation-delay: -2s;">
+        <path d="M1046 360 Q1050 334 1044 318" stroke="var(--scene-flora)" stroke-width="2.5" stroke-linecap="round" />
+        <circle cx="1044" cy="314" r="5.5" fill="var(--butter, #F2DFA8)" />
+      </g>
+
+      <circle cx="520" cy="372" r="4" fill="var(--scene-flora)" opacity="0.9" />
+      <circle cx="600" cy="388" r="3" fill="var(--butter, #F2DFA8)" />
+      <circle cx="760" cy="376" r="4" fill="var(--scene-flora)" opacity="0.7" />
+      <circle cx="420" cy="384" r="3" fill="var(--rose, #E8B4B4)" opacity="0.8" />
+    </g>
+
+    {mode === 'night' && (
+      <g>
+        {[[380, 300, 0], [540, 330, 1.6], [820, 310, 3.1]].map(([x, y, d]) => (
+          <circle cx={x} cy={y} r="3.5" fill="var(--butter, #F2DFA8)" class="firefly" style={`animation-delay: ${d}s`} />
+        ))}
+      </g>
+    )}
+  </svg>
+
+  <div class="hero-sprout-wrap" data-plx-px="0.2">
+    <Sprout width={92} />
+  </div>
+
+  {mode !== 'night' && (
+    <div class="butterfly" aria-hidden="true">
+      <svg viewBox="0 0 40 32" width="30" height="24">
+        <g class="wing wing-l" style="transform-box: fill-box; transform-origin: right center;">
+          <ellipse cx="12" cy="14" rx="11" ry="9" fill="var(--rose, #E8B4B4)" />
+          <ellipse cx="13" cy="24" rx="7" ry="5.5" fill="var(--rose-deep, #C98B8B)" />
+        </g>
+        <g class="wing wing-r" style="transform-box: fill-box; transform-origin: left center;">
+          <ellipse cx="28" cy="14" rx="11" ry="9" fill="var(--rose, #E8B4B4)" />
+          <ellipse cx="27" cy="24" rx="7" ry="5.5" fill="var(--rose-deep, #C98B8B)" />
+        </g>
+        <rect x="18.6" y="8" width="2.8" height="18" rx="1.4" fill="var(--ink, #3D443A)" />
+      </svg>
+    </div>
+  )}
+</div>
+
+<style>
+  .hero-scene {
+    position: relative;
+  }
+
+  .scene-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Scene lighting — same geometry, different light (see DESIGN.md v2.1) */
+  .hero-scene[data-scene='day'] {
+    --scene-sun: var(--butter, #F2DFA8);
+    --scene-glow: #F7E9B8;
+    --scene-cloud: #FFFFFF;
+    --scene-bird: var(--sage-deep, #557B4B);
+    --scene-hill-far: #C9DCC2;
+    --scene-hill-mid: var(--leaf, #8FBC85);
+    --scene-hill-near: var(--sage, #6B9A5F);
+    --scene-stem: var(--sage-deep, #557B4B);
+    --scene-flora: var(--sage-wash, #E8F0E3);
+  }
+
+  .hero-scene[data-scene='golden'] {
+    --scene-sun: #F2C97D;
+    --scene-glow: #F5B96E;
+    --scene-cloud: #FFF4DC;
+    --scene-bird: #7C6A3F;
+    --scene-hill-far: #D9CFA8;
+    --scene-hill-mid: #A8B07A;
+    --scene-hill-near: #7C8F55;
+    --scene-stem: #5C6B3A;
+    --scene-flora: #F0E8C8;
+  }
+
+  .hero-scene[data-scene='night'] {
+    --scene-glow: #F2DFA8;
+    --scene-sky-deep: #16241A;
+    --scene-hill-far: #3A5340;
+    --scene-hill-mid: #2F4634;
+    --scene-hill-near: #24382A;
+    --scene-stem: #4C6B4E;
+    --scene-flora: #55755A;
+  }
+
+  .star {
+    animation: twinkle 4.5s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  .firefly {
+    animation: firefly 5s ease-in-out infinite;
+  }
+
+  @keyframes firefly {
+    0%, 100% { opacity: 0.1; transform: translate(0, 0); }
+    40% { opacity: 1; }
+    60% { opacity: 0.9; transform: translate(14px, -12px); }
+  }
+
+  .hero-sprout-wrap {
+    position: absolute;
+    left: 11%;
+    bottom: 2%;
+    width: 7.5%;
+    min-width: 56px;
+    max-width: 96px;
+  }
+
+  .hero-sprout-wrap :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+
+  .butterfly {
+    position: absolute;
+    top: 30%;
+    left: -4%;
+    animation: butterfly-fly 26s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .butterfly .wing {
+    animation: butterfly-flap 0.5s ease-in-out infinite alternate;
+  }
+
+  .wing-l { animation-name: butterfly-flap-l; }
+  .wing-r { animation-name: butterfly-flap-r; }
+
+  @keyframes butterfly-flap-l {
+    from { transform: rotateY(0deg) rotate(0deg); }
+    to { transform: rotate(-32deg); }
+  }
+
+  @keyframes butterfly-flap-r {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(32deg); }
+  }
+
+  @keyframes butterfly-fly {
+    0%   { transform: translate(0, 0) rotate(8deg); }
+    20%  { transform: translate(26vw, -3.5rem) rotate(-6deg); }
+    40%  { transform: translate(52vw, 1.5rem) rotate(10deg); }
+    60%  { transform: translate(72vw, -4.5rem) rotate(-8deg); }
+    80%  { transform: translate(92vw, -1rem) rotate(6deg); }
+    100% { transform: translate(112vw, -3rem) rotate(0deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .star, .firefly, .butterfly, .butterfly .wing { animation: none; }
+    .butterfly { display: none; }
+  }
+</style>

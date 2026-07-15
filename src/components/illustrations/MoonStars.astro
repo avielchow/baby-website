@@ -1,0 +1,28 @@
+---
+/** Crescent moon with stars — night/sleep moments, 404s, empty states. */
+interface Props {
+  width?: number;
+  class?: string;
+}
+const { width = 120, class: className } = Astro.props;
+const maskId = `crescent-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg
+  class={className}
+  width={width}
+  height={width}
+  viewBox="0 0 120 120"
+  fill="none"
+  aria-hidden="true"
+>
+  <mask id={maskId}>
+    <rect width="120" height="120" fill="white" />
+    <circle cx="74" cy="50" r="34" fill="black" />
+  </mask>
+  <circle cx="58" cy="60" r="36" fill="var(--butter, #F2DFA8)" mask={`url(#${maskId})`} />
+  <path d="M92 24 l2.6 6.4 6.4 2.6 -6.4 2.6 -2.6 6.4 -2.6 -6.4 -6.4 -2.6 6.4 -2.6 Z" fill="var(--sage, #6B9A5F)" />
+  <path d="M104 62 l1.8 4.4 4.4 1.8 -4.4 1.8 -1.8 4.4 -1.8 -4.4 -4.4 -1.8 4.4 -1.8 Z" fill="var(--leaf, #8FBC85)" />
+  <circle cx="22" cy="34" r="3" fill="var(--rose, #E8B4B4)" />
+  <circle cx="34" cy="102" r="2.5" fill="var(--sage, #6B9A5F)" />
+</svg>

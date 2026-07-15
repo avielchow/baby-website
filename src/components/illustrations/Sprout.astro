@@ -1,0 +1,80 @@
+---
+/**
+ * Sprout — the site's character (docs/DESIGN.md § v2.1 Studio Pass).
+ * A small seedling with leaf arms and big blinking eyes. The eyes do the
+ * acting: ~5s blink cycle plus a gentle bob. All motion is CSS-only and
+ * disabled under prefers-reduced-motion.
+ */
+interface Props {
+  width?: number;
+  class?: string;
+}
+const { width = 96, class: className } = Astro.props;
+const height = Math.round(width * (140 / 120));
+---
+
+<svg
+  class:list={['sprout', className]}
+  width={width}
+  height={height}
+  viewBox="0 0 120 140"
+  fill="none"
+  aria-hidden="true"
+>
+  <!-- ground mound -->
+  <ellipse cx="60" cy="128" rx="34" ry="9" fill="var(--sage-deep, #557B4B)" opacity="0.35" />
+
+  <g class="sprout-body">
+    <!-- stem -->
+    <path d="M60 126 Q57 108 60 96" stroke="var(--sage-deep, #557B4B)" stroke-width="5" stroke-linecap="round" />
+    <!-- leaf arms -->
+    <ellipse cx="44" cy="108" rx="13" ry="5.5" transform="rotate(-34 44 108)" fill="var(--sage, #6B9A5F)" />
+    <ellipse cx="76" cy="112" rx="12" ry="5" transform="rotate(28 76 112)" fill="var(--sage, #6B9A5F)" />
+
+    <!-- head -->
+    <circle cx="60" cy="66" r="30" fill="var(--leaf, #8FBC85)" />
+    <!-- hair leaves -->
+    <ellipse cx="47" cy="32" rx="12" ry="5.5" transform="rotate(-38 47 32)" fill="var(--sage, #6B9A5F)" />
+    <ellipse cx="72" cy="30" rx="12" ry="5.5" transform="rotate(30 72 30)" fill="var(--sage, #6B9A5F)" />
+    <path d="M60 40 Q59 32 60 26" stroke="var(--sage-deep, #557B4B)" stroke-width="3.5" stroke-linecap="round" />
+
+    <!-- face -->
+    <g class="sprout-eyes">
+      <circle cx="49" cy="64" r="4.6" fill="var(--ink, #3D443A)" />
+      <circle cx="71" cy="64" r="4.6" fill="var(--ink, #3D443A)" />
+      <circle cx="50.6" cy="62.4" r="1.5" fill="#FFFFFF" />
+      <circle cx="72.6" cy="62.4" r="1.5" fill="#FFFFFF" />
+    </g>
+    <path d="M54 76 q6 5 12 0" stroke="var(--ink, #3D443A)" stroke-width="2.6" stroke-linecap="round" fill="none" />
+    <circle cx="41" cy="72" r="4" fill="var(--rose, #E8B4B4)" opacity="0.55" />
+    <circle cx="79" cy="72" r="4" fill="var(--rose, #E8B4B4)" opacity="0.55" />
+  </g>
+</svg>
+
+<style>
+  .sprout-body {
+    animation: sprout-bob 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+  }
+
+  .sprout-eyes {
+    animation: sprout-blink 5.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @keyframes sprout-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(-1.2deg); }
+  }
+
+  @keyframes sprout-blink {
+    0%, 91%, 100% { transform: scaleY(1); }
+    94%, 96% { transform: scaleY(0.08); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sprout-body, .sprout-eyes { animation: none; }
+  }
+</style>

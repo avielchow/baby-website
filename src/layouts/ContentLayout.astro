@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { title, description, eyebrow, lastUpdated, wide = false } = Astro.props;
+const hasArt = Astro.slots.has('art');
 
 const stampedDate = lastUpdated
   ? typeof lastUpdated === 'string'
@@ -23,11 +24,18 @@ const stampedDate = lastUpdated
 <BaseLayout title={title} description={description}>
   <article class="content-page">
     <div class="container content-shell">
-      <header class="content-header">
-        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-        <h1>{title}</h1>
-        {description && <p class="content-lede">{description}</p>}
-        {stampedDate && <p class="last-updated">Last updated {stampedDate}</p>}
+      <header class:list={['content-header', { 'has-art': hasArt }]}>
+        <div class="content-header-text">
+          {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+          <h1>{title}</h1>
+          {description && <p class="content-lede">{description}</p>}
+          {stampedDate && <p class="last-updated">Last updated {stampedDate}</p>}
+        </div>
+        {hasArt && (
+          <div class="content-header-art">
+            <slot name="art" />
+          </div>
+        )}
       </header>
 
       <div class:list={['content-body', { 'content-body-wide': wide }]}>
@@ -45,6 +53,22 @@ const stampedDate = lastUpdated
   .content-header {
     margin-bottom: var(--space-2);
     max-width: var(--reading-max);
+  }
+
+  .content-header.has-art {
+    max-width: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .content-header-text {
+    max-width: var(--reading-max);
+  }
+
+  .content-header-art {
+    flex-shrink: 0;
   }
 
   .content-lede {
@@ -75,5 +99,13 @@ const stampedDate = lastUpdated
 
   .content-body :global(h3) {
     margin-top: var(--space-2);
+  }
+
+  @media (max-width: 640px) {
+    .content-header.has-art {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
   }
 </style>

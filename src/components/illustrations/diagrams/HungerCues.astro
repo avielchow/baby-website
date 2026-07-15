@@ -1,0 +1,54 @@
+---
+/** Hunger-cue ladder: early cues are the moment to feed; crying is a late cue. */
+const tiers = [
+  {
+    stage: 'EARLY — feed now, easiest latch',
+    cues: 'Stirring · mouth opening · rooting · hands to mouth',
+    fill: 'var(--sage, #6B9A5F)',
+    text: '#FFFFFF',
+  },
+  {
+    stage: 'ACTIVE — still a good time',
+    cues: 'Stretching · squirming · increasing movement · soft fussing',
+    fill: 'var(--butter, #F2DFA8)',
+    text: 'var(--ink, #3D443A)',
+  },
+  {
+    stage: 'LATE — calm baby first, then feed',
+    cues: 'Crying · frantic movement · red face · hard to latch',
+    fill: 'var(--rose, #E8B4B4)',
+    text: 'var(--ink, #3D443A)',
+  },
+];
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 720 300" width="100%" fill="none" role="img" aria-label="Hunger cue ladder: early cues like rooting and hands to mouth are the best time to feed; active cues like squirming and fussing still work; crying is a late cue — calm the baby first, then feed.">
+    <rect width="720" height="300" rx="16" fill="var(--sage-wash, #E8F0E3)" />
+
+    <g font-family="var(--font-body)">
+      {tiers.map((t, i) => (
+        <g>
+          <rect x="36" y={34 + i * 82} width="648" height="66" rx="14" fill={t.fill} opacity={i === 0 ? 1 : 0.9} />
+          <text x="60" y={62 + i * 82} font-size="15" font-weight="800" letter-spacing="0.8" fill={t.text}>{t.stage}</text>
+          <text x="60" y={86 + i * 82} font-size="15" fill={t.text} opacity="0.92">{t.cues}</text>
+        </g>
+      ))}
+      <!-- Arrow pointing at the top tier -->
+      <path d="M694 100 V60 l-8 10 M694 60 l8 10" stroke="var(--sage-deep, #557B4B)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </svg>
+  <figcaption>Catching early cues makes feeds calmer for everyone — crying is a late sign of hunger, not the first one. (CPS &amp; Nemours.)</figcaption>
+</figure>
+
+<style>
+  .diagram {
+    margin: var(--space-2) 0;
+  }
+
+  .diagram figcaption {
+    margin-top: var(--space-half);
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+</style>

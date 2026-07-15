@@ -1,0 +1,30 @@
+---
+/** Small decorative leaf sprig — pairs with headings and eyebrows. */
+interface Props {
+  width?: number;
+  class?: string;
+}
+const { width = 56, class: className } = Astro.props;
+const height = Math.round(width * 0.625);
+---
+
+<svg
+  class={className}
+  width={width}
+  height={height}
+  viewBox="0 0 64 40"
+  fill="none"
+  aria-hidden="true"
+>
+  <path
+    d="M4 36 Q26 32 42 22 T62 4"
+    stroke="var(--sage-deep, #557B4B)"
+    stroke-width="2.5"
+    stroke-linecap="round"
+  />
+  <ellipse cx="16" cy="30" rx="7" ry="3.5" transform="rotate(-18 16 30)" fill="var(--leaf, #8FBC85)" />
+  <ellipse cx="27" cy="24" rx="7" ry="3.5" transform="rotate(-28 27 24)" fill="var(--sage, #6B9A5F)" />
+  <ellipse cx="38" cy="17" rx="6.5" ry="3.2" transform="rotate(-35 38 17)" fill="var(--leaf, #8FBC85)" />
+  <ellipse cx="48" cy="11" rx="6" ry="3" transform="rotate(-40 48 11)" fill="var(--sage, #6B9A5F)" />
+  <circle cx="59" cy="5" r="2.5" fill="var(--butter, #F2DFA8)" />
+</svg>

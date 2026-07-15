@@ -1,11 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MoonStars from '../components/illustrations/MoonStars.astro';
+import Sprout from '../components/illustrations/Sprout.astro';
 ---
 
 <BaseLayout title="Not found">
-  <section class="container" style="padding-block: var(--space-3);">
+  <section class="container notfound">
+    <div class="notfound-scene">
+      <Sprout width={110} />
+      <MoonStars width={120} class="anim-float" />
+    </div>
     <p class="eyebrow">404</p>
     <h1>That page isn't here.</h1>
-    <p><a href="/">Head home &rarr;</a></p>
+    <p>Sprout looked everywhere. <a href="/">Head home &rarr;</a></p>
   </section>
 </BaseLayout>
+
+<style>
+  .notfound {
+    padding-block: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-half);
+  }
+
+  .notfound-scene {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-1);
+  }
+</style>

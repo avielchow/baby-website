@@ -1,0 +1,62 @@
+---
+/** The normal crying curve (Period of PURPLE Crying): rises from ~2 weeks,
+ *  peaks around 6–8 weeks, settles by 3–4 months. */
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 720 320" width="100%" fill="none" role="img" aria-label="Crying curve: daily crying rises from around two weeks of age, peaks around six to eight weeks, and settles by three to four months.">
+    <rect width="720" height="320" rx="16" fill="var(--sage-wash, #E8F0E3)" />
+
+    <!-- Axes -->
+    <path d="M70 250 H660" stroke="var(--ink-soft, #68715F)" stroke-width="2" stroke-linecap="round" />
+    <path d="M70 250 V60" stroke="var(--ink-soft, #68715F)" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Curve: x maps weeks 0–16 across 70→660, peak ~7wk -->
+    <path
+      d="M70 244 C 140 240, 180 200, 235 140 C 280 92, 330 84, 370 104 C 430 134, 500 200, 660 236"
+      fill="none"
+      stroke="var(--sage-deep, #557B4B)"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+    <path
+      d="M70 244 C 140 240, 180 200, 235 140 C 280 92, 330 84, 370 104 C 430 134, 500 200, 660 236 L660 250 L70 250 Z"
+      fill="var(--sage, #6B9A5F)"
+      opacity="0.18"
+    />
+
+    <!-- Peak marker -->
+    <circle cx="310" cy="88" r="9" fill="var(--butter, #F2DFA8)" stroke="var(--sage-deep, #557B4B)" stroke-width="2.5" />
+
+    <g font-family="var(--font-body)">
+      <text x="310" y="56" text-anchor="middle" font-size="15.5" font-weight="800" fill="var(--ink, #3D443A)">Peak: ~6–8 weeks</text>
+      <text x="150" y="182" text-anchor="end" font-size="14" fill="var(--ink-soft, #68715F)">Starts climbing</text>
+      <text x="150" y="200" text-anchor="end" font-size="14" fill="var(--ink-soft, #68715F)">~2 weeks</text>
+      <text x="545" y="182" font-size="14" fill="var(--ink-soft, #68715F)">Settles by</text>
+      <text x="545" y="200" font-size="14" fill="var(--ink-soft, #68715F)">3–4 months</text>
+
+      <!-- X labels (weeks) -->
+      {[0, 2, 4, 6, 8, 10, 12, 14, 16].map((w) => (
+        <g>
+          <path d={`M${70 + (w / 16) * 590} 250 v6`} stroke="var(--ink-soft, #68715F)" stroke-width="2" />
+          <text x={70 + (w / 16) * 590} y="276" text-anchor="middle" font-size="13" fill="var(--ink-soft, #68715F)">{w}</text>
+        </g>
+      ))}
+      <text x="365" y="302" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--sage-deep, #557B4B)">Weeks of age</text>
+      <text x="52" y="150" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--sage-deep, #557B4B)" transform="rotate(-90 52 150)">Crying per day</text>
+    </g>
+  </svg>
+  <figcaption>The normal curve — more crying does not mean something is wrong or that you're doing it wrong. (Period of PURPLE Crying; CPS.)</figcaption>
+</figure>
+
+<style>
+  .diagram {
+    margin: var(--space-2) 0;
+  }
+
+  .diagram figcaption {
+    margin-top: var(--space-half);
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+</style>

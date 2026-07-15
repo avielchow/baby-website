@@ -10,9 +10,32 @@ import { glob } from 'astro/loaders';
 const collectionLoader = (folder: string) =>
   glob({ pattern: '**/*.{md,mdx}', base: `./src/content/${folder}` });
 
+/** A single source citation, rendered as an inline linked chip on the item. */
+const sourceRef = z.object({
+  /** Short org label for the chip: CPS, AAP, CDC, Nemours, AHS, LLLI, PURPLE… */
+  label: z.string(),
+  url: z.string().url().optional(),
+});
+
 const bullet = z.object({
   title: z.string(),
   detail: z.string().optional(),
+  /** Inline citations for THIS claim — exact pages, not homepages. */
+  sources: z.array(sourceRef).default([]),
+  /** Optional how-to video, rendered as a click-to-load YouTube embed card. */
+  video: z
+    .object({
+      title: z.string(),
+      url: z.string().url(),
+      channel: z.string(),
+    })
+    .optional(),
+});
+
+/** Topical diagram placements: which diagram renders after which section. */
+const diagramRef = z.object({
+  key: z.enum(['safe-sleep', 'diaper-dashboard', 'crying-curve', 'hunger-cues', 'tummy-time']),
+  section: z.enum(['milestones', 'todos', 'feeding', 'sleep', 'redFlags', 'also']),
 });
 
 const weeks = defineCollection({
@@ -32,7 +55,9 @@ const weeks = defineCollection({
     redFlags: z.array(bullet).default([]),
     /** Free-form additional notes; rendered as bullets under "Also worth knowing". */
     alsoWorthKnowing: z.array(bullet).default([]),
-    /** Reference URLs the content was drawn from. */
+    /** Topical SVG diagrams to render after specific sections. */
+    diagrams: z.array(diagramRef).default([]),
+    /** Full bibliography (page-level); items also cite inline via `sources`. */
     sources: z.array(z.object({
       label: z.string(),
       url: z.string().url().optional(),
@@ -42,21 +67,27 @@ const weeks = defineCollection({
   }),
 });
 
+const journalSchema = z.object({
+  title: z.string(),
+  /** Date the entry describes (used for sorting + display). */
+  date: z.coerce.date(),
+  /** Optional 1–2 sentence teaser shown on the index. */
+  teaser: z.string().optional(),
+  /** Optional tags, e.g. ["milestone", "sleep", "family"] */
+  tags: z.array(z.string()).default([]),
+  /** Set true while a post is being drafted; hidden from the index. */
+  draft: z.boolean().default(false),
+  lastUpdated: z.coerce.date(),
+});
+
 const journal = defineCollection({
   loader: collectionLoader('journal'),
-  schema: z.object({
-    title: z.string(),
-    /** Date the entry describes (used for sorting + display). */
-    date: z.coerce.date(),
-    /** Optional 1–2 sentence teaser shown on the index. */
-    teaser: z.string().optional(),
-    /** Optional tags, e.g. ["milestone", "sleep", "family"] */
-    tags: z.array(z.string()).default([]),
-    /** Set true while a post is being drafted; hidden from the index. */
-    draft: z.boolean().default(false),
-    lastUpdated: z.coerce.date(),
-  }),
+  schema: journalSchema,
 });
+
+// The private journal is archived (see _private-archive/RESTORE.md), removed
+// while the GitHub repo is public. journalSchema is kept shared so restoring
+// the `private` collection is a one-line re-add.
 
 export const collections = {
   weeks,

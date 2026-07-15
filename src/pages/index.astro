@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroMeadow from '../components/illustrations/HeroMeadow.astro';
+import WeekVignette from '../components/illustrations/WeekVignette.astro';
+import LeafSprig from '../components/illustrations/LeafSprig.astro';
 import { BIRTH_ANCHOR, currentWeekNumber, daysUntilBirth, isPreBirth } from '../lib/current-week';
 
 const weeks = (await getCollection('weeks', ({ data }) => !data.draft))
@@ -16,50 +19,129 @@ const dueLabel = BIRTH_ANCHOR.toLocaleDateString('en-CA', {
   year: 'numeric', month: 'long', day: 'numeric',
 });
 
+// Time-of-day staging (DESIGN.md § v2.1): the hero lights itself from
+// Alberta local time; ?scene=day|golden|night overrides for testing.
+type Scene = 'day' | 'golden' | 'night';
+const hour = Number(
+  new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', hour: 'numeric', hour12: false }).format(now)
+);
+let scene: Scene = hour >= 21 || hour < 6 ? 'night' : hour >= 17 ? 'golden' : 'day';
+const sceneParam = Astro.url.searchParams.get('scene');
+if (sceneParam === 'day' || sceneParam === 'golden' || sceneParam === 'night') scene = sceneParam;
+
 const currentWeek = weeks.find((w) => w.data.weekNumber === Math.max(1, weekNum)) ?? weeks[0];
 const recentJournal = journal.slice(0, 3);
+const weekSlug = (n: number) => String(n).padStart(2, '0');
 ---
 
 <BaseLayout title="Home" description="A private week-by-week guide and journal.">
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">Our little one</p>
+  <section class="hero" data-scene={scene}>
+    <div class="container hero-inner">
+      <p class="eyebrow hero-eyebrow">Our little one</p>
       {preBirth ? (
         <>
-          <h1 class="hero-title">Almost here.</h1>
+          <h1 class="display hero-title">Almost&nbsp;here.</h1>
           <p class="hero-sub">
             Due <strong>{dueLabel}</strong> — {daysLeft === 0 ? 'today' : `${daysLeft} day${daysLeft === 1 ? '' : 's'} to go`}.
           </p>
         </>
       ) : (
         <>
-          <h1 class="hero-title">Week {weekNum}.</h1>
+          <h1 class="display hero-title">Week {weekNum}.</h1>
           <p class="hero-sub">A quiet count of days and small firsts.</p>
         </>
       )}
+      <div class="hero-actions">
+        {currentWeek && (
+          <a class="btn" href={`/weeks/${weekSlug(currentWeek.data.weekNumber)}/`}>
+            {preBirth ? 'Get ready: week 1' : 'Open this week'}
+          </a>
+        )}
+        <a class="hero-link" href="/journal/">Read the journal &rarr;</a>
+      </div>
     </div>
+    <HeroMeadow class="hero-art" mode={scene} />
   </section>
 
+  <script>
+    // Gentle scroll parallax on the hero layers (DESIGN.md § v2.1).
+    // Far hills move slower than near ones; off under reduced motion.
+    function initParallax() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const layers = document.querySelectorAll<HTMLElement | SVGGElement>('[data-plx], [data-plx-px]');
+      if (!layers.length) return;
+      let ticking = false;
+      const apply = () => {
+        const y = window.scrollY;
+        layers.forEach((el) => {
+          const f = Number(el.getAttribute('data-plx') ?? el.getAttribute('data-plx-px'));
+          (el as HTMLElement).style.transform = `translateY(${-(y * f).toFixed(1)}px)`;
+        });
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+      }, { passive: true });
+    }
+    initParallax();
+    document.addEventListener('astro:page-load', initParallax);
+  </script>
+
   {currentWeek && (
-    <section class="section">
+    <section class="band">
       <div class="container">
-        <p class="eyebrow">This week</p>
-        <h2><a href={`/weeks/${String(currentWeek.data.weekNumber).padStart(2, '0')}/`}>Week {currentWeek.data.weekNumber} — {currentWeek.data.title}</a></h2>
-        {currentWeek.data.description && <p class="lede">{currentWeek.data.description}</p>}
-        <a class="link-more" href={`/weeks/${String(currentWeek.data.weekNumber).padStart(2, '0')}/`}>Open this week &rarr;</a>
+        <div class="card card-lift this-week-card reveal">
+          <WeekVignette week={currentWeek.data.weekNumber} size={132} class="this-week-art" />
+          <div class="this-week-body">
+            <p class="badge-butter">{preBirth ? 'Getting ready' : 'This week'}</p>
+            <h2 class="this-week-title">
+              <a href={`/weeks/${weekSlug(currentWeek.data.weekNumber)}/`}>
+                Week {currentWeek.data.weekNumber} — {currentWeek.data.title}
+              </a>
+            </h2>
+            {currentWeek.data.description && <p class="lede">{currentWeek.data.description}</p>}
+            <a class="link-more" href={`/weeks/${weekSlug(currentWeek.data.weekNumber)}/`}>Open this week &rarr;</a>
+          </div>
+        </div>
       </div>
     </section>
   )}
 
-  <section class="section">
+  <section class="band band-wash">
     <div class="container">
-      <p class="eyebrow">From the journal</p>
+      <div class="band-head reveal">
+        <h2>The guide, week by week</h2>
+        <LeafSprig width={64} />
+      </div>
+      <div class="week-grid">
+        {weeks.map((week, i) => (
+          <a
+            class="card card-lift week-mini reveal"
+            style={`--reveal-delay: ${i * 80}ms`}
+            href={`/weeks/${weekSlug(week.data.weekNumber)}/`}
+          >
+            <WeekVignette week={week.data.weekNumber} size={76} class="week-mini-art" />
+            <span class="week-mini-num">Week {week.data.weekNumber}</span>
+            <span class="week-mini-title">{week.data.title}</span>
+          </a>
+        ))}
+      </div>
+      <p class="band-foot reveal"><a class="link-more" href="/weeks/">All weeks &rarr;</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="band-head reveal">
+        <h2>From the journal</h2>
+        <LeafSprig width={64} />
+      </div>
       {recentJournal.length === 0 ? (
-        <p class="muted">No entries yet.</p>
+        <p class="muted">No entries yet — the first one lands soon.</p>
       ) : (
         <ul class="journal-list">
-          {recentJournal.map((entry) => (
-            <li class="journal-item">
+          {recentJournal.map((entry, i) => (
+            <li class="card card-lift journal-item reveal" style={`--reveal-delay: ${i * 80}ms`}>
               <p class="journal-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
               <h3 class="journal-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h3>
               {entry.data.teaser && <p class="journal-teaser">{entry.data.teaser}</p>}
@@ -67,99 +149,183 @@ const recentJournal = journal.slice(0, 3);
           ))}
         </ul>
       )}
-      <a class="link-more" href="/journal/">All entries &rarr;</a>
+      <p class="band-foot reveal"><a class="link-more" href="/journal/">All entries &rarr;</a></p>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .hero {
-    padding-block: var(--space-3) var(--space-2);
-    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface-default) 100%);
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--space-3);
+  }
+
+  /* Time-of-day skies — same layout, different light. */
+  .hero[data-scene='day'] {
+    background: linear-gradient(180deg, #EDF5E8 0%, var(--ivory) 85%);
+  }
+
+  .hero[data-scene='golden'] {
+    background: linear-gradient(180deg, #FBEED3 0%, #FDF7EA 85%);
+  }
+
+  .hero[data-scene='night'] {
+    background: linear-gradient(180deg, #16241A 0%, #2C4030 90%);
+  }
+
+  .hero[data-scene='night'] .hero-title,
+  .hero[data-scene='night'] .hero-sub strong {
+    color: var(--ivory);
+  }
+
+  .hero[data-scene='night'] .hero-sub {
+    color: #C4D1BE;
+  }
+
+  .hero[data-scene='night'] .hero-link {
+    color: var(--butter);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    background: #fff;
   }
 
   .hero-title {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: var(--fs-display);
     margin: 0 0 var(--space-1);
     color: var(--text-primary);
-    letter-spacing: -0.02em;
   }
 
   .hero-sub {
     font-family: var(--font-heading);
     font-style: italic;
-    font-size: var(--fs-body-lg);
+    font-size: 1.375rem;
     color: var(--text-secondary);
-    margin: 0;
+    margin: 0 0 var(--space-2);
     max-width: none;
   }
 
-  .section {
-    padding-block: var(--space-3);
-    border-top: 1px solid var(--border-hairline);
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
   }
 
-  .section h2 {
-    font-family: var(--font-heading);
-    font-weight: 500;
+  .hero-link {
+    font-weight: 700;
+    text-decoration: none;
   }
 
-  .section h2 a {
+  .hero-link:hover { text-decoration: underline; }
+
+  /* In-flow, aspect-locked art: the whole composition always renders,
+     tucked up behind the copy so there is no empty sky band. */
+  .hero-art {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: -5rem;
+  }
+
+  .band-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+    margin-bottom: var(--space-2);
+  }
+
+  .band-head h2 { margin: 0; }
+
+  .band-foot { margin: var(--space-2) 0 0; }
+
+  .this-week-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .this-week-art { flex-shrink: 0; }
+
+  .this-week-title { margin: var(--space-1) 0; }
+
+  .this-week-title a {
     color: var(--text-primary);
     text-decoration: none;
   }
 
-  .section h2 a:hover {
-    color: var(--accent-primary);
-  }
+  .this-week-title a:hover { color: var(--accent-primary); }
 
   .lede {
     color: var(--text-secondary);
-    font-family: var(--font-heading);
-    font-style: italic;
     font-size: var(--fs-body-lg);
+    margin-bottom: var(--space-1);
   }
 
   .link-more {
     display: inline-block;
-    margin-top: var(--space-1);
-    font-family: var(--font-body);
-    font-weight: 600;
-    color: var(--accent-primary);
+    font-weight: 700;
     text-decoration: none;
   }
 
   .link-more:hover { text-decoration: underline; }
 
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-1);
+  }
+
+  .week-mini {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+    padding: var(--space-1);
+    text-decoration: none;
+  }
+
+  .week-mini-num {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--fs-h3);
+    color: var(--sage-deep);
+    margin-top: var(--space-half);
+  }
+
+  .week-mini-title {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
   .journal-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: var(--space-1);
   }
 
   .journal-item {
-    padding-block: var(--space-1);
-    border-bottom: 1px solid var(--border-hairline);
+    padding: var(--space-2) var(--space-1) var(--space-1);
   }
-
-  .journal-item:last-child { border-bottom: 0; }
 
   .journal-date {
     margin: 0;
     font-size: var(--fs-small);
-    color: var(--text-secondary);
+    font-weight: 700;
+    color: var(--sage-deep);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .journal-title {
-    margin: var(--space-half) 0;
-  }
+  .journal-title { margin: var(--space-half) 0; }
 
   .journal-title a {
     color: var(--text-primary);
@@ -173,7 +339,10 @@ const recentJournal = journal.slice(0, 3);
     margin: 0;
   }
 
-  .muted {
-    color: var(--text-secondary);
+  .muted { color: var(--text-secondary); }
+
+  @media (max-width: 640px) {
+    .hero-art { margin-top: -1.5rem; }
+    .this-week-card { flex-direction: column; align-items: flex-start; }
   }
 </style>

@@ -21,3 +21,13 @@ dist/
 # Logs
 *.log
 npm-debug.log*
+.vercel
+.env*
+
+# Source material — copyrighted book (original + extracted text). Local reference only.
+*.pdf
+*.docx
+docs/sources/what-to-expect/
+
+# Private journal — archived while the repo is public. Never push (see RESTORE.md inside).
+_private-archive/

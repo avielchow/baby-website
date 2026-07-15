@@ -3,7 +3,9 @@
  * Update to the actual date of birth as soon as it's known — every "current
  * week" calculation across the site derives from this.
  */
-export const BIRTH_ANCHOR = new Date('2026-07-15T00:00:00Z');
+// Anchored to Alberta local midnight (MDT, UTC-6) — the server runs in UTC,
+// so a bare Z timestamp would flip the site to "born" 6 hours early.
+export const BIRTH_ANCHOR = new Date('2026-07-15T00:00:00-06:00');
 
 /** Return true if `BIRTH_ANCHOR` is still in the future (baby not born yet). */
 export function isPreBirth(now: Date = new Date()): boolean {
@@ -21,9 +23,9 @@ export function currentWeekNumber(now: Date = new Date()): number {
   return Math.floor(days / 7) + 1;
 }
 
-/** Days until birth anchor (0 if in the past). */
+/** Days until birth anchor (0 if in the past). A partial day counts as 1. */
 export function daysUntilBirth(now: Date = new Date()): number {
   const msPerDay = 1000 * 60 * 60 * 24;
-  const diff = Math.floor((BIRTH_ANCHOR.getTime() - now.getTime()) / msPerDay);
+  const diff = Math.ceil((BIRTH_ANCHOR.getTime() - now.getTime()) / msPerDay);
   return Math.max(0, diff);
 }
