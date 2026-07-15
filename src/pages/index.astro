@@ -1,0 +1,179 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BIRTH_ANCHOR, currentWeekNumber, daysUntilBirth, isPreBirth } from '../lib/current-week';
+
+const weeks = (await getCollection('weeks', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.weekNumber - b.data.weekNumber);
+const journal = (await getCollection('journal', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const now = new Date();
+const preBirth = isPreBirth(now);
+const weekNum = currentWeekNumber(now);
+const daysLeft = daysUntilBirth(now);
+const dueLabel = BIRTH_ANCHOR.toLocaleDateString('en-CA', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+const currentWeek = weeks.find((w) => w.data.weekNumber === Math.max(1, weekNum)) ?? weeks[0];
+const recentJournal = journal.slice(0, 3);
+---
+
+<BaseLayout title="Home" description="A private week-by-week guide and journal.">
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Our little one</p>
+      {preBirth ? (
+        <>
+          <h1 class="hero-title">Almost here.</h1>
+          <p class="hero-sub">
+            Due <strong>{dueLabel}</strong> — {daysLeft === 0 ? 'today' : `${daysLeft} day${daysLeft === 1 ? '' : 's'} to go`}.
+          </p>
+        </>
+      ) : (
+        <>
+          <h1 class="hero-title">Week {weekNum}.</h1>
+          <p class="hero-sub">A quiet count of days and small firsts.</p>
+        </>
+      )}
+    </div>
+  </section>
+
+  {currentWeek && (
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">This week</p>
+        <h2><a href={`/weeks/${String(currentWeek.data.weekNumber).padStart(2, '0')}/`}>Week {currentWeek.data.weekNumber} — {currentWeek.data.title}</a></h2>
+        {currentWeek.data.description && <p class="lede">{currentWeek.data.description}</p>}
+        <a class="link-more" href={`/weeks/${String(currentWeek.data.weekNumber).padStart(2, '0')}/`}>Open this week &rarr;</a>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">From the journal</p>
+      {recentJournal.length === 0 ? (
+        <p class="muted">No entries yet.</p>
+      ) : (
+        <ul class="journal-list">
+          {recentJournal.map((entry) => (
+            <li class="journal-item">
+              <p class="journal-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <h3 class="journal-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h3>
+              {entry.data.teaser && <p class="journal-teaser">{entry.data.teaser}</p>}
+            </li>
+          ))}
+        </ul>
+      )}
+      <a class="link-more" href="/journal/">All entries &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-3) var(--space-2);
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface-default) 100%);
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: var(--fs-display);
+    margin: 0 0 var(--space-1);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-sub {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: none;
+  }
+
+  .section {
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .section h2 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+  }
+
+  .section h2 a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .section h2 a:hover {
+    color: var(--accent-primary);
+  }
+
+  .lede {
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+  }
+
+  .link-more {
+    display: inline-block;
+    margin-top: var(--space-1);
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-decoration: none;
+  }
+
+  .link-more:hover { text-decoration: underline; }
+
+  .journal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .journal-item {
+    padding-block: var(--space-1);
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .journal-item:last-child { border-bottom: 0; }
+
+  .journal-date {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .journal-title {
+    margin: var(--space-half) 0;
+  }
+
+  .journal-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .journal-title a:hover { color: var(--accent-primary); }
+
+  .journal-teaser {
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .muted {
+    color: var(--text-secondary);
+  }
+</style>

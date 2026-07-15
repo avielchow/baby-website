@@ -1,0 +1,132 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/weeks/', label: 'Weeks' },
+  { href: '/journal/', label: 'Journal' },
+  { href: '/about/', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href);
+};
+---
+
+<header class="site-header" aria-label="Primary">
+  <div class="container header-inner">
+    <a href="/" class="wordmark" aria-label="Home">
+      Our Little One
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <ul>
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={['nav-link', { 'is-active': isActive(link.href) }]}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <form method="POST" action="/api/logout" class="logout-form">
+      <button type="submit" class="logout-btn">Sign out</button>
+    </form>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--surface-raised);
+    border-bottom: 1px solid var(--border-hairline);
+    padding-block: var(--space-1);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.375rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .primary-nav {
+    flex: 1;
+  }
+
+  .primary-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.25em 0.5em;
+    border-radius: var(--radius-button);
+  }
+
+  .nav-link:hover {
+    color: var(--accent-primary);
+  }
+
+  .nav-link.is-active {
+    color: var(--accent-primary);
+    background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  }
+
+  .logout-form {
+    margin: 0;
+  }
+
+  .logout-btn {
+    padding: 0.4em 0.9em;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-button);
+    cursor: pointer;
+  }
+
+  .logout-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  @media (max-width: 640px) {
+    .header-inner {
+      gap: var(--space-1);
+    }
+    .primary-nav {
+      order: 3;
+      flex-basis: 100%;
+    }
+    .primary-nav ul {
+      justify-content: flex-start;
+    }
+  }
+</style>

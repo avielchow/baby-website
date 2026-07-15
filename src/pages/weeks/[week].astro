@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+const weekParam = Astro.params.week;
+const weekNum = weekParam ? parseInt(weekParam, 10) : NaN;
+
+if (!Number.isFinite(weekNum)) {
+  return Astro.redirect('/weeks/', 302);
+}
+
+const weeks = await getCollection('weeks', ({ data }) => !data.draft);
+const week = weeks.find((w) => w.data.weekNumber === weekNum);
+
+if (!week) {
+  return new Response('Week not found', { status: 404 });
+}
+
+const d = week.data;
+
+const sections = [
+  { key: 'milestones', label: 'Milestones', items: d.milestones },
+  { key: 'todos', label: 'To do', items: d.todos },
+  { key: 'feeding', label: 'Feeding', items: d.feeding },
+  { key: 'sleep', label: 'Sleep', items: d.sleep },
+  { key: 'redFlags', label: 'When to call the pediatrician', items: d.redFlags },
+  { key: 'also', label: 'Also worth knowing', items: d.alsoWorthKnowing },
+];
+---
+
+<ContentLayout
+  eyebrow={`Week ${d.weekNumber}`}
+  title={d.title}
+  description={d.description}
+  lastUpdated={d.lastUpdated}
+>
+  {sections.map((section) => (
+    section.items.length > 0 && (
+      <section class="week-section" id={section.key}>
+        <h2>{section.label}</h2>
+        <ul class="bullet-list">
+          {section.items.map((item) => (
+            <li class="bullet">
+              <p class="bullet-title">{item.title}</p>
+              {item.detail && <p class="bullet-detail">{item.detail}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  ))}
+
+  {d.sources.length > 0 && (
+    <section class="week-section sources" id="sources">
+      <h2>Sources</h2>
+      <ul>
+        {d.sources.map((s) => (
+          <li>
+            {s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <p class="week-nav">
+    <a href="/weeks/">&larr; All weeks</a>
+  </p>
+</ContentLayout>
+
+<style>
+  .week-section {
+    margin-block: var(--space-3);
+  }
+
+  .week-section h2 {
+    font-size: var(--fs-h3);
+    font-weight: 500;
+    margin-bottom: var(--space-1);
+  }
+
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .bullet {
+    padding: var(--space-1);
+    background: var(--surface-raised);
+    border-left: 3px solid var(--accent-calm);
+    border-radius: var(--radius-card);
+  }
+
+  .week-section#redFlags .bullet {
+    border-left-color: var(--accent-secondary);
+    background: color-mix(in srgb, var(--accent-secondary) 8%, var(--surface-raised));
+  }
+
+  .bullet-title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .bullet-detail {
+    margin: var(--space-half) 0 0;
+    color: var(--text-secondary);
+    max-width: none;
+  }
+
+  .sources ul {
+    padding-left: 1.25rem;
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  .sources li { margin-bottom: 0.5em; }
+
+  .week-nav {
+    margin-top: var(--space-3);
+    font-weight: 600;
+  }
+</style>

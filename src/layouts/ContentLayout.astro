@@ -1,0 +1,79 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  /** ISO date shown as "Last updated" in the header. */
+  lastUpdated?: string | Date;
+  /** Drop the reading-width cap on the body for wide layouts. */
+  wide?: boolean;
+}
+
+const { title, description, eyebrow, lastUpdated, wide = false } = Astro.props;
+
+const stampedDate = lastUpdated
+  ? typeof lastUpdated === 'string'
+    ? lastUpdated.slice(0, 10)
+    : lastUpdated.toISOString().slice(0, 10)
+  : null;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="content-page">
+    <div class="container content-shell">
+      <header class="content-header">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h1>{title}</h1>
+        {description && <p class="content-lede">{description}</p>}
+        {stampedDate && <p class="last-updated">Last updated {stampedDate}</p>}
+      </header>
+
+      <div class:list={['content-body', { 'content-body-wide': wide }]}>
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .content-page {
+    padding-block: var(--space-2) var(--space-3);
+  }
+
+  .content-header {
+    margin-bottom: var(--space-2);
+    max-width: var(--reading-max);
+  }
+
+  .content-lede {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-1);
+  }
+
+  .last-updated {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    margin: var(--space-1) 0 0;
+  }
+
+  .content-body {
+    max-width: var(--reading-max);
+  }
+
+  .content-body-wide {
+    max-width: none;
+  }
+
+  .content-body :global(h2) {
+    margin-top: var(--space-3);
+  }
+
+  .content-body :global(h3) {
+    margin-top: var(--space-2);
+  }
+</style>

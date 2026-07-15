@@ -1,0 +1,40 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; {year} Aviel Chow · A private family site.</p>
+    <p class="footer-disclaimer">
+      This site is a personal record and reference, not medical advice. If you have concerns about your baby's health, contact your pediatrician or call HealthLink at 811.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--surface-muted);
+    padding-block: var(--space-2);
+    margin-top: var(--space-3);
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+  }
+
+  .footer-copy {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .footer-disclaimer {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 42rem;
+  }
+</style>

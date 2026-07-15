@@ -1,0 +1,101 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { currentWeekNumber } from '../../lib/current-week';
+
+const weeks = (await getCollection('weeks', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.weekNumber - b.data.weekNumber);
+
+const now = new Date();
+const activeWeek = currentWeekNumber(now);
+---
+
+<ContentLayout
+  eyebrow="Guide"
+  title="Week by week"
+  description="Each week has a page. Practical, sourced, and revised as we learn what's actually useful."
+>
+  {weeks.length === 0 ? (
+    <p>No weeks published yet.</p>
+  ) : (
+    <ul class="week-list">
+      {weeks.map((week) => {
+        const slug = String(week.data.weekNumber).padStart(2, '0');
+        const isCurrent = week.data.weekNumber === activeWeek;
+        return (
+          <li class:list={['week-item', { 'is-current': isCurrent }]}>
+            <a href={`/weeks/${slug}/`} class="week-link">
+              <span class="week-num">Week {week.data.weekNumber}</span>
+              <span class="week-title">{week.data.title}</span>
+              {isCurrent && <span class="week-flag">Current</span>}
+            </a>
+            {week.data.description && <p class="week-desc">{week.data.description}</p>}
+          </li>
+        );
+      })}
+    </ul>
+  )}
+</ContentLayout>
+
+<style>
+  .week-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .week-item {
+    padding: var(--space-1) var(--space-1);
+    border-radius: var(--radius-card);
+    background: var(--surface-raised);
+    border: 1px solid var(--border-hairline);
+  }
+
+  .week-item.is-current {
+    border-color: var(--accent-primary);
+    background: color-mix(in srgb, var(--accent-primary) 8%, var(--surface-raised));
+  }
+
+  .week-link {
+    display: flex;
+    gap: var(--space-1);
+    align-items: baseline;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: var(--fs-h4);
+  }
+
+  .week-num {
+    color: var(--accent-primary);
+    font-weight: 500;
+    min-width: 5.5em;
+  }
+
+  .week-title { flex: 1; }
+
+  .week-flag {
+    font-family: var(--font-body);
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+    background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+    padding: 0.15em 0.6em;
+    border-radius: 999px;
+  }
+
+  .week-desc {
+    margin: var(--space-half) 0 0 6.5em;
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+  }
+
+  @media (max-width: 640px) {
+    .week-desc { margin-left: 0; }
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PasswordGate from '../components/PasswordGate.astro';
+import { GATE_COOKIE, verify } from '../lib/auth';
+
+const url = new URL(Astro.request.url);
+const next = url.searchParams.get('next') || '/';
+const errorParam = url.searchParams.get('error');
+const error = errorParam === 'invalid' ? 'That password did not match. Try again.' : undefined;
+
+if (verify(Astro.cookies.get(GATE_COOKIE)?.value)) {
+  return Astro.redirect(next, 302);
+}
+---
+
+<BaseLayout title="Sign in" bareLayout>
+  <PasswordGate next={next} error={error} />
+</BaseLayout>

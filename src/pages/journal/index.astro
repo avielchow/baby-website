@@ -1,0 +1,93 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+const entries = (await getCollection('journal', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<ContentLayout
+  eyebrow="Journal"
+  title="Small stories"
+  description="Reflections and moments as they arrive."
+>
+  {entries.length === 0 ? (
+    <p>No entries yet.</p>
+  ) : (
+    <ul class="entry-list">
+      {entries.map((entry) => (
+        <li class="entry">
+          <p class="entry-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <h2 class="entry-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h2>
+          {entry.data.teaser && <p class="entry-teaser">{entry.data.teaser}</p>}
+          {entry.data.tags.length > 0 && (
+            <p class="entry-tags">{entry.data.tags.map((t) => <span class="tag">{t}</span>)}</p>
+          )}
+        </li>
+      ))}
+    </ul>
+  )}
+</ContentLayout>
+
+<style>
+  .entry-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .entry {
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .entry:last-child { border-bottom: 0; }
+
+  .entry-date {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .entry-title {
+    margin: var(--space-half) 0 var(--space-1);
+    font-size: var(--fs-h3);
+    font-weight: 500;
+  }
+
+  .entry-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .entry-title a:hover { color: var(--accent-primary); }
+
+  .entry-teaser {
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+  }
+
+  .entry-tags {
+    margin: var(--space-1) 0 0;
+    display: flex;
+    gap: var(--space-half);
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: var(--fs-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15em 0.6em;
+    color: var(--accent-primary);
+    background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+    border-radius: 999px;
+  }
+</style>
