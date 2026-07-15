@@ -79,6 +79,23 @@ The v1 pages were judged too thin. Every item now earns its place with depth:
 Writing register: warm, plain, reassuring, zero alarmism; specific numbers over vague
 advice. It should read like a smart friend who did the homework, not a pamphlet.
 
+## Comments — every week page (added 2026-07-15)
+
+**Every week page carries a comment section, automatically** (it lives in the shared week
+template, so all future weeks inherit it with no per-week work). Purpose: invite the parent
+friends behind the family password to share real experience — what worked, what they'd skip,
+product reviews, research they found. Rules:
+
+- **Name-only, no login** (the whole site is already behind the shared family password).
+  Commenter types a name once; it's remembered in `localStorage`. Optional short body.
+- Encouraging empty state: a warm prompt to be the first to share experience/research/a
+  product review — never a bare "No comments yet."
+- Comments persist in a datastore keyed by week number (`week:<n>`), newest first, each
+  showing name + relative time + body. Basic moderation: a delete path guarded by an admin
+  key (env), and light input limits (length caps, no HTML) to keep it safe behind the gate.
+- Implementation: SSR-rendered from the store on page load; a small POST endpoint appends.
+  See ROADMAP for the concrete storage choice.
+
 ## Gear & essentials — "what to buy" (added 2026-07-15)
 
 Each week surfaces the gear that actually matters **for that stage**, so buying tracks the
@@ -92,8 +109,10 @@ content, because these are opinions, not clinical guidance).
 - `why` — 1–3 sentences: why it matters now, and what to actually look for when choosing
   (the buying criteria — e.g. for a car seat: rear-facing, fits your vehicle, height/weight
   limits, expiry date; for a swaddle: hip-healthy, right TOG for the season).
-- `brands` — **top 3**, each `{ name, note }`. The `note` is one honest line on what that
-  brand is good at or known for (price point, ease, a standout feature), not marketing copy.
+- `brands` — **top 3**, each `{ name, note, url, pros[], cons[] }`. The `note` is one honest
+  line on what that brand is good at; `pros`/`cons` are 2–3 short bullets each (genuine
+  trade-offs, not marketing); `url` links to the **maker's own product page** (never an
+  affiliate or store link). Verify each URL resolves before publishing.
 - `video` — a how-to-**use** video (installing the car seat, the safe swaddle wrap, fitting
   a carrier), same `{title, url, channel}` shape and the same **mandatory verification** as
   technique videos (fetch the watch page; confirm title + channel; skip if it can't be

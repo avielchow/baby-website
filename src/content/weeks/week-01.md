@@ -167,10 +167,37 @@ gear:
     brands:
       - name: "Clek Liing"
         note: "Canadian-designed and made; compact, premium, and easy to install tightly — the pricey end of the range."
+        url: "https://clekinc.com/products/liing"
+        pros:
+          - "Energy-absorbing load leg plus Rigid-LATCH give a very stable, secure install"
+          - "Compact footprint fits three-across and smaller cars"
+          - "Canadian-made, 9-year lifespan, premium fabrics"
+        cons:
+          - "Among the most expensive infant seats"
+          - "Load-leg benefit needs the base, so it's a heavier setup to move between cars"
+          - "Fewer travel-system stroller adapters than mainstream brands"
       - name: "Chicco KeyFit 35"
         note: "The value pick most techs reach for — a forgiving, foolproof install and a widely trusted track record."
+        url: "https://www.chiccousa.com/shop-our-products/car-seats/infant/keyfit-35-infant-car-seat/79625.html"
+        pros:
+          - "Famously forgiving, foolproof install with a bubble level and clear belt path"
+          - "Broad stroller and travel-system compatibility"
+          - "Strong value and a long, trusted track record"
+        cons:
+          - "Carrier is on the heavier side to lug around"
+          - "Shorter canopy than premium rivals"
+          - "Base-model fabrics are basic unless you pay up for the ClearTex version"
       - name: "Britax B-Safe / Willow"
         note: "Solid mid-range with a steel frame and anti-rebound bar; a bit heavier to carry as a bucket."
+        url: "https://us.britax.com/shop/car-seats/b-safe-gen2-infant-car-seat/variant/76301"
+        pros:
+          - "Steel-reinforced frame with SafeCell crumple zone and anti-rebound bar"
+          - "SafeCenter LATCH makes a tight install straightforward"
+          - "Comfortable, tagless smooth-knit fabrics"
+        cons:
+          - "Heavier carrier to tote as a bucket"
+          - "No load leg — relies on the anti-rebound bar for rebound control"
+          - "Shorter canopy than premium seats"
     video:
       title: "Installing a Rear-facing Car Safety Seat | American Academy of Pediatrics (AAP)"
       url: "https://www.youtube.com/watch?v=i3VRVTdzFio"
@@ -185,10 +212,37 @@ gear:
     brands:
       - name: "Halo SleepSack Swaddle"
         note: "Velcro wings make a snug arms-down wrap almost impossible to botch; a roomy sack keeps the hips free."
+        url: "https://www.halosleep.com/collections/sleepsack-swaddle"
+        pros:
+          - "Adjustable wings make a snug arms-down wrap nearly foolproof at 3 a.m."
+          - "Roomy, hip-healthy sack lets the legs bend and move"
+          - "Two-way zip makes night diaper changes easy"
+        cons:
+          - "Velcro is loud and can wear or snag over time"
+          - "Some strong babies still wriggle an arm free"
+          - "Sized wraps mean buying up as baby grows"
       - name: "aden + anais"
         note: "Classic breathable muslin for the traditional wrap — versatile and cool, but you have to learn the fold."
+        url: "https://www.adenandanais.com/collections/swaddles"
+        pros:
+          - "Breathable muslin resists overheating and softens with every wash"
+          - "Large squares double as burp cloth, stroller cover, or nursing cover"
+          - "Cool and versatile for warm rooms"
+        cons:
+          - "No fasteners, so the fold takes practice and can come loose on active babies"
+          - "Less foolproof than a velcro or zip wrap when you're exhausted"
+          - "Muslin frays and pills over time"
       - name: "Love To Dream Swaddle Up"
         note: "A zip-up, arms-up design for babies who fight having their arms pinned; roomy at the hips."
+        url: "https://lovetodream.com/collections/swaddle-up"
+        pros:
+          - "Arms-up design suits babies who fight having their arms pinned"
+          - "Simple zip-up is quick and hard to get wrong"
+          - "Roomy, hip-healthy cut"
+        cons:
+          - "Arms-up position still allows some startle movement"
+          - "Sized suits mean replacing as baby grows"
+          - "Needs a separate transition suit once rolling starts"
     video:
       title: "How to Swaddle a Baby: Step-by-Step Tutorial for Safe Sleep"
       url: "https://www.youtube.com/watch?v=ioISOf-EDpc"

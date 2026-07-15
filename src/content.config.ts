@@ -48,9 +48,18 @@ const gearItem = z.object({
   item: z.string(),
   /** Why it matters now + what to look for when choosing. */
   why: z.string(),
-  /** Top 3 (max), each with one honest line on what it's good at. */
+  /** Top 3 (max), each with an honest line, pros/cons, and a link to the maker. */
   brands: z
-    .array(z.object({ name: z.string(), note: z.string().optional() }))
+    .array(
+      z.object({
+        name: z.string(),
+        note: z.string().optional(),
+        /** Link to the product/brand's own site (not affiliate). */
+        url: z.string().url().optional(),
+        pros: z.array(z.string()).default([]),
+        cons: z.array(z.string()).default([]),
+      })
+    )
     .max(3)
     .default([]),
   /** How-to-USE video (install/wrap/fit) — verified title + channel. */

@@ -161,10 +161,37 @@ gear:
     brands:
       - name: "Spectra (S1/S2)"
         note: "Closed-system double electric with hospital-strength suction; the value favourite, widely sold in Canada."
+        url: "https://www.spectrababyusa.com/products/spectra-s1-plus-premier-rechargeable-double-electric-breast-pump"
+        pros:
+          - "Hospital-strength closed-system suction that rivals rental pumps"
+          - "Quiet motor with independently adjustable cycle speed and vacuum"
+          - "S1 has a built-in rechargeable battery for cord-free pumping"
+        cons:
+          - "Bulky plug-in unit — not truly portable like a wearable"
+          - "Flanges often sold separately, and you'll likely need to size down"
+          - "Kit uses wide-neck bottles that don't fit every storage system"
       - name: "Medela (Pump In Style)"
         note: "The long-time standard — huge ecosystem of flanges and parts, and the pump insurance plans most often cover."
+        url: "https://www.medela.ca/breastfeeding/products/breast-pumps/pump-in-style-maxflow"
+        pros:
+          - "The most widely stocked brand — parts, flanges, and replacements everywhere"
+          - "The pump insurance plans most often cover"
+          - "Proven 2-Phase/MaxFlow motor with strong, reliable output"
+        cons:
+          - "Pricier than value competitors like Spectra"
+          - "More tubing and parts to assemble and wash after each session"
+          - "Corded base unit is heavier to haul around than a wearable"
       - name: "Momcozy"
         note: "Affordable cordless wearable for hands-free pumping; convenient, but suction is gentler than a plug-in pump."
+        url: "https://momcozy.com/collections/wearable-breast-pump"
+        pros:
+          - "Fully cordless and hands-free — pump while moving around"
+          - "Fits discreetly inside a bra with no dangling tubes"
+          - "Far cheaper than a plug-in double electric pump"
+        cons:
+          - "Gentler suction empties slower and less thoroughly than a plug-in"
+          - "Battery needs recharging between pumping sessions"
+          - "Small in-bra cups mean frequent emptying and fiddly parts to clean"
     video:
       title: "Fitting Tips: Choosing the Right Size Medela Breast Shield"
       url: "https://www.youtube.com/watch?v=Lg_dDl0Hdpw"
@@ -177,10 +204,37 @@ gear:
     brands:
       - name: "Dr. Brown's"
         note: "Internal vent system is the go-to for gassy or reflux-prone babies; more parts to wash, but the anti-colic reputation is earned."
+        url: "https://drbrownsbaby.com/collections/baby-bottles"
+        pros:
+          - "Internal vent genuinely cuts gas, spit-up, and reflux"
+          - "Slow-flow newborn nipples and sold almost everywhere"
+          - "Pediatrician-recommended, well-earned anti-colic reputation"
+        cons:
+          - "The most parts to wash of any bottle, thanks to the vent insert"
+          - "Narrow-neck versions are fiddly to fill and scrub"
+          - "Vent pieces can leak if misassembled or the bottle is overfilled"
       - name: "Comotomo"
         note: "Soft silicone body and a wide, breast-like nipple make latch transitions and cleaning easy."
+        url: "https://comotomo.com/pages/detailed-baby-bottle"
+        pros:
+          - "Soft silicone body squeezes like the breast, easing bottle transitions"
+          - "Wide opening and few parts make cleaning genuinely quick"
+          - "Dual anti-colic vents built into a breast-shaped nipple"
+        cons:
+          - "Squishy body tips over easily and is awkward to stand up"
+          - "Nipple flow can run fast or inconsistent for some newborns"
+          - "Pricier per bottle with fewer accessory options than mainstream brands"
       - name: "Philips Avent (Natural / Anti-colic)"
         note: "Widely available and good value; the Natural line has a broad nipple, the Anti-colic an AirFree vent."
+        url: "https://www.philips.ca/c-m-mo/baby-bottles"
+        pros:
+          - "Very widely available and priced as good value"
+          - "Broad, breast-shaped nipple eases latch and assembles simply"
+          - "Two lines to pick from — Natural Response and AirFree anti-colic"
+        cons:
+          - "Faster flow and more air intake without the AirFree insert"
+          - "Two similar lines can be confusing to shop between"
+          - "Wide nipple doesn't suit every baby, and some report leaking"
     video:
       title: "How to Bottle Feed your Baby: Paced Bottle Feeding"
       url: "https://www.youtube.com/watch?v=iKSSi5pi57I"

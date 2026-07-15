@@ -54,6 +54,15 @@
   - [x] Weeks 1–4 populated, Canada-first, verified videos: wk1 car seat + swaddle,
         wk2 pump + bottles, wk3 sound machine + bouncer, wk4 carrier + monitor
         (CMVSS 213 flagged for car seats; bouncer/inclined-sleeper safety flagged)
+  - [x] Per-brand pros/cons + verified "Visit site" link to the maker (2026-07-15)
+- [x] **Per-week comments** (shipped 2026-07-15, see CONTENT.md § Comments):
+  - [x] Private Vercel Blob store `baby-comments` (one JSON/week); name-only, no login;
+        `Comments.astro` in the week template → every week now + future gets it
+  - [x] POST `/api/comments` (add + admin delete); input sanitized/capped; encouraging
+        empty state; commenter name remembered in localStorage
+  - [x] Moderation: visit `/weeks/NN/?admin=<COMMENT_ADMIN_KEY>` for delete buttons
+        (key in Vercel prod env + local .env.local)
+  - Note: blob read-after-write has a ~1s lag; a posted comment always shows on reload
 
 ## Phase 2 — First weeks (during naps)
 

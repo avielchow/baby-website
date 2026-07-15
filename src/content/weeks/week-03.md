@@ -162,10 +162,37 @@ gear:
     brands:
       - name: "Yogasleep Dohm (Marpac)"
         note: "A real internal fan makes genuinely continuous, non-looping white noise — no tracks to repeat, no app, just a dial. The simplest safe pick; widely sold in Canada."
+        url: "https://yogasleep.com/products/dohmclassic"
+        pros:
+          - "Real fan produces true continuous, non-looping sound that won't jolt him mid-cycle"
+          - "No app, no screen, no subscription — one dial for volume and tone"
+          - "Simple and durable, with a long track record"
+        cons:
+          - "Only makes fan-style white noise — no pink noise, lullabies, or presets"
+          - "Adjusting the sound also changes the volume slightly; no precise level readout"
+          - "Corded, so it needs an outlet and isn't travel-pocket compact"
       - name: "Hatch Rest"
         note: "App-controlled sound plus a night light and toddler-clock features it grows into; popular and stocked at Best Buy and Indigo in Canada. Pricier and app-dependent, though it runs a basic manual mode too."
+        url: "https://www.hatch.co/rest"
+        pros:
+          - "Sound, night light, and toddler-clock features it grows into for years"
+          - "Wide range of sounds and fine volume control from your phone"
+          - "Schedules and presets make a consistent bedtime routine easy"
+        cons:
+          - "Pricier than a plain sound machine"
+          - "Leans on the app, and some features sit behind a paid Hatch+ subscription"
+          - "Uses looped audio tracks rather than a true continuous fan"
       - name: "LectroFan"
         note: "Compact, with distinct non-looping fan and white/pink noise options and fine volume steps that make it easy to keep the level down. Good value; available on Amazon.ca."
+        url: "https://lectrofan.com/"
+        pros:
+          - "Distinct non-looping fan and white/pink noise options"
+          - "Fine volume steps make it easy to keep the level down for infant ears"
+          - "Compact and good value; runs on USB or wall power"
+        cons:
+          - "Small buttons and no app or scheduling"
+          - "Utilitarian design with no night light or clock features"
+          - "No built-in battery, so it needs a USB or wall outlet nearby"
     video:
       title: "Hatch Baby: First Night Setup Guide"
       url: "https://www.youtube.com/watch?v=_86vWUnakyI"
@@ -180,10 +207,37 @@ gear:
     brands:
       - name: "BabyBjörn Bouncer (Balance/Bliss)"
         note: "A firm, non-inclined-style fabric seat that rocks from the baby's own movement — no motor, no batteries. Lightweight and well regarded for its ergonomic support; the premium price is the main knock. Sold across Canada."
+        url: "https://www.babybjorn.com/baby-bouncers/"
+        pros:
+          - "Firm, ergonomic seat that rocks from the baby's own movement — no motor or batteries"
+          - "Lightweight, foldable, and easy to carry room to room"
+          - "Machine-washable fabric and a solid reputation for build quality"
+        cons:
+          - "Premium price for what is a no-frills manual bouncer"
+          - "No motion of its own for very young newborns who can't yet kick"
+          - "For supervised awake time only — never a sleep surface"
       - name: "Ingenuity"
         note: "Budget-friendly powered bouncers and swings with multiple speeds and timers; easy to find at Walmart and Amazon.ca. Same rule applies — awake time only, not for sleep."
+        url: "https://www.kids2.com/pages/ingenuity"
+        pros:
+          - "Budget-friendly, with powered options that offer motion for free hands"
+          - "Multiple speeds, timers, and often music or vibration built in"
+          - "Widely available at Walmart and Amazon.ca"
+        cons:
+          - "Powered models run on batteries that drain and need replacing"
+          - "Build and fabric quality is more basic than premium brands"
+          - "For supervised awake time only — never a sleep surface"
       - name: "4moms mamaRoo"
         note: "Motorized seat that mimics five parent-like motions (bounce, sway, car-ride); a tech-forward premium option carried by Canadian retailers. Still a supervised-awake seat, not a sleep surface."
+        url: "https://www.4moms.com/products/mamaroo"
+        pros:
+          - "Five parent-like motions (bounce, sway, car-ride) plus adjustable speeds"
+          - "Bluetooth and app control with built-in sound options"
+          - "Compact footprint and a distinctive, well-finished design"
+        cons:
+          - "Expensive — among the priciest seats in this category"
+          - "Bulky motor base and reliance on an app for full control"
+          - "For supervised awake time only — never a sleep surface"
     video:
       title: "All Baby Bouncers | How do we use the baby bouncer?"
       url: "https://www.youtube.com/watch?v=9cTCxUQgQdQ"

@@ -1,0 +1,261 @@
+---
+/**
+ * Per-week comment section (docs/CONTENT.md § Comments). Name-only, no login —
+ * the site is already behind the shared family password. SSR-rendered from the
+ * private Blob store; posts go through /api/comments. Lives in the week template
+ * so every week — now and future — gets it automatically.
+ */
+import { COMMENT_ADMIN_KEY } from 'astro:env/server';
+import { getComments, relativeTime } from '../lib/comments';
+
+interface Props {
+  week: number;
+}
+const { week } = Astro.props;
+
+const comments = await getComments(week);
+const now = Date.now();
+
+// ?admin=<COMMENT_ADMIN_KEY> reveals per-comment delete buttons (moderation).
+const adminParam = Astro.url.searchParams.get('admin');
+const isAdmin = !!adminParam && !!COMMENT_ADMIN_KEY && adminParam === COMMENT_ADMIN_KEY;
+const hadError = Astro.url.searchParams.get('commentError') === '1';
+const count = comments.length;
+---
+
+<section class="comments reveal" id="comments">
+  <h2 class="section-head is-comments">
+    <span class="section-icon" set:html={'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.2 7.3L4 20l1-4.5A8 8 0 1 1 21 12z"/></svg>'} />
+    {count > 0 ? `Notes from family (${count})` : 'Notes from family'}
+  </h2>
+
+  <p class="comments-intro">
+    Been here before? Share what worked, what you'd skip, a product review, or
+    research you found. Future-us and other new parents will thank you.
+  </p>
+
+  <form class="comment-form card" method="POST" action="/api/comments">
+    <input type="hidden" name="week" value={week} />
+    <div class="field">
+      <label for="c-name">Your name</label>
+      <input id="c-name" name="name" type="text" maxlength="40" required autocomplete="name" placeholder="e.g. Grandma Ruth" />
+    </div>
+    <div class="field">
+      <label for="c-body">Your note</label>
+      <textarea id="c-body" name="body" maxlength="1000" rows="3" required placeholder="What's your experience or tip for this week?"></textarea>
+    </div>
+    {hadError && <p class="comment-error" role="alert">A name and a note are both needed — give it another go.</p>}
+    <div class="form-actions">
+      <button type="submit" class="btn">Share your note</button>
+      <span class="form-hint">Visible to family with the site password.</span>
+    </div>
+  </form>
+
+  {count === 0 ? (
+    <p class="comments-empty">No notes yet — be the first to share.</p>
+  ) : (
+    <ol class="comment-list">
+      {comments.map((c) => (
+        <li class="comment card">
+          <div class="comment-head">
+            <span class="comment-avatar" aria-hidden="true">{c.name.trim().charAt(0).toUpperCase()}</span>
+            <span class="comment-meta">
+              <span class="comment-name">{c.name}</span>
+              <span class="comment-time">{relativeTime(c.ts, now)}</span>
+            </span>
+            {isAdmin && (
+              <form method="POST" action="/api/comments" class="comment-del">
+                <input type="hidden" name="_action" value="delete" />
+                <input type="hidden" name="week" value={week} />
+                <input type="hidden" name="id" value={c.id} />
+                <input type="hidden" name="adminKey" value={adminParam} />
+                <button type="submit" aria-label="Delete comment">Delete</button>
+              </form>
+            )}
+          </div>
+          <p class="comment-body">{c.body}</p>
+        </li>
+      ))}
+    </ol>
+  )}
+</section>
+
+<script>
+  // Remember the commenter's name across weeks (name-only, no accounts).
+  function initCommentName() {
+    const input = document.getElementById('c-name') as HTMLInputElement | null;
+    if (!input) return;
+    const saved = localStorage.getItem('baby_commenter_name');
+    if (saved && !input.value) input.value = saved;
+    const form = input.closest('form');
+    form?.addEventListener('submit', () => {
+      if (input.value.trim()) localStorage.setItem('baby_commenter_name', input.value.trim());
+    });
+  }
+  initCommentName();
+  document.addEventListener('astro:page-load', initCommentName);
+</script>
+
+<style>
+  .comments {
+    margin-block: var(--space-3);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-half);
+    font-size: var(--fs-h2);
+    margin-bottom: var(--space-half);
+  }
+
+  .section-icon {
+    display: inline-flex;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-pill);
+    background: var(--sage-wash);
+    color: var(--sage-deep);
+    flex-shrink: 0;
+  }
+
+  .section-icon :global(svg) { width: 100%; height: 100%; }
+
+  .comments-intro {
+    color: var(--text-secondary);
+    max-width: none;
+    margin-bottom: var(--space-2);
+  }
+
+  .comment-form {
+    padding: var(--space-2);
+    margin-bottom: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .field label {
+    font-weight: 700;
+    font-size: var(--fs-small);
+  }
+
+  .field input,
+  .field textarea {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.7rem 0.85rem;
+    border: 1.5px solid var(--border-hairline);
+    border-radius: var(--radius-button);
+    background: var(--ivory);
+    color: var(--text-primary);
+    resize: vertical;
+  }
+
+  .field input:focus-visible,
+  .field textarea:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 1px;
+    border-color: var(--sage);
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+  }
+
+  .form-hint {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+
+  .comment-error {
+    margin: 0;
+    color: var(--error);
+    font-size: var(--fs-small);
+    font-weight: 600;
+  }
+
+  .comments-empty {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  .comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .comment {
+    padding: var(--space-1) var(--space-2);
+  }
+
+  .comment-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-half);
+    margin-bottom: var(--space-half);
+  }
+
+  .comment-avatar {
+    flex-shrink: 0;
+    width: 2.1rem;
+    height: 2.1rem;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-pill);
+    background: var(--sage);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  .comment-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .comment-name { font-weight: 800; }
+
+  .comment-time {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+
+  .comment-del {
+    margin-left: auto;
+  }
+
+  .comment-del button {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--rose-deep);
+    background: none;
+    border: 1px solid color-mix(in srgb, var(--rose) 50%, #fff);
+    border-radius: var(--radius-pill);
+    padding: 0.2em 0.8em;
+    cursor: pointer;
+  }
+
+  .comment-body {
+    margin: 0;
+    max-width: none;
+    white-space: pre-line;
+  }
+</style>

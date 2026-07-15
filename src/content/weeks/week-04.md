@@ -133,9 +133,39 @@ gear:
   - item: "Baby carrier or wrap"
     why: "Around now a carrier earns its keep — it frees your hands during the crying peak and many babies settle when worn upright and close. Follow the T.I.C.K.S. rules every time (Tight; In view; Close enough to kiss; Keep chin off the chest; Supported back) so his airway stays open, and check the hip position: a healthy 'M' seat means knees higher than his bottom with the fabric supporting thigh-to-thigh, not dangling from the crotch. A newborn also needs real head and neck support and a high, close carry so you can see his face and watch him breathe — a stretchy wrap moulds snugly and is lovely for tiny babies, while a structured carrier with a newborn insert or adjustable seat is quicker to put on and lasts longer."
     brands:
-      - { name: "Ergobaby", note: "Structured, adjustable-seat carriers (e.g. Omni) that fit a newborn without a separate insert; IHDI-acknowledged hip-healthy, widely stocked in Canada." }
-      - { name: "BabyBjörn", note: "Simple to put on solo and easy to get right; their newer Mini/Harmony carriers hold the hip-healthy M-seat, though the older narrow-base styles don't." }
-      - { name: "Konny", note: "Stretchy wrap-style carrier that's snug and cool for newborns; sized to you, so it's less adjustable between wearers than a buckle carrier." }
+      - name: "Ergobaby"
+        note: "Structured, adjustable-seat carriers (e.g. Omni) that fit a newborn without a separate insert; IHDI-acknowledged hip-healthy, widely stocked in Canada."
+        url: "https://ergobaby.com/baby-carrier/omni/omni-360"
+        pros:
+          - "Adjustable seat fits newborn to toddler (~7–45 lb) with no separate insert"
+          - "Four carry positions and a padded waist spread weight well for long wears"
+          - "IHDI hip-healthy design, widely stocked and serviced in Canada"
+        cons:
+          - "Among the priciest carriers"
+          - "More buckles and straps to learn than a simple wrap"
+          - "Bulkier and warmer than a stretchy wrap in hot weather"
+      - name: "BabyBjörn"
+        note: "Simple to put on solo and easy to get right; their newer Mini/Harmony carriers hold the hip-healthy M-seat, though the older narrow-base styles don't."
+        url: "https://www.babybjorn.com/baby-carriers/"
+        pros:
+          - "Very quick to put on and take off solo, with no wrapping"
+          - "Newer Mini/Harmony models hold a hip-healthy M-seat"
+          - "Lightweight and easy to clean"
+        cons:
+          - "Older narrow-base styles aren't hip-healthy"
+          - "Shorter usable age and weight range than a full adjustable carrier"
+          - "Less back support for long wears than a structured buckle carrier"
+      - name: "Konny"
+        note: "Stretchy wrap-style carrier that's snug and cool for newborns; sized to you, so it's less adjustable between wearers than a buckle carrier."
+        url: "https://konnybaby.com/collections/baby-carriers"
+        pros:
+          - "Snug, cocoon-like fit that many newborns settle into"
+          - "Lightweight, breathable fabric that packs down small"
+          - "No buckles — pulls on like a shirt"
+        cons:
+          - "Sized to the wearer, so it's hard to share between different-sized parents"
+          - "Stretchy wraps are outgrown sooner than structured carriers"
+          - "Getting the right size and snugness can take a few tries"
     video:
       title: "How Do I Fit a Newborn in the Omni 360 Baby Carrier? | Ergobaby"
       url: "https://www.youtube.com/watch?v=Vm2hHOMMUiY"
@@ -146,9 +176,38 @@ gear:
   - item: "Baby monitor"
     why: "Once he's napping in his own room or across the house, a monitor lets you keep tabs without hovering — a simple, reliable one beats a feature-heavy one you fight with at 3 a.m. Decide between audio-only (cheap, dependable), a dedicated video unit on its own radio signal (no internet, private, works when the wifi is down), and a wifi/app camera (watch from your phone anywhere, but it lives on your network and cameras have been hacked, so use a strong unique password and two-factor if you go this route). Whatever you pick, prioritise solid range through your walls and battery life on the parent unit over sleep-tracking gimmicks."
     brands:
-      - { name: "Infant Optics", note: "The DXR-8 is a long-running dedicated video unit on a private signal (no app, no account) — reliable and simple, though the screen is basic by modern standards." }
-      - { name: "Eufy", note: "SpaceView line offers sharp non-wifi video with good battery and no cloud, a nice middle ground on price and privacy." }
-      - { name: "Nanit", note: "Wifi/app camera with breathing and sleep tracking; feature-rich and popular but pricier, subscription-gated for full features, and a networked camera to secure." }
+      - name: "Infant Optics"
+        note: "The DXR-8 is a long-running dedicated video unit on a private signal (no app, no account) — reliable and simple, though the screen is basic by modern standards."
+        url: "https://infantoptics.com/products/dxr-8/"
+        pros:
+          - "Private radio signal — no wifi, app, or account, so nothing to hack"
+          - "Simple, reliable, with long parent-unit battery life"
+          - "Interchangeable lenses for wide-angle or zoom"
+        cons:
+          - "Low-resolution screen that looks dated next to modern cameras"
+          - "No smartphone viewing or remote access away from home"
+          - "No sleep or breathing tracking"
+      - name: "Eufy"
+        note: "SpaceView line offers sharp non-wifi video with good battery and no cloud, a nice middle ground on price and privacy."
+        url: "https://www.eufy.com/collections/baby-monitor"
+        pros:
+          - "Sharp non-wifi video on a private signal — stays local, no cloud"
+          - "Good parent-unit battery life"
+          - "Mid-range price with no subscription"
+        cons:
+          - "Dedicated parent unit means no phone viewing away from home"
+          - "Range through thick walls can be limited"
+          - "Fewer smart features than app-based cameras"
+      - name: "Nanit"
+        note: "Wifi/app camera with breathing and sleep tracking; feature-rich and popular but pricier, subscription-gated for full features, and a networked camera to secure."
+        url: "https://www.nanit.com/products/nanit-pro-camera"
+        pros:
+          - "1080p overhead HD video with breathing and sleep tracking"
+          - "View from your phone anywhere, with two-way audio and alerts"
+        cons:
+          - "Expensive, and full sleep features need a paid subscription after year one"
+          - "Wifi/cloud camera on your network — needs a strong password and 2FA to secure"
+          - "Overhead mount install is more involved than a shelf camera"
 sources:
   - label: "AAP HealthyChildren — Developmental Milestones: 1 Month"
     url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Developmental-Milestones-1-Month.aspx"
