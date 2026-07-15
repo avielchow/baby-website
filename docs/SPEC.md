@@ -56,7 +56,14 @@ Two rooms, one login form:
 - If photo storage outgrows the free tier, first move is Cloudflare R2 (10 GB free) — decision
   deferred until needed.
 
-### 3. Week-by-week must-knows (see CONTENT.md)
+### 3. Week-by-week + month-by-month guide (see CONTENT.md, MONTHLY.md)
+
+The guide runs at two cadences (decided 2026-07-15, [MONTHLY.md](MONTHLY.md)):
+**Newborn Weeks** (weeks 1–12, the first 3 months — one page per week, shipped) and a
+**Monthly Guide** (months 4–12 — one page per month), under a cadence-neutral "Baby Guide"
+hub, with the growing-vine milestone timeline as the visual index into the months and
+deep-dive topic pages for the giants (Starting Solids, the 4-month sleep shift).
+
 - One page per week of life (`weeks` collection, schema in `src/content.config.ts`):
   milestones, todos, feeding, sleep, red flags, also-worth-knowing, **and a "what to buy"
   gear section** (the stage's key purchases + top-3 brands + a how-to-use video) — every
