@@ -1,0 +1,505 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sprout from '../components/illustrations/Sprout.astro';
+import { listCaptures, type Capture } from '../lib/captures';
+import { journalEnabled } from '../lib/journal-auth';
+import { currentDayNumber } from '../lib/current-week';
+import { questionsForDay } from '../data/daily-questions';
+
+const authed = Astro.locals.journalAuthed === true;
+const enabled = journalEnabled();
+const params = Astro.url.searchParams;
+const loginError = params.get('error') === 'invalid' ? 'That password did not match.' : undefined;
+const emptyError = params.get('error') === 'empty';
+const justSaved = params.get('saved') === '1';
+
+const TAGS = ['first', 'milestone', 'funny', 'hard day', 'sleep', 'feeding', 'family', 'cute', 'love'];
+const MOODS = [
+  { key: 'good', emoji: '😊' },
+  { key: 'emotional', emoji: '🥹' },
+  { key: 'exhausted', emoji: '😴' },
+  { key: 'funny', emoji: '😂' },
+  { key: 'hard', emoji: '😤' },
+];
+
+let captures: Capture[] = [];
+if (authed) captures = await listCaptures();
+
+const dayOfLife = currentDayNumber();
+const todaysQuestions = dayOfLife >= 1 ? questionsForDay(dayOfLife) : null;
+
+function when(ts: number): string {
+  const d = new Date(ts);
+  return d.toLocaleString('en-CA', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+}
+---
+
+<BaseLayout title="Write" bareLayout>
+  <div class="write-wrap">
+    <header class="write-header">
+      <a href="/write" class="write-wordmark">Our Little One · <span>Journal</span></a>
+      {authed && (
+        <form method="POST" action="/api/write/logout">
+          <button type="submit" class="write-signout">Sign out</button>
+        </form>
+      )}
+    </header>
+
+    {!authed ? (
+      <section class="write-login">
+        <Sprout width={84} />
+        <h1>Capture a moment</h1>
+        {!enabled ? (
+          <p class="write-note">The journal isn't available right now.</p>
+        ) : (
+          <>
+            <p class="write-note">Enter your writing password. This is just for you.</p>
+            <form method="POST" action="/api/write/login" class="login-form" autocomplete="off">
+              <label for="jpw" class="visually-hidden">Password</label>
+              <input id="jpw" type="password" name="password" required autocomplete="current-password" autofocus placeholder="Password" />
+              {loginError && <p class="write-error" role="alert">{loginError}</p>}
+              <button type="submit" class="btn">Open the journal</button>
+            </form>
+          </>
+        )}
+      </section>
+    ) : (
+      <section class="write-app">
+        <h1 class="write-title">What happened?</h1>
+        <p class="write-sub">Dump a thought, a first, a hard hour, a funny thing. I'll shape the week's captures into a post. Tip: tap the mic on your keyboard to dictate.</p>
+
+        {todaysQuestions && (
+          <div class="prompt-card">
+            <p class="prompt-day">{dayOfLife === 1 ? 'Day 1 · today' : `Day ${dayOfLife}`} · three to notice</p>
+            <ol class="prompt-list">
+              {todaysQuestions.map((q) => <li>{q}</li>)}
+            </ol>
+          </div>
+        )}
+
+        {justSaved && <p class="write-flash" role="status">Saved. Keep them coming.</p>}
+
+        <form method="POST" action="/api/write/capture" enctype="multipart/form-data" class="capture-form card" id="capture-form">
+          <textarea id="cap-text" name="text" rows="5" placeholder="Right now, she…" autofocus></textarea>
+          {emptyError && <p class="write-error" role="alert">Add a few words or a photo first.</p>}
+
+          <fieldset class="chips">
+            <legend>Tag it (optional)</legend>
+            {TAGS.map((t) => (
+              <label class="chip">
+                <input type="checkbox" name="tags" value={t} />
+                <span>{t}</span>
+              </label>
+            ))}
+          </fieldset>
+
+          <fieldset class="chips moods">
+            <legend>Mood (optional)</legend>
+            {MOODS.map((m) => (
+              <label class="chip mood-chip">
+                <input type="radio" name="mood" value={m.key} />
+                <span>{m.emoji} {m.key}</span>
+              </label>
+            ))}
+          </fieldset>
+
+          <div class="photo-field">
+            <label for="cap-photos" class="photo-label">📷 Add photos</label>
+            <input id="cap-photos" type="file" name="photos" accept="image/*" multiple />
+            <div class="photo-previews" id="photo-previews" aria-live="polite"></div>
+          </div>
+
+          <div class="capture-actions">
+            <button type="submit" class="btn">Save capture</button>
+            <span class="write-hint">Private to you — never shown to family until a post is published.</span>
+          </div>
+        </form>
+
+        <section class="captures">
+          <h2>Your captures {captures.length > 0 && <span class="cap-count">{captures.length}</span>}</h2>
+          {captures.length === 0 ? (
+            <p class="captures-empty">Nothing captured yet. The first note is the hardest — then it's a habit.</p>
+          ) : (
+            <ul class="capture-list">
+              {captures.map((c) => (
+                <li class="capture card">
+                  <div class="capture-head">
+                    <span class="capture-when">{when(c.ts)}</span>
+                    {c.mood && <span class="capture-mood">{MOODS.find((m) => m.key === c.mood)?.emoji} {c.mood}</span>}
+                    <form method="POST" action="/api/write/delete" class="capture-del" onsubmit="return confirm('Delete this capture?')">
+                      <input type="hidden" name="id" value={c.id} />
+                      <button type="submit" aria-label="Delete capture">Delete</button>
+                    </form>
+                  </div>
+                  {c.text && <p class="capture-text">{c.text}</p>}
+                  {c.tags.length > 0 && (
+                    <p class="capture-tags">{c.tags.map((t) => <span class="tag-pill">{t}</span>)}</p>
+                  )}
+                  {c.photos.length > 0 && (
+                    <div class="capture-photos">
+                      {c.photos.map((p) => (
+                        <a href={`/api/capture-photo/${p}`} target="_blank" rel="noopener noreferrer">
+                          <img src={`/api/capture-photo/${p}`} alt="" loading="lazy" />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<script>
+  // Resize/compress photos in the browser BEFORE upload so we store small,
+  // web-sized images (a ~4MB phone photo → ~300KB). Keeps us far inside the
+  // free storage tier and makes uploads fast on mobile.
+  async function compress(file: File, maxDim = 2000, quality = 0.82): Promise<File> {
+    if (!file.type.startsWith('image/')) return file;
+    try {
+      const bitmap = await createImageBitmap(file);
+      let { width, height } = bitmap;
+      const longest = Math.max(width, height);
+      if (longest > maxDim) {
+        const scale = maxDim / longest;
+        width = Math.round(width * scale);
+        height = Math.round(height * scale);
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return file;
+      ctx.drawImage(bitmap, 0, 0, width, height);
+      bitmap.close?.();
+      const blob: Blob | null = await new Promise((res) => canvas.toBlob(res, 'image/jpeg', quality));
+      if (!blob || blob.size >= file.size) return file; // don't upsize
+      const name = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+      return new File([blob], name, { type: 'image/jpeg' });
+    } catch {
+      return file; // e.g. a format the browser can't decode — upload as-is
+    }
+  }
+
+  function initWrite() {
+    const input = document.getElementById('cap-photos') as HTMLInputElement | null;
+    const previews = document.getElementById('photo-previews');
+    const submitBtn = document.querySelector<HTMLButtonElement>('.capture-actions button[type="submit"]');
+    let busy = false;
+    if (input && previews) {
+      input.addEventListener('change', async () => {
+        if (busy) return;
+        const originals = Array.from(input.files ?? []);
+        if (originals.length === 0) { previews.innerHTML = ''; return; }
+        busy = true;
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Optimizing photos…'; }
+        const dt = new DataTransfer();
+        previews.innerHTML = '';
+        for (const original of originals) {
+          const file = await compress(original);
+          dt.items.add(file);
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.className = 'photo-thumb';
+          img.onload = () => URL.revokeObjectURL(img.src);
+          previews.appendChild(img);
+        }
+        input.files = dt.files; // native submit now sends the compressed files
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Save capture'; }
+        busy = false;
+      });
+    }
+
+    const text = document.getElementById('cap-text') as HTMLTextAreaElement | null;
+    const form = document.getElementById('capture-form') as HTMLFormElement | null;
+    if (text && form) {
+      const KEY = 'baby_capture_draft';
+      const saved = localStorage.getItem(KEY);
+      if (saved && !text.value) text.value = saved;
+      text.addEventListener('input', () => localStorage.setItem(KEY, text.value));
+      form.addEventListener('submit', () => localStorage.removeItem(KEY));
+    }
+  }
+  initWrite();
+  document.addEventListener('astro:page-load', initWrite);
+</script>
+
+<style>
+  .write-wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: var(--space-1) var(--space-1) var(--space-4);
+  }
+
+  .write-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-1);
+  }
+
+  .write-wordmark {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .write-wordmark span { color: var(--sage-deep); }
+
+  .write-signout {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1.5px solid var(--border-hairline);
+    border-radius: var(--radius-pill);
+    padding: 0.35em 1em;
+    cursor: pointer;
+  }
+
+  .write-login {
+    text-align: center;
+    padding-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-half);
+  }
+
+  .write-login h1 { margin: var(--space-1) 0 0; }
+  .write-note { color: var(--text-secondary); }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: min(22rem, 100%);
+    margin-top: var(--space-1);
+  }
+
+  .login-form input {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: 1.5px solid var(--border-hairline);
+    border-radius: var(--radius-button);
+    background: var(--paper);
+    text-align: center;
+  }
+
+  .write-error { color: var(--error); font-size: var(--fs-small); font-weight: 600; margin: 0; }
+
+  .write-title { margin-bottom: var(--space-half); }
+  .write-sub { color: var(--text-secondary); margin-bottom: var(--space-2); }
+
+  .prompt-card {
+    background: linear-gradient(135deg, #F0F6EC, var(--sage-wash));
+    border-radius: var(--radius-card);
+    padding: var(--space-2);
+    margin-bottom: var(--space-2);
+    border-left: 4px solid var(--sage);
+  }
+
+  .prompt-day {
+    margin: 0 0 var(--space-1);
+    font-size: var(--fs-eyebrow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage-deep);
+  }
+
+  .prompt-list {
+    margin: 0;
+    padding-left: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+  }
+
+  .prompt-list li {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    line-height: 1.4;
+    color: var(--text-primary);
+  }
+
+  .write-flash {
+    background: var(--sage-wash);
+    color: var(--sage-deep);
+    font-weight: 700;
+    padding: 0.6em 1em;
+    border-radius: var(--radius-button);
+    margin-bottom: var(--space-1);
+  }
+
+  .capture-form {
+    padding: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+  }
+
+  #cap-text {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    padding: var(--space-1);
+    border: 1.5px solid var(--border-hairline);
+    border-radius: var(--radius-button);
+    background: var(--ivory);
+    resize: vertical;
+    width: 100%;
+  }
+
+  #cap-text:focus-visible { outline: 2px solid var(--sage); border-color: var(--sage); }
+
+  .chips {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .chips legend {
+    width: 100%;
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+    padding: 0;
+  }
+
+  .chip { cursor: pointer; }
+  .chip input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+  .chip span {
+    display: inline-block;
+    padding: 0.35em 0.9em;
+    border-radius: var(--radius-pill);
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    border: 1.5px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .chip input:checked + span {
+    background: var(--sage);
+    color: #fff;
+  }
+
+  .chip input:focus-visible + span { border-color: var(--sage-deep); }
+
+  .photo-field { display: flex; flex-direction: column; gap: var(--space-half); }
+
+  .photo-label {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  #cap-photos { font-size: var(--fs-small); }
+
+  .photo-previews { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .photo-previews :global(.photo-thumb) {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: var(--radius-button);
+  }
+
+  .capture-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+  }
+
+  .write-hint { font-size: var(--fs-small); color: var(--text-secondary); }
+
+  .captures h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-half);
+  }
+
+  .cap-count {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 800;
+    color: #fff;
+    background: var(--sage);
+    border-radius: var(--radius-pill);
+    padding: 0.1em 0.6em;
+  }
+
+  .captures-empty { color: var(--text-secondary); font-style: italic; }
+
+  .capture-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-1) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .capture { padding: var(--space-1) var(--space-2); }
+
+  .capture-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-bottom: var(--space-half);
+  }
+
+  .capture-when { font-size: var(--fs-small); font-weight: 700; color: var(--sage-deep); }
+  .capture-mood { font-size: var(--fs-small); color: var(--text-secondary); }
+
+  .capture-del { margin-left: auto; }
+  .capture-del button {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--rose-deep);
+    background: none;
+    border: 1px solid color-mix(in srgb, var(--rose) 50%, #fff);
+    border-radius: var(--radius-pill);
+    padding: 0.15em 0.7em;
+    cursor: pointer;
+  }
+
+  .capture-text { margin: 0; max-width: none; white-space: pre-line; }
+
+  .capture-tags { margin: var(--space-half) 0 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag-pill {
+    font-size: var(--fs-eyebrow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sage-deep);
+    background: var(--sage-wash);
+    padding: 0.15em 0.6em;
+    border-radius: var(--radius-pill);
+  }
+
+  .capture-photos { margin-top: var(--space-1); display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .capture-photos img {
+    width: 5.5rem;
+    height: 5.5rem;
+    object-fit: cover;
+    border-radius: var(--radius-button);
+  }
+</style>

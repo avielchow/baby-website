@@ -63,15 +63,35 @@
   - [x] Moderation: visit `/weeks/NN/?admin=<COMMENT_ADMIN_KEY>` for delete buttons
         (key in Vercel prod env + local .env.local)
   - Note: blob read-after-write has a ~1s lag; a posted comment always shows on reload
+- [x] **Journal capture → weekly draft** (shipped 2026-07-15, see JOURNAL.md):
+  - [x] `/write` private capture form (own journal password, its own gated island;
+        text + tag/mood chips + multi-photo; dictation-friendly; localStorage draft)
+  - [x] Captures + photos in the private Blob store; `/write` list + delete;
+        gated photo route `/api/capture-photo/<id>` (journal or family cookie)
+  - [x] `scripts/read-captures.mjs` for drafting; workflow = capture all week, Claude
+        drafts one post as `draft: true` on trigger, publish on approval
+  - [x] Journal password chosen (Journal2026) — set in local .env.local; set in Vercel prod
+  - [x] Client-side photo compression on upload (max 2000px/JPEG q0.82, ~78% smaller)
+  - [ ] Later: scheduled auto-draft (cloud routine) if the weekly manual trigger drags
+- [x] **Daily questions + morning email** (shipped 2026-07-15, see JOURNAL.md):
+  - [x] `src/data/daily-questions.ts` (days 1–30 + 14 milestones bespoke; 72-pool for rest)
+  - [x] Dynamic day-of-life prompt card on `/write`
+  - [x] `/api/daily-email` + Vercel Cron (`vercel.json`, 13:00 UTC); Resend sender;
+        `?preview=1&day=N` to preview
+  - [ ] **Activate email:** create a free Resend account (with avielchow88@gmail.com),
+        set `RESEND_API_KEY` in Vercel; `CRON_SECRET` generated + set
+  - Storage: photos + captures + comments all in one private Blob store `baby-comments`
+    (prefixes `journal-photos/`, `journal-captures/`, `comments/`); 5 GB free, Hobby never
+    charges (pauses at limit) — compression keeps usage negligible
 
 ## Phase 2 — First weeks (during naps)
 
-- [ ] Photo pipeline: `scripts/upload-photos.ts` (sharp resize → Vercel Blob), embeds in
-      entries, gallery page
+- [ ] Photo pipeline: resize/compress on capture (sharp) — currently stores originals;
+      gallery page; embed capture photos in published posts
 - [ ] Unlisted-YouTube embed component (youtube-nocookie)
-- [ ] Comments + reactions (Neon Postgres via Vercel Marketplace; name-only, no login)
+- [x] ~~Comments + reactions~~ — comments shipped (Blob, not Neon); reactions still open
 - [ ] Site-wide rename Baby → real name (with the announcement post)
-- [ ] Weekly journal rhythm running (prompt → brain-dump → publish)
+- [ ] Weekly journal rhythm running (capture → draft → publish)
 
 ## Phase 3 — Settled in (month 2+)
 

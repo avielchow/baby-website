@@ -38,14 +38,53 @@ Frontmatter per `src/content.config.ts` journal schema (`title`, `date`, `teaser
 `draft`, `lastUpdated`). Common tags: `first`, `milestone`, `sleep`, `feeding`, `family`,
 `funny`, `hard-week`, `letter-to-baby`.
 
-## Workflow (every entry)
+## Workflow: capture → weekly draft (built 2026-07-15)
 
-1. Aviel brain-dumps raw notes in a Claude Code session (typos, fragments, voice notes
-   pasted — anything). Or asks for the week's prompt first.
-2. Claude asks at most 2–3 short follow-ups if key details are missing or ambiguous.
-3. Claude drafts the entry per this doc, shows the full draft in the session for approval.
-4. On approval: write to `src/content/journal/YYYY-MM-DD-slug.md`, commit, push (auto-deploys).
-5. Photos referenced get embedded (Blob URLs); videos as unlisted-YouTube embeds.
+Two stages — quick capture any time, one polished post per week.
+
+**Capturing (Aviel, on the fly, any device):**
+1. Go to **`/write`** (its own private island — gated by the journal password only,
+   no family login needed). Works on iPhone / Mac / PC.
+2. Dump a thought, a first, a hard hour, a funny thing. Add tag/mood chips and photos.
+   Voice = tap the keyboard mic and dictate straight into the box. Each capture saves
+   instantly to the **private Blob store** (`journal-captures/`, photos in
+   `journal-photos/`) — never in git, never shown to family.
+3. Captures accumulate all week; the `/write` list shows and can delete them.
+
+**Drafting the weekly post (Claude, on Aviel's trigger — "write this week's entry"):**
+1. Read the week's captures: `node scripts/read-captures.mjs 7` (dumps text, tags, mood,
+   photo refs). Never invent — everything comes from the captures. Ask 2–3 short
+   follow-ups only if a key detail is missing or ambiguous.
+2. Draft the entry per this doc's voice/structure. Weave the captures into one reflective
+   post; use tags to theme it and surface firsts. Photos referenced by
+   `/api/capture-photo/<id>` (family can view them behind the gate).
+3. Write to `src/content/journal/YYYY-MM-DD-slug.md` with **`draft: true`** and show the
+   full draft in the session for approval (per the "Draft for my approval" decision —
+   nothing family-visible until Aviel says go).
+4. On approval: flip `draft: false`, commit, push (auto-deploys). Optionally clear the
+   now-processed captures.
+
+(The older path still works too: Aviel can brain-dump straight into a Claude Code session
+instead of using `/write`.)
+
+## Daily questions (built 2026-07-15)
+
+`src/data/daily-questions.ts` maps a **day of life** (day 1 = birth day, from `BIRTH_ANCHOR`)
+to **three prompts**: bespoke trios for days 1–30 + milestone days (40, 50, 60, 75, 90, 100,
+120, 150, 180, 200, 240, 270, 300, 365), and a deterministic 3-from-72 pool for other days.
+`questionsForDay(day)` is stable per day and always returns 3 distinct prompts.
+
+- **On `/write`:** the current day's three questions render as a prompt card above the
+  capture box (`currentDayNumber()` in `current-week.ts`).
+- **By email:** a Vercel Cron (`vercel.json`, 13:00 UTC ≈ 7am Alberta) hits
+  `/api/daily-email`, which sends the day's three questions + the `/write` link to
+  `JOURNAL_EMAIL_TO` via Resend. Protected by `CRON_SECRET`; no-ops cleanly until
+  `RESEND_API_KEY` is set. Preview any day's email at `/api/daily-email?preview=1&day=N`.
+  From-address is `onboarding@resend.dev` (works to the Resend account owner's own email
+  without domain verification; verify a domain later for a custom sender).
+
+Photos attached at `/write` are **compressed in the browser before upload** (max 2000px,
+JPEG q0.82 — ~78% smaller) so storage stays tiny and well inside the free tier.
 
 ## Weekly prompts
 

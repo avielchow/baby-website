@@ -23,6 +23,17 @@ export function currentWeekNumber(now: Date = new Date()): number {
   return Math.floor(days / 7) + 1;
 }
 
+/**
+ * 1-indexed day of life. Day 1 = the day of birth (Alberta-local, since
+ * BIRTH_ANCHOR is anchored to Alberta midnight). Returns 0 if not yet born.
+ */
+export function currentDayNumber(now: Date = new Date()): number {
+  if (isPreBirth(now)) return 0;
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const days = Math.floor((now.getTime() - BIRTH_ANCHOR.getTime()) / msPerDay);
+  return days + 1;
+}
+
 /** Days until birth anchor (0 if in the past). A partial day counts as 1. */
 export function daysUntilBirth(now: Date = new Date()): number {
   const msPerDay = 1000 * 60 * 60 * 24;

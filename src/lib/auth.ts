@@ -41,8 +41,8 @@ export function sign(payload: string): string {
   return `${payload}.${sig}`;
 }
 
-/** Returns the authenticated tier, or null if the token is missing/invalid. */
-export function verify(token: string | undefined): AuthTier | null {
+/** Verify an HMAC-signed token; return its payload if valid, else null. */
+export function verifySigned(token: string | undefined): string | null {
   if (!token) return null;
   const idx = token.lastIndexOf('.');
   if (idx <= 0) return null;
@@ -56,6 +56,13 @@ export function verify(token: string | undefined): AuthTier | null {
   if (!crypto.timingSafeEqual(Buffer.from(sig, 'hex'), Buffer.from(expected, 'hex'))) {
     return null;
   }
+  return payload;
+}
+
+/** Returns the authenticated tier, or null if the token is missing/invalid. */
+export function verify(token: string | undefined): AuthTier | null {
+  const payload = verifySigned(token);
+  if (!payload) return null;
   // v1:<ts> — legacy cookies from before tiers existed; treat as family.
   if (payload.startsWith('v1:')) return 'family';
   if (payload.startsWith('v2:private:')) return 'private';
