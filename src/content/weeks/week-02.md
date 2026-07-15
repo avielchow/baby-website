@@ -155,6 +155,39 @@ alsoWorthKnowing:
 diagrams:
   - key: "hunger-cues"
     section: "feeding"
+gear:
+  - item: "Breast pump"
+    why: "If a partner will take a feed, you're heading back to work, or you want to build a small stash or protect supply, this is the week to sort a pump. Decide between a double electric (fastest, best for regular pumping), a manual (cheap, fine for occasional relief), and a wearable (hands-free but usually weaker suction) — and know that flange sizing matters enormously: the wrong size hurts and empties you poorly, so measure and expect to size down from the box default. Check whether a workplace or private insurance plan covers one, and rent a hospital-grade pump if you're working through genuine supply problems."
+    brands:
+      - name: "Spectra (S1/S2)"
+        note: "Closed-system double electric with hospital-strength suction; the value favourite, widely sold in Canada."
+      - name: "Medela (Pump In Style)"
+        note: "The long-time standard — huge ecosystem of flanges and parts, and the pump insurance plans most often cover."
+      - name: "Momcozy"
+        note: "Affordable cordless wearable for hands-free pumping; convenient, but suction is gentler than a plug-in pump."
+    video:
+      title: "Fitting Tips: Choosing the Right Size Medela Breast Shield"
+      url: "https://www.youtube.com/watch?v=Lg_dDl0Hdpw"
+      channel: "Medela for Lactation Professionals"
+    sources:
+      - label: "Medela"
+        url: "https://www.medela.com/en-us/breastfeeding-pumping/articles/pumping-tips/choosing-your-medela-breast-shield-size"
+  - item: "Bottles"
+    why: "Even if breastfeeding is going well, a few bottles let someone else take the 3 a.m. feed and keep things running when you're apart. Look for newborn/slow-flow nipples and an anti-colic vented design, and buy just one or two each of a couple of brands before committing — babies are famously picky, and you don't want a full case they refuse. Whoever gives the bottle, use paced feeding (bottle near-horizontal, frequent breaks) so it mimics the breast and doesn't overfeed him."
+    brands:
+      - name: "Dr. Brown's"
+        note: "Internal vent system is the go-to for gassy or reflux-prone babies; more parts to wash, but the anti-colic reputation is earned."
+      - name: "Comotomo"
+        note: "Soft silicone body and a wide, breast-like nipple make latch transitions and cleaning easy."
+      - name: "Philips Avent (Natural / Anti-colic)"
+        note: "Widely available and good value; the Natural line has a broad nipple, the Anti-colic an AirFree vent."
+    video:
+      title: "How to Bottle Feed your Baby: Paced Bottle Feeding"
+      url: "https://www.youtube.com/watch?v=iKSSi5pi57I"
+      channel: "Peel Region"
+    sources:
+      - label: "LER"
+        url: "https://www.lactationtraining.com/resources/handouts-parents/handouts-lactation/paced-bottle-feeding"
 sources:
   - label: "Nemours KidsHealth — Your Newborn's Growth"
     url: "https://kidshealth.org/en/parents/grownewborn.html"

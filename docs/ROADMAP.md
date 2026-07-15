@@ -47,6 +47,13 @@
   - [x] Depth: 3-layer atmospheric hills + scroll parallax
   - [x] Spring-curve motion tokens; butterfly flight path (day/golden)
   - [ ] Sprout growth stages (gains leaves as baby ages) — later delight
+- [x] **Gear "what to buy" section** (shipped 2026-07-15, see CONTENT.md § Gear):
+  - [x] Schema: `gear` array on weeks (item, why, top-3 brands, how-to video, sources)
+  - [x] Gear section + ranked brand cards on week pages (butter accent, own icon,
+        "not sponsored" disclaimer — visually separate from medical content)
+  - [x] Weeks 1–4 populated, Canada-first, verified videos: wk1 car seat + swaddle,
+        wk2 pump + bottles, wk3 sound machine + bouncer, wk4 carrier + monitor
+        (CMVSS 213 flagged for car seats; bouncer/inclined-sleeper safety flagged)
 
 ## Phase 2 — First weeks (during naps)
 

@@ -129,6 +129,26 @@ alsoWorthKnowing:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/newborn-out.html" }
 diagrams:
   - { key: "crying-curve", section: "also" }
+gear:
+  - item: "Baby carrier or wrap"
+    why: "Around now a carrier earns its keep — it frees your hands during the crying peak and many babies settle when worn upright and close. Follow the T.I.C.K.S. rules every time (Tight; In view; Close enough to kiss; Keep chin off the chest; Supported back) so his airway stays open, and check the hip position: a healthy 'M' seat means knees higher than his bottom with the fabric supporting thigh-to-thigh, not dangling from the crotch. A newborn also needs real head and neck support and a high, close carry so you can see his face and watch him breathe — a stretchy wrap moulds snugly and is lovely for tiny babies, while a structured carrier with a newborn insert or adjustable seat is quicker to put on and lasts longer."
+    brands:
+      - { name: "Ergobaby", note: "Structured, adjustable-seat carriers (e.g. Omni) that fit a newborn without a separate insert; IHDI-acknowledged hip-healthy, widely stocked in Canada." }
+      - { name: "BabyBjörn", note: "Simple to put on solo and easy to get right; their newer Mini/Harmony carriers hold the hip-healthy M-seat, though the older narrow-base styles don't." }
+      - { name: "Konny", note: "Stretchy wrap-style carrier that's snug and cool for newborns; sized to you, so it's less adjustable between wearers than a buckle carrier." }
+    video:
+      title: "How Do I Fit a Newborn in the Omni 360 Baby Carrier? | Ergobaby"
+      url: "https://www.youtube.com/watch?v=Vm2hHOMMUiY"
+      channel: "Ergobaby"
+    sources:
+      - { label: "IHDI", url: "https://hipdysplasia.org/baby-wearing/" }
+      - { label: "TICKS", url: "https://babyslingsafety.co.uk/" }
+  - item: "Baby monitor"
+    why: "Once he's napping in his own room or across the house, a monitor lets you keep tabs without hovering — a simple, reliable one beats a feature-heavy one you fight with at 3 a.m. Decide between audio-only (cheap, dependable), a dedicated video unit on its own radio signal (no internet, private, works when the wifi is down), and a wifi/app camera (watch from your phone anywhere, but it lives on your network and cameras have been hacked, so use a strong unique password and two-factor if you go this route). Whatever you pick, prioritise solid range through your walls and battery life on the parent unit over sleep-tracking gimmicks."
+    brands:
+      - { name: "Infant Optics", note: "The DXR-8 is a long-running dedicated video unit on a private signal (no app, no account) — reliable and simple, though the screen is basic by modern standards." }
+      - { name: "Eufy", note: "SpaceView line offers sharp non-wifi video with good battery and no cloud, a nice middle ground on price and privacy." }
+      - { name: "Nanit", note: "Wifi/app camera with breathing and sleep tracking; feature-rich and popular but pricier, subscription-gated for full features, and a networked camera to secure." }
 sources:
   - label: "AAP HealthyChildren — Developmental Milestones: 1 Month"
     url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Developmental-Milestones-1-Month.aspx"

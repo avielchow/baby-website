@@ -161,6 +161,43 @@ diagrams:
     section: "sleep"
   - key: "diaper-dashboard"
     section: "feeding"
+gear:
+  - item: "Infant car seat"
+    why: "This is the one purchase you legally cannot leave the hospital without, so buy it before the birth and get the install checked. Choose a rear-facing infant seat that carries Transport Canada's National Safety Mark (certified to CMVSS 213) — a seat sold only in the US is not legal to use in Canada — then confirm it actually fits your vehicle and check the height/weight limits and the expiry date stamped on the shell. Correct installation matters more than the brand: a tight belt path (under 2.5 cm of movement), a snug harness, and the chest clip at armpit level are what protect him."
+    brands:
+      - name: "Clek Liing"
+        note: "Canadian-designed and made; compact, premium, and easy to install tightly — the pricey end of the range."
+      - name: "Chicco KeyFit 35"
+        note: "The value pick most techs reach for — a forgiving, foolproof install and a widely trusted track record."
+      - name: "Britax B-Safe / Willow"
+        note: "Solid mid-range with a steel frame and anti-rebound bar; a bit heavier to carry as a bucket."
+    video:
+      title: "Installing a Rear-facing Car Safety Seat | American Academy of Pediatrics (AAP)"
+      url: "https://www.youtube.com/watch?v=i3VRVTdzFio"
+      channel: "American Academy of Pediatrics"
+    sources:
+      - label: "Transport Canada"
+        url: "https://tc.canada.ca/en/road-transportation/child-car-seat-safety"
+      - label: "AHS"
+        url: "https://www.albertahealthservices.ca/findhealth/Service.aspx?id=7140"
+  - item: "Swaddle"
+    why: "A snug swaddle damps the Moro startle reflex that keeps jolting him awake, and it can buy everyone more sleep in the first weeks. Look for a design that's roomy at the hips so his legs can bend up and out (a tight, straight-legged wrap stresses the developing hip joints), breathable fabric so he doesn't overheat, and an arms-down or velcro/zip style that's hard to get wrong at 3 a.m. Two rules override the product itself: always put a swaddled baby down on his back, and stop swaddling at the very first sign of rolling (often around 2 months)."
+    brands:
+      - name: "Halo SleepSack Swaddle"
+        note: "Velcro wings make a snug arms-down wrap almost impossible to botch; a roomy sack keeps the hips free."
+      - name: "aden + anais"
+        note: "Classic breathable muslin for the traditional wrap — versatile and cool, but you have to learn the fold."
+      - name: "Love To Dream Swaddle Up"
+        note: "A zip-up, arms-up design for babies who fight having their arms pinned; roomy at the hips."
+    video:
+      title: "How to Swaddle a Baby: Step-by-Step Tutorial for Safe Sleep"
+      url: "https://www.youtube.com/watch?v=ioISOf-EDpc"
+      channel: "UPMC"
+    sources:
+      - label: "AAP"
+        url: "https://www.healthychildren.org/English/ages-stages/baby/diapers-clothing/Pages/Swaddling-Is-it-Safe.aspx"
+      - label: "CPS"
+        url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/safe_sleep_for_babies"
 sources:
   - label: "Canadian Paediatric Society — Breastfeeding"
     url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/breastfeeding"

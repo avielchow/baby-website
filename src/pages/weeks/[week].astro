@@ -98,6 +98,49 @@ const sections = [
     )
   ))}
 
+  {d.gear.length > 0 && (
+    <section class="week-section gear reveal" id="gear">
+      <h2 class="section-head is-gear">
+        <span class="section-icon" set:html={'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>'} />
+        Worth buying this week
+      </h2>
+      <p class="gear-disclaimer">Our picks — honest opinions, not sponsored, no affiliate links. For safety gear, correct use matters more than the brand, so watch the how-to.</p>
+      <div class="gear-list">
+        {d.gear.map((g) => (
+          <article class="gear-card">
+            <h3 class="gear-item">{g.item}</h3>
+            <p class="gear-why">{g.why}</p>
+            {g.sources.length > 0 && (
+              <p class="bullet-sources">
+                {g.sources.map((s) =>
+                  s.url ? (
+                    <a class="source-chip" href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                  ) : (
+                    <span class="source-chip">{s.label}</span>
+                  )
+                )}
+              </p>
+            )}
+            {g.brands.length > 0 && (
+              <ol class="brand-list">
+                {g.brands.map((b, i) => (
+                  <li class="brand">
+                    <span class="brand-rank">{i + 1}</span>
+                    <span class="brand-body">
+                      <span class="brand-name">{b.name}</span>
+                      {b.note && <span class="brand-note">{b.note}</span>}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            )}
+            {g.video && <VideoCard title={g.video.title} url={g.video.url} channel={g.video.channel} />}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
   {d.sources.length > 0 && (
     <section class="week-section sources reveal" id="sources">
       <h2>Sources</h2>
@@ -218,6 +261,92 @@ const sections = [
   .week-section#redFlags a.source-chip:hover {
     background: var(--rose-deep);
     color: #fff;
+  }
+
+  /* Gear — warm butter accent to set "our picks" apart from sourced medical content. */
+  .section-head.is-gear .section-icon {
+    background: color-mix(in srgb, var(--butter) 55%, #fff);
+    color: #9a7b2e;
+  }
+
+  .gear-disclaimer {
+    margin: calc(-1 * var(--space-half)) 0 var(--space-1);
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    max-width: none;
+  }
+
+  .gear-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .gear-card {
+    padding: var(--space-2);
+    background: var(--surface-raised);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    border-top: 4px solid var(--butter);
+  }
+
+  .gear-item {
+    margin: 0 0 var(--space-half);
+    font-size: var(--fs-h3);
+  }
+
+  .gear-why {
+    margin: 0 0 var(--space-1);
+    color: var(--text-secondary);
+    max-width: none;
+  }
+
+  .brand-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-1) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+  }
+
+  .brand {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-1);
+    background: color-mix(in srgb, var(--butter) 16%, var(--ivory));
+    border-radius: var(--radius-button);
+  }
+
+  .brand-rank {
+    flex-shrink: 0;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: #fff;
+    background: var(--sage);
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+  }
+
+  .brand-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .brand-name {
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .brand-note {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
   }
 
   .sources ul {

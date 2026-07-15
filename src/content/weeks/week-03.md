@@ -156,6 +156,43 @@ diagrams:
     section: "todos"
   - key: "crying-curve"
     section: "milestones"
+gear:
+  - item: "White noise machine"
+    why: "A growth spurt and the climbing crying curve make this the week soothing tools earn their keep, and steady sound is one of the AAP's reliable calmers — it recreates the constant whoosh he heard in the womb. Choose a machine that plays continuous white or pink noise, not intermittent loops that can jolt him awake mid-cycle. The safety catch is volume: sound machines can easily exceed safe decibel limits, so place it across the room (about 2 m / 7 ft away), never in or on the crib, and run it at a moderate level rather than maxed out — infant ears are more sensitive than yours."
+    brands:
+      - name: "Yogasleep Dohm (Marpac)"
+        note: "A real internal fan makes genuinely continuous, non-looping white noise — no tracks to repeat, no app, just a dial. The simplest safe pick; widely sold in Canada."
+      - name: "Hatch Rest"
+        note: "App-controlled sound plus a night light and toddler-clock features it grows into; popular and stocked at Best Buy and Indigo in Canada. Pricier and app-dependent, though it runs a basic manual mode too."
+      - name: "LectroFan"
+        note: "Compact, with distinct non-looping fan and white/pink noise options and fine volume steps that make it easy to keep the level down. Good value; available on Amazon.ca."
+    video:
+      title: "Hatch Baby: First Night Setup Guide"
+      url: "https://www.youtube.com/watch?v=_86vWUnakyI"
+      channel: "Hatch for Sleep"
+    sources:
+      - label: "Henry Ford"
+        url: "https://www.henryford.com/blog/2026/06/are-white-noise-machines-safe-for-your-baby"
+      - label: "Pediatrics"
+        url: "https://pubmed.ncbi.nlm.nih.gov/33992973/"
+  - item: "Baby bouncer or swing"
+    why: "A firm bouncer or swing buys you two free hands and gives him a new vantage point during the lengthening alert windows — genuinely useful in the fussy evening weeks. The one non-negotiable: a bouncer or swing is for supervised, awake time only, never for sleep. Its seat holds him upright or inclined, so a dozing baby's head can slump forward and block his airway — move a sleeping baby to a firm, flat crib on his back every single time (inclined sleepers were recalled and banned after being linked to infant deaths). Look for a firm, non-inclined seat and a 5-point harness, and stay within arm's reach."
+    brands:
+      - name: "BabyBjörn Bouncer (Balance/Bliss)"
+        note: "A firm, non-inclined-style fabric seat that rocks from the baby's own movement — no motor, no batteries. Lightweight and well regarded for its ergonomic support; the premium price is the main knock. Sold across Canada."
+      - name: "Ingenuity"
+        note: "Budget-friendly powered bouncers and swings with multiple speeds and timers; easy to find at Walmart and Amazon.ca. Same rule applies — awake time only, not for sleep."
+      - name: "4moms mamaRoo"
+        note: "Motorized seat that mimics five parent-like motions (bounce, sway, car-ride); a tech-forward premium option carried by Canadian retailers. Still a supervised-awake seat, not a sleep surface."
+    video:
+      title: "All Baby Bouncers | How do we use the baby bouncer?"
+      url: "https://www.youtube.com/watch?v=9cTCxUQgQdQ"
+      channel: "BabyBjörn"
+    sources:
+      - label: "AAP"
+        url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/Inclined-Sleepers-and-Other-Baby-Registry-Items-to-Avoid.aspx"
+      - label: "CPS"
+        url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/safe_sleep_for_babies"
 sources:
   - label: "Canadian Paediatric Society — Colic and crying"
     url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying"

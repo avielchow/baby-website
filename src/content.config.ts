@@ -38,6 +38,29 @@ const diagramRef = z.object({
   section: z.enum(['milestones', 'todos', 'feeding', 'sleep', 'redFlags', 'also']),
 });
 
+/**
+ * A "what to buy" gear item for the stage (CONTENT.md § Gear & essentials):
+ * the category, why it matters now + buying criteria, top-3 brands, and a
+ * how-to-USE video. Opinions, not clinical guidance — rendered separately.
+ */
+const gearItem = z.object({
+  /** Category, not one product: "Infant car seat", "Swaddle". */
+  item: z.string(),
+  /** Why it matters now + what to look for when choosing. */
+  why: z.string(),
+  /** Top 3 (max), each with one honest line on what it's good at. */
+  brands: z
+    .array(z.object({ name: z.string(), note: z.string().optional() }))
+    .max(3)
+    .default([]),
+  /** How-to-USE video (install/wrap/fit) — verified title + channel. */
+  video: z
+    .object({ title: z.string(), url: z.string().url(), channel: z.string() })
+    .optional(),
+  /** Required for any safety claim (car seat → Transport Canada/AHS/AAP). */
+  sources: z.array(sourceRef).default([]),
+});
+
 const weeks = defineCollection({
   loader: collectionLoader('weeks'),
   schema: z.object({
@@ -55,6 +78,8 @@ const weeks = defineCollection({
     redFlags: z.array(bullet).default([]),
     /** Free-form additional notes; rendered as bullets under "Also worth knowing". */
     alsoWorthKnowing: z.array(bullet).default([]),
+    /** The stage's key purchases: top-3 brands + how-to video. Opinions, not clinical. */
+    gear: z.array(gearItem).default([]),
     /** Topical SVG diagrams to render after specific sections. */
     diagrams: z.array(diagramRef).default([]),
     /** Full bibliography (page-level); items also cite inline via `sources`. */

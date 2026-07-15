@@ -58,10 +58,11 @@ Two rooms, one login form:
 
 ### 3. Week-by-week must-knows (see CONTENT.md)
 - One page per week of life (`weeks` collection, schema in `src/content.config.ts`):
-  milestones, todos, feeding, sleep, red flags, also-worth-knowing — every claim cited
-  **inline on the item itself** (linked source chips), with rich 2–5 sentence details,
-  embedded how-to videos on technique items, and topical diagrams (content v2 standard,
-  CONTENT.md).
+  milestones, todos, feeding, sleep, red flags, also-worth-knowing, **and a "what to buy"
+  gear section** (the stage's key purchases + top-3 brands + a how-to-use video) — every
+  claim cited **inline on the item itself** (linked source chips), with rich 2–5 sentence
+  details, embedded how-to videos on technique items, and topical diagrams (content v2
+  standard, CONTENT.md).
 - Sources: Tier-1 institutions (AAP/HealthyChildren, CDC, CPS, WHO, Nemours) + the two
   family-provided sources in `docs/sources/` (What to Expect the First Year chapters;
   the tier-rated resource guide). Canadian guidance (CPS, Alberta Health Services / 811)

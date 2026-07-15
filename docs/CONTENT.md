@@ -43,6 +43,8 @@ Schema is defined in `src/content.config.ts` (weeks collection). Section intent:
 - `redFlags` — "call the doctor if…" Every item Tier-1 sourced. Includes the parent
   mental-health check (PPD/PPA signs) at appropriate weeks — parents' health is baby care.
 - `alsoWorthKnowing` — the "weird but normal" material and a parent mental-health tip.
+- `gear` — the most important things to buy for THIS stage, each with top-3 brands and a
+  how-to-use video. See "Gear & essentials" below. Not every week has gear.
 
 ## Content richness standard (v2 — decided 2026-07-15)
 
@@ -76,6 +78,52 @@ The v1 pages were judged too thin. Every item now earns its place with depth:
 
 Writing register: warm, plain, reassuring, zero alarmism; specific numbers over vague
 advice. It should read like a smart friend who did the homework, not a pamphlet.
+
+## Gear & essentials — "what to buy" (added 2026-07-15)
+
+Each week surfaces the gear that actually matters **for that stage**, so buying tracks the
+baby's needs instead of a giant day-one list. Rendered as a distinct **gear section** on the
+week page (its own icon and card styling — visually separate from the sourced medical
+content, because these are opinions, not clinical guidance).
+
+**Per gear item, capture:**
+- `item` — the thing (e.g. "Infant car seat", "Swaddle"). Name the *category*, not one
+  product.
+- `why` — 1–3 sentences: why it matters now, and what to actually look for when choosing
+  (the buying criteria — e.g. for a car seat: rear-facing, fits your vehicle, height/weight
+  limits, expiry date; for a swaddle: hip-healthy, right TOG for the season).
+- `brands` — **top 3**, each `{ name, note }`. The `note` is one honest line on what that
+  brand is good at or known for (price point, ease, a standout feature), not marketing copy.
+- `video` — a how-to-**use** video (installing the car seat, the safe swaddle wrap, fitting
+  a carrier), same `{title, url, channel}` shape and the same **mandatory verification** as
+  technique videos (fetch the watch page; confirm title + channel; skip if it can't be
+  confirmed). Prefer the manufacturer's own channel or a safety authority (e.g. a CPST /
+  car-seat-technician channel, AHS, a hospital) for install/fit videos.
+- `sources` — optional inline chips, and **required** for any safety claim (e.g. rear-facing
+  guidance → Transport Canada / AHS / AAP; safe swaddle → AAP/CPS hip-safety + safe-sleep).
+
+**Which gear, which week (illustrative, not exhaustive):**
+- Week 1: infant car seat, swaddle (+ bassinet/safe-sleep surface if not already covered).
+- Early weeks: pump & bottles, a good change setup, sound machine.
+- ~Weeks 4–8: baby carrier / wrap (fit + hip positioning matters — carrier video is key).
+- Later: playmat/activity gym, high chair (around solids), video monitor, teething tools.
+Decide gear per week from what the baby is actually doing that week.
+
+**Ethics & honesty rules (non-negotiable):**
+- Not sponsored, no affiliate links, no fabricated rankings. Brand picks reflect genuine,
+  current reputation for safety / quality / value — if unsure, say the category matters more
+  than the brand and list widely-trusted options.
+- **Canada-first:** recommend brands actually available in Canada; car seats **must** be
+  certified to Canadian standards (Transport Canada / CMVSS 213) — a US-only seat is not
+  legal here, so flag that explicitly for any car-seat pick.
+- Safety items (car seat, sleep surface, swaddle) lead with the safety criteria, not the
+  brand. The brand is secondary to correct use — which is why the how-to video is required.
+- Keep it to the few things that matter each week; this is a curated "what's worth it now,"
+  not a baby-registry dump.
+
+Schema: add a `gear` array to the weeks collection —
+`gear: [{ item, why, brands: [{name, note}] (max 3), video?: {title,url,channel},
+sources?: [{label,url}] }]`.
 
 ## Production cadence
 
