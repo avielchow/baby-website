@@ -97,7 +97,10 @@
 
 - [ ] Milestone timeline page (winding-path design, months 1–12, milestones collection)
 - [ ] Book of Firsts roll-up page (from `first`-tagged entries)
-- [ ] Weeks 5–12 content; decide month-4+ cadence
+- [x] Weeks 5–8 content (shipped 2026-07-15, full v2 standard: rich sourced content,
+      verified videos, gear w/ pros-cons, diagrams, distinct vignettes); nav renamed
+      "Weeks" → "Weekly Guide", guide page retitled for new parents
+- [ ] Weeks 9–12 content; decide month-4+ cadence
 - [ ] Monthly letter-to-Baby entries
 
 ## Later / maybe

@@ -73,7 +73,53 @@ const maskId = `wv-moon-${Math.random().toString(36).slice(2, 8)}`;
     </g>
   )}
 
-  {(week < 1 || week > 4) && (
+  {week === 5 && (
+    <g>
+      {/* First smiles coming — a smiling sun */}
+      <circle cx="60" cy="56" r="21" fill="var(--butter, #F2DFA8)" />
+      <circle cx="60" cy="56" r="29" stroke="var(--butter, #F2DFA8)" stroke-width="2.5" stroke-dasharray="2 11" stroke-linecap="round" />
+      <circle cx="52" cy="52" r="2.6" fill="var(--ink, #3D443A)" />
+      <circle cx="68" cy="52" r="2.6" fill="var(--ink, #3D443A)" />
+      <path d="M51 60 q9 9 18 0" stroke="var(--ink, #3D443A)" stroke-width="3" stroke-linecap="round" fill="none" />
+      <circle cx="30" cy="92" r="4" fill="var(--rose, #E8B4B4)" />
+    </g>
+  )}
+
+  {week === 6 && (
+    <g>
+      {/* Peak week + real smiles — a green smiley */}
+      <circle cx="60" cy="58" r="30" fill="var(--leaf, #8FBC85)" />
+      <circle cx="49" cy="52" r="3.5" fill="var(--ink, #3D443A)" />
+      <circle cx="71" cy="52" r="3.5" fill="var(--ink, #3D443A)" />
+      <path d="M45 65 q15 15 30 0" stroke="var(--ink, #3D443A)" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <circle cx="34" cy="90" r="4" fill="var(--rose, #E8B4B4)" />
+      <circle cx="88" cy="32" r="3.2" fill="var(--butter, #F2DFA8)" />
+    </g>
+  )}
+
+  {week === 7 && (
+    <g>
+      {/* Cooing & conversations — a little face with sound waves */}
+      <circle cx="46" cy="62" r="19" fill="var(--sage, #6B9A5F)" />
+      <circle cx="40" cy="59" r="2.6" fill="#FFFFFF" />
+      <circle cx="52" cy="59" r="2.6" fill="#FFFFFF" />
+      <path d="M40 67 q6 5 12 0" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <path d="M72 48 q11 14 0 28" stroke="var(--sage-deep, #557B4B)" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M82 40 q17 22 0 44" stroke="var(--sage-deep, #557B4B)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+      <circle cx="96" cy="32" r="3.5" fill="var(--butter, #F2DFA8)" />
+    </g>
+  )}
+
+  {week === 8 && (
+    <g>
+      {/* Two months — a milestone badge */}
+      <circle cx="60" cy="60" r="30" fill="var(--sage, #6B9A5F)" />
+      <text x="60" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="600" fill="#FFFFFF">2</text>
+      <path d="M60 28 l2.6 6 6 2.6 -6 2.6 -2.6 6 -2.6 -6 -6 -2.6 6 -2.6 Z" fill="var(--butter, #F2DFA8)" transform="translate(0,-6)" />
+    </g>
+  )}
+
+  {(week < 1 || week > 8) && (
     <g>
       <path d="M32 88 Q56 78 84 46" stroke="var(--sage-deep, #557B4B)" stroke-width="3" stroke-linecap="round" fill="none" />
       <ellipse cx="46" cy="80" rx="11" ry="5" transform="rotate(-22 46 80)" fill="var(--leaf, #8FBC85)" />
