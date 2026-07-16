@@ -106,7 +106,7 @@ redFlags:
       channel: "Sunnybrook Hospital"
 alsoWorthKnowing:
   - title: "Crying is heading for its peak — it's a curve, not a verdict"
-    detail: "Intense crying typically falls between 3 and 12 weeks of age, peaking for many babies around the 2-month mark and settling by 3–4 months — this is the 'Period of PURPLE Crying,' where PURPLE stands for Peak pattern, Unexpected, Resists soothing, Pain-like face, Long-lasting, and Evening clustering. A baby who cries a lot right now is usually a completely normal baby at the loud end of a normal curve — it isn't caused by anything you're doing, and some of it can't be soothed away by anyone. Knowing the shape of the curve is protective: you're closer to the peak than to the start, and the far side is real."
+    detail: "Intense crying typically falls between 3 and 12 weeks of age, peaking for many babies around 6–8 weeks and settling by 3–4 months — this is the 'Period of PURPLE Crying,' where PURPLE stands for Peak of crying, Unexpected, Resists soothing, Pain-like face, Long-lasting, and Evening clustering. A baby who cries a lot right now is usually a completely normal baby at the loud end of a normal curve — it isn't caused by anything you're doing, and some of it can't be soothed away by anyone. Knowing the shape of the curve is protective: you're closer to the peak than to the start, and the far side is real."
     sources:
       - { label: "PURPLE", url: "https://dontshake.org/purple-crying" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying" }

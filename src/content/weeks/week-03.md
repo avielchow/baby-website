@@ -18,7 +18,7 @@ milestones:
       - label: "Nemours"
         url: "https://kidshealth.org/en/parents/sense13m.html"
   - title: "Crying is climbing — that's the curve, not a problem"
-    detail: "Healthy babies cry more each week from about 2 weeks on, typically peaking somewhere around 6–8 weeks (the CPS frames the whole peak window as 3 to 12 weeks) before easing off by 3–4 months. Researchers call this the Period of PURPLE Crying: the letters stand for Peak pattern, Unexpected, Resists soothing, Pain-like face, Long-lasting, Evening — in other words, crying that comes out of nowhere, resists everything, and clusters at night can still be textbook-normal development. Knowing the shape of the curve is genuinely protective: it turns 'what are we doing wrong?' into 'this is the part of the graph we're on.' You're not causing it, and you can't always fix it — your job on the worst evenings is comfort, not cure."
+    detail: "Healthy babies cry more each week from about 2 weeks on, typically peaking somewhere around 6–8 weeks (the CPS frames the whole peak window as 3 to 12 weeks) before easing off by 3–4 months. Researchers call this the Period of PURPLE Crying: the letters stand for Peak of crying, Unexpected, Resists soothing, Pain-like face, Long-lasting, Evening — in other words, crying that comes out of nowhere, resists everything, and clusters at night can still be textbook-normal development. Knowing the shape of the curve is genuinely protective: it turns 'what are we doing wrong?' into 'this is the part of the graph we're on.' You're not causing it, and you can't always fix it — your job on the worst evenings is comfort, not cure."
     sources:
       - label: "CPS"
         url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying"
@@ -129,7 +129,7 @@ redFlags:
         url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/depression_in_pregnant_women_and_mothers"
 alsoWorthKnowing:
   - title: "'Colic' has an actual definition — the rule of threes"
-    detail: "Three or more hours of crying a day, three or more days a week, in an otherwise healthy, well-fed, growing baby — that's the classic definition, and it describes as many as 1 in 5 babies. It usually starts between 2 and 5 weeks, is worst in the late afternoon and early evening, and resolves on its own by 3 to 4 months. Nothing you did caused it, and colicky babies grow and develop exactly like everyone else. The label's real value is permission: once the doctor confirms he's healthy, you can stop hunting for the fixable cause and focus on getting the household through the peak weeks."
+    detail: "Three or more hours of crying a day, three or more days a week, in an otherwise healthy, well-fed, growing baby — that's the classic definition, and by some estimates it describes as many as 1 in 5 babies. It usually starts between 2 and 5 weeks, is worst in the late afternoon and early evening, and resolves on its own by 3 to 4 months. Nothing you did caused it, and colicky babies grow and develop exactly like everyone else. The label's real value is permission: once the doctor confirms he's healthy, you can stop hunting for the fixable cause and focus on getting the household through the peak weeks."
     sources:
       - label: "Nemours"
         url: "https://kidshealth.org/en/parents/colic.html"
@@ -200,7 +200,7 @@ gear:
     sources:
       - label: "Henry Ford"
         url: "https://www.henryford.com/blog/2026/06/are-white-noise-machines-safe-for-your-baby"
-      - label: "Pediatrics"
+      - label: "PubMed"
         url: "https://pubmed.ncbi.nlm.nih.gov/33992973/"
   - item: "Baby bouncer or swing"
     why: "A firm bouncer or swing buys you two free hands and gives him a new vantage point during the lengthening alert windows — genuinely useful in the fussy evening weeks. The one non-negotiable: a bouncer or swing is for supervised, awake time only, never for sleep. Its seat holds him upright or inclined, so a dozing baby's head can slump forward and block his airway — move a sleeping baby to a firm, flat crib on his back every single time (inclined sleepers were recalled and banned after being linked to infant deaths). Look for a firm, non-inclined seat and a 5-point harness, and stay within arm's reach."

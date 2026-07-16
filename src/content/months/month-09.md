@@ -37,7 +37,7 @@ milestones:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Language-Development-8-to-12-Months.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/development-9mos.html" }
   - title: "Shy with strangers, clingy with you — separation anxiety peaks"
-    detail: "This is often the loudest month for separation anxiety: the Canadian Paediatric Society notes it usually peaks around eight or nine months, and stranger wariness can come and go on and off through the first two years. Your once-sociable baby may now bury her face in your shoulder when Grandma reaches for her, wail when you leave the room, or track you anxiously around the house. It isn't a step backward or a sign she's been spoiled — it's the flip side of two good developments, object permanence (she knows you still exist somewhere else) plus a new grasp of who is and isn't familiar. Quick, matter-of-fact goodbyes, a consistent caregiver, and letting her warm to new people at her own pace all help; hamming up your own worry does not."
+    detail: "This is often the loudest month for separation anxiety: the Canadian Paediatric Society notes it usually peaks around eight or nine months (though it can crest again anytime up to eighteen months), and stranger wariness can come and go on and off through the first two years. Your once-sociable baby may now bury her face in your shoulder when Grandma reaches for her, wail when you leave the room, or track you anxiously around the house. It isn't a step backward or a sign she's been spoiled — it's the flip side of two good developments, object permanence (she knows you still exist somewhere else) plus a new grasp of who is and isn't familiar. Quick, matter-of-fact goodbyes, a consistent caregiver, and letting her warm to new people at her own pace all help; hamming up your own worry does not."
     sources:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/mentalhealth/children_and_fears" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/development-9mos.html" }
@@ -78,12 +78,12 @@ feeding:
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed812m.html" }
   - title: "Choking safety: seated, supervised, and the wrong foods off the menu"
-    detail: "Self-feeding raises the choking stakes, so the rules tighten: feed only a baby who's seated upright in a high chair — never one crawling, cruising, or toddling around — and always stay with her while she eats. Nemours' foods-to-avoid list for this age is the standard one: hot dogs, whole grapes, raw hard vegetables, hard cheese, popcorn, nuts, and anything else that won't dissolve or can't be mashed with the gums. Learn the difference between gagging (noisy, red-faced, self-correcting — leave her to it) and true choking (silent, can't cough or cry — act at once); a baby-first-aid refresher this month is time well spent. No honey before the first birthday, and no cow's milk as a drink until 12 months."
+    detail: "Self-feeding raises the choking stakes, so the rules tighten: feed only a baby who's seated upright in a high chair — never one crawling, cruising, or toddling around — and always stay with her while she eats. Nemours' foods-to-avoid list for this age is the standard one: hot dogs, whole grapes, raw hard vegetables, hard cheese, popcorn, nuts, and anything else that won't dissolve or can't be mashed with the gums. Learn the difference between gagging (noisy, red-faced, self-correcting — leave her to it) and true choking (silent, can't cough or cry — act at once); a baby-first-aid refresher this month is time well spent. No honey before the first birthday; as for cow's milk, Canadian guidance allows whole (3.25%) milk as a drink from 9–12 months once she's eating a variety of iron-rich foods — though breastmilk or formula remains the ideal main drink until one."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed812m.html" }
       - { label: "AHS", url: "https://myhealth.alberta.ca/Health/pages/conditions.aspx?hwid=te7335" }
   - title: "Cups, juice, and cow's milk — where things stand at nine months"
-    detail: "Keep letting her practise sipping from an open or straw cup with meals; it's a skill worth building now, and it takes the pressure off bottles later. Skip juice entirely before 12 months — Nemours is explicit that infants under a year shouldn't have it — since it just fills a small tummy with sugar and blunts the appetite for food and milk. Whole cow's milk as a main drink also waits until the first birthday, though most doctors are fine with whole-milk yogurt, cottage cheese, and hard cheese as foods before then. If you're still exploring how to start and expand solids safely, the Starting Solids guide covers first foods, allergens, textures, and choking in depth."
+    detail: "Keep letting her practise sipping from an open or straw cup with meals; it's a skill worth building now, and it takes the pressure off bottles later. Skip juice entirely before 12 months — Nemours is explicit that infants under a year shouldn't have it — since it just fills a small tummy with sugar and blunts the appetite for food and milk. Whole (3.25%) cow's milk as a drink can start between 9 and 12 months per Canadian guidance (there's no rush — breastmilk or formula still does the job), and most doctors are fine with whole-milk yogurt, cottage cheese, and hard cheese as foods before then. If you're still exploring how to start and expand solids safely, the Starting Solids guide covers first foods, allergens, textures, and choking in depth."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed812m.html" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/checkup-9mos.html" }
@@ -137,12 +137,12 @@ healthAndCheckups:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed812m.html" }
 redFlags:
   - title: "Movement flags to mention at the visit"
-    detail: "Milestone ranges are wide and this is a checklist for conversation, not a scorecard — but a few motor signs are worth raising with the doctor around now: a baby who doesn't bear any weight on her legs when you hold her standing, or who isn't sitting with help. The AAP specifically says to let your pediatrician know if she isn't sitting by herself by nine months. None of these means something is wrong on its own; they're simply prompts to have a closer look, and the earlier a real delay is spotted, the more support helps. For a premature baby, judge all of this from the adjusted age."
+    detail: "Milestone ranges are wide and this is a checklist for conversation, not a scorecard — but a few motor signs are worth raising with the doctor around now: a baby who can't sit without support or get herself into a sitting position, or who doesn't pass things from one hand to the other. The AAP specifically says to let your pediatrician know if she isn't sitting by herself by nine months. None of these means something is wrong on its own; they're simply prompts to have a closer look, and the earlier a real delay is spotted, the more support helps. For a premature baby, judge all of this from the adjusted age."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Movement-8-to-12-Months.aspx" }
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/9-months.html" }
   - title: "Communication and social flags to mention"
-    detail: "On the language and social side, bring up a baby who isn't babbling at all (no 'mama,' 'baba,' or 'dada' sounds), doesn't respond to her own name, doesn't seem to recognize familiar people, or doesn't look where you point. These come from the developmental checklist for this age and, like the motor ones, are reasons to ask rather than reasons to panic. Nemours' general rule is a good one: talk to your doctor if your baby isn't meeting one or more milestones, and especially if she had a skill and then lost it. Trust your read — you know her baseline better than anyone."
+    detail: "On the language and social side, bring up a baby who isn't babbling at all (no 'mama,' 'baba,' or 'dada' sounds), doesn't look when you call her name, or shows no reaction at all to you leaving and coming back. These come from the developmental checklist for this age and, like the motor ones, are reasons to ask rather than reasons to panic. Nemours' general rule is a good one: talk to your doctor if your baby isn't meeting one or more milestones, and especially if she had a skill and then lost it. Trust your read — you know her baseline better than anyone."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/development-9mos.html" }
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/9-months.html" }
@@ -166,7 +166,7 @@ alsoWorthKnowing:
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed812m.html" }
   - title: "Still no teeth (or hair)? Both are completely normal"
-    detail: "There are plenty of nine-month-olds with a big gummy grin and not a tooth in sight — the average first tooth arrives around seven months, but the normal range runs from a couple of months old to past the first birthday, and late teething is usually just hereditary. It doesn't hold up eating, either: first teeth are for biting, not chewing, and babies mash soft foods perfectly well with their gums. Thin hair is the same story — some babies stay nearly bald well into the second year, and it says nothing about how thick their hair will eventually be. Neither is a developmental concern on its own."
+    detail: "There are plenty of nine-month-olds with a big gummy grin and not a tooth in sight — the first tooth usually arrives around six months, but the normal range runs from about three months old to past the first birthday, and late teething is usually just hereditary. It doesn't hold up eating, either: first teeth are for biting, not chewing, and babies mash soft foods perfectly well with their gums. Thin hair is the same story — some babies stay nearly bald well into the second year, and it says nothing about how thick their hair will eventually be. Neither is a developmental concern on its own."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/development-9mos.html" }
   - title: "Surprises in the diaper are usually just dinner"
@@ -179,7 +179,7 @@ gear:
     brands:
       - name: "Safety 1st"
         note: "The most widely stocked babyproofing brand in Canada, with everything from cheap screw-in latches to a peel-and-stick magnetic lock system that hides completely inside the cabinet."
-        url: "https://safety1st.com/products/adhesive-magnetic-lock-system-4-locks-and-1-key-hs293"
+        url: "https://safety1st.com"
         pros:
           - "Full range under one brand — magnetic, adhesive-latch, and screw-in options for different cabinets"
           - "Magnetic system installs with adhesive and a lining-up template, no drilling, and is invisible from outside"

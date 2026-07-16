@@ -45,12 +45,12 @@ developmentAndPlay:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Movement-4-to-7-Months.aspx" }
 feeding:
   - title: "Still milk only — and the amounts have crept up"
-    detail: "Nothing on the menu changes this month: breast milk or formula is still all your baby needs. Breastfed babies typically nurse around 6 to 8 times in 24 hours, often with fewer middle-of-the-night feeds than before. Formula-fed babies are usually taking roughly 4 to 6 oz (120–180 ml) per feeding across about 5 or 6 feeds, and as a rule babies under 6 months don't need more than about 32 oz (960 ml) of formula a day. These are averages — feed to your baby's appetite and let steady weight gain and plenty of wet diapers, not a target number of ounces, tell you it's working."
+    detail: "Nothing on the menu changes this month: breast milk or formula is still all your baby needs. Breastfed babies typically nurse around 6 to 8 times in 24 hours, often with fewer middle-of-the-night feeds than before. Formula-fed babies are usually taking somewhere between 4 and 6 oz (120–180 ml) per feeding — on the way to the 6–8 oz feeds the AAP describes by six months — and as a rule babies don't need more than about 32 oz (960 ml) of formula a day. These are averages — feed to your baby's appetite and let steady weight gain and plenty of wet diapers, not a target number of ounces, tell you it's working."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Amount-and-Schedule-of-Formula-Feedings.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed47m.html" }
   - title: "Not ready for solids yet — the signs are still building"
-    detail: "Even though the reaching and mouthing make it look like your baby is dying to eat, experts recommend waiting until around 6 months for solids, and starting sooner isn't better. The readiness signs are assembling now but usually aren't all there yet: good head and neck control, being able to sit up with support, the tongue-thrust reflex (which pushes food back out) fading, and real interest — staring at your food, leaning in, opening the mouth. Milk still covers all their nutrition for now; solids arrive to add iron and zinc later. When the time comes, check with your doctor first and start slow. (See the coming Starting Solids guide.)"
+    detail: "Even though the reaching and mouthing make it look like your baby is dying to eat, experts recommend waiting until around 6 months for solids, and starting sooner isn't better. The readiness signs are assembling now but usually aren't all there yet: good head and neck control, being able to sit up with support, the tongue-thrust reflex (which pushes food back out) fading, and real interest — staring at your food, leaning in, opening the mouth. Milk still covers all their nutrition for now; solids arrive to add iron and zinc later. When the time comes, check with your doctor first and start slow — the Starting Solids deep dive in the guide covers the whole thing."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed47m.html" }
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/Your-Childs-Checkups/Pages/Your-Checkup-Checklist-4-Months-Old.aspx" }
@@ -153,7 +153,7 @@ gear:
           - "History of fall injuries when misused on raised surfaces — floor-only use is essential"
       - name: "Fisher-Price (Sit-Me-Up Floor Seat)"
         note: "A wider fabric-and-frame seat with a three-point harness and a toy tray — more upright support and entertainment than a plain foam seat, and widely stocked in Canada."
-        url: "https://www.fisher-price.com/en-us/product/sit-me-up-floor-seat-cmh47"
+        url: "https://shop.mattel.com/pages/fisher-price"
         pros:
           - "Three-point harness and a broad, stable base"
           - "Removable toy bar/tray keeps babies engaged"

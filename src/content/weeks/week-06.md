@@ -98,7 +98,7 @@ redFlags:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed13m.html" }
 alsoWorthKnowing:
   - title: "This is the peak of the crying curve — you're at the top, not the start"
-    detail: "Intense, hard-to-soothe crying typically runs from about 3 to 12 weeks and is loudest for many babies right around now, then eases and is usually over by 3 to 4 months — this is the 'Period of PURPLE Crying' (Peak pattern, Unexpected, Resists soothing, Pain-like face, Long-lasting, Evening clustering). A baby who cries a lot this week is usually a completely normal baby sitting at the top of a normal curve; it isn't caused by anything you're doing, and some of it can't be soothed away by anyone. Knowing the shape is protective — the far side of this hill is real, and it's close."
+    detail: "Intense, hard-to-soothe crying typically runs from about 3 to 12 weeks and is loudest for many babies right around now, then eases and is usually over by 3 to 4 months — this is the 'Period of PURPLE Crying' (Peak of crying, Unexpected, Resists soothing, Pain-like face, Long-lasting, Evening clustering). A baby who cries a lot this week is usually a completely normal baby sitting at the top of a normal curve; it isn't caused by anything you're doing, and some of it can't be soothed away by anyone. Knowing the shape is protective — the far side of this hill is real, and it's close."
     sources:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying" }
       - { label: "PURPLE", url: "https://dontshake.org/purple-crying" }

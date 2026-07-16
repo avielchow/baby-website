@@ -94,7 +94,7 @@ sleep:
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep47m.html" }
   - title: "Safe-sleep rules don't relax just because they can roll"
-    detail: "Keep placing baby on their back to sleep for every sleep, on a firm flat surface with a fitted sheet and nothing else in the space — no blankets, pillows, bumpers, or toys — and go on room-sharing without bed-sharing, ideally through the first year. Once a baby can roll both ways on their own, you no longer need to reposition them if they flip during the night, but you still always start them on the back. A pacifier at sleep time is fine, and keep the room cool and smoke-free."
+    detail: "Keep placing baby on their back to sleep for every sleep, on a firm flat surface with a fitted sheet and nothing else in the space — no blankets, pillows, bumpers, or toys — and room-sharing without bed-sharing is recommended for at least the first 6 months. Once a baby can roll both ways on their own, you no longer need to reposition them if they flip during the night, but you still always start them on the back. A pacifier at sleep time is fine, and keep the room cool and smoke-free."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep47m.html" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/safe_sleep_for_babies" }

@@ -34,7 +34,7 @@ todos:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/Your-Childs-Checkups/Pages/Your-Checkup-Checklist-2-Months-Old.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/checkup-2mos.html" }
   - title: "The first immunizations — and how to make the shots easier"
-    detail: "Alberta's two-month routine is three vaccines: DTaP-IPV-Hib-HB (one combined needle covering diphtheria, tetanus, whooping cough, polio, Hib, and hepatitis B), the pneumococcal conjugate vaccine (PNEU-C15), and rotavirus — which is a liquid given by mouth, not a needle. That's protection against eight or nine diseases in one visit, and the immune system handles the few added antigens easily. To ease it: you can breastfeed or hold him skin-to-close during and right after the injections, and gentle holding plus a calm voice settles most babies within a minute or two. These are given at your public health / community health centre, not usually the family doctor's office."
+    detail: "Alberta's two-month routine is three vaccines: DTaP-IPV-Hib-HB (one combined needle covering diphtheria, tetanus, whooping cough, polio, Hib, and hepatitis B), the pneumococcal conjugate vaccine (PNEU-C15), and rotavirus — which is a liquid given by mouth, not a needle. That's protection against eight diseases in one visit, and the immune system handles the few added antigens easily. To ease it: you can breastfeed or hold him skin-to-close during and right after the injections, and gentle holding plus a calm voice settles most babies within a minute or two. These are given at your public health / community health centre, not usually the family doctor's office."
     sources:
       - { label: "AHS", url: "https://www.alberta.ca/immunization-routine-schedule" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/immunization/vaccines-common-concerns" }
@@ -54,7 +54,7 @@ todos:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/development-2mos.html" }
 feeding:
   - title: "Feeds are spreading out a little"
-    detail: "Intake is still generous but the clock is stretching. Breastfed babies typically nurse about 8–12 times in 24 hours, and formula-fed babies usually take around 3–4 oz (90–120 ml) every 3–4 hours by now, with feeds starting to space out compared to the newborn weeks. A rough ceiling for formula: about 2½ oz (75 ml) per pound of body weight per day, and no more than roughly 32 oz (960 ml) in 24 hours. These are averages, not targets — a baby who wants a bit more or less at a given feed is self-regulating, which is exactly what you want."
+    detail: "Intake is still generous but the clock is stretching. Breastfed babies typically nurse about 10–12 times in 24 hours, and formula-fed babies usually take around 4–5 oz (120–150 ml) every 3–4 hours by now, with feeds starting to space out compared to the newborn weeks. A rough ceiling for formula: about 2½ oz (75 ml) per pound of body weight per day, and no more than roughly 32 oz (960 ml) in 24 hours. These are averages, not targets — a baby who wants a bit more or less at a given feed is self-regulating, which is exactly what you want."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Amount-and-Schedule-of-Formula-Feedings.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed13m.html" }

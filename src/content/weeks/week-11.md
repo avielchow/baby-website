@@ -60,7 +60,7 @@ feeding:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed13m.html" }
 sleep:
   - title: "A more predictable pattern — and maybe a longer night stretch"
-    detail: "Total sleep is still around 14–17 hours a day, but the shape of it is firming up: many babies this age fall into 2–3 daytime naps plus a longer run at night after a late feed. Remember that at this stage 'sleeping through the night' officially means only a 5–6 hour stretch, breastfed babies often wake sooner, and true, mature sleep cycles don't really settle in until around 6 months — so a longer stretch is a welcome bonus, not a milestone you're behind on if it hasn't shown up. Keep days bright and social and nights dark, quiet, and boring; that contrast is what builds the day-night rhythm over the coming months."
+    detail: "Total sleep is still around 14–17 hours a day, but the shape of it is firming up: many babies this age fall into 2–3 daytime naps plus a longer run at night after a late feed. Remember that at this stage 'sleeping through the night' officially means only a 5–6 hour stretch, breastfed babies often wake sooner, and sleep cycles only start reorganizing toward a more adult pattern around four months — so a longer stretch is a welcome bonus, not a milestone you're behind on if it hasn't shown up. Keep days bright and social and nights dark, quiet, and boring; that contrast is what builds the day-night rhythm over the coming months."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep13m.html" }
   - title: "Safe sleep rules haven't changed"

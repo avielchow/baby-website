@@ -17,7 +17,7 @@ milestones:
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Hand-and-Finger-Skills.aspx" }
   - title: "Separation anxiety and stranger wariness arrive"
-    detail: "Right around now many babies become clingy in a brand-new way — bursting into tears when you leave the room and turning shy, wary, or upset when handed to someone unfamiliar, even a doting grandparent. This isn't a step backward or anything you caused; it's a genuine emotional milestone. She can finally tell the difference between you and everyone else, and doesn't yet grasp that you come back, so 'don't go' is the only tool she has. Separation anxiety usually peaks somewhere between about ten and eighteen months and then eases through the second year, and it's a sign of a healthy, secure attachment to you."
+    detail: "Right around now many babies become clingy in a brand-new way — bursting into tears when you leave the room and turning shy, wary, or upset when handed to someone unfamiliar, even a doting grandparent. This isn't a step backward or anything you caused; it's a genuine emotional milestone. She can finally tell the difference between you and everyone else, and doesn't yet grasp that you come back, so 'don't go' is the only tool she has. Separation anxiety is often loudest around eight or nine months and can crest anywhere up to eighteen months before easing through the second year — and it's a sign of a healthy, secure attachment to you."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Emotional-and-Social-Development-8-12-Months.aspx" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/behavior-and-development/your_childs_development" }
@@ -83,7 +83,7 @@ sleep:
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep812m.html" }
   - title: "Safe-sleep rules still apply"
-    detail: "None of the safe-sleep basics change now that she's mobile: back to sleep for every nap and every night, on a firm flat surface, in her own crib with nothing loose in it — no pillows, blankets, bumpers, or toys. With a baby who pulls up, this is also the moment to drop the crib mattress to its lowest position and remove anything she could use to climb or that could tangle. Room-sharing without bed-sharing is recommended for at least the first year."
+    detail: "None of the safe-sleep basics change now that she's mobile: back to sleep for every nap and every night, on a firm flat surface, in her own crib with nothing loose in it — no pillows, blankets, bumpers, or toys. With a baby who pulls up, this is also the moment to drop the crib mattress to its lowest position and remove anything she could use to climb or that could tangle. Room-sharing without bed-sharing is recommended for at least the first 6 months."
     sources:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/safe_sleep_for_babies" }
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/A-Parents-Guide-to-Safe-Sleep.aspx" }
@@ -187,7 +187,7 @@ gear:
           - "Install is fiddlier than a pop-in gate; worth watching the how-to first"
       - name: "Dreambaby (Chelsea Xtra-Tall Auto-Close)"
         note: "A widely available, extra-tall walk-through gate that pressure-mounts for doorways and the bottom of stairs, with an included hardware kit for stair-top use; the brand also makes matching childproofing kits."
-        url: "https://www.dreambaby.com/chelsea-extra-tall-28-42-5in-auto-close-metal-baby-gate-black.html"
+        url: "https://www.dreambaby.com"
         pros:
           - "Auto-close and stay-open feature is convenient for busy hands"
           - "Extra-tall and extendable with add-on panels for wider gaps"

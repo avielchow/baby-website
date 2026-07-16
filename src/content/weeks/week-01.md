@@ -19,7 +19,7 @@ milestones:
       - label: "Nemours"
         url: "https://kidshealth.org/en/parents/grownewborn.html"
 todos:
-  - title: "First pediatrician visit within 3–5 days of discharge"
+  - title: "First pediatrician visit at 3–5 days old"
     detail: "This visit is a weight check, a jaundice look-over, and a feeding review, plus follow-up on the hearing and blood-spot screens done in hospital. Book it before you leave the hospital if you can — day 3–5 is exactly when jaundice peaks and milk supply is establishing, so the timing matters. Bring the hospital paperwork with birth and discharge weights, and expect them to ask how the parents are doing too; that question is part of the checkup, not small talk."
     sources:
       - label: "AAP"
@@ -62,7 +62,7 @@ feeding:
       - label: "CPS"
         url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/breastfeeding"
   - title: "Colostrum first, then milk 'comes in' around day 3–5"
-    detail: "The first milk is colostrum — thick, yellowish, and produced in teaspoon-sized amounts, which is genuinely all he needs because a day-1 stomach holds roughly 5–7 ml (walnut-sized). Around day 3–5 the mature milk arrives, usually announced by noticeably fuller, heavier breasts and a baby who suddenly gulps and swallows audibly. Frequent feeding in these first days is what signals your body to make that transition, so all that nursing is doing double duty: feeding him now and building supply for later. If milk hasn't come in by day 5, mention it at the first checkup."
+    detail: "The first milk is colostrum — thick, yellowish, and produced in teaspoon-sized amounts, which is genuinely all he needs because a day-1 stomach holds roughly 5–7 ml (about the size of a cherry). Around day 3–5 the mature milk arrives, usually announced by noticeably fuller, heavier breasts and a baby who suddenly gulps and swallows audibly. Frequent feeding in these first days is what signals your body to make that transition, so all that nursing is doing double duty: feeding him now and building supply for later. If your milk hasn't come in within about 72 hours (day 3), talk to your doctor or a lactation consultant rather than waiting it out."
     sources:
       - label: "LLLI"
         url: "https://llli.org/breastfeeding-info/colostrum-general/"
@@ -78,7 +78,7 @@ feeding:
       url: "https://www.youtube.com/watch?v=pgI1JAbItOA"
       channel: "FirstCry Parenting"
 sleep:
-  - title: "16–18 hours of sleep spread across the day and night"
+  - title: "14–17 hours of sleep spread across the day and night"
     detail: "Expect around 16–18 hours of sleep in every 24, but in 2–4 hour fragments with zero respect for the clock — newborns have no circadian rhythm yet, and it won't start organizing for several weeks. Day/night confusion (party at 3 a.m., comatose at noon) is standard-issue this week; you can gently nudge things by keeping days bright and interactive and nights dark, quiet, and boring, but don't expect results yet. The only workable survival strategy is sleeping in shifts or when he sleeps, not waiting for a 'real night' that isn't coming this week."
     sources:
       - label: "Nemours"
@@ -138,7 +138,7 @@ redFlags:
         url: "https://kidshealth.org/en/parents/vomit.html"
 alsoWorthKnowing:
   - title: "The first-week baby blues are extremely common"
-    detail: "Up to 80% of new mothers get the baby blues — tearfulness, mood swings, and feeling overwhelmed, usually starting day 1–3 and fading within about two weeks. It's hormonal and sleep-deprivation driven, not a verdict on you as a parent, and the treatment is support, food, and any sleep you can get. If it persists past two weeks, deepens instead of lifting, or includes hopelessness, panic, inability to sleep even when baby sleeps, or intrusive thoughts, that's postpartum depression territory (about 13% of new mothers) — call your provider, because it's common and it's treatable. Partners: you're the early-warning system here, since the person in it often can't see it."
+    detail: "Up to 80% of new mothers get the baby blues — tearfulness, mood swings, and feeling overwhelmed, usually starting day 1–3 and fading within about two weeks. It's hormonal and sleep-deprivation driven, not a verdict on you as a parent, and the treatment is support, food, and any sleep you can get. If it persists past two weeks, deepens instead of lifting, or includes hopelessness, panic, inability to sleep even when baby sleeps, or intrusive thoughts, that's postpartum depression territory (roughly 1 in 8 new mothers) — call your provider, because it's common and it's treatable. Partners: you're the early-warning system here, since the person in it often can't see it."
     sources:
       - label: "CPS"
         url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/depression_in_pregnant_women_and_mothers"

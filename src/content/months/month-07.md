@@ -97,7 +97,7 @@ sleep:
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep47m.html" }
   - title: "The safe-sleep rules don't relax"
-    detail: "Back for every sleep, on a firm flat surface, in their own crib or bassinet, with nothing loose in it — no blankets, pillows, bumpers, or positioners — stays the rule right through the first year, even now that your baby can roll and sit. Room-sharing without bed-sharing is recommended for at least the first 6 months (up to a year). A baby who can roll both ways will find their own sleep position, and you don't need to flip them back, but you still always place them down on the back. If they fall asleep in a swing, carrier, or car seat, move them to the flat crib when you reasonably can."
+    detail: "Back for every sleep, on a firm flat surface, in their own crib or bassinet, with nothing loose in it — no blankets, pillows, bumpers, or positioners — stays the rule right through the first year, even now that your baby can roll and sit. Room-sharing without bed-sharing is recommended for at least the first 6 months. A baby who can roll both ways will find their own sleep position, and you don't need to flip them back, but you still always place them down on the back. If they fall asleep in a swing, carrier, or car seat, move them to the flat crib when you reasonably can."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep47m.html" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/safe_sleep_for_babies" }
@@ -127,7 +127,7 @@ safetyOnTheMove:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Safety-for-Your-Child-6-to-12-Months.aspx" }
 healthAndCheckups:
   - title: "No routine visit or shots this month in Alberta"
-    detail: "Alberta's routine immunization visits land at 2, 4, 6, and 12 months, so there's no scheduled vaccine or well-child appointment at 7 months — the next routine round is at your baby's first birthday. That doesn't mean you have to wait: you can book with your family doctor or public health any time a question or worry comes up, and a mid-year check is reasonable if you'd like your baby weighed or your list answered. One exception worth noting — the influenza vaccine is offered yearly from 6 months of age, so if flu season is starting, ask about it. Keep the Alberta health card handy for any visit."
+    detail: "Alberta's routine immunization visits land at 2, 4, 6, and 12 months, so there's no vaccine at 7 months — the next shots come at the first birthday, and the next routine well-child check is around nine months. That doesn't mean you have to wait: you can book with your family doctor or public health any time a question or worry comes up, and a mid-year check is reasonable if you'd like your baby weighed or your list answered. One exception worth noting — the influenza vaccine is offered yearly from 6 months of age, so if flu season is starting, ask about it. Keep the Alberta health card handy for any visit."
     sources:
       - { label: "Alberta", url: "https://www.alberta.ca/immunization-routine-schedule" }
   - title: "Growth keeps climbing, and first teeth may arrive"

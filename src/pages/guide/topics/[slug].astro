@@ -9,11 +9,21 @@ if (!slug) return Astro.redirect('/guide/', 302);
 const entry = await getEntry('topics', slug);
 if (!entry || entry.data.draft) return new Response('Topic not found', { status: 404 });
 
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const d = entry.data;
+const toc = headings.filter((h) => h.depth === 2);
 ---
 
 <ContentLayout eyebrow={d.ageRange ?? 'Deep dive'} title={d.title} description={d.teaser} lastUpdated={d.lastUpdated}>
+  {toc.length > 2 && (
+    <nav class="toc card" aria-label="On this page">
+      <p class="toc-label">On this page</p>
+      <ol>
+        {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+      </ol>
+    </nav>
+  )}
+
   <div class="topic-prose">
     <Content />
   </div>
@@ -35,6 +45,40 @@ const d = entry.data;
 </ContentLayout>
 
 <style>
+  .toc {
+    padding: var(--space-1) var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .toc-label {
+    margin: 0 0 var(--space-half);
+    font-size: var(--fs-eyebrow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage-deep);
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    columns: 2;
+    column-gap: var(--space-2);
+  }
+
+  .toc li { margin-bottom: 0.3rem; break-inside: avoid; }
+
+  .toc a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .toc a:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) {
+    .toc ol { columns: 1; }
+  }
+
   .topic-prose { font-size: var(--fs-body-lg); line-height: 1.7; }
   .topic-prose :global(p) { margin-bottom: var(--space-paragraph); max-width: none; }
   .topic-prose :global(h2) { margin-top: var(--space-3); font-size: var(--fs-h2); }

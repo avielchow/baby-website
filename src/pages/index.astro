@@ -32,6 +32,13 @@ if (sceneParam === 'day' || sceneParam === 'golden' || sceneParam === 'night') s
 const currentWeek = weeks.find((w) => w.data.weekNumber === Math.max(1, weekNum)) ?? weeks[0];
 const recentJournal = journal.slice(0, 3);
 const weekSlug = (n: number) => String(n).padStart(2, '0');
+
+// Home shows just the 4 most relevant weeks (around "now"); the hub has the rest.
+const anchor = Math.max(1, weekNum);
+const nearbyWeeks = weeks
+  .filter((w) => w.data.weekNumber >= anchor - 1)
+  .slice(0, 4);
+const guideWeeks = nearbyWeeks.length > 0 ? nearbyWeeks : weeks.slice(0, 4);
 ---
 
 <BaseLayout title="Home" description="A private week-by-week guide and journal.">
@@ -110,11 +117,11 @@ const weekSlug = (n: number) => String(n).padStart(2, '0');
   <section class="band band-wash">
     <div class="container">
       <div class="band-head reveal">
-        <h2>The guide, week by week</h2>
+        <h2><a class="band-head-link" href="/guide/">The Baby Guide</a></h2>
         <LeafSprig width={64} />
       </div>
       <div class="week-grid">
-        {weeks.map((week, i) => (
+        {guideWeeks.map((week, i) => (
           <a
             class="card card-lift week-mini reveal"
             style={`--reveal-delay: ${i * 80}ms`}
@@ -126,7 +133,11 @@ const weekSlug = (n: number) => String(n).padStart(2, '0');
           </a>
         ))}
       </div>
-      <p class="band-foot reveal"><a class="link-more" href="/weeks/">All weeks &rarr;</a></p>
+      <p class="band-foot reveal">
+        <a class="link-more" href="/guide/">The whole guide — weeks, months &amp; deep dives &rarr;</a>
+        &ensp;·&ensp;
+        <a class="link-more" href="/milestones/">Milestone timeline &rarr;</a>
+      </p>
     </div>
   </section>
 
@@ -241,6 +252,13 @@ const weekSlug = (n: number) => String(n).padStart(2, '0');
   }
 
   .band-head h2 { margin: 0; }
+
+  .band-head-link {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .band-head-link:hover { color: var(--accent-primary); }
 
   .band-foot { margin: var(--space-2) 0 0; }
 

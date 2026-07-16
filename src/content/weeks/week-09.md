@@ -4,7 +4,7 @@ title: "Just past two months — the fog lifts and the fun starts"
 description: "The post-vaccine grumpiness fades within a day or two, the smiles turn reliable and chatty, and hands become the most fascinating toy in the room — all while crying keeps sliding down the far side of its peak."
 milestones:
   - title: "Smiles get reliable — and the cooing turns into conversation"
-    detail: "The social smile that arrived around two months is settling into something you can count on: aim your face and your voice at him in a calm, alert moment and he'll usually beam back, using his whole face, not just his mouth. The coos are getting richer too — breathy vowels and throaty gurgles he'll now aim at you, at a toy, or at his own hands, treating his voice as a game. The single most useful thing you can do is take turns: make a sound back at every coo he offers, then pause and leave a gap for his reply. A first chuckle or squeal can surface any time now, though full laughing-out-loud more typically lands closer to 3–4 months — a wide, normal range either way."
+    detail: "The social smile that arrived around two months is settling into something you can count on: aim your face and your voice at him in a calm, alert moment and he'll usually beam back, using his whole face, not just his mouth. The coos are getting richer too — breathy vowels and throaty gurgles he'll now aim at you, at a toy, or at his own hands, treating his voice as a game. The single most useful thing you can do is take turns: make a sound back at every coo he offers, then pause and leave a gap for his reply. A first chuckle or squeal can surface any time now, though a first chuckle more typically lands around four months, with full belly laughs often a bit later — a wide, normal range either way."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/c13m.html" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/development-2mos.html" }
@@ -131,7 +131,7 @@ gear:
           - "Sizing runs snug — measure before buying"
       - name: "Baby Merlin's Magic Sleepsuit"
         note: "A thicker, padded suit (not a sack) that muffles the startle reflex with gentle weight for babies who slept better swaddled — a soft landing between swaddle and open sleep sack."
-        url: "https://merlinsleepsuit.com/"
+        url: "https://www.magicsleepsuit.com"
         pros:
           - "The gentle padding dampens startles that a plain sack won't"
           - "Arms are free and movement is allowed, so it's a true post-swaddle step"

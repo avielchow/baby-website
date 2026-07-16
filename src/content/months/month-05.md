@@ -116,7 +116,7 @@ healthAndCheckups:
       - { label: "AHS", url: "https://myhealth.alberta.ca/Health/pages/conditions.aspx?hwid=ue5162" }
       - { label: "AHS", url: "https://www.healthyparentshealthychildren.ca/im-a-parent/healthy-growing-families/health-checkups-immunizations/" }
   - title: "No vaccines this month — but the six-month round is coming"
-    detail: "There are no routine immunizations at five months on Alberta's schedule. The next set lands at six months: the third dose of the combined DTaP-IPV-Hib-HB vaccine, the third dose of pneumococcal (PNEU-C), and the third dose of oral rotavirus — plus, in fall/winter, influenza becomes an option from six months of age. Immunization appointments book up, so it's worth calling to reserve the six-month visit about four weeks ahead rather than at the last minute."
+    detail: "There are no routine immunizations at five months on Alberta's schedule. The next one lands at six months: the third dose of the combined DTaP-IPV-Hib-HB vaccine (the rotavirus series finished at four months, and the next pneumococcal dose for healthy babies isn't until twelve months) — plus, in fall/winter, influenza becomes an option from six months of age. Immunization appointments book up, so it's worth calling to reserve the six-month visit about four weeks ahead rather than at the last minute."
     sources:
       - { label: "Alberta.ca", url: "https://www.alberta.ca/immunization-routine-schedule" }
       - { label: "AHS", url: "https://www.healthyparentshealthychildren.ca/im-a-parent/healthy-growing-families/health-checkups-immunizations/" }
@@ -181,7 +181,7 @@ gear:
           - "Not a substitute for floor time; overuse can crowd out crawling practice"
       - name: "Fisher-Price Animal Activity Jumperoo"
         note: "A freestanding, feet-to-floor jumper (not a doorway hanger): a spring-suspended seat over its own frame so he bounces by pushing off the floor, surrounded by a ring of toys."
-        url: "https://www.fisher-price.com/en-ca/product/FFJ00"
+        url: "https://shop.mattel.com/pages/fisher-price"
         pros:
           - "Self-standing frame with its own base — no doorway mounting, and the bounce is genuinely satisfying for a bouncy baby"
           - "360° seat and toy ring keep a lot within reach; height adjusts as he grows"

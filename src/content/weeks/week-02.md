@@ -13,7 +13,7 @@ milestones:
       url: "https://www.youtube.com/watch?v=tXE_vKpWyqE"
       channel: "FirstCry Parenting"
   - title: "Cord stump falls off"
-    detail: "Usually between 1 and 3 weeks, most often right around now. It dries from yellow-green to brown to black before detaching, and a few drops of blood-tinged fluid at the navel when it lets go is completely normal. The small raw spot underneath heals over within a week or so — keep it clean and dry, and resist the urge to pull on a stump that's hanging by a thread."
+    detail: "Usually between 1 and 2 weeks, most often right around now (mention it to the doctor if it's still attached at 3). It dries from yellow-green to brown to black before detaching, and a few drops of blood-tinged fluid at the navel when it lets go is completely normal. The small raw spot underneath heals over within a week or so — keep it clean and dry, and resist the urge to pull on a stump that's hanging by a thread."
     sources:
       - label: "AHS"
         url: "https://myhealth.alberta.ca/Health/aftercareinformation/pages/conditions.aspx?HwId=abk2216"
@@ -31,7 +31,7 @@ milestones:
         url: "https://lllusa.org/helping-to-get-breastfeeding-off-to-a-good-start-frequent-access/"
 todos:
   - title: "Vitamin D drops: 400 IU every day if breastfeeding"
-    detail: "Canadian Paediatric Society guidance for all breastfed and partially breastfed babies, starting from birth — breast milk alone doesn't carry enough vitamin D, and at Alberta's latitude babies make next to none from sunlight. Easiest routine: one dropper dose into the cheek (or onto the nipple just before latching) at the same feed every day, so it runs on autopilot. Formula-fed full-term babies usually don't need drops because formula is already fortified. That one daily drop is the entire prevention program for rickets — cheap insurance for growing bones."
+    detail: "Canadian Paediatric Society guidance for all breastfed and partially breastfed babies, starting from birth — breast milk alone doesn't carry enough vitamin D, and at Alberta's latitude babies make next to none from sunlight. Easiest routine: one dropper dose into the cheek (or onto the nipple just before latching) at the same feed every day, so it runs on autopilot. Formula-fed full-term babies usually don't need drops because formula is already fortified. That one daily drop is the entire prevention program for rickets — cheap insurance for growing bones. (One caveat: CPS advises 800 IU for babies in northern communities or with other risk factors — ask at the weight check if that might be you.)"
     sources:
       - label: "CPS"
         url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/vitamin_d"
@@ -60,7 +60,7 @@ todos:
         url: "https://www.alberta.ca/ahcip-how-to-apply"
 feeding:
   - title: "Still 8–12 feeds per 24 hours"
-    detail: "Breastfed babies eat about every 2–3 hours, formula-fed about every 3–4 — counted from the start of one feed to the start of the next, so a 40-minute feed plus a 90-minute nap means it's nearly time again. The trick is catching early hunger cues: stirring, rooting, lip-smacking, hands to mouth. Crying is a late cue, and a frantic baby latches worse than a calm one, so feeding at the first signs makes everyone's night easier. Once he's back above birth weight and gaining steadily, you can generally stop waking him and let him set the night schedule himself."
+    detail: "Breastfed babies eat about every 2–3 hours, formula-fed about every 2–4 — counted from the start of one feed to the start of the next, so a 40-minute feed plus a 90-minute nap means it's nearly time again. The trick is catching early hunger cues: stirring, rooting, lip-smacking, hands to mouth. Crying is a late cue, and a frantic baby latches worse than a calm one, so feeding at the first signs makes everyone's night easier. Once he's back above birth weight and gaining steadily, you can generally stop waking him and let him set the night schedule himself."
     sources:
       - label: "Nemours"
         url: "https://kidshealth.org/en/parents/feednewborn.html"
@@ -87,8 +87,8 @@ feeding:
       - label: "CPS"
         url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/feeding_your_baby_in_the_first_year"
 sleep:
-  - title: "Roughly 14–18 hours a day, still in 2–4 hour pieces"
-    detail: "Newborns sleep a lot but never for long: 2–4 hours at a stretch, around the clock, adding up to 14–18 hours a day — and some log even more. Their sleep cycles are short and mostly light sleep, which is why he startles awake the moment you lower him into the bassinet. Waking to feed this often is biology doing its job: a two-week-old's stomach simply can't hold a whole night's worth of milk."
+  - title: "Roughly 14–17 hours a day, still in 2–4 hour pieces"
+    detail: "Newborns sleep a lot but never for long: 2–4 hours at a stretch, around the clock, adding up to 14–17 hours a day — and some log up to 18–19. Their sleep cycles are short and mostly light sleep, which is why he startles awake the moment you lower him into the bassinet. Waking to feed this often is biology doing its job: a two-week-old's stomach simply can't hold a whole night's worth of milk."
     sources:
       - label: "Nemours"
         url: "https://kidshealth.org/en/parents/sleepnewborn.html"
@@ -124,7 +124,7 @@ redFlags:
       - label: "Nemours"
         url: "https://kidshealth.org/en/parents/grownewborn.html"
   - title: "Baby blues that aren't lifting"
-    detail: "Baby blues peak around day 4 and should be easing by the end of this week — that fade is the defining feature. Low mood, anxiety, or tearfulness that persists past two weeks, feeling hopeless or numb toward the baby, or any thought that life isn't worth living is postpartum depression territory: it affects up to 15 in 100 mothers (partners can get it too), it's very treatable, and it deserves a call to your provider or 811 today. This check is for both of you — the non-birthing parent should be watching, and asking."
+    detail: "Baby blues peak around day 4 and should be easing by the end of this week — that fade is the defining feature. Low mood, anxiety, or tearfulness that persists past two weeks, feeling hopeless or numb toward the baby, or any thought that life isn't worth living is postpartum depression territory: it affects roughly 1 in 8 mothers (partners can get it too), it's very treatable, and it deserves a call to your provider or 811 today. This check is for both of you — the non-birthing parent should be watching, and asking."
     sources:
       - label: "AHS"
         url: "https://myhealth.alberta.ca/Health/Pages/conditions.aspx?hwid=tn7417&lang=en-ca"

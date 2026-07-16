@@ -101,7 +101,7 @@ redFlags:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/depression_in_pregnant_women_and_mothers" }
 alsoWorthKnowing:
   - title: "You're near the top of the crying curve — it's a curve, not a verdict"
-    detail: "Intense crying typically runs from about 2 weeks to 3–4 months, peaking for many babies around 6–8 weeks — so at five weeks you're climbing toward the summit, not lost on an endless plateau. This is the 'Period of PURPLE Crying,' where PURPLE names its features: Peak pattern, Unexpected, Resists soothing, Pain-like face, Long-lasting, and Evening clustering. A baby who cries a lot right now is usually a completely normal baby at the loud end of a normal curve — it isn't caused by anything you're doing, and some of it genuinely can't be soothed by anyone. Knowing the shape is protective: the far side of this hill is real, and it's coming."
+    detail: "Intense crying typically runs from about 2 weeks to 3–4 months, peaking for many babies around 6–8 weeks — so at five weeks you're climbing toward the summit, not lost on an endless plateau. This is the 'Period of PURPLE Crying,' where PURPLE names its features: Peak of crying, Unexpected, Resists soothing, Pain-like face, Long-lasting, and Evening clustering. A baby who cries a lot right now is usually a completely normal baby at the loud end of a normal curve — it isn't caused by anything you're doing, and some of it genuinely can't be soothed by anyone. Knowing the shape is protective: the far side of this hill is real, and it's coming."
     sources:
       - { label: "PURPLE", url: "https://dontshake.org/purple-crying" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying" }
