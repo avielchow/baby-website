@@ -49,6 +49,8 @@ const {
           els.forEach((el) => el.classList.add('is-visible'));
           return;
         }
+        // threshold 0: fire on ANY intersection. A fractional threshold breaks
+        // for elements taller than the viewport (they can never reach it).
         const io = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
@@ -58,7 +60,7 @@ const {
               }
             }
           },
-          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+          { threshold: 0, rootMargin: '0px 0px -40px 0px' }
         );
         els.forEach((el) => io.observe(el));
       }
