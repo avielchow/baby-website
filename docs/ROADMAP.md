@@ -118,7 +118,7 @@
       weeks 1–3, ~15 shots each with per-shot diagrams + Resolve edit walkthroughs
   - [x] Spec + `films` schema + ShotDiagram DSL/renderer + /films index & film template
         + nav "Films" + kit & cheap-upgrades ($100–300) sections
-  - [ ] Week 1–3 production guides authored (in progress)
+  - [x] All 12 weekly production guides authored (weeks 1–12, complete arc)
   - [ ] `videoUrl` embeds as each film gets shot + edited
 - [ ] Monthly letter-to-Baby entries
 
