@@ -1,0 +1,88 @@
+---
+/**
+ * SVG piano keyboard (C2–C5) with a chord voicing highlighted.
+ * Color code: bass = deep sage, chord tones = sage, color notes = rose.
+ * Notes in scientific pitch ("C3", "F#4", "Bb3").
+ */
+interface Props {
+  notes: string[];
+  bass?: string;
+  color?: string[];
+  label?: string;
+}
+const { notes, bass, color = [], label } = Astro.props;
+
+const WHITE = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+const SEMI: Record<string, number> = { C: 0, 'C#': 1, Db: 1, D: 2, 'D#': 3, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, 'G#': 8, Ab: 8, A: 9, 'A#': 10, Bb: 10, B: 11 };
+
+function parse(n: string): { name: string; oct: number } | null {
+  const m = n.trim().match(/^([A-G][#b]?)(\d)$/);
+  return m ? { name: m[1], oct: parseInt(m[2], 10) } : null;
+}
+
+const LOW_OCT = 2, HIGH_OCT = 4; // keyboard C2..B4 + final C5
+const KW = 22, KH = 84, BW = 13, BH = 52;
+const octaves = [2, 3, 4];
+const whiteKeys: { x: number; name: string; oct: number }[] = [];
+let wx = 0;
+for (const o of octaves) for (const w of WHITE) { whiteKeys.push({ x: wx, name: w, oct: o }); wx += KW; }
+whiteKeys.push({ x: wx, name: 'C', oct: 5 });
+const TOTAL_W = wx + KW;
+
+// Black key offsets within an octave (after C, D, F, G, A)
+const BLACKS = [{ name: 'C#', after: 0 }, { name: 'D#', after: 1 }, { name: 'F#', after: 3 }, { name: 'G#', after: 4 }, { name: 'A#', after: 5 }];
+const blackKeys: { x: number; name: string; oct: number }[] = [];
+octaves.forEach((o, oi) => {
+  for (const b of BLACKS) blackKeys.push({ x: (oi * 7 + b.after + 1) * KW - BW / 2, name: b.name, oct: o });
+});
+
+const norm = (n: string) => {
+  const p = parse(n);
+  if (!p) return null;
+  // normalize flats to sharps for matching
+  const flatMap: Record<string, string> = { Db: 'C#', Eb: 'D#', Gb: 'F#', Ab: 'G#', Bb: 'A#' };
+  return { name: flatMap[p.name] ?? p.name, oct: p.oct };
+};
+
+const pressed = new Map<string, 'bass' | 'tone' | 'color'>();
+for (const n of notes) { const p = norm(n); if (p) pressed.set(p.name + p.oct, color.includes(n) ? 'color' : 'tone'); }
+if (bass) { const p = norm(bass); if (p) pressed.set(p.name + p.oct, 'bass'); }
+
+const fill = (kind?: string) =>
+  kind === 'bass' ? 'var(--sage-deep, #557B4B)' : kind === 'tone' ? 'var(--sage, #6B9A5F)' : kind === 'color' ? 'var(--rose, #E8B4B4)' : null;
+
+const H = KH + 20;
+---
+
+<figure class="piano-chord">
+  {label && <figcaption class="pc-label">{label}</figcaption>}
+  <svg viewBox={`0 0 ${TOTAL_W} ${H}`} width="100%" role="img" aria-label={`Keyboard voicing: ${bass ? bass + ' + ' : ''}${notes.join(', ')}`}>
+    {whiteKeys.map((k) => {
+      const kind = pressed.get(k.name + k.oct);
+      return (
+        <>
+          <rect x={k.x} y="0" width={KW} height={KH} rx="2.5" fill={fill(kind) ?? '#FFFFFF'} stroke="var(--line, #E3E8DD)" stroke-width="1" />
+          {kind && <text x={k.x + KW / 2} y={KH + 14} text-anchor="middle" class:list={['pc-note', `pc-${kind}`]}>{k.name}{k.oct}</text>}
+        </>
+      );
+    })}
+    {blackKeys.map((k) => {
+      const kind = pressed.get(k.name + k.oct);
+      return (
+        <>
+          <rect x={k.x} y="0" width={BW} height={BH} rx="2" fill={fill(kind) ?? 'var(--ink, #3D443A)'} stroke={kind ? '#FFFFFF' : 'none'} stroke-width={kind ? 1.5 : 0} />
+          {kind && <text x={k.x + BW / 2} y={KH + 14} text-anchor="middle" class:list={['pc-note', `pc-${kind}`]}>{k.name.replace('#', '♯')}{k.oct}</text>}
+        </>
+      );
+    })}
+  </svg>
+</figure>
+
+<style>
+  .piano-chord { margin: var(--space-half) 0 0; }
+  .pc-label { font-size: var(--fs-small); font-weight: 700; color: var(--text-secondary); margin-bottom: 0.3rem; }
+  .pc-note { font-family: var(--font-body); font-size: 10px; font-weight: 800; }
+  .pc-bass { fill: var(--sage-deep, #557B4B); }
+  .pc-tone { fill: var(--sage, #6B9A5F); }
+  .pc-color { fill: var(--rose-deep, #C98B8B); }
+</style>

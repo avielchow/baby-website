@@ -229,6 +229,57 @@ const films = defineCollection({
   }),
 });
 
+/**
+ * Weekly piano progressions (docs/MUSIC.md): one progression per week with
+ * keyboard-diagram voicings, playback data, LH pattern, melody workshop,
+ * theory bite, and a practice recipe.
+ */
+const musicWeeks = defineCollection({
+  loader: collectionLoader('music'),
+  schema: z.object({
+    week: z.number().int().min(1),
+    title: z.string(),
+    key: z.string(),
+    /** Loop tempo in BPM. */
+    tempo: z.number().int().min(40).max(160),
+    vibe: z.string(),
+    listen: z.object({ title: z.string(), url: z.string().url(), channel: z.string() }),
+    progression: z.object({
+      summary: z.string(),
+      chords: z.array(
+        z.object({
+          symbol: z.string(),
+          roman: z.string(),
+          /** LH anchor note, scientific pitch (e.g. "B2"). */
+          bass: z.string(),
+          /** RH voicing, scientific pitch, low→high. */
+          notes: z.array(z.string()).min(2),
+          /** Subset of `notes` that are the color/non-chord tones. */
+          color: z.array(z.string()).default([]),
+          why: z.string(),
+        })
+      ),
+    }),
+    lh: z.object({
+      name: z.string(),
+      description: z.string(),
+      steps: z.array(z.string()),
+      /** One bar of the pattern over the first chord, note names. */
+      pattern: z.string(),
+    }),
+    melody: z.object({
+      technique: z.string(),
+      description: z.string(),
+      tools: z.array(z.string()),
+      seeds: z.array(z.object({ name: z.string(), phrase: z.string(), tip: z.string() })),
+    }),
+    theory: z.object({ title: z.string(), points: z.array(z.string()) }),
+    practice: z.array(z.object({ minutes: z.number(), what: z.string() })),
+    lastUpdated: z.coerce.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const journalSchema = z.object({
   title: z.string(),
   /** Date the entry describes (used for sorting + display). */
@@ -256,5 +307,6 @@ export const collections = {
   months,
   topics,
   films,
+  music: musicWeeks,
   journal,
 };

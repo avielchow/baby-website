@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import LeafSprig from '../../components/illustrations/LeafSprig.astro';
+
+const weeks = (await getCollection('music', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.week - b.data.week);
+---
+
+<ContentLayout
+  eyebrow="Music"
+  title="A progression a week"
+  description="One pop progression each week to improvise piano over — with the voicings drawn on the keyboard, a left-hand pattern worth learning, melody seeds, and just enough theory to know why it sounds good. Played soft, for a small audience of one."
+  wide
+>
+  <section class="how card reveal">
+    <h2 class="how-title">How to use a week</h2>
+    <ol class="how-list">
+      <li><strong>Listen</strong> to the reference song — get the color in your ear.</li>
+      <li><strong>Tap each chord</strong> to hear it, then find it on the keyboard from the diagram. The rose-colored keys are the color notes — the whole point.</li>
+      <li><strong>Learn the left-hand pattern</strong> slowly, one chord at a time.</li>
+      <li><strong>Loop the progression</strong> and improvise over it with the melody seeds — or put the loop away and be your own left hand.</li>
+      <li><strong>Read the theory bite</strong> last. It names what your hands just learned.</li>
+    </ol>
+  </section>
+
+  {weeks.length === 0 ? (
+    <p class="muted">The first weeks are being written.</p>
+  ) : (
+    <div class="music-grid">
+      {weeks.map((w, i) => (
+        <a class="card card-lift music-card reveal" style={`--reveal-delay:${i * 90}ms`} href={`/music/week-${w.data.week}/`}>
+          <span class="mc-week">Week {w.data.week}</span>
+          <span class="mc-title">“{w.data.title}”</span>
+          <span class="mc-prog">{w.data.progression.summary}</span>
+          <span class="mc-meta">{w.data.key} · {w.data.tempo} BPM · {w.data.vibe}</span>
+        </a>
+      ))}
+    </div>
+  )}
+
+  <p class="foot-note reveal"><LeafSprig width={48} /> New weeks land as the ramp continues — extended chords, borrowed colors, new keys.</p>
+</ContentLayout>
+
+<style>
+  .how { padding: var(--space-2); margin-bottom: var(--space-2); }
+  .how-title { margin-top: 0; }
+  .how-list { padding-left: 1.4rem; margin: 0; max-width: none; }
+  .how-list li { margin-bottom: var(--space-half); }
+
+  .music-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-1); }
+  .music-card { display: flex; flex-direction: column; gap: 0.35rem; padding: var(--space-2); text-decoration: none; color: var(--text-primary); border-top: 4px solid var(--sage); }
+  .mc-week { font-size: var(--fs-eyebrow); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage-deep); }
+  .mc-title { font-family: var(--font-heading); font-weight: 600; font-size: var(--fs-h2); line-height: 1.1; }
+  .mc-prog { font-family: var(--font-heading); font-style: italic; color: var(--text-secondary); }
+  .mc-meta { margin-top: auto; padding-top: var(--space-half); font-size: var(--fs-small); font-weight: 700; color: var(--sage-deep); }
+
+  .foot-note { display: flex; align-items: center; gap: var(--space-half); margin-top: var(--space-2); color: var(--text-secondary); }
+  .muted { color: var(--text-secondary); }
+</style>

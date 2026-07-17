@@ -127,3 +127,8 @@
 - [ ] Printable poster export of the milestone timeline
 - [ ] Year-one recap page / annual "yearbook" PDF
 - [ ] Photo storage migration to R2 if Blob free tier gets tight
+- [ ] **Music section** (see MUSIC.md, spec'd 2026-07-17): weekly piano progressions
+  - [x] Spec + `music` schema + PianoChord keyboard diagrams + WebAudio tap/loop playback
+        + /music index & week template + nav "Music"; nav "Films" → "Film Guide"
+  - [x] Weeks 1–2 authored ("The Descending Line", "The Axis, Recolored")
+  - [ ] Weeks 3+ continue the ramp (borrowed iv, ♭VII, secondary dominants, new keys)
