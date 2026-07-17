@@ -1,0 +1,165 @@
+---
+/**
+ * Top-down shot diagram (docs/VIDEO.md § Shot-diagram DSL): room, window,
+ * subject(s), camera with FOV wedge, movement arrow, and lights — rendered
+ * as a palette-colored SVG floor plan from structured data.
+ */
+interface Pt { x: number; y: number }
+interface Props {
+  diagram: {
+    room: { w: number; h: number };
+    window?: { wall: 'top' | 'bottom' | 'left' | 'right'; from: number; to: number };
+    subject: Pt & { label: string };
+    subject2?: Pt & { label: string };
+    camera: Pt & { facing: number; label: string };
+    move?: { type: string; path: Pt[]; label: string };
+    lights: Array<Pt & { kind: 'stick' | 'practical' | 'reflector' | 'diffusion'; label: string }>;
+    note?: string;
+  };
+}
+const { diagram: d } = Astro.props;
+
+// Layout: room box scaled into a fixed-width stage with margins for labels.
+const STAGE_W = 460;
+const M = 34; // margin around the room for labels/window bars
+const roomW = STAGE_W - M * 2;
+const ratio = Math.min(Math.max(d.room.h / d.room.w, 0.45), 1.4);
+const roomH = Math.round(roomW * ratio);
+const STAGE_H = roomH + M * 2 + (d.note ? 22 : 0);
+
+const px = (p: Pt) => ({ x: M + p.x * roomW, y: M + p.y * roomH });
+
+// Window segment on a wall.
+let win: { x1: number; y1: number; x2: number; y2: number } | null = null;
+if (d.window) {
+  const f = Math.min(d.window.from, d.window.to);
+  const t = Math.max(d.window.from, d.window.to);
+  if (d.window.wall === 'top') win = { x1: M + f * roomW, y1: M, x2: M + t * roomW, y2: M };
+  if (d.window.wall === 'bottom') win = { x1: M + f * roomW, y1: M + roomH, x2: M + t * roomW, y2: M + roomH };
+  if (d.window.wall === 'left') win = { x1: M, y1: M + f * roomH, x2: M, y2: M + t * roomH };
+  if (d.window.wall === 'right') win = { x1: M + roomW, y1: M + f * roomH, x2: M + roomW, y2: M + t * roomH };
+}
+
+// Camera FOV wedge: facing = degrees clockwise from "up".
+const cam = px(d.camera);
+const rad = (deg: number) => ((deg - 90) * Math.PI) / 180; // 0° = up
+const fovLen = 64;
+const half = 20; // half-FOV angle
+const fovPt = (deg: number) => ({
+  x: cam.x + fovLen * Math.cos(rad(deg)),
+  y: cam.y + fovLen * Math.sin(rad(deg)),
+});
+const fovA = fovPt(d.camera.facing - half);
+const fovB = fovPt(d.camera.facing + half);
+
+// Movement arrow.
+const movePts = d.move ? d.move.path.map(px) : [];
+let arrow: { x: number; y: number; a: number } | null = null;
+if (movePts.length >= 2) {
+  const p1 = movePts[movePts.length - 2];
+  const p2 = movePts[movePts.length - 1];
+  arrow = { x: p2.x, y: p2.y, a: (Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180) / Math.PI };
+}
+const movePath = movePts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ');
+
+const subj = px(d.subject);
+const subj2 = d.subject2 ? px(d.subject2) : null;
+const lights = d.lights.map((l) => ({ ...l, ...px(l) }));
+
+// Keep labels inside the stage horizontally.
+const clampX = (x: number) => Math.min(Math.max(x, 40), STAGE_W - 40);
+---
+
+<figure class="shot-diagram">
+  <svg viewBox={`0 0 ${STAGE_W} ${STAGE_H}`} width="100%" role="img" aria-label={`Shot diagram: ${d.camera.label}, ${d.subject.label}`}>
+    <!-- Room -->
+    <rect x={M} y={M} width={roomW} height={roomH} rx="10" fill="var(--sage-wash, #E8F0E3)" stroke="var(--sage, #6B9A5F)" stroke-width="2" />
+
+    <!-- Window -->
+    {win && (
+      <>
+        <line x1={win.x1} y1={win.y1} x2={win.x2} y2={win.y2} stroke="var(--butter, #F2DFA8)" stroke-width="7" stroke-linecap="round" />
+        <text x={clampX((win.x1 + win.x2) / 2)} y={win.y1 === win.y2 ? (win.y1 <= M ? win.y1 - 8 : win.y1 + 16) : (win.y1 + win.y2) / 2} text-anchor="middle" class="lbl lbl-win">window</text>
+      </>
+    )}
+
+    <!-- Movement -->
+    {movePts.length >= 2 && (
+      <>
+        <path d={movePath} fill="none" stroke="var(--rose-deep, #C98B8B)" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round" />
+        {arrow && <path d="M0 0 L-11 -5 L-11 5 Z" fill="var(--rose-deep, #C98B8B)" transform={`translate(${arrow.x} ${arrow.y}) rotate(${arrow.a})`} />}
+        <text x={clampX(movePts[0].x)} y={movePts[0].y - 10} text-anchor="middle" class="lbl lbl-move">{d.move!.label}</text>
+      </>
+    )}
+
+    <!-- FOV wedge -->
+    <path d={`M${cam.x} ${cam.y} L${fovA.x.toFixed(1)} ${fovA.y.toFixed(1)} L${fovB.x.toFixed(1)} ${fovB.y.toFixed(1)} Z`} fill="var(--sage-deep, #557B4B)" opacity="0.13" />
+    <line x1={cam.x} y1={cam.y} x2={fovA.x} y2={fovA.y} stroke="var(--sage-deep, #557B4B)" stroke-width="1.5" />
+    <line x1={cam.x} y1={cam.y} x2={fovB.x} y2={fovB.y} stroke="var(--sage-deep, #557B4B)" stroke-width="1.5" />
+
+    <!-- Camera -->
+    <rect x={cam.x - 8} y={cam.y - 6} width="16" height="12" rx="3" fill="var(--sage-deep, #557B4B)" />
+    <circle cx={cam.x} cy={cam.y - 8} r="3.4" fill="var(--sage-deep, #557B4B)" />
+    <text x={clampX(cam.x)} y={cam.y + 24} text-anchor="middle" class="lbl lbl-cam">{d.camera.label}</text>
+
+    <!-- Subjects -->
+    <circle cx={subj.x} cy={subj.y} r="11" fill="var(--sage, #6B9A5F)" />
+    <circle cx={subj.x} cy={subj.y} r="4" fill="#FFFFFF" />
+    <text x={clampX(subj.x)} y={subj.y - 17} text-anchor="middle" class="lbl">{d.subject.label}</text>
+    {subj2 && (
+      <>
+        <circle cx={subj2.x} cy={subj2.y} r="9" fill="var(--leaf, #8FBC85)" />
+        <text x={clampX(subj2.x)} y={subj2.y - 15} text-anchor="middle" class="lbl">{d.subject2!.label}</text>
+      </>
+    )}
+
+    <!-- Lights -->
+    {lights.map((l) => (
+      <>
+        {l.kind === 'stick' && <rect x={l.x - 11} y={l.y - 3.5} width="22" height="7" rx="3.5" fill="var(--butter, #F2DFA8)" stroke="#C9A64F" stroke-width="1.2" />}
+        {l.kind === 'practical' && (
+          <>
+            <circle cx={l.x} cy={l.y} r="7" fill="var(--butter, #F2DFA8)" stroke="#C9A64F" stroke-width="1.2" />
+            <circle cx={l.x} cy={l.y} r="12" stroke="var(--butter, #F2DFA8)" stroke-width="1.5" stroke-dasharray="1.5 5" fill="none" />
+          </>
+        )}
+        {l.kind === 'reflector' && <path d={`M${l.x - 12} ${l.y + 5} Q${l.x} ${l.y - 9} ${l.x + 12} ${l.y + 5}`} fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" />}
+        {l.kind === 'diffusion' && <rect x={l.x - 13} y={l.y - 4} width="26" height="8" rx="2" fill="#FFFFFF" opacity="0.9" stroke="var(--ink-soft, #68715F)" stroke-width="1" stroke-dasharray="3 3" />}
+        <text x={clampX(l.x)} y={l.y + 20} text-anchor="middle" class="lbl lbl-light">{l.label}</text>
+      </>
+    ))}
+  </svg>
+  {d.note && <figcaption>{d.note}</figcaption>}
+</figure>
+
+<style>
+  .shot-diagram {
+    margin: var(--space-1) 0 0;
+    background: var(--paper);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    padding: var(--space-half);
+  }
+
+  .shot-diagram svg { display: block; }
+
+  .lbl {
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    fill: var(--ink, #3D443A);
+  }
+
+  .lbl-cam { fill: var(--sage-deep, #557B4B); }
+  .lbl-move { fill: var(--rose-deep, #C98B8B); font-weight: 800; font-size: 10px; }
+  .lbl-light { fill: #9a7b2e; font-size: 10px; }
+  .lbl-win { fill: #9a7b2e; font-size: 10px; letter-spacing: 0.06em; }
+
+  figcaption {
+    margin-top: var(--space-half);
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    text-align: center;
+    padding-bottom: var(--space-half);
+  }
+</style>

@@ -114,6 +114,12 @@
   - [x] E — `/milestones` growing-vine timeline (visual index into the months)
   - [x] F — deep-dive topic pages: Starting Solids (~6mo), the 4-Month Sleep Shift
 - [ ] Year two (months 13–24, quarterly) — deferred per MONTHLY.md
+- [ ] **Films section** (see VIDEO.md, spec'd 2026-07-17): cinematic weekly family films,
+      weeks 1–3, ~15 shots each with per-shot diagrams + Resolve edit walkthroughs
+  - [x] Spec + `films` schema + ShotDiagram DSL/renderer + /films index & film template
+        + nav "Films" + kit & cheap-upgrades ($100–300) sections
+  - [ ] Week 1–3 production guides authored (in progress)
+  - [ ] `videoUrl` embeds as each film gets shot + edited
 - [ ] Monthly letter-to-Baby entries
 
 ## Later / maybe

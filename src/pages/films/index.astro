@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import LeafSprig from '../../components/illustrations/LeafSprig.astro';
+
+const films = (await getCollection('films', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.week - b.data.week);
+
+const kit = [
+  { name: 'Sony a7CII + 28 / 50 / 85mm', role: 'The A-camera — nearly every shot. 4K24 full-width in S-Log3; the 50mm is the workhorse, the 85mm is for intimacy, the 28mm for house geography.' },
+  { name: 'DJI Ronin RS3 Mini', role: 'Every slow push, slide, and arc. Balanced once per lens, then it lives ready by the door.' },
+  { name: 'DJI Pocket 3', role: 'Low-mode follows, tight spaces, in-car shots, and a second angle that is always in a pocket.' },
+  { name: 'Fuji X100VI', role: 'The stills beat — a few film-sim frames cut into each film like pages from an album.' },
+  { name: 'iPhone', role: 'Overheads, timelapses of light moving through the house, and the shot you grab because it is the phone in your hand.' },
+  { name: '2 small stick lights (adjustable temperature)', role: 'Accents and fill only — a warm kiss behind a lamp, an edge in a dark hallway. The windows and house lamps do the real lighting.' },
+];
+
+const upgrades = [
+  { name: '5-in-1 collapsible reflector (~110 cm)', cost: '~$30–40', why: "The single biggest upgrade: bounces window light back into shadowed little faces, and its diffusion panel softens harsh sun. One parent can hold it; a chair can too." },
+  { name: 'Variable ND filter (+ step-up rings)', cost: '~$60–100', why: 'Non-negotiable for daylight: keeps the shutter at 1/50 and the aperture wide outdoors (the week-3 outing depends on it). Buy one good one sized to the largest lens thread, with cheap step-up rings for the others.' },
+  { name: 'Diffusion for the stick lights', cost: '~$15', why: 'A sheet of diffusion gel — or honestly a white shower-curtain liner — clipped a hand-span in front of a stick light turns a harsh little bar into a believable soft glow.' },
+  { name: 'Spring clamps + mini tripod', cost: '~$25–35', why: 'Clamps hold diffusion, reflectors, and stick lights to furniture; a tabletop tripod gives the Pocket 3 and locked-off frames a home. This is how one person crews a set.' },
+  { name: '2 warm-dimmable smart bulbs', cost: '~$25', why: 'Drop them into existing lamps (the jade lamps especially) and every practical in the house becomes a controllable movie light at exactly the kelvin you want.' },
+  { name: 'Gaffer tape', cost: '~$15', why: "Marks gimbal start/end positions and tripod feet so week 2's repeat framings actually repeat. Also: every cable, ever." },
+];
+---
+
+<ContentLayout
+  eyebrow="The Films"
+  title="A film a week, for the first weeks"
+  description="One to two minutes each, shot around real life — a cinematic record of the fog and wonder. Each week has a complete production guide: the story, every shot with its diagram, and the edit."
+  wide
+>
+  <section class="film-cards reveal">
+    {films.length === 0 ? (
+      <p class="muted">The production guides are being written — check back shortly.</p>
+    ) : (
+      <div class="film-grid">
+        {films.map((f, i) => (
+          <a class="card card-lift film-card reveal" style={`--reveal-delay:${i * 90}ms`} href={`/films/week-${f.data.week}/`}>
+            <span class="film-week">Week {f.data.week}</span>
+            <span class="film-title">“{f.data.title}”</span>
+            <span class="film-logline">{f.data.logline}</span>
+            <span class="film-meta">{f.data.runtime} · {f.data.shots.length} shots{f.data.videoUrl ? ' · ▶ watch' : ''}</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section class="kit-section reveal" id="kit">
+    <div class="band-head"><h2>The kit</h2><LeafSprig width={56} /></div>
+    <ul class="kit-list">
+      {kit.map((k) => (
+        <li class="kit-item card">
+          <span class="kit-name">{k.name}</span>
+          <span class="kit-role">{k.role}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="kit-section reveal" id="upgrades">
+    <div class="band-head"><h2>Cheap upgrades that punch above their price</h2><LeafSprig width={56} /></div>
+    <p class="upgrade-intro">About $150–250 total buys everything below — each one earns its place on these specific shoots. Nothing here is required; every guide works with the kit as-is.</p>
+    <ol class="upgrade-list">
+      {upgrades.map((u) => (
+        <li class="upgrade card">
+          <div class="upgrade-head">
+            <span class="upgrade-name">{u.name}</span>
+            <span class="upgrade-cost">{u.cost}</span>
+          </div>
+          <p class="upgrade-why">{u.why}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+</ContentLayout>
+
+<style>
+  .film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-1);
+  }
+
+  .film-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: var(--space-2);
+    text-decoration: none;
+    color: var(--text-primary);
+    border-top: 4px solid var(--sage);
+  }
+
+  .film-week {
+    font-size: var(--fs-eyebrow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage-deep);
+  }
+
+  .film-title { font-family: var(--font-heading); font-weight: 600; font-size: var(--fs-h2); line-height: 1.1; }
+  .film-logline { color: var(--text-secondary); font-family: var(--font-heading); font-style: italic; }
+  .film-meta { margin-top: auto; padding-top: var(--space-half); font-size: var(--fs-small); font-weight: 700; color: var(--sage-deep); }
+
+  .kit-section { margin-top: var(--space-3); }
+  .band-head { display: flex; align-items: baseline; gap: var(--space-1); margin-bottom: var(--space-1); }
+  .band-head h2 { margin: 0; }
+
+  .kit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: var(--space-1);
+  }
+
+  .kit-item { display: flex; flex-direction: column; gap: 0.3rem; padding: var(--space-1); }
+  .kit-name { font-weight: 800; }
+  .kit-role { color: var(--text-secondary); font-size: var(--fs-small); }
+
+  .upgrade-intro { color: var(--text-secondary); max-width: none; margin-bottom: var(--space-1); }
+
+  .upgrade-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-half); counter-reset: upgrade; }
+  .upgrade { padding: var(--space-1) var(--space-2); border-left: 4px solid var(--butter); }
+  .upgrade-head { display: flex; align-items: baseline; gap: var(--space-1); flex-wrap: wrap; }
+  .upgrade-name { font-weight: 800; }
+  .upgrade-cost { font-size: var(--fs-small); font-weight: 800; color: #9a7b2e; background: color-mix(in srgb, var(--butter) 45%, #fff); padding: 0.1em 0.7em; border-radius: var(--radius-pill); }
+  .upgrade-why { margin: 0.3rem 0 0; color: var(--text-secondary); font-size: var(--fs-small); max-width: none; }
+
+  .muted { color: var(--text-secondary); }
+</style>

@@ -157,6 +157,78 @@ const topics = defineCollection({
   }),
 });
 
+/**
+ * Weekly family-film production guides (docs/VIDEO.md). Frontmatter holds the
+ * structured shot list (with a diagram per shot) and the Resolve edit plan;
+ * the markdown body holds Story / Mood / Prep.
+ */
+const diagramPoint = z.object({ x: z.number().min(0).max(1), y: z.number().min(0).max(1) });
+
+const shotDiagram = z.object({
+  room: z.object({ w: z.number().positive(), h: z.number().positive() }).default({ w: 5, h: 4 }),
+  window: z
+    .object({
+      wall: z.enum(['top', 'bottom', 'left', 'right']),
+      from: z.number().min(0).max(1),
+      to: z.number().min(0).max(1),
+    })
+    .optional(),
+  subject: diagramPoint.extend({ label: z.string() }),
+  subject2: diagramPoint.extend({ label: z.string() }).optional(),
+  camera: diagramPoint.extend({ facing: z.number(), label: z.string() }),
+  move: z
+    .object({
+      type: z.enum(['push', 'pull', 'slide', 'arc', 'orbit', 'static']),
+      path: z.array(diagramPoint).min(2),
+      label: z.string(),
+    })
+    .optional(),
+  lights: z
+    .array(
+      diagramPoint.extend({
+        kind: z.enum(['stick', 'practical', 'reflector', 'diffusion']),
+        label: z.string(),
+      })
+    )
+    .default([]),
+  note: z.string().optional(),
+});
+
+const films = defineCollection({
+  loader: collectionLoader('films'),
+  schema: z.object({
+    week: z.number().int().min(1),
+    title: z.string(),
+    /** The film's one-sentence story. */
+    logline: z.string(),
+    mood: z.string(),
+    runtime: z.string(),
+    /** The finished film (unlisted YouTube), added once shot + edited. */
+    videoUrl: z.string().url().optional(),
+    shots: z.array(
+      z.object({
+        n: z.number().int(),
+        name: z.string(),
+        purpose: z.string(),
+        gear: z.string(),
+        settings: z.string(),
+        lighting: z.string(),
+        movement: z.string(),
+        direction: z.string().optional(),
+        diagram: shotDiagram,
+      })
+    ),
+    edit: z.object({
+      timeline: z.array(z.string()),
+      gradeNodes: z.array(z.object({ n: z.number().int(), name: z.string(), what: z.string() })),
+      sound: z.array(z.string()),
+    }),
+    music: z.string().optional(),
+    lastUpdated: z.coerce.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const journalSchema = z.object({
   title: z.string(),
   /** Date the entry describes (used for sorting + display). */
@@ -183,5 +255,6 @@ export const collections = {
   weeks,
   months,
   topics,
+  films,
   journal,
 };

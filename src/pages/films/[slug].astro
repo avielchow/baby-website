@@ -1,0 +1,252 @@
+---
+import { getEntry, render } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ShotDiagram from '../../components/ShotDiagram.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import Comments from '../../components/Comments.astro';
+
+const slug = Astro.params.slug;
+if (!slug) return Astro.redirect('/films/', 302);
+
+const entry = await getEntry('films', slug);
+if (!entry || entry.data.draft) return new Response('Film not found', { status: 404 });
+
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<ContentLayout eyebrow={`The Films · Week ${d.week}`} title={`"${d.title}"`} description={d.logline} lastUpdated={d.lastUpdated}>
+  <p class="film-meta reveal">
+    <span class="meta-pill">{d.runtime}</span>
+    <span class="meta-pill">{d.shots.length} shots</span>
+    <span class="meta-mood">{d.mood}</span>
+  </p>
+
+  {d.videoUrl && (
+    <div class="film-embed reveal">
+      <VideoCard title={`"${d.title}" — the finished film`} url={d.videoUrl} channel="Our Little One" />
+    </div>
+  )}
+
+  <div class="film-prose reveal">
+    <Content />
+  </div>
+
+  <section class="week-section reveal" id="shots">
+    <h2 class="section-head">
+      <span class="section-icon" set:html={'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="13" height="11" rx="2"/><path d="M16 12l5-3v9l-5-3"/></svg>'} />
+      The shot list
+    </h2>
+    <p class="shots-intro">Fifteen shots, in story order. Every one is a menu item, not a contract — the baby's schedule always wins.</p>
+    <ol class="shot-list">
+      {d.shots.map((s) => (
+        <li class="shot card" id={`shot-${s.n}`}>
+          <div class="shot-head">
+            <span class="shot-num">{s.n}</span>
+            <div>
+              <h3 class="shot-name">{s.name}</h3>
+              <p class="shot-purpose">{s.purpose}</p>
+            </div>
+          </div>
+          <dl class="shot-specs">
+            <div><dt>Gear</dt><dd>{s.gear}</dd></div>
+            <div><dt>Settings</dt><dd>{s.settings}</dd></div>
+            <div><dt>Lighting</dt><dd>{s.lighting}</dd></div>
+            <div><dt>Movement</dt><dd>{s.movement}</dd></div>
+            {s.direction && <div><dt>Getting the moment</dt><dd>{s.direction}</dd></div>}
+          </dl>
+          <ShotDiagram diagram={s.diagram} />
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="week-section reveal" id="edit">
+    <h2 class="section-head">
+      <span class="section-icon" set:html={'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg>'} />
+      The edit — DaVinci Resolve
+    </h2>
+
+    <h3 class="edit-sub">Assembly & timeline</h3>
+    <ol class="edit-steps">
+      {d.edit.timeline.map((t) => <li>{t}</li>)}
+    </ol>
+
+    <h3 class="edit-sub">The grade, node by node</h3>
+    <ol class="node-chain">
+      {d.edit.gradeNodes.map((n) => (
+        <li class="node card">
+          <span class="node-num">{n.n}</span>
+          <div>
+            <p class="node-name">{n.name}</p>
+            <p class="node-what">{n.what}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <h3 class="edit-sub">Sound</h3>
+    <ul class="sound-list">
+      {d.edit.sound.map((s) => <li>{s}</li>)}
+    </ul>
+
+    {d.music && (
+      <>
+        <h3 class="edit-sub">Music</h3>
+        <p class="music-note">{d.music}</p>
+      </>
+    )}
+  </section>
+
+  <Comments pageId={`film-${d.week}`} backPath={`/films/${slug}/`} />
+
+  <p class="week-nav"><a href="/films/">&larr; All films</a></p>
+</ContentLayout>
+
+<style>
+  .film-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-half);
+    flex-wrap: wrap;
+    max-width: none;
+  }
+
+  .meta-pill {
+    font-size: var(--fs-eyebrow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage-deep);
+    background: var(--sage-wash);
+    padding: 0.3em 0.9em;
+    border-radius: var(--radius-pill);
+  }
+
+  .meta-mood {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  .film-embed { margin: var(--space-1) 0 var(--space-2); }
+
+  .film-prose { font-size: var(--fs-body-lg); line-height: 1.7; }
+  .film-prose :global(p) { margin-bottom: var(--space-paragraph); max-width: none; }
+  .film-prose :global(h2) { margin-top: var(--space-3); font-size: var(--fs-h2); }
+  .film-prose :global(h3) { margin-top: var(--space-2); font-size: var(--fs-h3); }
+  .film-prose :global(ul), .film-prose :global(ol) { max-width: none; margin-bottom: var(--space-paragraph); padding-left: 1.4rem; }
+
+  .week-section { margin-block: var(--space-3); }
+  .section-head { display: flex; align-items: center; gap: var(--space-half); font-size: var(--fs-h2); margin-bottom: var(--space-1); }
+  .section-icon { display: inline-flex; width: 2.4rem; height: 2.4rem; padding: 0.5rem; border-radius: var(--radius-pill); background: var(--sage-wash); color: var(--sage-deep); flex-shrink: 0; }
+  .section-icon :global(svg) { width: 100%; height: 100%; }
+
+  .shots-intro { color: var(--text-secondary); max-width: none; margin-bottom: var(--space-2); }
+
+  .shot-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .shot { padding: var(--space-2); }
+
+  .shot-head {
+    display: flex;
+    gap: var(--space-1);
+    align-items: flex-start;
+    margin-bottom: var(--space-1);
+  }
+
+  .shot-num {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #fff;
+    background: var(--sage);
+    border-radius: var(--radius-pill);
+  }
+
+  .shot-name { margin: 0.15rem 0 0.2rem; font-size: var(--fs-h3); }
+  .shot-purpose { margin: 0; color: var(--text-secondary); font-style: italic; font-family: var(--font-heading); max-width: none; }
+
+  .shot-specs {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-1);
+  }
+
+  .shot-specs > div {
+    background: color-mix(in srgb, var(--sage-wash) 55%, var(--ivory));
+    border-radius: var(--radius-button);
+    padding: var(--space-half) var(--space-1);
+  }
+
+  .shot-specs dt {
+    font-size: var(--fs-eyebrow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage-deep);
+    margin-bottom: 0.2rem;
+  }
+
+  .shot-specs dd { margin: 0; color: var(--text-primary); font-size: var(--fs-small); line-height: 1.55; }
+
+  .edit-sub { margin-top: var(--space-2); }
+
+  .edit-steps { padding-left: 1.4rem; max-width: none; }
+  .edit-steps li { margin-bottom: var(--space-half); }
+
+  .node-chain {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+  }
+
+  .node {
+    display: flex;
+    gap: var(--space-1);
+    align-items: flex-start;
+    padding: var(--space-1);
+    border-left: 4px solid var(--sage);
+  }
+
+  .node-num {
+    flex-shrink: 0;
+    width: 1.8rem;
+    height: 1.8rem;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--sage-deep);
+    background: var(--sage-wash);
+    border-radius: var(--radius-pill);
+  }
+
+  .node-name { margin: 0 0 0.15rem; font-weight: 800; }
+  .node-what { margin: 0; color: var(--text-secondary); font-size: var(--fs-small); max-width: none; }
+
+  .sound-list { padding-left: 1.4rem; max-width: none; }
+  .sound-list li { margin-bottom: 0.4rem; }
+
+  .music-note { color: var(--text-secondary); max-width: none; }
+
+  .week-nav { margin-top: var(--space-3); font-weight: 700; }
+  .week-nav a { text-decoration: none; }
+  .week-nav a:hover { text-decoration: underline; }
+</style>
