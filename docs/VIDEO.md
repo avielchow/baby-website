@@ -18,7 +18,37 @@
 - **Placement:** family-visible section at `/films` (normal family gate). Finished films
   embed on each film page later (unlisted YouTube, `videoUrl` field).
 - **Cheap-gear budget:** $100–300 total, recommended on the Films index.
-- Scope now: **weeks 1–3** (one film per week). More later if the rhythm sticks.
+- Scope: **weeks 1–12** (one film per week, completing the newborn stretch; extended from
+  1–3 on 2026-07-17). Monthly films beyond three months TBD later.
+
+## The 12-week arc (each film's theme + signature device — no two films share one)
+
+1. **"Homecoming"** — arrival; empty-house frames answered by the ending. ✅
+2. **"The Rhythm"** — time without clocks; wall-light timelapse; the chair ×5 montage. ✅
+3. **"Waking Up"** — eyes open; first outing; tummy-time 60p triumph. ✅
+4. **"One Month"** — the month-birthday portrait ritual (first of a monthly series: same
+   spot, same framing every month; the beanbag photo-studio's first real use — X100VI
+   stills + a7CII rolling BTS of the portrait being made). Measurement motifs.
+5. **"The Long Evening"** — the witching hour as a single-evening, near-real-time film,
+   dusk to dark; the soothing repertoire (the 5 S's) staged as choreography chapters.
+6. **"The Turn"** — the crying peak meets the first real smile. The film pivots at the
+   smile: tense/close/dark first half, open/bright after. Includes the "smile trap"
+   (a camera staged ready for days so the first genuine smile is actually captured).
+7. **"Conversations"** — serve-and-return cooing as true dialogue coverage
+   (shot/reverse-shot grammar); the edit may subtitle the coos.
+8. **"Brave"** — two months: vaccine day as a day-structure film. Restraint is the
+   device: the needle is never shown — faces, hands, and the after. (Clinic filming:
+   ask permission, never film staff/other families; hallway + waiting-room only.)
+9. **"Hands"** — the discovery of hands; hands are the protagonist of every frame
+   (macro study, batting, gripping, hand-in-parent-hand scale shots).
+10. **"The First Laugh"** — comedy structure: the parents' escalating attempts as a
+    running gag, the payoff laugh in 4K60.
+11. **"An Ordinary Day"** — one full day, dawn to night, with explicit time-of-day
+    chapter cards (the deliberate inverse of week 2's clockless-ness) — the portrait
+    of a routine that finally exists.
+12. **"The Fourth Trimester"** — the finale: precise re-creations of signature frames
+    from films 1–11 (the door, the chair, the hands, the bassinet wide) match-cut
+    then/now to show three months of growth; ends the newborn era.
 
 ## The kit (all guides are customized to exactly this)
 
