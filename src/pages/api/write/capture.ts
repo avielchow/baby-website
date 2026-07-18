@@ -24,11 +24,19 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const weekStr = String(form.get('week') ?? 'auto');
   const week = weekStr === 'auto' ? undefined : Number(weekStr);
 
-  if (!text.trim() && files.length === 0) {
+  // Photos arrive as pre-uploaded ids (the /write client uploads each photo
+  // individually via /api/write/photo to stay under Vercel's ~4.5MB body cap)…
+  const photoIds: string[] = form
+    .getAll('photoIds')
+    .flatMap((v) => String(v).split(','))
+    .map((s) => s.trim())
+    .filter((s) => /^[\w.-]+$/.test(s));
+
+  if (!text.trim() && files.length === 0 && photoIds.length === 0) {
     return redirect('/write?error=empty', 303);
   }
 
-  const photoIds: string[] = [];
+  // …or, no-JS fallback: small files attached directly to this request.
   for (const file of files) {
     const id = await savePhoto(file);
     if (id) photoIds.push(id);

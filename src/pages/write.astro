@@ -178,12 +178,13 @@ function when(ts: number): string {
 </BaseLayout>
 
 <script>
-  // Resize/compress photos in the browser BEFORE upload so we store small,
-  // web-sized images (a ~4MB phone photo → ~300KB). Keeps us far inside the
-  // free storage tier and makes uploads fast on mobile.
-  // Near-lossless: phone photos keep full quality; only enormous files shrink.
-  async function compress(file: File, maxDim = 4096, quality = 0.95): Promise<File> {
-    if (!file.type.startsWith('image/')) return file;
+  // Vercel caps any single request at ~4.5MB, so photos are uploaded ONE PER
+  // REQUEST via /api/write/photo, each compressed only as much as needed to
+  // fit (near-lossless stays the default; quality steps down only when a
+  // photo would bust the cap).
+  const PHOTO_BUDGET = 3.5 * 1024 * 1024;
+
+  async function renderToJpeg(file: File, maxDim: number, quality: number): Promise<File | null> {
     try {
       const bitmap = await createImageBitmap(file);
       let { width, height } = bitmap;
@@ -197,44 +198,85 @@ function when(ts: number): string {
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext('2d');
-      if (!ctx) return file;
+      if (!ctx) return null;
       ctx.drawImage(bitmap, 0, 0, width, height);
       bitmap.close?.();
       const blob: Blob | null = await new Promise((res) => canvas.toBlob(res, 'image/jpeg', quality));
-      if (!blob || blob.size >= file.size) return file; // don't upsize
-      const name = file.name.replace(/\.[^.]+$/, '') + '.jpg';
-      return new File([blob], name, { type: 'image/jpeg' });
+      if (!blob) return null;
+      return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
     } catch {
-      return file; // e.g. a format the browser can't decode — upload as-is
+      return null; // a format this browser can't decode
     }
+  }
+
+  /** Near-lossless when possible; steps down only until the photo fits. */
+  async function fitPhoto(file: File): Promise<File | null> {
+    const ladder: Array<[number, number]> = [[4096, 0.92], [4096, 0.82], [3200, 0.8], [2400, 0.75]];
+    for (const [dim, q] of ladder) {
+      const out = await renderToJpeg(file, dim, q);
+      if (out === null) break; // undecodable — fall through to the size check
+      if (out.size <= PHOTO_BUDGET) {
+        return out.size < file.size || file.size > PHOTO_BUDGET ? out : file;
+      }
+    }
+    return file.size <= PHOTO_BUDGET ? file : null;
   }
 
   function initWrite() {
     const input = document.getElementById('cap-photos') as HTMLInputElement | null;
     const previews = document.getElementById('photo-previews');
+    const captureForm = document.getElementById('capture-form') as HTMLFormElement | null;
     const submitBtn = document.querySelector<HTMLButtonElement>('.capture-actions button[type="submit"]');
-    let busy = false;
+
     if (input && previews) {
-      input.addEventListener('change', async () => {
-        if (busy) return;
-        const originals = Array.from(input.files ?? []);
-        if (originals.length === 0) { previews.innerHTML = ''; return; }
-        busy = true;
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Optimizing photos…'; }
-        const dt = new DataTransfer();
+      input.addEventListener('change', () => {
         previews.innerHTML = '';
-        for (const original of originals) {
-          const file = await compress(original);
-          dt.items.add(file);
+        for (const file of Array.from(input.files ?? [])) {
           const img = document.createElement('img');
           img.src = URL.createObjectURL(file);
           img.className = 'photo-thumb';
           img.onload = () => URL.revokeObjectURL(img.src);
           previews.appendChild(img);
         }
-        input.files = dt.files; // native submit now sends the compressed files
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Save capture'; }
-        busy = false;
+      });
+    }
+
+    if (captureForm && input && submitBtn && !captureForm.dataset.photoBound) {
+      captureForm.dataset.photoBound = '1';
+      captureForm.addEventListener('submit', async (e) => {
+        const files = Array.from(input.files ?? []);
+        if (files.length === 0) return; // no photos: plain form post
+        e.preventDefault();
+        submitBtn.disabled = true;
+        const fail = (msg: string) => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Save capture';
+          alert(msg);
+        };
+        try {
+          const ids: string[] = [];
+          for (let i = 0; i < files.length; i++) {
+            submitBtn.textContent = `Uploading photo ${i + 1} of ${files.length}…`;
+            const fitted = await fitPhoto(files[i]);
+            if (!fitted) return fail(`"${files[i].name}" couldn't be processed by this browser. Try a JPEG or PNG.`);
+            const fd = new FormData();
+            fd.append('photo', fitted);
+            const res = await fetch('/api/write/photo', { method: 'POST', body: fd });
+            if (!res.ok) return fail(`Photo ${i + 1} failed to upload (${res.status}). Nothing was saved — try again.`);
+            ids.push((await res.json()).id);
+          }
+          submitBtn.textContent = 'Saving…';
+          // Submit the capture natively WITHOUT the files, WITH the ids.
+          input.disabled = true; // disabled inputs are not submitted
+          const hidden = document.createElement('input');
+          hidden.type = 'hidden';
+          hidden.name = 'photoIds';
+          hidden.value = ids.join(',');
+          captureForm.appendChild(hidden);
+          captureForm.submit();
+        } catch {
+          fail('Upload failed — check your connection and try again.');
+        }
       });
     }
 
