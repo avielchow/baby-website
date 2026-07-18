@@ -5,7 +5,7 @@
  */
 // Anchored to Alberta local midnight (MDT, UTC-6) — the server runs in UTC,
 // so a bare Z timestamp would flip the site to "born" 6 hours early.
-export const BIRTH_ANCHOR = new Date('2026-07-15T00:00:00-06:00');
+export const BIRTH_ANCHOR = new Date('2026-07-18T00:00:00-06:00');
 
 /** Return true if `BIRTH_ANCHOR` is still in the future (baby not born yet). */
 export function isPreBirth(now: Date = new Date()): boolean {

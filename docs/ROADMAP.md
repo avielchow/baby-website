@@ -1,6 +1,6 @@
 # Roadmap
 
-> Phases ordered around one fact: **baby arrives ~2026-07-15.** Phase 1 is "ready for the
+> Phases ordered around one fact: **baby arrives ~2026-07-18.** Phase 1 is "ready for the
 > first days"; everything else can land during naps. Check items off as they ship.
 
 ## Phase 1 — Ready for arrival (now)

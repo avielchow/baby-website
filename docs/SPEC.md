@@ -16,7 +16,7 @@ One site, three jobs, in priority order:
 3. **Practical parenting hub** — the week-by-week must-knows and the month-by-month milestone
    timeline are daily-use tools for the parents themselves.
 
-**Context:** baby due **2026-07-15** (Alberta, Canada). A pre-delivery journal post kicks off
+**Context:** baby due **2026-07-18** (Alberta, Canada). A pre-delivery journal post kicks off
 the journal. The site refers to the baby as "Baby" until the birth-announcement post, then we
 do a site-wide rename to the real first name.
 
