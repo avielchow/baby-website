@@ -8,7 +8,7 @@
 that also finds the comedy in the chaos. In practice:
 
 - Present-tense noticing, emotionally honest, specific over general. The smile on a Tuesday
-  at the 7am feed, not "she smiled this week."
+  at the 7am feed, not "he smiled this week."
 - Humor comes from the situation, never at anyone's expense; self-deprecating is fine.
 - One entry can hold both registers — tender paragraph, funny paragraph. Don't force either.
 - **Never invent.** Every event, detail, and feeling comes from Aviel's raw notes. Cleaning
@@ -101,13 +101,13 @@ Rotate across the five lenses below; adapt to the baby's current age and recent 
 (don't repeat a lens two weeks running; reference what's actually happening).
 
 **Lens A — Time capsule / letters:** written to be opened later.
-- "Write to her 18-year-old self about what she was like exactly this week."
+- "Write to his 18-year-old self about what he was like exactly this week."
 - "What do you already want to make sure you never forget about this month? Not the big
   stuff — the texture: sounds, smells, the way the apartment feels at 3am."
 - "Interview yourself from one year ago: what would pre-baby you most want to know?"
 
 **Lens B — Tiny specifics:** force the small concrete details that die first in memory.
-- "Describe her current sounds — the whole catalogue, from hungry squeak to fake cough."
+- "Describe his current sounds — the whole catalogue, from hungry squeak to fake cough."
 - "The inventory: what's actually within arm's reach of the couch right now, and what does
   each item say about this era?"
 - "One ordinary hour, minute by minute. Pick today's most boring hour and save it forever."
@@ -115,12 +115,12 @@ Rotate across the five lenses below; adapt to the baby's current age and recent 
 **Lens C — The two of you / family:** the parents' story, which is half the archive.
 - "What's a thing your partner did this week that you want on the permanent record?"
 - "What did you learn about your own parents this week, now that you're one?"
-- "Grandparents met her this week — what did you see on their faces?"
+- "Grandparents met him this week — what did you see on their faces?"
 
 **Lens D — Change & becoming:** reflection with teeth.
 - "What's something you were sure about a month ago that turned out to be wrong?"
 - "What part of pre-baby you is gone? Are you mourning it or glad?"
-- "She can do a thing this week she couldn't last week. What can YOU do that you couldn't?"
+- "He can do a thing this week he couldn't last week. What can YOU do that you couldn't?"
 
 **Lens E — Comedy hour:** the entry that's allowed to just be funny.
 - "Write the week as a nature documentary narrated by David Attenborough."

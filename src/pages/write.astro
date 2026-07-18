@@ -88,7 +88,7 @@ function when(ts: number): string {
         {justSaved && <p class="write-flash" role="status">Saved. Keep them coming.</p>}
 
         <form method="POST" action="/api/write/capture" enctype="multipart/form-data" class="capture-form card" id="capture-form">
-          <textarea id="cap-text" name="text" rows="5" placeholder="Right now, she…" autofocus></textarea>
+          <textarea id="cap-text" name="text" rows="5" placeholder="Right now, he…" autofocus></textarea>
           {emptyError && <p class="write-error" role="alert">Add a few words or a photo first.</p>}
 
           <div class="meta-row">

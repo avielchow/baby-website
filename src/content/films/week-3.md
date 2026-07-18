@@ -2,8 +2,8 @@
 week: 3
 title: "Waking Up"
 logline: >-
-  Her eyes open for real this week — and in the long, bright stretches between
-  sleeps, she meets the ceiling, the olive tree, your faces, and finally the
+  His eyes open for real this week — and in the long, bright stretches between
+  sleeps, he meets the ceiling, the olive tree, your faces, and finally the
   world outside the front door.
 mood: "awake, curious, opening up, sun-warmed, quietly triumphant"
 runtime: "~90 seconds"
@@ -12,9 +12,9 @@ draft: false
 
 shots:
   - n: 1
-    name: "Her eyes, open"
+    name: "His eyes, open"
     purpose: >-
-      The thesis of the film in one frame: she is awake now, and she is looking.
+      The thesis of the film in one frame: he is awake now, and he is looking.
       Weeks one and two opened on doorways and sleep; week three opens on open
       eyes, tracking. This is the 85mm moment.
     gear: "Sony a7CII + 85mm on the tripod, follow-focus ring mounted"
@@ -23,23 +23,23 @@ shots:
       hold), ISO 800 base, WB locked 5500K, S-Log3/S-Gamut3.Cine 10-bit. Manual
       focus. The 85 is not a true macro — it focuses to about 0.8m — so this is
       a very tight face frame, eyes filling the upper third; punch in 15–20% in
-      post if you want tighter (4K gives you room). Set focus on her near eye
-      with peaking on, then ride the ring in tiny corrections as she moves.
+      post if you want tighter (4K gives you room). Set focus on his near eye
+      with peaking on, then ride the ring in tiny corrections as he moves.
     lighting: >-
-      Window light only, 45 degrees off her face so each iris gets a soft
+      Window light only, 45 degrees off his face so each iris gets a soft
       catchlight. No sticks — anything extra kills the glassy morning look.
-      Safety: nothing on stands near or above her, ever; the tripod stays an
+      Safety: nothing on stands near or above him, ever; the tripod stays an
       arm's length back.
     movement: >-
-      Static, locked off. All the movement in this shot is hers — the eyes
+      Static, locked off. All the movement in this shot is his — the eyes
       tracking is the shot. Resist the push-in.
     direction: >-
-      Build the camera before she wakes, framed on the empty play-mat spot, so
-      the alert window is spent shooting, not rigging. Never wake her for it.
-      When she's up and calm, lay her down and slowly move yourself along the
-      window side of frame — she'll track the biggest, most familiar shape in
+      Build the camera before he wakes, framed on the empty play-mat spot, so
+      the alert window is spent shooting, not rigging. Never wake him for it.
+      When he's up and calm, lay him down and slowly move yourself along the
+      window side of frame — he'll track the biggest, most familiar shape in
       the room, which is you. Two or three 30-second takes, then let the moment
-      be hers.
+      be his.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.2, to: 0.7 }
@@ -48,38 +48,38 @@ shots:
       move:
         type: static
         path: [ { x: 0.72, y: 0.62 }, { x: 0.72, y: 0.62 } ]
-        label: "Locked off — her eyes do the moving"
+        label: "Locked off — his eyes do the moving"
       lights: []
-      note: "Window 45° to her face for catchlights; parent walks the window side to be tracked"
+      note: "Window 45° to his face for catchlights; parent walks the window side to be tracked"
 
   - n: 2
     name: "The ceiling show"
     purpose: >-
       The alert-window study begins: what does a three-week-old do with
-      wakefulness? She watches the ceiling like it's cinema. Profile of her
-      face, eyes darting at light patches — the audience learns to watch her
+      wakefulness? He watches the ceiling like it's cinema. Profile of his
+      face, eyes darting at light patches — the audience learns to watch him
       watching.
     gear: "Sony a7CII + 50mm on the tripod, low"
     settings: >-
       4K24 full-width, 1/50, f/2.2, ISO 800, WB locked 5500K, S-Log3. Manual
-      focus on her upturned eye; at this distance f/2.2 keeps lashes-to-brow
+      focus on his upturned eye; at this distance f/2.2 keeps lashes-to-brow
       sharp while the room behind melts. After the main take, grab a 10-second
       insert of the ceiling itself — tilt the tripod head up from your position,
-      never repositioning over her.
+      never repositioning over him.
     lighting: >-
-      Raking window light across her face in profile. If the room's dark side
+      Raking window light across his face in profile. If the room's dark side
       goes muddy, one stick at 5500K, lowest power, bounced off the far wall as
-      ambient lift — never aimed at her, never above her, stand well clear of
+      ambient lift — never aimed at him, never above him, stand well clear of
       the mat.
     movement: >-
       Static. One long two-minute hold; the edit will find the ten seconds
-      where her eyes go somewhere.
+      where his eyes go somewhere.
     direction: >-
       Alert windows this week are maybe 45–60 minutes and you can't schedule
       them, so this shot lives on the standing set: leave the tripod at this
       height in the corner all week and you can be rolling in thirty seconds.
       Don't dangle anything or direct — the ceiling and the light are the show
-      she chose.
+      he chose.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.2, to: 0.7 }
@@ -91,34 +91,34 @@ shots:
         label: "Static profile, long hold"
       lights:
         - { x: 0.85, y: 0.3, kind: stick, label: "Stick A · 5500K bounced off far wall (optional lift)" }
-      note: "Camera low at her level, shooting her profile — never from above her"
+      note: "Camera low at his level, shooting his profile — never from above him"
 
   - n: 3
-    name: "The olive tree and her"
+    name: "The olive tree and him"
     purpose: >-
-      She has favourites now, and one of them is the olive tree. A rack focus
-      from the leaves to her eyes draws the line the film is about: the world,
-      and her arriving in it.
+      He has favourites now, and one of them is the olive tree. A rack focus
+      from the leaves to his eyes draws the line the film is about: the world,
+      and him arriving in it.
     gear: "Sony a7CII + 85mm on the tripod, follow-focus ring"
     settings: >-
       4K24 full-width, 1/50, f/1.8 wide open — you want the leaves to be pure
-      soft shape when focus lands on her. ISO 800, WB locked 5500K, S-Log3.
+      soft shape when focus lands on him. ISO 800, WB locked 5500K, S-Log3.
       Manual focus with two marks taped on the ring: A = near olive branch in
-      the foreground third, B = her eyes. Rehearse the pull on the empty frame
+      the foreground third, B = his eyes. Rehearse the pull on the empty frame
       until it lands in about two seconds without overshoot.
     lighting: >-
       Window behind or beside the olive tree so the leaves get edge-light and
-      she sits in the soft spill. No sticks; if her face falls a stop too dark,
+      he sits in the soft spill. No sticks; if his face falls a stop too dark,
       a white foam board (or the 5-in-1 reflector if you picked one up) leaned
       against a chair at floor level, bouncing window light gently up — leaned,
-      never on a stand near her.
+      never on a stand near him.
     movement: >-
       Static camera; the move is the focus pull, A to B, once, slow. Do a
       safety take pulling B to A for the edit to choose from.
     direction: >-
-      Set her mat where she already stares at the tree — you've seen her do it,
-      so recreate her geometry, not yours. Roll first, pull when her eyes are
-      open and still. If she's looking elsewhere, the pull still works; you
+      Set his mat where he already stares at the tree — you've seen him do it,
+      so recreate his geometry, not yours. Roll first, pull when his eyes are
+      open and still. If he's looking elsewhere, the pull still works; you
       just cut it shorter.
     diagram:
       room: { w: 5, h: 4 }
@@ -131,32 +131,32 @@ shots:
         path: [ { x: 0.15, y: 0.85 }, { x: 0.15, y: 0.85 } ]
         label: "Static — the move is the focus pull, leaves → eyes"
       lights:
-        - { x: 0.2, y: 0.62, kind: reflector, label: "White board leaned low, lifts her face" }
+        - { x: 0.2, y: 0.62, kind: reflector, label: "White board leaned low, lifts his face" }
       note: "Tree in the near third, baby beyond — window edge-lights the leaves"
 
   - n: 4
     name: "The conversation, over your shoulder"
     purpose: >-
-      The week's headline: she holds eye contact now. Over the parent's
-      shoulder onto her rapt face — half of a two-shot conversation the film
+      The week's headline: he holds eye contact now. Over the parent's
+      shoulder onto his rapt face — half of a two-shot conversation the film
       cuts like dialogue.
     gear: "Sony a7CII + 50mm on the tripod"
     settings: >-
       4K24 full-width, 1/50, f/2.0, ISO 800, WB locked 5500K, S-Log3. Manual
-      focus on her eyes; the parent's shoulder and jaw live as soft foreground
-      in the left third. Frame her a touch off-centre so the reverse (shot 5)
+      focus on his eyes; the parent's shoulder and jaw live as soft foreground
+      in the left third. Frame him a touch off-centre so the reverse (shot 5)
       cuts cleanly — keep the parent camera-left here, and you'll be
       camera-right in the reverse.
     lighting: >-
-      Sit so she faces the window: full soft light on her, the parent's
-      shoulder falling dark. That contrast is the shot — her face is the
+      Sit so he faces the window: full soft light on him, the parent's
+      shoulder falling dark. That contrast is the shot — his face is the
       bright thing being spoken to. No sticks.
     movement: "Static. Let the take run the whole conversation."
     direction: >-
-      Don't perform. Narrate the actual week to her — the tree, the cats, the
-      drive — in the sing-song voice you already use. She locks onto faces at
-      20–30cm, so hold her close on the lap or knees-up. Roll long; the edit
-      wants the second she visibly listens.
+      Don't perform. Narrate the actual week to him — the tree, the cats, the
+      drive — in the sing-song voice you already use. He locks onto faces at
+      20–30cm, so hold him close on the lap or knees-up. Roll long; the edit
+      wants the second he visibly listens.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: right, from: 0.25, to: 0.75 }
@@ -168,18 +168,18 @@ shots:
         path: [ { x: 0.22, y: 0.72 }, { x: 0.22, y: 0.72 } ]
         label: "Static over-shoulder"
       lights: []
-      note: "Her face takes the window; parent stays soft and dark in the near third"
+      note: "His face takes the window; parent stays soft and dark in the near third"
 
   - n: 5
-    name: "The conversation, her side"
+    name: "The conversation, his side"
     purpose: >-
       The reverse: the parent's face mid-sentence, all lit-up and ridiculous
-      and in love, with the back of her head soft in the foreground. Cut
-      against shot 4, this is the first real dialogue scene of her life.
+      and in love, with the back of his head soft in the foreground. Cut
+      against shot 4, this is the first real dialogue scene of his life.
     gear: "Sony a7CII + 85mm on the tripod"
     settings: >-
       4K24 full-width, 1/50, f/1.8, ISO 800, WB locked 5500K, S-Log3. Manual
-      focus on the parent's near eye; her head is a soft shape in the right
+      focus on the parent's near eye; his head is a soft shape in the right
       third, mirroring shot 4's geometry so the two shots cut as one scene.
       Shot as a separate take from shot 4 — same seat, same window, camera
       moved to the other side.
@@ -189,7 +189,7 @@ shots:
       seats. No sticks.
     movement: "Static."
     direction: >-
-      This one needs the other parent holding her, or her propped safely on
+      This one needs the other parent holding him, or him propped safely on
       the sitting parent's knees with the camera pre-framed — it is still a
       one-operator shot, just a two-person scene. Keep talking through the
       reframe; the audio from either take can carry both angles.
@@ -210,28 +210,28 @@ shots:
     name: "Tummy time: the attempt"
     purpose: >-
       Comedy and heroism at carpet level: the wobble, the face-plant, the
-      try-again. The Pocket 3 lives where she lives — one inch off the floor.
+      try-again. The Pocket 3 lives where he lives — one inch off the floor.
     gear: "DJI Pocket 3, handheld in low grip at floor level"
     settings: >-
       4K24, shutter locked 1/50 in Pro mode, D-Log M 10-bit, ISO capped 1600,
-      WB locked 5500K. Face-on to her at mat level, lens at her eye height.
+      WB locked 5500K. Face-on to him at mat level, lens at his eye height.
       The tiny sensor's extra depth of field is a feature here — the flailing
       stays sharp.
     lighting: >-
       Daylight from the window raking across the mat so every push-up throws
       a little shadow — effort made visible. Nothing else. Keep the mat zone
       completely clear of stands and cables; you are lying on the floor with
-      her, and that's the whole rig.
+      him, and that's the whole rig.
     movement: >-
       Pocket 3 in Follow mode, a slow six-inch slide left-to-right at carpet
-      level during her best effort — or just hold still; the gimbal eats your
+      level during his best effort — or just hold still; the gimbal eats your
       breathing either way.
     direction: >-
       Tummy time is already on the schedule — shoot the session you were
       going to do anyway, never add one for the camera. These sessions are
-      short at three weeks (a few minutes), so be rolling before she's on her
+      short at three weeks (a few minutes), so be rolling before he's on his
       front. Frustration is part of the story; roll through one grumble, then
-      camera down, rescue her.
+      camera down, rescue him.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.25, to: 0.75 }
@@ -255,7 +255,7 @@ shots:
       4K60 — note this is an APS-C crop on the a7CII, so the 28mm frames like
       ~42mm, which lands you at a perfect intimate-normal at floor level.
       Shutter 1/125 (180 degrees at 60p), f/2.8, ISO 800, WB locked 5500K,
-      S-Log3. Manual focus pre-set to her head-lift position. Conform to 24fps
+      S-Log3. Manual focus pre-set to his head-lift position. Conform to 24fps
       in the edit — 40% speed.
     lighting: >-
       Same raking window as shot 6 — these two shots are one session, one
@@ -263,9 +263,9 @@ shots:
       silhouette-edged rise.
     movement: >-
       Static, camera grounded on the beanbag — steadier than any tripod at
-      this height and nothing to tip near her.
+      this height and nothing to tip near him.
     direction: >-
-      Shoot shot 6 first, then swap to the a7CII for her second wind. The
+      Shoot shot 6 first, then swap to the a7CII for his second wind. The
       lift lasts a second or two; 60p means you only need one. If today's
       session doesn't produce it, tomorrow's will — the shot list is a menu,
       not a contract.
@@ -285,11 +285,11 @@ shots:
     name: "The click, and the drive"
     purpose: >-
       The first outing begins with a sound: the car-seat buckle. A tight
-      insert of the click, then the quiet wide-eyed ride — her first time
-      moving through the world faster than arms can carry her.
+      insert of the click, then the quiet wide-eyed ride — his first time
+      moving through the world faster than arms can carry him.
     gear: >-
       Insert: a7CII + 28mm handheld (IBIS on). Drive: DJI Pocket 3, held by
-      the parent in the seat beside her — never by the driver.
+      the parent in the seat beside him — never by the driver.
     settings: >-
       Insert (driveway): 4K24, 1/50, f/2.8, ISO 800, WB locked 5500K, S-Log3
       — open shade by the car door needs roughly ND8–ND16 on the variable ND
@@ -301,10 +301,10 @@ shots:
       All found light. For the insert, put the sun behind the camera side of
       the car so the buckle sits in soft open shade, not blasting sun. In the
       car, the windows do everything; a white burp cloth on the seat beside
-      her bounces a surprising amount of fill.
+      him bounces a surprising amount of fill.
     movement: >-
       Insert: handheld, braced on the door frame, static-ish. Drive: Pocket 3
-      in Follow mode, hand-held low and steady, framing her face in the
+      in Follow mode, hand-held low and steady, framing his face in the
       rear-facing seat from the adjacent seat. Non-negotiable: filming happens
       only when one parent drives and the other rides in back as camera —
       solo drives are camera-off drives, and nothing is ever rigged where it
@@ -313,7 +313,7 @@ shots:
       Time the departure just after a feed so the motion lulls instead of
       upsets. Get the click twice at the door (once tight on hands, once
       wider), then put the big camera away. In the car, roll long stretches
-      and say nothing — engine hum plus her wide eyes is the scene.
+      and say nothing — engine hum plus his wide eyes is the scene.
     diagram:
       room: { w: 5, h: 3 }
       subject: { x: 0.68, y: 0.62, label: "Baby, rear-facing seat" }
@@ -345,8 +345,8 @@ shots:
       Sun position is the lighting plan: walk a route where the low sun
       (before 10am or after 5pm — midday Alberta sun in July is brutal and
       toppy) stays behind or beside the camera, edge-lighting the stroller.
-      The canopy keeps direct sun off her completely — her shade is
-      non-negotiable; the light show happens around her, not on her.
+      The canopy keeps direct sun off him completely — his shade is
+      non-negotiable; the light show happens around him, not on him.
     movement: >-
       RS3 Mini in Pan Follow, heel-to-toe ninja walk, knees soft. One parent
       pushes the stroller at a stroll; the camera parent tracks alongside at
@@ -374,8 +374,8 @@ shots:
     name: "The world, in stills"
     purpose: >-
       A breath in the middle of the outing: four or five X100VI frames cut as
-      a stills montage — her hand in the light, the stroller wheel on the
-      path, leaf shadows, the street she now belongs to. Texture the video
+      a stills montage — his hand in the light, the stroller wheel on the
+      path, leaf shadows, the street he now belongs to. Texture the video
       can't make.
     gear: "Fuji X100VI, handheld, on the same walk as shot 9"
     settings: >-
@@ -384,7 +384,7 @@ shots:
       walking frames, ISO 125; flick on the X100VI's built-in 4-stop ND if
       you want f/2 sun-soaked frames without clipping. No 1/50 rule here —
       stills live by their own physics. Absolutely no flash anywhere near
-      her, ever.
+      him, ever.
     lighting: >-
       The same low sun as shot 9 — shoot with it and across it. Backlit leaf
       shadows on the stroller canopy are the money frame; expose for the
@@ -394,8 +394,8 @@ shots:
       montage's motion comes from the edit, not the camera.
     direction: >-
       Two-minute detour, ten frames, done. Get one frame of each scale:
-      detail (her fingers), object (the wheel), place (the street with
-      stroller small in it). That wide place-frame is the arc shot — she is
+      detail (his fingers), object (the wheel), place (the street with
+      stroller small in it). That wide place-frame is the arc shot — he is
       in the world now.
     diagram:
       room: { w: 6, h: 3 }
@@ -431,7 +431,7 @@ shots:
       practical lamp beside the chair as the only source by evening. One stick
       hidden behind the lamp at 3200K, low power, can thicken the lamp's pool
       for the final take — on a shelf or clipped low across the room from
-      her, never above, never near.
+      him, never above, never near.
     movement: "Locked off. Identical frame every take — the cut does the moving."
     direction: >-
       Four takes of 30–60 seconds: morning, midday, late afternoon, lamp-lit
@@ -457,7 +457,7 @@ shots:
     name: "The evening dance"
     purpose: >-
       Dusk brings the fussing, and the fussing brings the dance: a parent
-      swaying with her against the blue window, a silhouette that says this
+      swaying with him against the blue window, a silhouette that says this
       is hard and beautiful in the same frame.
     gear: "Sony a7CII + 50mm on the tripod"
     settings: >-
@@ -471,7 +471,7 @@ shots:
       The window's dying dusk is the backlight; the corner lamp is the amber
       accent. One stick at 3200K, low, behind the lamp shade to strengthen
       its pool if the lamp alone is weak — on the floor across the room,
-      nowhere near the dance path, nothing she could be carried into.
+      nowhere near the dance path, nothing he could be carried into.
     movement: >-
       Static. The sway is the choreography; the camera holds still and lets
       the silhouette move through the window's light.
@@ -479,7 +479,7 @@ shots:
       Do not stage the fussing — evening will provide. When the rocking
       starts anyway, tap record and step out of the room's sightline; this
       shot works best when the parent dancing forgets it's rolling. Thirty
-      seconds is plenty. If she needs both of you, the camera loses; it
+      seconds is plenty. If he needs both of you, the camera loses; it
       always loses.
     diagram:
       room: { w: 5, h: 4 }
@@ -516,8 +516,8 @@ shots:
       on the counter, lens down, done.
     movement: >-
       Pocket 3 in Follow mode, handheld: one slow drift from the hands
-      supporting her head down the length of the tub to her feet kicking.
-      One-handed by design — the other parent is the one bathing her; solo
+      supporting his head down the length of the tub to his feet kicking.
+      One-handed by design — the other parent is the one bathing him; solo
       bath nights are no-camera nights.
     direction: >-
       Shoot the third or fourth bath of the week, not the first — you want
@@ -538,11 +538,11 @@ shots:
       note: "Camera parent ≠ bathing parent. Anything needs two hands → camera down."
 
   - n: 14
-    name: "The house has absorbed her"
+    name: "The house has absorbed him"
     purpose: >-
       The callback: the same wide, empty-house frames week one opened on —
       re-shot exactly, except now the bassinet lives by the couch, the
-      stroller sleeps in the hallway, and the cats sleep beside her like
+      stroller sleeps in the hallway, and the cats sleep beside him like
       they were hired for it. Nobody poses. The house just looks like this now.
     gear: "Sony a7CII + 28mm on the tripod"
     settings: >-
@@ -563,7 +563,7 @@ shots:
       Do not tidy first — the burp cloth on the couch arm is documentary
       gold. Do not place the cats; shoot the frame when they've already
       chosen the bassinet's side, which by week three is most afternoons.
-      If she's asleep in the bassinet in frame, she's on her back in a bare
+      If he's asleep in the bassinet in frame, he's on his back in a bare
       sleep space — the wide should prove it, because these are the frames
       the family will study.
     diagram:
@@ -584,13 +584,13 @@ shots:
     name: "Almost"
     purpose: >-
       The closer, and the tease: eye contact held longer than it has ever
-      been held, and then — a flicker at the corner of her mouth that is
+      been held, and then — a flicker at the corner of his mouth that is
       almost, almost a smile. The film ends leaning forward. So does everyone
       watching it.
     gear: "Sony a7CII + 85mm on the tripod, follow-focus ring"
     settings: >-
       4K24 full-width, 1/50, f/1.8, ISO 800, WB locked 5500K, S-Log3. Manual
-      focus nailed on her eyes, same tight face-frame family as shot 1 — the
+      focus nailed on his eyes, same tight face-frame family as shot 1 — the
       film opens and closes on the same glass and the same distance, which is
       the rhyme the three weekly closers share. Roll one long take; do not
       cut the camera when you think you have it.
@@ -603,12 +603,12 @@ shots:
       Static. If the flicker comes, hold. Three more seconds of stillness
       after it is worth more than any move you could make.
     direction: >-
-      Face-to-face at her 20–30cm focus distance, over the seated parent's
+      Face-to-face at his 20–30cm focus distance, over the seated parent's
       shoulder or on raised knees. Talk softly, smile hugely — real smiles
       get mirrored somewhere between now and week six, and the almost-smile
       is what you're fishing for. If today gives you nothing, tomorrow's
       window is fine; never chase it into an overtired stretch, and never,
-      ever wake her to try.
+      ever wake him to try.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.2, to: 0.7 }
@@ -639,7 +639,7 @@ edit:
     - >-
       The alert-window suite (shots 2–5): medium-slow pace, 4–6 seconds a
       cut. Cut shots 4 and 5 as true dialogue coverage — over-shoulder, then
-      reverse on the parent mid-word, then back for her listening face. Use
+      reverse on the parent mid-word, then back for his listening face. Use
       one take's audio under both angles so the talking flows across the cut.
     - >-
       Tummy time (6–7): cut from the Pocket 3 wobble straight to the 4K60
@@ -760,9 +760,9 @@ edit:
       almost-solo moment), stroller wheels on the path, wind in the trees,
       bath-water kicks.
     - >-
-      Keep her actual sounds sacred: coos and grunts from the conversation
+      Keep his actual sounds sacred: coos and grunts from the conversation
       and tummy-time takes ride above the music; automate the music down
-      3–4dB whenever she vocalizes.
+      3–4dB whenever he vocalizes.
     - >-
       The marathon jump cuts share one continuous room-tone bed so the hard
       picture cuts feel soft; let the lamp-lit final take keep a hint of the
@@ -783,24 +783,24 @@ music: >-
   YouTube's own Audio Library, which is free and safe even if a link escapes
   the family group chat. Commercial songs will likely get Content-ID claimed
   even unlisted; a claim won't take the video down, but ads can appear over
-  your daughter's face, which is reason enough to stay licensed.
+  your son's face, which is reason enough to stay licensed.
 ---
 
 ## The story
 
-Week three has a plot twist, and the plot twist is that she's *in* there. The
-first two films were about her arriving and about you all surviving the
-arrival — she was the still center that everything moved around. This week the
+Week three has a plot twist, and the plot twist is that he's *in* there. The
+first two films were about him arriving and about you all surviving the
+arrival — he was the still center that everything moved around. This week the
 eyes open, properly and for real, and stay open in long bright stretches, and
 suddenly there is a person in the bassinet conducting a serious study of the
 ceiling.
 
 So the film opens on the eyes — tracking, deliberate, backlit by the morning
-window — and spends its first act just watching her watch: the ceiling, the
-olive tree, and then the best thing in her world, which is a face talking to
-her from thirty centimeters away. We shoot that conversation like a real
-scene, over-the-shoulder and reverse, because it *is* a real scene now; she
-holds up her end with her whole body.
+window — and spends its first act just watching him watch: the ceiling, the
+olive tree, and then the best thing in his world, which is a face talking to
+him from thirty centimeters away. We shoot that conversation like a real
+scene, over-the-shoulder and reverse, because it *is* a real scene now; he
+holds up his end with his whole body.
 
 The middle act is effort and adventure. Tummy time gives us the week's action
 sequence — the wobble, the face-plant, and then, in the film's only slow
@@ -808,7 +808,7 @@ motion, the head coming up and holding. Then the front door opens for the
 first real outing: the car-seat click, the wide-eyed drive, and the stroller
 rolling into Alberta summer light with the camera gliding alongside. The
 cutting gets quicker here than anywhere in the three-week arc — the film
-physically wakes up with her.
+physically wakes up with him.
 
 Then it settles, because weeks still have evenings. The growth-spurt marathon
 compresses a whole cluster-feed day into four honest jump cuts of the same
@@ -816,12 +816,12 @@ chair as the light crosses the room. Dusk brings the fussing and the swaying
 silhouette; bath night, once a trembling event, is now just Tuesday. And then
 the callback: the same empty wides the Homecoming film opened on, re-framed
 exactly — except the bassinet lives by the couch now, the stroller sleeps in
-the hall, and the cats have appointed themselves to her honor guard. The house
-didn't make room for her. She became part of the house.
+the hall, and the cats have appointed themselves to his honor guard. The house
+didn't make room for him. He became part of the house.
 
 The closer rhymes with the opener and with the endings of both earlier films:
-her face, the 85, eye contact held longer than ever — and a flicker at the
-corner of her mouth that is almost, *almost* a smile. Cut to black on the
+his face, the 85, eye contact held longer than ever — and a flicker at the
+corner of his mouth that is almost, *almost* a smile. Cut to black on the
 flicker. That's the tease. Everyone will watch week four for the payoff.
 
 ## Mood & look
@@ -846,28 +846,28 @@ a held breath lets out.
 ## Prep & shoot-day plan
 
 **Shoot around alert windows, and treat them like weather.** At three weeks
-she'll give you a few 45–60 minute stretches of calm alertness a day, usually
+he'll give you a few 45–60 minute stretches of calm alertness a day, usually
 after a feed, and you cannot schedule them — you can only be ready. So the
 core trick of this week is the standing set: the play-mat corner stays
 dressed all week, the tripod stays at shot-2 height in the corner, the a7CII
 lives beside it with a charged battery, formatted card, WB locked, S-Log3
-set, and yesterday's lens still mounted. When she wakes up bright, you should
+set, and yesterday's lens still mounted. When he wakes up bright, you should
 be rolling inside thirty seconds. The eye shots (1, 2, 3, 15) and the
 conversation pair (4, 5) are all harvested from these windows across the week
-— never all in one day, and never by waking her or stretching a window that's
+— never all in one day, and never by waking him or stretching a window that's
 tipping into overtired. The shot list is a menu, not a contract.
 
 **The outing is the week's mini-production — plan it like one.** Pick the
 day by forecast: you want the golden-hour end of a clear evening or a soft
-morning, not a windy noon. Feed her, then load: a7CII with the 28mm balanced
+morning, not a windy noon. Feed him, then load: a7CII with the 28mm balanced
 on the RS3 Mini *before* you leave (balance it in the living room, not on the
 sidewalk), variable ND already on the lens, Pocket 3 in a jacket pocket,
 X100VI over a shoulder. Roles are fixed: one parent drives and pushes, the
 other operates — the camera never belongs to whoever's hands are responsible
-for her. Shot order on location: the click at the car (8), drive footage from
+for him. Shot order on location: the click at the car (8), drive footage from
 the adjacent seat (8), then the stroller passes (9), then the two-minute
 stills detour (10). The whole outing shoot is maybe twenty minutes inside a
-walk you were taking anyway; when she's done, you're done.
+walk you were taking anyway; when he's done, you're done.
 
 **Weather backup:** if the week turns rainy, the outing compresses honestly —
 the click, the drive, and a 28mm frame of the stroller parked at the open
@@ -884,4 +884,4 @@ back inside, and check it's *off* the lens for the window shots — a
 forgotten ND indoors is the classic way to end up at ISO 12800 wondering why.
 Evening shots (11's last take, 12, 13) are the sticks' only appearances this
 week: both charged, both at 3200K, and both placed where nothing — cats
-included — can send them anywhere near her.
+included — can send them anywhere near him.

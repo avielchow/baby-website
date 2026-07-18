@@ -19,7 +19,7 @@ shots:
       compression). Press-and-hold on the wall to lock AE/AF before you start so
       the exposure doesn't breathe as the sun moves. Frame the wall above the
       crib with a sliver of crib rail at the bottom for scale. Let it run 30–45
-      minutes mid-morning while she naps; longer is better if the phone can sit
+      minutes mid-morning while he naps; longer is better if the phone can sit
       undisturbed.
     lighting: >-
       Window light only — the whole point is the uncontrolled sun doing its arc.
@@ -60,9 +60,9 @@ shots:
       stay motivated by the window.
     movement: "Locked-off tripod. The only motion is dust in the blade and slow breathing."
     direction: >-
-      Shoot during the midday nap when someone's actually dozing next to her
-      bassinet — real exhaustion frames better than staged. Baby in her own
-      sleep space, on her back, nothing in the bassinet: the safe-sleep rule is
+      Shoot during the midday nap when someone's actually dozing next to his
+      bassinet — real exhaustion frames better than staged. Baby in his own
+      sleep space, on his back, nothing in the bassinet: the safe-sleep rule is
       also the composition.
     diagram:
       room: { w: 5, h: 4 }
@@ -81,24 +81,24 @@ shots:
       4K24, 1/50, S-Log3. 85mm wide open at f/1.8 — compression plus shallow
       depth turns the lamp pool into a world. ISO at second base 3200, ceiling
       12800 if the lamp is dim. Embrace the grain means this: expose for the
-      lamp's pool on her face and let the room fall away to black — do NOT
+      lamp's pool on his face and let the room fall away to black — do NOT
       lift shadows in camera or in the grade to "rescue" the corners, because
       noise lives in lifted shadows. A stop of honest darkness plus fine grain
       in the grade reads as texture; a brightened noisy room reads as error.
       WB locked 4300K so the ~2700K lamp renders golden, not orange. Manual
-      focus, pre-set on the chair before she wakes.
+      focus, pre-set on the chair before he wakes.
     lighting: >-
       ONE motivated warm source: the feeding-chair lamp, shade on, 2700K.
       Stick A hides directly behind the lamp base at matching 2700K, low power,
       purely to boost the practical's output a stop — it must never read as a
       second source. Lamp on a side table at adult-shoulder height, a full arm's
       length from the chair: nothing above the baby, nothing that can tip
-      toward her, nothing hot within reach.
+      toward him, nothing hot within reach.
     movement: "Locked-off. The stillness is the point — set it before the wake-up and let the take run long."
     direction: >-
       Frame and focus the empty chair at bedtime; when the night feed happens,
       hit record and sit down. Short takes, camera runs while the feed simply
-      happens. If she's fussy, the camera waits — the schedule always wins.
+      happens. If he's fussy, the camera waits — the schedule always wins.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.2, to: 0.7 }
@@ -124,7 +124,7 @@ shots:
     movement: "Locked-off frame; the only movement is the focus pull between cheek and hand."
     direction: >-
       Steal this in the same feed as shot 3 — reposition quietly mid-feed, one
-      tripod move, no light changes. If the move risks waking her, skip it and
+      tripod move, no light changes. If the move risks waking him, skip it and
       take it tomorrow night; the frames must feel unhurried.
     diagram:
       room: { w: 5, h: 4 }
@@ -157,7 +157,7 @@ shots:
     direction: >-
       Shoot the third change of the day, not the first — mid-morning light is
       best and everyone's warmed up. Camera lives beside the table, never over
-      her. Roll before the diaper comes off and let the whole ballet run; you'll
+      him. Roll before the diaper comes off and let the whole ballet run; you'll
       cut it to four beats later.
     diagram:
       room: { w: 5, h: 4 }
@@ -170,7 +170,7 @@ shots:
   - n: 6
     name: "The swaddle, slowed"
     purpose: >-
-      The wrap as ritual: fold, tuck, fold, the startle of her arms, then the
+      The wrap as ritual: fold, tuck, fold, the startle of his arms, then the
       settling. Slow motion earns its place here — this is the one gesture of
       the week that deserves to be stretched.
     gear: "a7CII + 50mm on tripod, 45° to the changing pad"
@@ -203,8 +203,8 @@ shots:
     name: "Tiny details — the cord"
     purpose: >-
       The week the cord stump darkens, dries, and lets go — the first thing of
-      hers to become a keepsake. Paired with the peeling newborn skin on her
-      hands: her body is literally shedding its first draft.
+      his to become a keepsake. Paired with the peeling newborn skin on his
+      hands: his body is literally shedding its first draft.
     gear: "a7CII + 85mm on tripod at minimum focus distance"
     settings: >-
       4K24, 1/50, S-Log3. The 85mm is not a macro — park it at its minimum
@@ -219,7 +219,7 @@ shots:
       beautiful instead of clinical. No sticks: bare window softness only.
     movement: "Locked-off. Stillness lets the tiny scale register."
     direction: >-
-      Shoot during a calm post-feed window with her on a plain blanket, diaper
+      Shoot during a calm post-feed window with him on a plain blanket, diaper
       open just enough. Keep takes under a minute; warmth matters more than
       coverage. If the cord falls this week, photograph the empty spot the same
       way — the edit wants the before and after.
@@ -232,8 +232,8 @@ shots:
   - n: 8
     name: "The grip"
     purpose: >-
-      The grasp reflex: a parent's finger offered, her whole fist answering.
-      The one shot where she seems to hold on to us instead of the reverse —
+      The grasp reflex: a parent's finger offered, his whole fist answering.
+      The one shot where he seems to hold on to us instead of the reverse —
       the emotional pivot of the details pass.
     gear: "a7CII + 85mm on tripod"
     settings: >-
@@ -244,13 +244,13 @@ shots:
     lighting: "Window key from the left, same bed setup as shot 7 — shoot them in one session, one lighting state."
     movement: "Locked-off."
     direction: >-
-      Stroke her palm to trigger the reflex; she does the rest. Give it three
+      Stroke his palm to trigger the reflex; he does the rest. Give it three
       or four offers across a calm alert window — the take you want is the slow
       curl, not the instant clamp.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.25, to: 0.75 }
-      subject: { x: 0.45, y: 0.4, label: "Her fist around a finger" }
+      subject: { x: 0.45, y: 0.4, label: "His fist around a finger" }
       camera: { x: 0.7, y: 0.6, facing: 310, label: "a7CII · 85mm f/1.8" }
       note: "Same window state as shot 7 — batch these."
   - n: 9
@@ -269,15 +269,15 @@ shots:
     lighting: "Whatever window light exists at nap time. Stills forgive what video doesn't — chase no light for this."
     movement: "None during frames — brace, breathe out, shoot. You move between compositions, not during them."
     direction: >-
-      Shoot while she sleeps in the bassinet — on her back, nothing else in it
-      (the safe-sleep frame is the beautiful frame). Silent shutter means she
+      Shoot while he sleeps in the bassinet — on his back, nothing else in it
+      (the safe-sleep frame is the beautiful frame). Silent shutter means he
       never knows you were there.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.2, to: 0.7 }
       subject: { x: 0.4, y: 0.3, label: "Bassinet — sleeping face" }
       camera: { x: 0.55, y: 0.55, facing: 330, label: "X100VI · stills, silent" }
-      note: "Handheld orbit between frames; never directly over her."
+      note: "Handheld orbit between frames; never directly over him."
   - n: 10
     name: "Shift change — the doorway handoff"
     purpose: >-
@@ -402,7 +402,7 @@ shots:
     direction: >-
       You cannot direct cats; you can only choose the hour. Shoot the
       post-lunch stupor when all three are stationed. Bassinet with baby (or
-      empty, if she's feeding elsewhere — the orbit reads either way), cats at
+      empty, if he's feeding elsewhere — the orbit reads either way), cats at
       their self-assigned posts.
     diagram:
       room: { w: 6, h: 4 }
@@ -451,7 +451,7 @@ shots:
     name: "Dawn holds"
     purpose: >-
       The close, rhyming with the opening wall: first light returns to the
-      nursery, a parent stands at the window with her, and the loop —
+      nursery, a parent stands at the window with him, and the loop —
       revealed all film long — resolves into something steady. The rhythm holds,
       and it's carrying them.
     gear: "a7CII + 50mm on RS3 Mini"
@@ -469,9 +469,9 @@ shots:
       eight slow heel-to-toe steps over fifteen seconds, ending close enough
       that the window fills the frame behind them. One move, no pans mid-push.
     direction: >-
-      Shoot after the actual dawn feed, when she's settled on a shoulder —
+      Shoot after the actual dawn feed, when he's settled on a shoulder —
       swaying is fine, posing isn't. Steer a wide berth around them on the
-      approach: the gimbal never passes over her, ever. If dawn and baby refuse
+      approach: the gimbal never passes over him, ever. If dawn and baby refuse
       to align this week, shoot the empty chair in dawn light instead — the
       rhyme still lands.
     diagram:
@@ -508,7 +508,7 @@ edit:
       what: "On the shared timeline level so both groups wear one skin: Log wheels — Highlight toward amber (small move, ~5 points), Shadow toward teal, Midtone untouched. Then the filmic S-curve in Custom Curves with the black point lifted slightly off zero (flare the bottom-left point up ~3–4 points) for that milky-blacks memory feel."
     - n: 4
       name: "Skin quiet"
-      what: "HSL qualifier on skin tones, soften the matte heavily, then pull saturation down ~5 and nudge hue toward unified warmth. Newborn skin runs blotchy-red in week 2 — this node calms it without erasing that she's real."
+      what: "HSL qualifier on skin tones, soften the matte heavily, then pull saturation down ~5 and nudge hue toward unified warmth. Newborn skin runs blotchy-red in week 2 — this node calms it without erasing that he's real."
     - n: 5
       name: "Halation"
       what: "Luma qualifier on the top end (roughly 80+ IRE — the lamp bulb, the blown window, the dawn glow), then Glow OFX with large spread and low gain, node blended to ~15% with the glow tinted warm. Sells lamplight and window bloom as photochemical, not digital."
@@ -544,13 +544,13 @@ music: >-
 
 ## The story
 
-Week 1 was arrival — the house holding its breath. Week 2 is what happens when the breath has to become breathing: in, out, again. Nothing new occurs this week, and that is the story. Feed, change, swaddle, hand her off, walk the hallway, wash the impossibly small clothes, feed again. The film's job is to show that repetition curdling into rhythm — the moment survival choreography starts to look, from the outside, like a dance.
+Week 1 was arrival — the house holding its breath. Week 2 is what happens when the breath has to become breathing: in, out, again. Nothing new occurs this week, and that is the story. Feed, change, swaddle, hand him off, walk the hallway, wash the impossibly small clothes, feed again. The film's job is to show that repetition curdling into rhythm — the moment survival choreography starts to look, from the outside, like a dance.
 
-**Open** on the thesis: sunlight crawling across the nursery wall in timelapse. No clocks anywhere in this film — the wall is the clock. Then the joke and the ache of "blackout noon": midday outside, midnight inside, because the master bedroom now runs on her time zone, not the sun's.
+**Open** on the thesis: sunlight crawling across the nursery wall in timelapse. No clocks anywhere in this film — the wall is the clock. Then the joke and the ache of "blackout noon": midday outside, midnight inside, because the master bedroom now runs on his time zone, not the sun's.
 
-**Middle** is the loop itself, played twice so we feel it repeat. The 3 a.m. feed in one pool of lamplight; the diaper ballet; the swaddle slowed down until it looks like origami done from memory. Then the details pass — the cord stump drying toward its goodbye, the peeling skin, the fist closing around a finger — because inside the blur, her body is quietly finishing itself. The doorway handoff and the witching-hour walk are the hard-currency shots: parents as a relay team, and the crying that arrived this week, unflinched-at. Laundry mountains and the three cats at their new stations widen the frame — the whole household has entered orbit.
+**Middle** is the loop itself, played twice so we feel it repeat. The 3 a.m. feed in one pool of lamplight; the diaper ballet; the swaddle slowed down until it looks like origami done from memory. Then the details pass — the cord stump drying toward its goodbye, the peeling skin, the fist closing around a finger — because inside the blur, his body is quietly finishing itself. The doorway handoff and the witching-hour walk are the hard-currency shots: parents as a relay team, and the crying that arrived this week, unflinched-at. Laundry mountains and the three cats at their new stations widen the frame — the whole household has entered orbit.
 
-**Close** with the engine shot: the feeding chair, identical frame, five hours of light — dawn, morning, afternoon, dusk, deep night — cut like a metronome. And then dawn itself, real and present-tense: a parent at the window with her, the night lamp finally off, the day taking over the lighting. Last image: the same wall from the opening, first light landing on it again. The loop closes. The rhythm holds.
+**Close** with the engine shot: the feeding chair, identical frame, five hours of light — dawn, morning, afternoon, dusk, deep night — cut like a metronome. And then dawn itself, real and present-tense: a parent at the window with him, the night lamp finally off, the day taking over the lighting. Last image: the same wall from the opening, first light landing on it again. The loop closes. The rhythm holds.
 
 ## Mood & look
 
@@ -567,6 +567,6 @@ Framing language: repetition is featured, not hidden. Matching actions sit in ma
 - **Photograph the framing** on your phone (screenshot the a7CII's monitor with the grid overlay on) and check it against the LCD before every pass. Focus is set once, manually, and never touched — verify by the distance scale, don't re-rack.
 - Dedicate one card slot and one battery pouch to this setup so a swap never means moving the camera. Five passes across one day: dawn (~6 a.m.), mid-morning (~10), afternoon (~3), dusk (~7), and whichever night feed you're awake enough to remember to roll on.
 
-**Batching around her day.** Newborn schedules give you three usable windows and this plan spends them deliberately: (1) *Morning nap* — start the wall timelapse, then shoot laundry (shot 12) and the cats (shot 13) while nothing needs you. (2) *Post-feed calm alert* — the details session: cord, grip, and the X100VI stills in one lighting state on the bed, under ten minutes total. (3) *The real events* — feeds, changes, swaddles, the handoff, the witching hour are never scheduled; the camera is pre-set and waiting, and you simply hit record when life happens. The shot list is a menu, not a contract: any shot she vetoes this week goes back on the menu for next week or dies gracefully.
+**Batching around his day.** Newborn schedules give you three usable windows and this plan spends them deliberately: (1) *Morning nap* — start the wall timelapse, then shoot laundry (shot 12) and the cats (shot 13) while nothing needs you. (2) *Post-feed calm alert* — the details session: cord, grip, and the X100VI stills in one lighting state on the bed, under ten minutes total. (3) *The real events* — feeds, changes, swaddles, the handoff, the witching hour are never scheduled; the camera is pre-set and waiting, and you simply hit record when life happens. The shot list is a menu, not a contract: any shot he vetoes this week goes back on the menu for next week or dies gracefully.
 
-**Housekeeping.** Charge everything nightly — the night shots come when they come, and a dead battery at 3 a.m. is a shot lost forever. Two a7CII batteries staged: one in the camera at the chair setup, one in the charger. Cards: keep the chair-montage passes on one card, everything else on the other, and offload every morning. No ND needed indoors at these apertures; if a windowsill shot clips hard, let it bloom — this film likes its windows a little blown. And the standing safety rules, every setup: lights low, weighted, and away from her; nothing hot in reach; no flash; no camera or gimbal path ever crossing over the baby; staged sleep always back-down in a bare bassinet; takes short around a feeding or sleeping baby. Her schedule wins every argument. That's not a limitation on the film — this week, it *is* the film.
+**Housekeeping.** Charge everything nightly — the night shots come when they come, and a dead battery at 3 a.m. is a shot lost forever. Two a7CII batteries staged: one in the camera at the chair setup, one in the charger. Cards: keep the chair-montage passes on one card, everything else on the other, and offload every morning. No ND needed indoors at these apertures; if a windowsill shot clips hard, let it bloom — this film likes its windows a little blown. And the standing safety rules, every setup: lights low, weighted, and away from him; nothing hot in reach; no flash; no camera or gimbal path ever crossing over the baby; staged sleep always back-down in a bare bassinet; takes short around a feeding or sleeping baby. His schedule wins every argument. That's not a limitation on the film — this week, it *is* the film.

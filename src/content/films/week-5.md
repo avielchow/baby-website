@@ -11,7 +11,7 @@ shots:
     name: "The last of the light"
     purpose: >-
       The opening image and the film's clock: the final patch of golden-hour sun
-      on the living-room floor, shrinking and warming in real time while she lies
+      on the living-room floor, shrinking and warming in real time while he lies
       calm on the mat beside it. No timelapse this week — the film runs at life
       speed, and the light leaving is the first thing it refuses to hurry.
     gear: "a7CII + 28mm on tripod"
@@ -30,7 +30,7 @@ shots:
       entrance in shot 3.
     movement: "Locked off. The sun does the moving; the camera bears witness."
     direction: >-
-      Shoot the calm before it: she's fed, changed, content on the mat in her
+      Shoot the calm before it: he's fed, changed, content on the mat in his
       last easy window of the day. If the fussing has already started when the
       sun hits the floor, shoot the empty patch anyway — an empty frame going
       dark says the same thing.
@@ -47,23 +47,23 @@ shots:
   - n: 2
     name: "The weather changes"
     purpose: >-
-      The turn, on her face: calm going cloudy — the brow knitting, the lip
+      The turn, on his face: calm going cloudy — the brow knitting, the lip
       starting, the first complaint. Week five is the climb toward the crying
       peak, and the film marks the moment the evening tips without cutting away
       from it.
     gear: "a7CII + 85mm on tripod, low beside the mat"
     settings: >-
-      4K24, 1/50, S-Log3. 85mm at f/1.8 — her face is the whole world, the
+      4K24, 1/50, S-Log3. 85mm at f/1.8 — his face is the whole world, the
       dimming room melting behind. Light is falling fast now: start at ISO 800
       and step to the second base at 3200 between takes, never mid-take; ceiling
       12800. WB stays locked 5600K — as the daylight cools, the frame is allowed
-      to cool with it. Manual focus on her eyes, set before you roll.
+      to cool with it. Manual focus on his eyes, set before you roll.
     lighting: >-
       The dying window, nothing else. The scene should be visibly darker than
-      shot 1 — do not rescue it. If her face falls below readable, move the mat
+      shot 1 — do not rescue it. If his face falls below readable, move the mat
       half a metre toward the window rather than adding a stick; the light must
       keep its story straight.
-    movement: "Locked off. The change happens in her face, not in the frame."
+    movement: "Locked off. The change happens in his face, not in the frame."
     direction: >-
       You can't direct this and shouldn't try: camera pre-set at mat level
       during the calm, and when the weather turns you get ten seconds of it.
@@ -72,7 +72,7 @@ shots:
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.25, to: 0.7 }
-      subject: { x: 0.4, y: 0.5, label: "Her face — calm to storm" }
+      subject: { x: 0.4, y: 0.5, label: "His face — calm to storm" }
       camera: { x: 0.65, y: 0.7, facing: 310, label: "a7CII · 85mm f/1.8" }
       note: "Camera at mat level; the window light fades shot-over-shot."
   - n: 3
@@ -96,12 +96,12 @@ shots:
       2700K, low power, pre-rigged and switched with the lamp on the same power
       bar so they come up as one — it boosts the practical a stop and must never
       read as its own source. Lamp on its table an arm's length from any carry
-      path: nothing above her, nothing that can tip toward her.
+      path: nothing above him, nothing that can tip toward him.
     movement: "Locked off — a proscenium. The parent walks through; the light changes; the camera holds."
     direction: >-
       This is a real event, not a staged one: the lamp goes on every evening
       anyway. Pre-set the frame in the afternoon, hit record when the room goes
-      blue, and let whoever's holding her do exactly what they always do. Sway
+      blue, and let whoever's holding him do exactly what they always do. Sway
       while you walk — the bounce in silhouette is the shot.
     diagram:
       room: { w: 5, h: 4 }
@@ -124,20 +124,20 @@ shots:
       4K24, 1/50, S-Log3 — no slow motion anywhere in this film; the evening is
       long enough at life speed. f/2.8 so both hands and the wrap hold focus.
       ISO 3200 second base, ceiling 12800. WB locked 4300K so the lamp renders
-      golden. Expose for her torso in the lamp pool; the room beyond falls to
+      golden. Expose for his torso in the lamp pool; the room beyond falls to
       near-black and stays there. Manual focus on the pad, set once.
     lighting: >-
       The shot-3 lamp state exactly: lamp + hidden Stick A, 2700K, one pool.
       The pad sits at the pool's edge so the hands work half in light, half in
-      shadow — the film's honesty in lighting form. Nothing over her, nothing
+      shadow — the film's honesty in lighting form. Nothing over him, nothing
       within tip range of the pad, nothing hot near reach.
     movement: "Locked off. The choreography is in the hands; the frame stays out of their way."
     direction: >-
       Don't stage it — the evening swaddle happens regardless. Camera lives
-      pre-framed on the pad from dinnertime; when the wrap starts, roll. She
+      pre-framed on the pad from dinnertime; when the wrap starts, roll. He
       will likely be crying through it: that's the truth of the chapter, and
-      ten seconds of it is plenty. If she's escalating rather than settling,
-      stop rolling and just be her parents.
+      ten seconds of it is plenty. If he's escalating rather than settling,
+      stop rolling and just be his parents.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.25, to: 0.7 }
@@ -152,25 +152,25 @@ shots:
     purpose: >-
       Chapter two: the side/stomach hold — swaddled bundle draped along a
       forearm, cheek in the palm, the position that flips the calm switch when
-      nothing else will. The frame is about the architecture of it: her whole
+      nothing else will. The frame is about the architecture of it: his whole
       body carried on one adult arm.
     gear: "a7CII + 85mm on tripod"
     settings: >-
-      4K24, 1/50, S-Log3. f/1.8 — the forearm and her cheek sharp, the parent
+      4K24, 1/50, S-Log3. f/1.8 — the forearm and his cheek sharp, the parent
       soft above, the room gone. ISO 3200 second base, ceiling 12800, grain
       worn openly. WB locked 4300K. Manual focus pre-set on where the cradling
       arm will hold — mark the standing spot with tape on the floor so the
-      parent brings her to focus, not the reverse.
+      parent brings him to focus, not the reverse.
     lighting: >-
       Lamp pool only. The parent stands just off the lamp so the light rakes
-      along the forearm and her face — a raking key sculpts the carry; flat
+      along the forearm and his face — a raking key sculpts the carry; flat
       light would flatten the point. No sticks beyond the hidden lamp boost.
     movement: "Locked off; the gentle rock of the hold provides all the motion the frame needs."
     direction: >-
       Say it in the guide and mean it on set: side and stomach positions are
       for soothing in awake arms ONLY, never for sleep — back is the only sleep
-      position, every time. Shoot the hold while it's working; if her eyes
-      start going heavy, the shot is over and she goes down on her back. Ten
+      position, every time. Shoot the hold while it's working; if his eyes
+      start going heavy, the shot is over and he goes down on his back. Ten
       seconds, two takes across the evening, done.
     diagram:
       room: { w: 5, h: 4 }
@@ -193,25 +193,25 @@ shots:
       4K24, 1/50, S-Log3. f/1.8. ISO 3200 second base — this frame is
       deliberately the darkest of the S chapters; let it ride up to 12800 before
       even thinking about changing the light. WB locked 4300K. Compose profile-
-      on-profile: parent's lips, her ear, the lamp flaring behind them. Manual
+      on-profile: parent's lips, his ear, the lamp flaring behind them. Manual
       focus on the meeting point of the two profiles.
     lighting: >-
       The lamp moves behind the subjects for this one setup — the only time it
       relocates all night — so parent and baby go to rim-lit silhouette with a
       warm halo and one sliver of lit cheek. Keep the move boring and safe:
-      lamp and stick shifted together while she's in the other parent's arms,
+      lamp and stick shifted together while he's in the other parent's arms,
       cord re-routed against the wall, still a full arm's length from anyone.
     movement: "Locked off. The audio is the action."
     direction: >-
       Record the sound twice: once live in the take, once clean afterward —
       thirty seconds of the real shush into the iPhone at the same distance
-      from the mic that her ear was, no baby needed. Shush in your actual
+      from the mic that his ear was, no baby needed. Shush in your actual
       rhythm, not a performance; the edit wants the one you really do at
-      11 p.m. If the live take upsets her, keep only the clean pass.
+      11 p.m. If the live take upsets him, keep only the clean pass.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.25, to: 0.7 }
-      subject: { x: 0.4, y: 0.45, label: "Lips at her ear — profiles" }
+      subject: { x: 0.4, y: 0.45, label: "Lips at his ear — profiles" }
       camera: { x: 0.7, y: 0.65, facing: 305, label: "a7CII · 85mm f/1.8" }
       lights:
         - { x: 0.25, y: 0.3, kind: practical, label: "Lamp · moved behind subjects — rim light" }
@@ -241,10 +241,10 @@ shots:
       at a constant two-metre radius: eight slow heel-to-toe side-steps over
       about fifteen seconds, gimbal at chest height, joystick untouched. Wide
       berth always — the arc never tightens and the camera never passes over
-      her. One direction, three takes max, pick the smoothest.
+      him. One direction, three takes max, pick the smoothest.
     direction: >-
       The swayer ignores the camera completely and dances at the tempo that's
-      actually working. If she's mid-meltdown, don't orbit a crisis: put the
+      actually working. If he's mid-meltdown, don't orbit a crisis: put the
       gimbal down, come back to this chapter later in the evening or tomorrow —
       the sway happens nightly; the shot will keep.
     diagram:
@@ -269,25 +269,25 @@ shots:
     gear: "a7CII + 50mm on tripod, close over the sofa arm"
     settings: >-
       4K24, 1/50, S-Log3. 50mm near its close-focus limit at f/2 — the
-      pacifier, her lips, the offering fingers; nothing else needs to exist.
+      pacifier, his lips, the offering fingers; nothing else needs to exist.
       ISO 3200 second base, ceiling 12800. WB locked 4300K. Manual focus preset
-      on her mouth with the follow-focus ring; the offering hand comes to the
+      on his mouth with the follow-focus ring; the offering hand comes to the
       plane.
     lighting: >-
-      Lamp pool, home position. Seat the holding parent so her face is lamp-side
+      Lamp pool, home position. Seat the holding parent so his face is lamp-side
       and the pacifier hand enters from the shadow side — the gesture arrives
       out of the dark, which is emotionally accurate. No added light.
     movement: "Locked off; the only choreography is fingers, soother, and the slow blink that follows."
     direction: >-
       Five weeks in with feeding established, the soother is fair game — offer
-      it as she settles, never force it, and never on a cord or clip. Roll
+      it as he settles, never force it, and never on a cord or clip. Roll
       before the offer; the refusals are keepers too, so don't cut between
-      attempts. If she spits it and howls, that's the chapter some nights —
+      attempts. If he spits it and howls, that's the chapter some nights —
       film the truth or film nothing, and then put the camera down and help.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.25, to: 0.7 }
-      subject: { x: 0.4, y: 0.45, label: "Her mouth + the offered soother" }
+      subject: { x: 0.4, y: 0.45, label: "His mouth + the offered soother" }
       camera: { x: 0.6, y: 0.65, facing: 315, label: "a7CII · 50mm f/2, close" }
       lights:
         - { x: 0.25, y: 0.3, kind: practical, label: "Lamp · 2700K key side" }
@@ -343,13 +343,13 @@ shots:
       start; the shot is about the pair, not either one.
     lighting: >-
       Lamp pool, home position — the trade happens at the pool's edge, so the
-      incoming parent literally steps out of the dark to take her. One source,
+      incoming parent literally steps out of the dark to take him. One source,
       one island of light, two tired people sharing it.
     movement: >-
       RS3 Mini in Pan Follow: a slow push from the doorway toward the handoff,
       six heel-to-toe steps over ten seconds, settling to stillness just as the
       transfer completes. The path stays a metre wide of the parents — the
-      gimbal never crosses over her, and the transfer itself is four careful
+      gimbal never crosses over him, and the transfer itself is four careful
       hands' business, not the camera's.
     direction: >-
       Shoot the real relief shift, whenever it actually comes. The only
@@ -392,7 +392,7 @@ shots:
     movement: "Locked off. Sway motion in the reflection is all the movement the frame can hold."
     direction: >-
       Steal it during any sway that drifts near the window — guide the swayer
-      to the mark with a whisper, then let them forget you. If she's calm
+      to the mark with a whisper, then let them forget you. If he's calm
       enough that they both gaze at the glass, you have the shot of the film;
       if not, silhouette-with-reflection is still the shot of the film.
     diagram:
@@ -407,7 +407,7 @@ shots:
     name: "The surrender"
     purpose: >-
       The repertoire has run out and nobody's pretending otherwise: a parent
-      sits on the floor, back against the sofa, and just holds her on their
+      sits on the floor, back against the sofa, and just holds him on their
       chest — no technique left, only presence. The week's guide says some
       crying can't be soothed by anyone; this is what believing that looks like.
     gear: "a7CII + 28mm on tripod, low — legs splayed short"
@@ -426,7 +426,7 @@ shots:
       Never staged — this shot only exists if the evening actually produces
       it, and most this month will. Chest-holding is awake, supervised contact:
       the parent stays upright and alert, and if either of them is drifting
-      toward sleep, she goes down on her back in the bassinet and the shot ends
+      toward sleep, he goes down on his back in the bassinet and the shot ends
       early. If nobody thinks to hit record at this hour, that's the correct
       priority — let it go.
     diagram:
@@ -441,10 +441,10 @@ shots:
     name: "Quiet, not victory"
     purpose: >-
       The put-down: hands lowering the swaddled bundle into the bassinet, on
-      her back, nothing else in there — then the hands withdrawing, empty, into
+      his back, nothing else in there — then the hands withdrawing, empty, into
       the dark. Nobody won tonight; the evening just ended. The film refuses a
       triumph beat because the truth is better: quiet came when it came.
-    gear: "a7CII + 50mm on tripod beside the bassinet, angled — never over her"
+    gear: "a7CII + 50mm on tripod beside the bassinet, angled — never over him"
     settings: >-
       4K24, 1/50, S-Log3. f/1.8 — the nursery is the darkest set of the night
       and the lens gives everything it has. ISO 3200 second base, working
@@ -462,8 +462,8 @@ shots:
     direction: >-
       Camera pre-set beside (never over) the bassinet, recording before they
       come in, off-duty parent nowhere near — one person, one bundle, one
-      lower-down. Safe sleep is the composition: on her back, flat, bare
-      bassinet, swaddle snug below the shoulders. If she stirs, walk away and
+      lower-down. Safe sleep is the composition: on his back, flat, bare
+      bassinet, swaddle snug below the shoulders. If he stirs, walk away and
       let the camera run — the re-settle, or the retreat, is footage either way.
     diagram:
       room: { w: 5, h: 4 }
@@ -472,14 +472,14 @@ shots:
       camera: { x: 0.7, y: 0.6, facing: 315, label: "a7CII · 50mm f/1.8" }
       lights:
         - { x: 0.2, y: 0.3, kind: practical, label: "Nightlight · warm, near the floor" }
-      note: "Camera beside the bassinet at an angle; nothing ever passes over her."
+      note: "Camera beside the bassinet at an angle; nothing ever passes over him."
   - n: 14
     name: "The monitor"
     purpose: >-
       The evening's last light source: the baby monitor glowing on the coffee
-      table, her small grey shape on the screen, the parents slumped soft and
-      out of focus on the sofa behind it. The house is finally watching her
-      sleep instead of holding her awake.
+      table, his small grey shape on the screen, the parents slumped soft and
+      out of focus on the sofa behind it. The house is finally watching him
+      sleep instead of holding him awake.
     gear: "a7CII + 50mm on tripod, low across the coffee table"
     settings: >-
       4K24, 1/50, S-Log3. f/2 — monitor screen tack sharp in the foreground,
@@ -566,7 +566,7 @@ edit:
       what: "Timeline-level: Log wheels with Highlight nudged toward amber and Shadow toward a blue-black ink (a touch cooler than week 2's teal — evenings die bluer than nights live). Filmic S-curve in Custom Curves with the black point flared up only 2–3 points: blacks milkier than zero but deeper than the earlier films, because this is the dark one."
     - n: 4
       name: "Skin quiet"
-      what: "HSL qualifier on skin, matte softened wide, saturation down ~5, hue nudged toward unified warmth — with extra attention to crying flush: her face runs hot red mid-wail, so let this node calm the red toward truth-adjacent rather than erase it. She was upset; the film says so gently."
+      what: "HSL qualifier on skin, matte softened wide, saturation down ~5, hue nudged toward unified warmth — with extra attention to crying flush: his face runs hot red mid-wail, so let this node calm the red toward truth-adjacent rather than erase it. He was upset; the film says so gently."
     - n: 5
       name: "Halation"
       what: "Luma qualifier on the top end (the lamp bulb, its reflection in the black window, the monitor screen, the sconce pool), Glow OFX large-spread low-gain blended ~15%, tinted warm — except add a second, cool-tinted instance keyed only to the monitor shot so its glow blooms silver, not gold. The two temperatures of comfort, each with its own halo."
@@ -605,11 +605,11 @@ music: >-
 
 Every film so far has flinched a little from the evenings. This one doesn't. Week five sits on the climb toward the crying peak — the guide calls it the loud stretch, and the loudness clusters exactly where the light goes: late afternoon into night. So the film commits to the honest shape of it: one witching-hour evening, dusk to full dark, told nearly in real time. Ninety seconds in which the only clock is the falling light, and the light only ever falls.
 
-**Open** golden: the last patch of sun shrinking on the living-room floor while she lies calm beside it — the day's final easy minutes, spent on camera. Then the weather changes in her face, the room goes blue, and a parent crosses the frame to switch on the one lamp that will be the family's entire sun until morning.
+**Open** golden: the last patch of sun shrinking on the living-room floor while he lies calm beside it — the day's final easy minutes, spent on camera. Then the weather changes in his face, the room goes blue, and a parent crosses the frame to switch on the one lamp that will be the family's entire sun until morning.
 
 **Middle** is the repertoire, staged as what it actually is: choreography. Five chapters, five S's, each its own mini-scene with its own setup — the working swaddle done fast over real fussing; the forearm hold (soothing in awake arms only, never for sleep — the film says so out loud); the shush, shot as silhouette and heard like weather; the sway, the one orbiting camera move, the room wheeling around two people standing still; the pacifier, offered out of the shadow side and finally taken. Then the marathon: the hallway laps in one locked frame, jump-cut and counted, time compressing while the frame refuses to move. And the trade — one parent tagging out mid-sway, the dance continuing with a new dancer, the emptied arms held on screen for a beat because this film loves the parents, not just the baby.
 
-**Close** without a victory. The black window gives back a reflection of the two of them; the repertoire runs out and a parent simply sits on the floor with her on their chest, out of technique, still present. Then quiet — not won, just arrived: the put-down on her back in the bare bassinet, hands withdrawing empty; the monitor glowing on the coffee table with two soft blurred parents behind it; and last, the marathon hallway again, same frame, no runner, sconce off. Held. Black. The evening was long. It ended. Tomorrow there will be another, and one week soon there won't be.
+**Close** without a victory. The black window gives back a reflection of the two of them; the repertoire runs out and a parent simply sits on the floor with him on their chest, out of technique, still present. Then quiet — not won, just arrived: the put-down on his back in the bare bassinet, hands withdrawing empty; the monitor glowing on the coffee table with two soft blurred parents behind it; and last, the marathon hallway again, same frame, no runner, sconce off. Held. Black. The evening was long. It ended. Tomorrow there will be another, and one week soon there won't be.
 
 ## Mood & look
 
@@ -617,7 +617,7 @@ This is the high-ISO film — the one the a7CII's second base ISO was bought for
 
 The palette runs a single long dissolve: gold (the dying sun) → blue (dusk) → ember-and-ink (the lamp hours) → silver (the monitor) → almost nothing (the hall). The edit enforces it as law — brightness only ever decreases — so the film feels like real time even at 90 seconds. No slow motion anywhere: the evening is long enough at life speed, and after week 3's 60p triumph the honest 24 frames are their own statement.
 
-Lens language: the 28mm draws the rooms and the hallway (the geography of endurance), the 50mm does the working frames (swaddle, soother, reflection, monitor), the 85mm goes where the film feels most (her face turning, the hold, the shush). The RS3 Mini moves exactly twice — the sway orbit and the tag-out push — both slow, both wide of her, because in this film stillness is the default and movement has to be earned.
+Lens language: the 28mm draws the rooms and the hallway (the geography of endurance), the 50mm does the working frames (swaddle, soother, reflection, monitor), the 85mm goes where the film feels most (his face turning, the hold, the shush). The RS3 Mini moves exactly twice — the sway orbit and the tag-out push — both slow, both wide of him, because in this film stillness is the default and movement has to be earned.
 
 ## Prep & shoot-day plan
 
@@ -625,8 +625,8 @@ Lens language: the 28mm draws the rooms and the hallway (the geography of endura
 
 **Rig at dinnertime, shoot when life happens.** Everything in this film is pre-set in daylight and triggered by reality: frame the swaddle pad, tape the hold mark on the floor, wire Stick A behind the lamp on the same power bar, focus the hallway — all before 6 p.m., while hands are steady and nobody's crying. From dusk onward the camera work is just hitting record. The off-duty parent operates; the on-duty parent parents; when the RS3 comes out for its two moves, it waits for a moment that's already working — never orbit a meltdown.
 
-**The camera-down rule, which outranks the film.** This week's material is a fussing baby, and the line is bright: fussing on camera for ten seconds is documentary; a baby tipping into real distress means the camera goes down — set it on the floor mid-take if needed — and the second pair of arms goes in. If an evening is bad enough that nobody thinks about the film, that is the correct outcome, and the week guide's other rule holds on set too: if you're fraying, tag out, and if you're solo and at your limit, she goes down safely on her back and you step away to breathe. No shot on this list is worth more than that, and several shots on this list only exist because that plan was working.
+**The camera-down rule, which outranks the film.** This week's material is a fussing baby, and the line is bright: fussing on camera for ten seconds is documentary; a baby tipping into real distress means the camera goes down — set it on the floor mid-take if needed — and the second pair of arms goes in. If an evening is bad enough that nobody thinks about the film, that is the correct outcome, and the week guide's other rule holds on set too: if you're fraying, tag out, and if you're solo and at your limit, he goes down safely on his back and you step away to breathe. No shot on this list is worth more than that, and several shots on this list only exist because that plan was working.
 
-**Safety, standing orders.** Lamp, sticks, and sconce boosts always floor-placed or table-placed at a full arm's length from her, never above her, never where they could tip toward her, nothing hot in reach. The camera and gimbal never pass over her — the sway orbit and the tag-out push are both plotted a wide metre clear. The side/stomach hold is awake-arms soothing only; every sleep, staged or real, is back-down in a bare bassinet, and the put-down shot is framed so safe sleep IS the composition. Short takes around a baby who's feeding or settling. The shot list is a menu, not a contract — and on the hardest evenings, the menu closes early and that's fine. The film's whole argument is that surviving the long evening with tenderness intact is the achievement; the footage is just proof.
+**Safety, standing orders.** Lamp, sticks, and sconce boosts always floor-placed or table-placed at a full arm's length from him, never above him, never where they could tip toward him, nothing hot in reach. The camera and gimbal never pass over him — the sway orbit and the tag-out push are both plotted a wide metre clear. The side/stomach hold is awake-arms soothing only; every sleep, staged or real, is back-down in a bare bassinet, and the put-down shot is framed so safe sleep IS the composition. Short takes around a baby who's feeding or settling. The shot list is a menu, not a contract — and on the hardest evenings, the menu closes early and that's fine. The film's whole argument is that surviving the long evening with tenderness intact is the achievement; the footage is just proof.
 
 **Housekeeping.** Charge everything at dinnertime — every battery, both bodies' worth, the RS3, the Pocket 3 even though it sits out this week; the film's hours are exactly the hours when charging gets forgotten. Two cards: hallway material (the locked ten-minute marathon takes eat space) on one, everything else on the other, offloaded each morning. No ND needed — this film never sees enough light to want it. And record the clean shush pass early in the week; it's thirty seconds of work, it needs no baby, and the entire sound design leans on it.

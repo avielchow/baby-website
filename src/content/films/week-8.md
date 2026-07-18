@@ -2,7 +2,7 @@
 week: 8
 title: "Brave"
 logline: >-
-  On the morning of her first vaccines the house is deliberately ordinary, and
+  On the morning of his first vaccines the house is deliberately ordinary, and
   by evening everyone in it — the baby, the parents, the day itself — has
   earned the word the film never says out loud until the end.
 mood: "steady, tender, protective, quietly proud — courage at kitchen-table scale"
@@ -14,8 +14,8 @@ shots:
     name: "An ordinary morning"
     purpose: >-
       The film opens by refusing to foreshadow: a feed on the couch in morning
-      window light, indistinguishable from any other day — because for her, it
-      is. The audience knows what today is; she doesn't. That gap is the whole
+      window light, indistinguishable from any other day — because for him, it
+      is. The audience knows what today is; he doesn't. That gap is the whole
       first act, and this shot establishes the calm the day will bend and then
       return to.
     gear: "a7CII + 50mm on tripod"
@@ -24,7 +24,7 @@ shots:
       window-side wrap, ISO 800 (S-Log3 base), WB locked 5600K. By week 8 this
       frame is muscle memory — if you own the variable ND it lives on the 50mm
       for exactly this window; without it, wait for bright-but-indirect and
-      accept f/2.8. Manual focus on her cheek, taped.
+      accept f/2.8. Manual focus on his cheek, taped.
     lighting: >-
       Window as the sole key from camera-left, feathering across both faces.
       No sticks this morning — the opening must look like every other morning,
@@ -52,26 +52,26 @@ shots:
       Week 8's milestone in its natural habitat: the real social smile, aimed
       at a parent, in a patch of sunlight. This is the second beat of ordinary
       — and the frame the edit will return to in the evening, so the audience
-      can verify with their own eyes that she came back to herself.
+      can verify with their own eyes that he came back to himself.
     gear: "a7CII + 85mm on tripod"
     settings: >-
       4K24, 1/50, S-Log3, f/2 — close enough that the smile fills the frame,
       shallow enough that the room falls away, ISO 800, WB locked 5600K.
-      Manual focus on her eyes; she's on a parent's knees, so ride the
+      Manual focus on his eyes; he's on a parent's knees, so ride the
       follow-focus ring only if the whole pair sways.
     lighting: >-
       A patch of direct-ish morning sun is allowed here — the one shot in the
-      film where light gets to be openly happy. Angle her so sun rakes from
-      the side, never into her eyes. No sticks, nothing added: the smile
+      film where light gets to be openly happy. Angle him so sun rakes from
+      the side, never into his eyes. No sticks, nothing added: the smile
       supplies everything the frame needs.
     movement: >-
-      Locked off. The event is her face. Frame slightly loose (head and
-      shoulders plus the parent's hands) so a wriggle doesn't crop her out.
+      Locked off. The event is his face. Frame slightly loose (head and
+      shoulders plus the parent's hands) so a wriggle doesn't crop him out.
     direction: >-
       Work the smile the way the guide week teaches it: catch an alert,
-      unhurried window, face at 20–30 cm, big smile, then pause and give her
+      unhurried window, face at 20–30 cm, big smile, then pause and give him
       the turn. Roll long; the pre-smile study — that serious searching look
-      before she commits — is footage gold too. Two minutes, then done.
+      before he commits — is footage gold too. Two minutes, then done.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: bottom, from: 0.25, to: 0.75 }
@@ -103,8 +103,8 @@ shots:
       performance.
     direction: >-
       Pack for real, in your real order, and end on the zip. If the baby is
-      napping, this is a batch-friendly solo setup; if she's awake in the
-      bouncer nearby, her small sounds off-frame are a free layer of truth
+      napping, this is a batch-friendly solo setup; if he's awake in the
+      bouncer nearby, his small sounds off-frame are a free layer of truth
       for the sound mix.
     diagram:
       room: { w: 4, h: 3 }
@@ -119,7 +119,7 @@ shots:
     name: "What we're bringing"
     purpose: >-
       The insert triptych that tells the audience where we're going without a
-      word of exposition: her Alberta health card, the immunization record
+      word of exposition: his Alberta health card, the immunization record
       booklet with its first page still blank, the soother, and the comfort
       blanket — the one that lives in the car seat and in arms, never in the
       crib. Objects as plot.
@@ -142,7 +142,7 @@ shots:
       tape marks on the ring. Rehearse twice before rolling; these pulls are
       the film's most controlled gesture and they should feel inevitable.
     direction: >-
-      No baby needed — shoot it the evening before while she sleeps in the
+      No baby needed — shoot it the evening before while he sleeps in the
       other room (monitor at your elbow). The safe-sleep note is part of the
       film's honesty: the comfort blanket is for the car seat and for arms,
       and the audience never sees it anywhere near the crib because it never
@@ -156,7 +156,7 @@ shots:
   - n: 5
     name: "The drive"
     purpose: >-
-      The transition out of the house's safety: her in the mirror-view of the
+      The transition out of the house's safety: him in the mirror-view of the
       rear car seat, the world sliding past the windows. The film's rhythm
       tightens one notch here — same calm baby, less familiar frame.
     gear: "DJI Pocket 3, held by the passenger parent (camera-parent only — the driver never touches it)"
@@ -168,12 +168,12 @@ shots:
     lighting: >-
       Daylight through the windows, full stop — a car is a rolling softbox
       with hard sidelight moments at intersections, and both are the look.
-      Expose for her face and let the windows bloom. No lights of any kind
+      Expose for his face and let the windows bloom. No lights of any kind
       in a moving vehicle, ever.
     movement: >-
       None by the operator: the car provides the move. The passenger parent
       holds the Pocket 3 braced against the front seatback, framing back at
-      her — held or braced only, never wedged into the dash or A-pillar
+      him — held or braced only, never wedged into the dash or A-pillar
       area, and never mounted anywhere near an airbag deployment zone. If
       there's no second adult riding along, skip the rolling shot entirely
       and film ten seconds of the parked buckle-in before pulling out; the
@@ -228,7 +228,7 @@ shots:
     name: "Waiting room, small"
     purpose: >-
       The texture of waiting, told entirely inside your own two square
-      meters: her hand against a parent's chest, the diaper bag at a chair
+      meters: his hand against a parent's chest, the diaper bag at a chair
       leg, the soother standing by. Tight inserts only — the room around you
       is other families' morning, not your film.
     gear: "DJI Pocket 3, handheld at lap height"
@@ -258,7 +258,7 @@ shots:
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: right, from: 0.6, to: 0.9 }
-      subject: { x: 0.35, y: 0.45, label: "Her hand on Dad's chest" }
+      subject: { x: 0.35, y: 0.45, label: "His hand on Dad's chest" }
       subject2: { x: 0.3, y: 0.62, label: "Diaper bag at chair leg" }
       camera: { x: 0.45, y: 0.52, facing: 299, label: "Pocket 3 · lap height" }
       note: "Permission asked first. Own family only; no staff, no other families."
@@ -296,9 +296,9 @@ shots:
       camera: { x: 0.5, y: 0.75, facing: 0, label: "Pocket 3 · braced on wall" }
       note: "Square-on, symmetrical, empty. The film's restraint in one frame."
   - n: 9
-    name: "Her hands in yours, before"
+    name: "His hands in yours, before"
     purpose: >-
-      The last beat before: both parents' hands wrapped around hers, framed
+      The last beat before: both parents' hands wrapped around his, framed
       tight on laps — nothing clinical in frame, no room visible, just the
       three of you concentrated into eight fingers and a fist. The film's
       thesis shot: brave is a thing you hold onto.
@@ -306,7 +306,7 @@ shots:
     settings: >-
       4K24, 1/50 locked, D-Log M, ISO cap 3200, WB 4300K matched to Shots
       7–8. Focus locked on the hands. Frame is laps-down only: knees, hands,
-      her legs in the appointment-day outfit — a composition that would be
+      his legs in the appointment-day outfit — a composition that would be
       identical in any room on earth, which is exactly the level of
       abstraction the ethics require.
     lighting: >-
@@ -326,7 +326,7 @@ shots:
       into the edit; neither is a compromise.
     diagram:
       room: { w: 4, h: 4 }
-      subject: { x: 0.5, y: 0.45, label: "Her hand in both parents' hands" }
+      subject: { x: 0.5, y: 0.45, label: "His hand in both parents' hands" }
       subject2: { x: 0.55, y: 0.6, label: "Mom's lap, chair" }
       camera: { x: 0.5, y: 0.72, facing: 0, label: "Pocket 3 · overhead, standing parent" }
       note: "Laps-down framing — no room, no staff, no clinical anything."
@@ -343,7 +343,7 @@ shots:
       This shot has no picture settings because it has no picture. Voice
       Memos at default quality, phone screen-down in a chest or shirt
       pocket, started before you're called in. Capture the room's real
-      sound: your voices, her cry, the settling. The visual is a plate you
+      sound: your voices, his cry, the settling. The visual is a plate you
       already own.
     lighting: >-
       None — see above. The discipline of this beat is the film's spine: on
@@ -355,7 +355,7 @@ shots:
     direction: >-
       Ask the nurse's okay for an audio recording in your pocket, same
       plain-spoken ask as the filming. Then forget it exists and do the real
-      work: the guide week's comfort plan — breastfeed or hold her
+      work: the guide week's comfort plan — breastfeed or hold him
       skin-to-close during and right after, calm voice, steady hands. Most
       babies settle within a minute or two; that settling, caught on audio,
       is the sound the whole film pivots on. If recording feels wrong in the
@@ -371,23 +371,23 @@ shots:
     name: "Right after"
     purpose: >-
       The recovery, immediate and physical: comfort feed or skin-to-skin,
-      her cheek against a bare collarbone, the cry dissolving into that
+      his cheek against a bare collarbone, the cry dissolving into that
       hiccupping after-calm. This is the film's exhale, and the proof that
       the comfort plan works exactly the way the guide week says it does.
     gear: "Primary: DJI Pocket 3 handheld (clinic, with permission). Fallback: a7CII + 50mm on tripod (first minutes home)"
     settings: >-
       Clinic version — Pocket 3, 4K24, 1/50, D-Log M, ISO cap 3200, WB
-      4300K, focus locked on her face, framed tight on baby and parent's
+      4300K, focus locked on his face, framed tight on baby and parent's
       chest only. Home version — a7CII, 4K24, 1/50, S-Log3, f/2, ISO 800,
       WB locked 5600K, the same window-side couch geometry as Shot 1 so the
       film visibly returns to its opening calm with new meaning.
     lighting: >-
       Clinic: available light only, tight framing, nothing added. Home:
       the Shot 1 window does the work — same key, same couch, and the
-      repetition is the storytelling: the ordinary light receiving her back.
+      repetition is the storytelling: the ordinary light receiving him back.
     movement: >-
       Locked or held dead still either way. This shot is 100% about the
-      settling — her breathing slowing is the only motion the frame needs.
+      settling — his breathing slowing is the only motion the frame needs.
       Roll two to three minutes; the edit keeps ten seconds.
     direction: >-
       If filming inside was okayed: the camera-parent shoots ten seconds of
@@ -413,7 +413,7 @@ shots:
     settings: >-
       4K24, 1/50, S-Log3, f/2.8 at near-macro distance, ISO 800 ceiling
       1600, WB locked 5600K. Manual focus on the bandage's edge. Frame the
-      thigh and one parent hand steadying her leg — scale is the shot, so
+      thigh and one parent hand steadying his leg — scale is the shot, so
       let the adult fingers into frame to give the bandage its smallness.
     lighting: >-
       Change-table window light raking from the top of frame. No added
@@ -422,31 +422,31 @@ shots:
     movement: >-
       Locked off, eight seconds. No push-in: the audience finds the bandage
       themselves, which is better. Tripod beyond the change table's edge,
-      camera never passing over her — the week 1 rule never retired.
+      camera never passing over him — the week 1 rule never retired.
     direction: >-
       Shoot it inside a real diaper change, during the calm middle part.
-      One take is plenty, and her comfort outranks the shot list — if she's
+      One take is plenty, and his comfort outranks the shot list — if he's
       fussing about the leg, the bandage will still be there at the next
       change. Both thighs may have bandages (two injection sites is normal);
-      shoot whichever leg she offers.
+      shoot whichever leg he offers.
     diagram:
       room: { w: 4, h: 4 }
       window: { wall: top, from: 0.15, to: 0.6 }
       subject: { x: 0.45, y: 0.3, label: "Bandage on thigh, change table" }
       camera: { x: 0.5, y: 0.62, facing: 351, label: "a7CII · 85mm near-macro" }
-      note: "Adult fingers in frame for scale. Camera never over her."
+      note: "Adult fingers in frame for scale. Camera never over him."
   - n: 13
     name: "The heavy afternoon"
     purpose: >-
       Post-shot care as cinema: the sleepy, fussy, extra-cuddly afternoon
-      the aftercare sheet predicts — her draped on a parent's chest on the
+      the aftercare sheet predicts — him draped on a parent's chest on the
       couch, limbs heavy, one small frown surfacing and smoothing. Long
       lens, long take: the day's cost, paid in closeness.
     gear: "a7CII + 85mm on RS3 Mini (balance tuned for the 85 beforehand)"
     settings: >-
       4K24, 1/50, S-Log3, f/2, ISO 800 ceiling 3200 (a grey-afternoon room
       is fine — this beat is allowed to be dim), WB locked 5600K. Manual
-      focus set to her face on the chest; the push is shallow enough that
+      focus set to his face on the chest; the push is shallow enough that
       the plane barely moves.
     lighting: >-
       Afternoon window, softened by whatever the sky is doing. No sticks:
@@ -462,8 +462,8 @@ shots:
     direction: >-
       Shoot the real afternoon, whenever the sleepiness lands. Extra
       fussiness, poorer appetite, extra naps are all the expected script —
-      and if she's on the fussier end, put the gimbal down and just hold
-      her; a static tripod version of this shot from across the room works
+      and if he's on the fussier end, put the gimbal down and just hold
+      him; a static tripod version of this shot from across the room works
       with zero setup. The baby's afternoon outranks the film's.
     diagram:
       room: { w: 6, h: 4 }
@@ -479,7 +479,7 @@ shots:
     name: "The cool cloth"
     purpose: >-
       The aftercare rendered in inserts: a cool wet cloth laid gently over
-      the sore spot on her thigh, the thermometer waiting on the side table,
+      the sore spot on his thigh, the thermometer waiting on the side table,
       a parent's hand doing small competent things. Care as a set of
       verbs — the film's answer to the closed door's helplessness.
     gear: "a7CII + 50mm handheld (IBIS on)"
@@ -493,22 +493,22 @@ shots:
       allowance — Stick B at 3200K, embers-low, on the FLOOR two meters
       away bouncing off the wall, only if the lamp alone buries the
       detail. Floor placement, nowhere near tipping distance of anyone,
-      nothing warm near her — the week 1 safety rules, verbatim, forever.
+      nothing warm near him — the week 1 safety rules, verbatim, forever.
     movement: >-
       Handheld, braced elbows-on-ribs, two short static-ish inserts: (a)
-      the cloth settling onto the thigh, her leg giving one small kick and
+      the cloth settling onto the thigh, his leg giving one small kick and
       accepting it; (b) the side table — thermometer, the aftercare sheet
       from the clinic, the water glass. Ten seconds each.
     direction: >-
       Film the real care, don't stage a nursing tableau: the cloth goes on
-      because her leg is genuinely sore, the thermometer sits there because
+      because his leg is genuinely sore, the thermometer sits there because
       you're genuinely watching for the mild fever the sheet says may come.
       If medicine enters the day, it happens off camera — dosing is between
       you and the pharmacist, not a film prop.
     diagram:
       room: { w: 6, h: 4 }
       window: { wall: bottom, from: 0.25, to: 0.75 }
-      subject: { x: 0.42, y: 0.52, label: "Cool cloth on her thigh" }
+      subject: { x: 0.42, y: 0.52, label: "Cool cloth on his thigh" }
       subject2: { x: 0.6, y: 0.62, label: "Side table · thermometer + sheet" }
       camera: { x: 0.35, y: 0.75, facing: 25, label: "a7CII · 50mm handheld" }
       lights:
@@ -517,15 +517,15 @@ shots:
   - n: 15
     name: "Evening — everyone's okay"
     purpose: >-
-      The close: lamplight, both parents on the couch, her settled and fed
-      and unmistakably herself — and on the table, the immunization record
+      The close: lamplight, both parents on the couch, him settled and fed
+      and unmistakably himself — and on the table, the immunization record
       booklet, its first page no longer blank. The film's last discovery is
       Shot 4's rhyme completed; its last image is three tired, okay people.
       Brave belonged to everyone today. Cut to black from here.
     gear: "a7CII + 50mm on tripod"
     settings: >-
       4K24, 1/50, S-Log3, f/2, ISO 800 ceiling 6400 for the lamp-lit room,
-      WB locked 3200K — evening owns this frame. Manual focus on her face;
+      WB locked 3200K — evening owns this frame. Manual focus on his face;
       then a second setup, refocused to the booklet on the table at f/2.8
       for the rhyme insert. Two setups, one tripod position.
     lighting: >-
@@ -536,13 +536,13 @@ shots:
       Windows gone to blue behind: the day is finished and the room says so.
     movement: >-
       Locked off for both setups. Roll the couch frame long — the event is
-      nothing more than a yawn, a parent's cheek against her head, maybe
+      nothing more than a yawn, a parent's cheek against his head, maybe
       one drowsy half-smile that answers Shot 2. Then the 8-second booklet
       insert: filled-in first page, today's date in a nurse's handwriting.
     direction: >-
       Shoot the real evening settle after the bedtime feed. Nobody
       performs okay-ness — by this hour it's simply true, and the camera
-      only has to be present for it. When she goes down for the night it's
+      only has to be present for it. When he goes down for the night it's
       the same bare crib as every night; the film ends on the couch, not
       the crib, because the couch is where today's story actually ends.
     diagram:
@@ -584,7 +584,7 @@ edit:
       The Shot 10 treatment, Version A: hold Shot 8's empty-door plate
       absolutely still. Bring the Voice Memos audio up from silence: room
       murmur, the short cry — use TWO TO THREE SECONDS of it, no more — then
-      the parents' low voices, then her settling. Cut to Shot 11 on the first
+      the parents' low voices, then his settling. Cut to Shot 11 on the first
       clearly settling breath. Never loop, repeat, or EQ-boost the cry; one
       honest instance, at the distance the microphone honestly heard it.
     - >-
@@ -607,9 +607,9 @@ edit:
     - >-
       Title: over the tail of Shot 2 (the smile), "BRAVE" in the series
       serif (Cormorant/EB Garamond), white 85%, tracked wide, small — the
-      word lands on her smiling face BEFORE the day happens, which reframes
+      word lands on his smiling face BEFORE the day happens, which reframes
       it on rewatch. Subtitle "week eight · two months" in tiny caps. End
-      card after the fade: her name, the date, and — this film only — a
+      card after the fade: his name, the date, and — this film only — a
       second line in smaller caps: "one needle, never shown."
     - >-
       Transitions: straight cuts throughout except three — fade in from
@@ -668,7 +668,7 @@ edit:
       what: >-
         Qualify skin, soften the matte, restore the saturation the split
         tone stole and pin hue natural. Watch Shot 11 and 13 especially:
-        post-cry and post-vaccine flush runs redder than her baseline —
+        post-cry and post-vaccine flush runs redder than his baseline —
         even it gently toward peach, but leave SOME of the flush in Shot
         11; a slightly pink, recently-crying baby is the truth of the beat.
     - n: 7
@@ -705,7 +705,7 @@ edit:
       Featured real audio, in order: the bag zip (Shot 3 — the film's first
       hard consonant), the car-seat buckle click (Shot 5), the Voice Memos
       sequence at the door (Shot 10 — cry at 2–3 seconds maximum, one
-      instance, honest distance, per the timeline notes), and her settling
+      instance, honest distance, per the timeline notes), and his settling
       breath in Shot 11, which should be the loudest quiet thing in the mix.
     - >-
       The score's contract: present and warm through ORDINARY, thinning
@@ -738,7 +738,7 @@ music: >-
   "Cinematic"), Artlist/Musicbed personal license, or a public-domain
   melody in a recording you have rights to. Avoid anything with a
   heartbeat-like pulse or swelling strings near the door — the film
-  already has a heartbeat in it, and it's hers on the Voice Memo.
+  already has a heartbeat in it, and it's his on the Voice Memo.
 ---
 
 ## The story
@@ -754,12 +754,12 @@ blanket that lives in arms and car seats and never in the crib. No one says
 where we're going. The table already said it.
 
 **Middle — the journey and the door (Shots 5–11).** The car tightens the
-frame: her small face in the rear seat, the world sliding by, the passenger
+frame: his small face in the rear seat, the world sliding by, the passenger
 parent's camera braced and unremarkable. The community health centre gets
 one wide, plain sentence of a shot, and then the film goes small and
-inward — her hand on a chest in the waiting room, a bag at a chair leg,
+inward — his hand on a chest in the waiting room, a bag at a chair leg,
 never anyone else's morning. The appointment itself is a closed door, held.
-It is parents' hands wrapped around hers, framed at lap height, nothing
+It is parents' hands wrapped around his, framed at lap height, nothing
 clinical in the world. And when the moment comes, the film keeps its one
 promise absolutely: no needle, no room, no depiction — an empty hallway, a
 held frame, and the true sound of it, two seconds of cry dissolving into
@@ -773,8 +773,8 @@ draped over a parent's chest, the cool cloth laid on the sore spot, the
 thermometer standing watch on the side table. And then evening: lamplight,
 both parents, one drowsy half-smile that answers the morning's full one,
 and the booklet on the table with its first page filled in — today's date
-in a nurse's handwriting. She was brave. So, quietly, was everyone. Fade to
-black; her name, the date, and one small line: *one needle, never shown.*
+in a nurse's handwriting. He was brave. So, quietly, was everyone. Fade to
+black; his name, the date, and one small line: *one needle, never shown.*
 
 ## Mood & look
 
@@ -792,8 +792,8 @@ shot by shot, back to couch-width by evening.
 What the film refuses to do is its style. No needle, no exam room, no
 staff, no other families, no dramatization of the cry — one honest
 instance, at honest distance, or none at all. Restraint here isn't
-squeamishness; it's the aesthetic argument that what happened *to her* is
-two seconds long, and what happened *around her* — the hands, the packing,
+squeamishness; it's the aesthetic argument that what happened *to him* is
+two seconds long, and what happened *around him* — the hands, the packing,
 the cloth, the booklet — is the actual story, and it takes ninety seconds
 to tell.
 
@@ -829,7 +829,7 @@ room full of other people's hard mornings.
 
 **Batching, around a real appointment:**
 - *The evening before:* Shot 4 (the four-item insert row and its focus
-  pulls) while she sleeps in the other room — the film's fussiest camera
+  pulls) while he sleeps in the other room — the film's fussiest camera
   work, done with zero time pressure. Charge everything; load fresh cards.
 - *Appointment morning:* Shots 1 and 2 in the normal morning rhythm (feed,
   then smile-hunting in the sun patch), Shot 3 as you actually pack, Shot 5
@@ -844,21 +844,21 @@ room full of other people's hard mornings.
   do it.
 
 **Aftercare is the shoot's co-director.** The expected script for the
-afternoon: sleepier, fussier, off her feed a little, maybe a mild fever and
+afternoon: sleepier, fussier, off his feed a little, maybe a mild fever and
 a sore spot — all normal for a day or two. The film's beats ARE the
 comfort measures (cuddles, cool cloth on the site, gently moving that leg,
-lighter layers and extra feeds if she runs warm), so the filming should
+lighter layers and extra feeds if he runs warm), so the filming should
 never be in tension with the caring; if it ever is, the camera loses
 instantly. Dose questions go to the pharmacist, not the internet, and
 anything beyond mild-and-fading goes to Health Link 811 — the film wraps
 early and nobody thinks about it again.
 
 **Safety, the standing block, verbatim in spirit:** no light above or near
-the baby where it could tip, nothing warm close to her, no camera or gimbal
-ever passing over her, staged sleep is always real safe sleep (back, bare
+the baby where it could tip, nothing warm close to him, no camera or gimbal
+ever passing over him, staged sleep is always real safe sleep (back, bare
 crib — and the comfort blanket the film features never enters it), the
 gimbal stays home except for one slow indoor push, and in the car the
 driver drives, the camera is held or braced by the passenger parent only,
 and nothing is ever mounted near an airbag. Short setups around a baby
-who's had a hard day; she's the director, and today of all days she has
+who's had a hard day; he's the director, and today of all days he has
 final cut.

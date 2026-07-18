@@ -2,7 +2,7 @@
 week: 9
 title: "Hands"
 logline: >-
-  In week nine she finds her hands — and for ninety seconds they are the only
+  In week nine he finds his hands — and for ninety seconds they are the only
   characters on screen: fists studied, danglers batted, fingers gripped on
   purpose for the first time, held small inside the bigger hands that hold
   the whole house together.
@@ -14,8 +14,8 @@ shots:
   - n: 1
     name: "The hand, discovered"
     purpose: >-
-      The opening image and the film's thesis: her own hand raised into the
-      window light, fingers spreading and closing while she watches — the
+      The opening image and the film's thesis: his own hand raised into the
+      window light, fingers spreading and closing while he watches — the
       moment a body part becomes a possession. Backlit, the fingers go
       faintly translucent at the edges. Shot 15 returns to this exact frame
       and mark, so write the setup down.
@@ -31,8 +31,8 @@ shots:
       locked 5600K. Manual focus parked on the fingertips; do not chase —
       let the hand drift through the plane.
     lighting: >-
-      Pure backlight logic: lay her on the play-gym mat with the window
-      BEHIND her raised hand and shoot from the shadow side. The sun
+      Pure backlight logic: lay him on the play-gym mat with the window
+      BEHIND his raised hand and shoot from the shadow side. The sun
       through fingers is what makes them glow at the edges; the front of
       the hand would fall to silhouette, so a white foam board (or the
       5-in-1 reflector if you picked one up) lies flat on the mat's near
@@ -41,7 +41,7 @@ shots:
       board sits on the floor where nothing can tip.
     movement: >-
       Locked off. At this magnification a heartbeat is a camera move;
-      the tripod does the holding and her fingers do all the
+      the tripod does the holding and his fingers do all the
       choreography. Frame with the hand in the upper third and air above
       it for the light to live in.
     direction: >-
@@ -52,7 +52,7 @@ shots:
     diagram:
       room: { w: 4, h: 3 }
       window: { wall: top, from: 0.2, to: 0.7 }
-      subject: { x: 0.45, y: 0.35, label: "Her raised hand, backlit" }
+      subject: { x: 0.45, y: 0.35, label: "His raised hand, backlit" }
       camera: { x: 0.45, y: 0.8, facing: 0, label: "a7CII · 85mm S35 crop" }
       lights:
         - { x: 0.45, y: 0.58, kind: reflector, label: "White board flat on mat — bounce fill" }
@@ -60,8 +60,8 @@ shots:
   - n: 2
     name: "The fist study"
     purpose: >-
-      Her side of the story: the long cross-eyed stare at her own fist,
-      held at exactly the distance her eyes can manage. A focus pull
+      His side of the story: the long cross-eyed stare at his own fist,
+      held at exactly the distance his eyes can manage. A focus pull
       travels the few centimetres from knuckles to eyes and back — the
       film's whole plot in one rack: the hand, then the mind noticing it.
     gear: "a7CII + 85mm on tripod, follow-focus ring mounted"
@@ -70,13 +70,13 @@ shots:
       face is a real journey (at 0.9m and f/2 the plane is millimetres
       deep), ISO 800 ceiling 1600, WB locked 5600K. Manual focus only.
       Tape two marks on the follow-focus ring — FIST and EYES — and
-      rehearse the pull on your own knuckle held where hers will be
-      before she's on the mat.
+      rehearse the pull on your own knuckle held where his will be
+      before he's on the mat.
     lighting: >-
-      Window now from camera-left, raking across her in profile so the
-      fist is modelled and her face is half-lit. No sticks by day; if
+      Window now from camera-left, raking across him in profile so the
+      fist is modelled and his face is half-lit. No sticks by day; if
       the far cheek dies, stand the foam board on its edge against the
-      sofa beyond her feet — a bounce leaning on furniture, never a
+      sofa beyond his feet — a bounce leaning on furniture, never a
       stand near the mat.
     movement: >-
       Static tripod; the movement is the focus pull. One slow rotation
@@ -86,12 +86,12 @@ shots:
     direction: >-
       This is a real week-nine behaviour, not a setup: when the fist
       comes up and the eyes lock on, you have maybe ninety seconds of
-      genuine study time. Shoot her in profile so both fist and face
+      genuine study time. Shoot him in profile so both fist and face
       sit near the same plane and the pull stays short.
     diagram:
       room: { w: 4, h: 3 }
       window: { wall: left, from: 0.2, to: 0.7 }
-      subject: { x: 0.4, y: 0.45, label: "Her face + fist, profile" }
+      subject: { x: 0.4, y: 0.45, label: "His face + fist, profile" }
       camera: { x: 0.85, y: 0.45, facing: 270, label: "a7CII · 85mm" }
       lights:
         - { x: 0.72, y: 0.72, kind: reflector, label: "Board on edge vs sofa — far-cheek fill" }
@@ -107,7 +107,7 @@ shots:
     settings: >-
       4K24 full-width, 1/50, S-Log3, f/2.8 so arm, dangler, and face all
       hold focus through the swings, ISO 800 ceiling 1600, WB locked
-      5600K. Manual focus set to the dangler — her hand has to come TO
+      5600K. Manual focus set to the dangler — his hand has to come TO
       the plane, which is also the drama. Frame wide enough to keep the
       whole arc of the arm; headroom above the gym's bar.
     lighting: >-
@@ -118,7 +118,7 @@ shots:
       a kicking baby.
     movement: >-
       Locked off at mat level, tripod legs splayed low, a body-length
-      back from the mat edge. Set it, hit record, and get out of her
+      back from the mat edge. Set it, hit record, and get out of his
       eyeline — batting stops when a face appears, because faces beat
       toys every time at nine weeks.
     direction: >-
@@ -131,12 +131,12 @@ shots:
       window: { wall: left, from: 0.25, to: 0.7 }
       subject: { x: 0.5, y: 0.45, label: "Baby under play gym" }
       camera: { x: 0.5, y: 0.85, facing: 0, label: "a7CII · 50mm, mat level" }
-      note: "Room box = the play-gym mat. Camera out of her eyeline or the batting stops."
+      note: "Room box = the play-gym mat. Camera out of his eyeline or the batting stops."
   - n: 4
     name: "Contact"
     purpose: >-
       The payoff of Shot 3 in slow motion: fist meets dangler, the toy
-      swings, her whole body startles with delight at the cause-and-
+      swings, his whole body startles with delight at the cause-and-
       effect. At 40% speed a lucky swipe becomes intention — the film's
       single most repeatable crowd-pleaser.
     gear: "a7CII + 85mm on tripod"
@@ -146,7 +146,7 @@ shots:
       and re-check focus), 1/120 shutter for clean slow-mo, S-Log3,
       f/2.8, ISO 800 with a hard ceiling of 3200 since 1/120 costs a
       stop over the film's base, WB locked 5600K. Manual focus on the
-      dangler at rest; her hand arrives into the plane.
+      dangler at rest; his hand arrives into the plane.
     lighting: >-
       Same window-side gym setup as Shot 3 — match the light so the
       normal-speed misses and the slow-motion hit intercut as one
@@ -155,9 +155,9 @@ shots:
     movement: >-
       Locked off, framed tight on the dangler with air below for the
       hand to enter. Composition rule: the toy is the target and lives
-      in the upper third; her hand is the event and owns the rest.
+      in the upper third; his hand is the event and owns the rest.
     direction: >-
-      Shoot this only after Shot 3 has told you her hit rate and her
+      Shoot this only after Shot 3 has told you his hit rate and his
       favourite dangler. Sixty-percent-of-the-way-through a play
       session is the sweet spot — warmed up, not yet tired. When one
       connects, let the take run: the post-hit wriggle of triumph is
@@ -180,14 +180,14 @@ shots:
       4K24 full-width, 1/50, S-Log3, f/2 wide-ish for the soft dusk
       wrap, ISO 800 ceiling 6400 — this is a lamp-lit hour and grain in
       the grade will eat what noise remains. WB locked 3200K to the
-      practicals so the warmth stays warm. Manual focus on her knuckles
+      practicals so the warmth stays warm. Manual focus on his knuckles
       at the lips; nobody in this frame moves fast.
     lighting: >-
       The glider corner at dusk: floor-lamp practical as the key from
-      beyond her feet, dying window going cool behind. Stick A at
+      beyond his feet, dying window going cool behind. Stick A at
       3200K, dimmed to embers, on the FLOOR tucked behind the lamp's
       base — extending the practical's glow as an edge accent along
-      her forearm, so the hand reads dimensional against the dark. The
+      his forearm, so the hand reads dimensional against the dark. The
       stick borrows the lamp's alibi; it is never its own source, and
       it sits two metres from the glider, floor-level, tip-safe.
     movement: >-
@@ -196,9 +196,9 @@ shots:
       starting to work, the eyelids getting heavy — and the stillness
       of the camera is what makes small feel enormous.
     direction: >-
-      Shoot during the pre-sleep wind-down while a parent holds her in
+      Shoot during the pre-sleep wind-down while a parent holds him in
       the glider. No directing: the hand goes to the mouth on its own
-      schedule now, several times an evening. If she's actually
+      schedule now, several times an evening. If he's actually
       fussing, put the camera down — the shot exists because the
       fussing ends, not to document it.
     diagram:
@@ -215,38 +215,38 @@ shots:
     purpose: >-
       The developmental headline of the week, staged as a two-hand
       drama: a parent's finger enters frame and waits — not touching
-      her palm, no reflex to trigger — and she looks, reaches, and
+      his palm, no reflex to trigger — and he looks, reaches, and
       takes it. The grip that used to be wiring is now a decision.
       This is the film's turning point.
     gear: "a7CII + 50mm on tripod"
     settings: >-
       4K24, 1/50, S-Log3, f/2.8 to hold both hands through the reach,
-      ISO 800 ceiling 1600, WB locked 5600K. Manual focus on her open
+      ISO 800 ceiling 1600, WB locked 5600K. Manual focus on his open
       hand — the parent finger enters through the plane, goes soft,
-      then sharpens as she pulls it to her. That accidental-looking
+      then sharpens as he pulls it to him. That accidental-looking
       focus story is free; don't pull, just let the depth do it.
     lighting: >-
       On the changing table by its window, light from camera-right
-      raking across both hands so skin texture — hers new, yours not —
+      raking across both hands so skin texture — his new, yours not —
       reads in the same frame. No sticks; the foam board leans against
       the wall beyond the table if the shadow side needs opening.
-      Nothing stands near the table while she's on it, and a parent's
+      Nothing stands near the table while he's on it, and a parent's
       free hand never leaves guard range.
     movement: >-
       Locked off from beside the table at 45 degrees — never shooting
-      from directly above her, and the camera never crosses over the
+      from directly above him, and the camera never crosses over the
       table. Frame is two hands and forearms; faces stay out, which
       is what keeps the shot about the hands.
     direction: >-
       The one gently staged beat in the film, and the staging is just
-      patience: hold the finger 10cm from her hand, in her sightline,
-      and wait. If she doesn't take it, she doesn't — try again after
-      the next feed. When she does, hold still and let HER do all the
+      patience: hold the finger 10cm from his hand, in his sightline,
+      and wait. If he doesn't take it, he doesn't — try again after
+      the next feed. When he does, hold still and let HIM do all the
       moving. Five takes across the week; the real one is obvious.
     diagram:
       room: { w: 4, h: 3 }
       window: { wall: right, from: 0.2, to: 0.7 }
-      subject: { x: 0.6, y: 0.35, label: "Her open hand" }
+      subject: { x: 0.6, y: 0.35, label: "His open hand" }
       subject2: { x: 0.35, y: 0.55, label: "Dad's finger, waiting" }
       camera: { x: 0.3, y: 0.8, facing: 42, label: "a7CII · 50mm, 45° off the table" }
       lights:
@@ -255,7 +255,7 @@ shots:
   - n: 7
     name: "Scale: Dad's palm"
     purpose: >-
-      The first of three scale shots: her whole hand resting inside
+      The first of three scale shots: his whole hand resting inside
       Dad's open palm, which it doesn't come close to filling. No
       action, no event — just the size of things right now, which is
       the fact this film exists to keep.
@@ -277,21 +277,21 @@ shots:
       15 seconds of stillness: in the edit this shot runs long and
       silent, and the audience does the measuring.
     direction: >-
-      Easiest shot of the week — she's asleep or settled on Dad's lap,
-      her hand laid gently in his palm, his hand resting on his knee.
+      Easiest shot of the week — he's asleep or settled on Dad's lap,
+      his hand laid gently in Dad's palm, Dad's hand resting on his knee.
       Shoot the same frame again in the month-twelve film; this is a
       composition worth owning forever.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: left, from: 0.2, to: 0.65 }
-      subject: { x: 0.4, y: 0.45, label: "Her hand in Dad's palm" }
+      subject: { x: 0.4, y: 0.45, label: "His hand in Dad's palm" }
       camera: { x: 0.75, y: 0.7, facing: 300, label: "a7CII · 85mm S35 crop" }
       note: "A measurement, not a mood — flat window light, f/4, dead still."
   - n: 8
     name: "Scale: Jenn's thumb"
     purpose: >-
-      Scale shot two, mid-feed: her fist clamped around Jenn's thumb
-      while she eats — the grip she now chooses, holding the hand that
+      Scale shot two, mid-feed: his fist clamped around Jenn's thumb
+      while he eats — the grip he now chooses, holding the hand that
       holds the bottle. Where Shot 7 was a measurement, this one is a
       relationship.
     gear: "a7CII + 85mm on tripod"
@@ -300,7 +300,7 @@ shots:
       wrap, sharpness only on the interlocked fingers, ISO 800 ceiling
       3200 for the darker feed corner, WB locked 5600K by day or 3200K
       at the evening feed — commit to whichever feed you shoot. Manual
-      focus on her knuckles over Jenn's thumbnail.
+      focus on his knuckles over Jenn's thumbnail.
     lighting: >-
       The feed chair's window as key from camera-left, exactly the
       Shot 6 grammar of week one's film — deliberately: same corner,
@@ -320,7 +320,7 @@ shots:
     diagram:
       room: { w: 4, h: 4 }
       window: { wall: left, from: 0.2, to: 0.7 }
-      subject: { x: 0.35, y: 0.4, label: "Her fist on Jenn's thumb, mid-feed" }
+      subject: { x: 0.35, y: 0.4, label: "His fist on Jenn's thumb, mid-feed" }
       camera: { x: 0.75, y: 0.65, facing: 302, label: "a7CII · 85mm" }
       lights:
         - { x: 0.6, y: 0.85, kind: reflector, label: "Board on floor — shadow-side lift (optional)" }
@@ -328,7 +328,7 @@ shots:
   - n: 9
     name: "Scale: the cat's back"
     purpose: >-
-      Scale shot three, and the comic relief: her hand laid on a cat's
+      Scale shot three, and the comic relief: his hand laid on a cat's
       back — fingers in fur, both parties deeply unsure. A tiny hand
       against the house's original resident closes the size triptych
       with a smile.
@@ -348,11 +348,11 @@ shots:
     movement: >-
       Locked off across the room. Frame tight on the hand-on-fur
       contact point with the cat's body as landscape. Set up first,
-      then bring her in — the camera must already be furniture by the
+      then bring him in — the camera must already be furniture by the
       time the meeting happens.
     direction: >-
-      Fully supervised, always: Jenn holds her; her hand rides ON TOP
-      of Jenn's guiding hand (or Jenn's hand shadows hers at zero
+      Fully supervised, always: Jenn holds him; his hand rides ON TOP
+      of Jenn's guiding hand (or Jenn's hand shadows his at zero
       distance) for every second of contact — a nine-week-old's new
       grab reflex plus a cat's tail is not a combination that runs
       unsupervised, and the calmest cat gets the casting call, right
@@ -361,17 +361,17 @@ shots:
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: bottom, from: 0.25, to: 0.7 }
-      subject: { x: 0.45, y: 0.5, label: "Cat + her guided hand" }
-      subject2: { x: 0.6, y: 0.62, label: "Jenn holding her, hand-over-hand" }
+      subject: { x: 0.45, y: 0.5, label: "Cat + his guided hand" }
+      subject2: { x: 0.6, y: 0.62, label: "Jenn holding him, hand-over-hand" }
       camera: { x: 0.15, y: 0.35, facing: 112, label: "a7CII · 85mm, 2.5m back" }
       note: "Supervised hand-over-hand contact only; camera set before the cat meeting."
   - n: 10
     name: "The hands of the house I: bottles"
     purpose: >-
-      The film widens its definition: HER hands are new, but the house
+      The film widens its definition: HIS hands are new, but the house
       runs on hands. First of a fast triptych — the kitchen-counter
       ballet of scoops, shakes, and the flick that checks the
-      temperature on a wrist. Muscle memory she'll never remember
+      temperature on a wrist. Muscle memory he'll never remember
       being the beneficiary of.
     gear: "DJI Pocket 3, tabletop tripod on the counter"
     settings: >-
@@ -428,7 +428,7 @@ shots:
       the films rhyme the way the weeks do.
     direction: >-
       Shoot a real folding session; there are two a day to choose
-      from. One take should include a onesie she has already
+      from. One take should include a onesie he has already
       outgrown going into the too-small pile — the hands pausing on
       it for half a beat is the truest frame in the triptych. Don't
       ask for the pause; it happens.
@@ -446,21 +446,21 @@ shots:
     name: "The hands of the house III: one-handed"
     purpose: >-
       Triptych beat three, and the funny-true one: typing one-handed
-      at the desk while the other arm holds her asleep against a
-      shoulder. One hand in the working world, one in hers — the
+      at the desk while the other arm holds him asleep against a
+      shoulder. One hand in the working world, one in his — the
       whole season of life in a single frame.
     gear: "a7CII + 85mm on tripod"
     settings: >-
-      4K24, 1/50, S-Log3, f/2 — focus on the typing hand, her sleeping
+      4K24, 1/50, S-Log3, f/2 — focus on the typing hand, his sleeping
       fist on the shoulder a soft warm shape in the background, ISO
       800 ceiling 6400 for the lamp-lit desk, WB locked 3200K to the
       desk lamp. Manual focus on the keyboard's home row.
     lighting: >-
       Desk lamp practical as key on the typing hand. Stick B at 3200K,
       minimum power, on the floor behind the desk's far side, skimming
-      an edge along her sleeping arm so the background shape reads as
+      an edge along his sleeping arm so the background shape reads as
       a baby and not a blanket. Both sources low, stable, a body
-      length from the chair — nothing above or near her.
+      length from the chair — nothing above or near him.
     movement: >-
       Locked off from beside the desk, compressed by the 85mm so the
       keyboard hand and the shoulder fist stack into one plane of
@@ -468,28 +468,28 @@ shots:
       worth of hunt-and-peck plus one sleeping-hand twitch.
     direction: >-
       Shoot it the evening it's really happening — it's happening
-      every evening. Whoever isn't holding her sets the frame, then
+      every evening. Whoever isn't holding him sets the frame, then
       leaves. The typing parent forgets the camera by the second
       paragraph, which is the take.
     diagram:
       room: { w: 4, h: 3 }
       subject: { x: 0.45, y: 0.35, label: "Keyboard + the working hand" }
-      subject2: { x: 0.6, y: 0.45, label: "Her fist on the shoulder, asleep" }
+      subject2: { x: 0.6, y: 0.45, label: "His fist on the shoulder, asleep" }
       camera: { x: 0.2, y: 0.75, facing: 40, label: "a7CII · 85mm" }
       lights:
         - { x: 0.7, y: 0.2, kind: practical, label: "Desk lamp · 3200K key" }
-        - { x: 0.85, y: 0.3, kind: stick, label: "Stick B · 3200K floor edge on her arm" }
+        - { x: 0.85, y: 0.3, kind: stick, label: "Stick B · 3200K floor edge on his arm" }
       note: "One hand in each world — the 85mm stacks them into one plane."
   - n: 13
     name: "Small hands, warm water"
     purpose: >-
-      The bath beat, narrowed to hands: her fingers opening in the
+      The bath beat, narrowed to hands: his fingers opening in the
       warm water while a parent's hands wash each one — eight tiny
       fingers, two thumbs, an inventory taken with soap. Water gives
       the film its only glitter.
     gear: "a7CII + 50mm handheld (IBIS on)"
     settings: >-
-      4K24, 1/50, S-Log3, f/2.8 to keep her hands and the washing
+      4K24, 1/50, S-Log3, f/2.8 to keep his hands and the washing
       hands together, ISO 800 ceiling 1600, WB locked 5600K to the
       window, Active SteadyShot ON (accept its slight crop) — you're
       handheld between towel duties. Angle so backlit droplets read
@@ -497,7 +497,7 @@ shots:
       if it wants to.
     lighting: >-
       The bath-time window is the key, side-on to the water so ripples
-      throw moving light onto her wrists. No sticks: wet room, so the
+      throw moving light onto his wrists. No sticks: wet room, so the
       week-one rule doubles — nothing powered anywhere near the
       water, full stop. The shot survives on window alone, which is
       the point of scheduling the bath in daylight this once.
@@ -509,13 +509,13 @@ shots:
     direction: >-
       Bath happens when the bath happens; lay everything out first so
       filming never delays warm water. Ask the bathing parent to
-      wash her hands LAST and slowly — thirty unhurried seconds of
-      finger-by-finger is the coverage, and she genuinely likes it
+      wash his hands LAST and slowly — thirty unhurried seconds of
+      finger-by-finger is the coverage, and he genuinely likes it
       now, which shows.
     diagram:
       room: { w: 4, h: 3 }
       window: { wall: top, from: 0.5, to: 0.9 }
-      subject: { x: 0.6, y: 0.3, label: "Her hands in the water" }
+      subject: { x: 0.6, y: 0.3, label: "His hands in the water" }
       subject2: { x: 0.8, y: 0.45, label: "Dad washing, finger by finger" }
       camera: { x: 0.3, y: 0.7, facing: 45, label: "a7CII · 50mm handheld" }
       note: "Side-on to the water for ripple-light; nothing powered near the wet zone."
@@ -524,22 +524,22 @@ shots:
     purpose: >-
       The week's rite of passage, told entirely in hands: Jenn's hands
       zip the new arms-out sleep sack for the first time — no more
-      swaddle wings — and later, in the crib, her freed hands find
-      each other at the midline in her sleep. Fingers laced on her own
+      swaddle wings — and later, in the crib, his freed hands find
+      each other at the midline in his sleep. Fingers laced on his own
       chest: the film's thesis, asleep.
     gear: "a7CII + 85mm on tripod (both beats); changing table, then beside the crib"
     settings: >-
       Beat one (the zip): 4K24, 1/50, S-Log3, f/2.8, ISO 800 ceiling
       3200, WB 3200K to the nursery lamp — evening changeover light.
       Beat two (midline): same base, f/2 wide open, ISO ceiling 6400,
-      WB locked 2700K to the night light; expose her sack-lit shape
+      WB locked 2700K to the night light; expose his sack-lit shape
       around 45 IRE and let the room fall to darkness. Manual focus
-      on her laced fingers, set before she's down for the night by
+      on his laced fingers, set before he's down for the night by
       focusing on the sack laid flat in the crib, then don't touch.
     lighting: >-
       Beat one: the nursery lamp only. Beat two: the plug-in night
       light across the room, nothing else — the frame should be
-      exactly as dark as her night is. No sticks in the nursery at
+      exactly as dark as his night is. No sticks in the nursery at
       bedtime, ever, and NOTHING added to the crib: no light, no
       reflector, no camera arm — the crib stays bare because that's
       the safety rule and also the actual image.
@@ -547,7 +547,7 @@ shots:
       Both beats locked off. For the midline beat the tripod stands
       beside the crib at rail height, lens shooting through the gap
       above the rail from a full arm's length outside it — the camera
-      never crosses the rail plane and never passes over her. Frame,
+      never crosses the rail plane and never passes over him. Frame,
       focus, leave the room, let it roll 20 minutes.
     direction: >-
       Shoot the zip the first night the new sack goes on — hands and
@@ -569,7 +569,7 @@ shots:
     name: "Ten fingers, one finger"
     purpose: >-
       The close, and Shot 1's answer: back on the mat in the same
-      window light, both her hands wrapped around one parent finger —
+      window light, both his hands wrapped around one parent finger —
       the hand that discovered itself in the opening now holding on,
       on purpose, with everything it has. Held long. Cut to black
       from here.
@@ -578,7 +578,7 @@ shots:
       Identical to Shot 1 by design: 4K24 in APS-C crop mode from the
       85mm's honest 0.8m minimum, 1/50, S-Log3, f/2.8, ISO 800, WB
       locked 5600K. One difference: after 10 seconds of stillness,
-      one slow focus pull from her knuckles up the parent's finger to
+      one slow focus pull from his knuckles up the parent's finger to
       the parent's hand — the film's last camera event, marked on the
       ring like Shot 2.
     lighting: >-
@@ -594,9 +594,9 @@ shots:
       hold is a frame the fade can breathe through.
     direction: >-
       Offer the finger the way Shot 6 taught you — into the
-      sightline, and wait. Two hands arriving is common now; she
-      stacks them. Once the grip is set, nobody moves until she lets
-      go. She decides the runtime of her own ending, which is only
+      sightline, and wait. Two hands arriving is common now; he
+      stacks them. Once the grip is set, nobody moves until he lets
+      go. He decides the runtime of his own ending, which is only
       fair.
     diagram:
       room: { w: 4, h: 3 }
@@ -660,7 +660,7 @@ edit:
       (Cormorant or EB Garamond), white 85%, tracked wide, small;
       12-frame fade in/out, gone before Shot 2's rack begins.
       Subtitle "week nine" in tiny caps beneath. End card after the
-      fade: her name and the date, 3 seconds.
+      fade: his name and the date, 3 seconds.
     - >-
       Music sync pass: lay the fingerstyle bed, then slip cuts a few
       frames so the batting hit in Shot 4 lands just AFTER a musical
@@ -759,13 +759,13 @@ edit:
       with the Pocket 3 held close, because it's the rite-of-passage
       sound effect and the on-set take will be too quiet.
     - >-
-      Her sounds stay in wherever they happened — the fist-study
+      His sounds stay in wherever they happened — the fist-study
       self-commentary coos in Shot 2 especially. Under the macro
       frames, breath and coo do what narration would ruin.
     - >-
       Score enters after the title, thins under the batting sequence
       so the rattle hit lands clean, and drops to nothing twice:
-      Shot 6 (the choice happens in silence — room tone, her breath,
+      Shot 6 (the choice happens in silence — room tone, his breath,
       the grip) and the final 8 seconds of Shot 15 before the fade.
     - >-
       Levels: score peaks ~-18 dBFS under picture, featured touch
@@ -792,37 +792,37 @@ music: >-
 **Open — discovery (Shots 1–2).** The film starts smaller than any film in the
 series so far: one hand, raised into the window's backlight, fingers spreading
 like something being tried on for the first time — because it is. Then the
-reverse: her face, locked cross-eyed onto her own fist, and a slow focus rack
+reverse: his face, locked cross-eyed onto his own fist, and a slow focus rack
 that travels the ten centimetres between the hand and the mind that just
 noticed it owns one. Title over the first frame. No music until it's gone.
 
 **Middle — practice, choice, scale (Shots 3–9).** The hand goes to work.
-Under the play gym she swings and misses, misses, misses — cut in a
+Under the play gym he swings and misses, misses, misses — cut in a
 tightening rhythm — until the connection lands in slow motion and the whole
-mat celebrates. The same hands find her mouth at dusk and the fussing simply
+mat celebrates. The same hands find his mouth at dusk and the fussing simply
 stops: week nine's quiet mercy, the crying curve's far side rendered as a
 fist against lips in lamplight. Then the film's hinge, alone in its own
-movement: a parent finger offered and NOT placed in her palm — held in her
-sightline, waiting — and she reaches out and takes it. The grip that used to
+movement: a parent finger offered and NOT placed in his palm — held in his
+sightline, waiting — and he reaches out and takes it. The grip that used to
 be wiring is now a decision, and the film gives the decision total silence.
-From there, scale: her hand inside Dad's palm, not close to filling it; her
+From there, scale: his hand inside Dad's palm, not close to filling it; his
 fist clamped on Jenn's thumb mid-feed in the same corner where week one's
-film watched her eat; her hand — supervised, hand-over-hand — flat on a
+film watched him eat; his hand — supervised, hand-over-hand — flat on a
 cat's back, fingers in fur, both parties reserving judgment.
 
 **Close — the hands of the house, and ease (Shots 10–15).** The film widens
 one step: the house has always run on hands. A double-tempo triptych — the
 bottle-station ballet, tiny laundry folding itself out of muscle memory, and
 then the tempo collapsing into one long frame of a parent typing one-handed
-while her fist sleeps on the other shoulder. Warm water: her fingers washed
+while his fist sleeps on the other shoulder. Warm water: his fingers washed
 one by one in the bath, the film's only glitter. Then the week's rite of
 passage told entirely in hands — Jenn's hands zipping the first arms-out
 sleep sack, the swaddle era ending in one zip — and later, in night-light
-dark, the freed hands finding each other at the midline in her sleep,
-fingers laced on her own chest. The film ends where it began: same mat, same
-backlight, but now both her hands are wrapped around one parent finger,
-holding on, on purpose, with everything they've learned. She decides when to
-let go. Fade to black, her name, the date.
+dark, the freed hands finding each other at the midline in his sleep,
+fingers laced on his own chest. The film ends where it began: same mat, same
+backlight, but now both his hands are wrapped around one parent finger,
+holding on, on purpose, with everything they've learned. He decides when to
+let go. Fade to black, his name, the date.
 
 ## Mood & look
 
@@ -834,7 +834,7 @@ Skin protection is the star node, grain matters double (macro flesh without
 grain looks rendered), and the split tone stays subtle because there's no
 set dressing to hide an overreach behind: the hands ARE the set.
 
-Light does two jobs. Backlight makes her fingers translucent at the edges —
+Light does two jobs. Backlight makes his fingers translucent at the edges —
 the opening and closing frames glow from inside, warm-red rims protected in
 the highlight shoulder. Everywhere else, single-source honesty: one window
 raking texture by day, one practical pooling warmth at dusk and night, the
@@ -843,8 +843,8 @@ in the glider corner, along a sleeping arm at the desk. Palette per the
 series: amber highlights, teal-leaning shadows, milky blacks, halation
 blooming the backlit fingers like memory. Pace: the slowest film yet in its
 holds, with one deliberate double-tempo passage — the house's hands —
-so that when the film slows back down, the slowness reads as her gravity
-pulling the house's speed back to hers.
+so that when the film slows back down, the slowness reads as his gravity
+pulling the house's speed back to his.
 
 ## Prep & shoot-day plan
 
@@ -858,7 +858,7 @@ a day. The film can be shot in five relaxed days.
   play-gym mat. Do 1 and 2 in one session (mark the tripod feet and write
   the frame down — Shot 15 repeats it), then give batting its own sessions:
   Shot 3 rolls long across two or three playtimes before Shot 4's slow-mo
-  is attempted, because Shot 3 teaches you her hit rate and favourite
+  is attempted, because Shot 3 teaches you his hit rate and favourite
   dangler.
 - *Changing table + feeds:* Shot 6 is five patient attempts across the week
   around changes; Shot 8 is any feed with the frame set during the fuss.
@@ -866,8 +866,8 @@ a day. The film can be shot in five relaxed days.
 - *Opportunistic:* Shot 9 waits for the calmest cat's post-dinner mood —
   camera set FIRST, cat never asked twice. Shot 5 is any glider evening.
 - *The house's hands:* 10, 11, and 12 need no baby cooperation at all —
-  they're real chores with a camera present. Shoot them on her fussy day;
-  the film keeps moving while she doesn't feel like being in it.
+  they're real chores with a camera present. Shoot them on his fussy day;
+  the film keeps moving while he doesn't feel like being in it.
 - *One-offs:* Shot 13 on a daylight bath day; Shot 14's zip on the night
   the new sack debuts, and the midline beat left rolling over two or three
   settled nights. Shot 15 last, on a morning that matches Shot 1's light.
@@ -877,8 +877,8 @@ inside that it will never, ever focus, and no amount of leaning helps. Fill
 the frame with the S35 crop button (a real ~128mm-equivalent from the same
 distance, still oversampled) and with modest 110–130% punches in post, not
 by creeping closer. Tape the follow-focus marks for the two rehearsed pulls
-(Shots 2 and 15) and rehearse both on your own knuckle before she's in
-place; her patience is a budget and rehearsal spends it.
+(Shots 2 and 15) and rehearse both on your own knuckle before he's in
+place; his patience is a budget and rehearsal spends it.
 
 **Pit-stop habit, unchanged:** batteries on chargers nightly, cards
 offloaded to two places before in-camera format, a7CII parked at the
@@ -888,10 +888,10 @@ f/2.8 without touching the shutter.
 
 **Safety, restated because it's non-negotiable:** nothing in or over the
 crib, ever — the midline shot is taken from outside the rail, an arm's
-length back, and the crib holds her, the sack, and nothing else. Lights
-live on the floor or beyond tipping radius, nothing warm near her, no
-camera or gimbal passing over her, and every cat-contact second is
+length back, and the crib holds him, the sack, and nothing else. Lights
+live on the floor or beyond tipping radius, nothing warm near him, no
+camera or gimbal passing over him, and every cat-contact second is
 hand-over-hand supervised with the parent's hand in command. Staged sleep
 is real safe sleep: back, bare crib. Setups happen during the fuss,
-shooting during the calm, and it ends the moment she says it ends.
-She's the director. Her hands are just finally ready for a close-up.
+shooting during the calm, and it ends the moment he says it ends.
+He's the director. His hands are just finally ready for a close-up.

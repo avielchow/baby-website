@@ -4,30 +4,30 @@ title: "Five weeks in"
 description: "Week five is the loud stretch — crying is climbing toward its peak, but the awake windows are getting longer and more social, and the first real smile could land any day now."
 milestones:
   - title: "The first social smile is close — some land this week"
-    detail: "The genuine, aimed-at-you social smile most often shows up around 6 weeks, though the normal window is wide — some babies flash one earlier and plenty take until 2 months or a little after. It's different from the fleeting sleep-smiles you've been seeing: this one is a response, sparked by your face and voice and clearly pointed at you. You can invite it by catching an alert, calm moment, bringing your face to about 20–30 cm, smiling big, talking warmly, and then pausing to give her a turn. If it hasn't happened yet, nothing is wrong — it's a range, not a deadline, and premature babies work off their adjusted age."
+    detail: "The genuine, aimed-at-you social smile most often shows up around 6 weeks, though the normal window is wide — some babies flash one earlier and plenty take until 2 months or a little after. It's different from the fleeting sleep-smiles you've been seeing: this one is a response, sparked by your face and voice and clearly pointed at you. You can invite it by catching an alert, calm moment, bringing your face to about 20–30 cm, smiling big, talking warmly, and then pausing to give him a turn. If it hasn't happened yet, nothing is wrong — it's a range, not a deadline, and premature babies work off their adjusted age."
     sources:
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/2-months.html" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/behavior-and-development/your_childs_development" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/learn13m.html" }
   - title: "Early coos and vowel sounds are beginning"
-    detail: "Somewhere in this stretch the crying gets company: soft, open vowel sounds — 'ah,' 'eh,' 'ooh,' the little gurgles and coos that are the first real building blocks of language. The single best thing you can do is answer them. When she makes a sound, make one back, wait, and let her go again — that back-and-forth turn-taking, silly as it feels, is exactly how conversation is learned. Narrate your day, read aloud, sing badly; there's no wrong material, and your voice is her favourite sound in the world."
+    detail: "Somewhere in this stretch the crying gets company: soft, open vowel sounds — 'ah,' 'eh,' 'ooh,' the little gurgles and coos that are the first real building blocks of language. The single best thing you can do is answer them. When he makes a sound, make one back, wait, and let him go again — that back-and-forth turn-taking, silly as it feels, is exactly how conversation is learned. Narrate your day, read aloud, sing badly; there's no wrong material, and your voice is his favourite sound in the world."
     sources:
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/2-months.html" }
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Hearing-and-Making-Sounds.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/learn13m.html" }
   - title: "Longer awake windows, and a more social baby"
-    detail: "By now she's spending noticeably more of the day awake, alert, and curious about her surroundings than she was a couple of weeks ago — the newborn fog is lifting a little. She's happy to see familiar faces, tracks you as you move across the room, and can lock onto a toy for a few seconds at a time. Use those windows for face-to-face play, slow-moving high-contrast toys, and plenty of talking; they're short, so follow her lead and stop before she's overtired. Fussing, looking away, or arching is her way of saying 'that's enough' — not a failure, just a full cup."
+    detail: "By now he's spending noticeably more of the day awake, alert, and curious about his surroundings than he was a couple of weeks ago — the newborn fog is lifting a little. He's happy to see familiar faces, tracks you as you move across the room, and can lock onto a toy for a few seconds at a time. Use those windows for face-to-face play, slow-moving high-contrast toys, and plenty of talking; they're short, so follow his lead and stop before he's overtired. Fussing, looking away, or arching is his way of saying 'that's enough' — not a failure, just a full cup."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/learn13m.html" }
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/2-months.html" }
   - title: "Steadier head lifts in tummy time"
-    detail: "On her tummy she can now lift her head and hold it up briefly, turning it side to side, and may start to prop a little on her forearms — the neck and shoulder muscles that later power rolling and sitting are being built right now. It still flops without warning, so keep a hand behind it when you lift her. Short, frequent sessions beat one long one: a rolled towel under the chest, armpit to armpit, gives her a better angle, and getting down face-to-face turns the work into a game. See the tummy-time to-do below for how to build the minutes."
+    detail: "On his tummy he can now lift his head and hold it up briefly, turning it side to side, and may start to prop a little on his forearms — the neck and shoulder muscles that later power rolling and sitting are being built right now. It still flops without warning, so keep a hand behind it when you lift him. Short, frequent sessions beat one long one: a rolled towel under the chest, armpit to armpit, gives him a better angle, and getting down face-to-face turns the work into a game. See the tummy-time to-do below for how to build the minutes."
     sources:
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/2-months.html" }
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/back-to-sleep-tummy-to-play.aspx" }
 todos:
   - title: "Build tummy time toward 15–30 minutes a day"
-    detail: "The target for this stretch is roughly 15–30 minutes of tummy time spread across the day, reached by around 7 weeks — but you get there in small pieces, not one marathon. Do several short, always-supervised, always-awake sessions of a few minutes each: after a diaper change, before a feed (not right after, or you'll get spit-up), whenever she's alert and content. If the floor is a hard sell, start with her on your chest while you recline, then graduate to the mat; a rolled towel under the chest and a toy or your face at eye level buys you extra minutes. Protesting means make it shorter and more often, not skip it."
+    detail: "The target for this stretch is roughly 15–30 minutes of tummy time spread across the day, reached by around 7 weeks — but you get there in small pieces, not one marathon. Do several short, always-supervised, always-awake sessions of a few minutes each: after a diaper change, before a feed (not right after, or you'll get spit-up), whenever he's alert and content. If the floor is a hard sell, start with him on your chest while you recline, then graduate to the mat; a rolled towel under the chest and a toy or your face at eye level buys you extra minutes. Protesting means make it shorter and more often, not skip it."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/back-to-sleep-tummy-to-play.aspx" }
       - { label: "CDC", url: "https://www.cdc.gov/act-early/milestones/2-months.html" }
@@ -36,16 +36,16 @@ todos:
       url: "https://www.youtube.com/watch?v=zQfuBFwVZ5E"
       channel: "Pathways"
   - title: "Reconfirm the 2-month immunization appointment is actually booked"
-    detail: "Alberta's first routine vaccines — DTaP-IPV-Hib-HB, pneumococcal conjugate, and rotavirus — are given at 2 months through public/community health centres, not usually the family doctor's office, and the baby is now about five weeks old, so this is the week to double-check it's on the calendar. If you booked it last week, confirm the date and clinic; if it somehow slipped, call your local public health office or Health Link 811 today, with her Alberta health card number handy. Getting this round done is also what starts loosening the strict visitor rules, so it's worth pinning down."
+    detail: "Alberta's first routine vaccines — DTaP-IPV-Hib-HB, pneumococcal conjugate, and rotavirus — are given at 2 months through public/community health centres, not usually the family doctor's office, and the baby is now about five weeks old, so this is the week to double-check it's on the calendar. If you booked it last week, confirm the date and clinic; if it somehow slipped, call your local public health office or Health Link 811 today, with his Alberta health card number handy. Getting this round done is also what starts loosening the strict visitor rules, so it's worth pinning down."
     sources:
       - { label: "AHS", url: "https://myhealth.alberta.ca/Topic/Immunization/pages/routine-schedule.aspx" }
   - title: "Have a soothing plan and a tag-out plan ready for the evenings"
-    detail: "Crying is near its peak this month and tends to cluster in the late afternoon and evening, so decide your moves before the rough hour arrives, not during it. Build a short soothing menu you can run through calmly — the five S's (swaddle, side/stomach hold, shush, swing, suck), a walk, a warm dark room, skin-to-skin — knowing some crying simply won't stop no matter what, and that isn't your failure. Just as important, agree who taps out when: if one of you is fraying, the other takes over, and if you're solo it's always okay to put her down safely on her back and step away for a few minutes. A plan made in daylight is worth ten made at 8 p.m."
+    detail: "Crying is near its peak this month and tends to cluster in the late afternoon and evening, so decide your moves before the rough hour arrives, not during it. Build a short soothing menu you can run through calmly — the five S's (swaddle, side/stomach hold, shush, swing, suck), a walk, a warm dark room, skin-to-skin — knowing some crying simply won't stop no matter what, and that isn't your failure. Just as important, agree who taps out when: if one of you is fraying, the other takes over, and if you're solo it's always okay to put him down safely on his back and step away for a few minutes. A plan made in daylight is worth ten made at 8 p.m."
     sources:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying" }
       - { label: "PURPLE", url: "https://dontshake.org/purple-crying" }
   - title: "Keep getting outside — and keep the germ-bubble rules"
-    detail: "A daily walk is still one of the cheapest good things you can do for both of you, and open air was never the risky part — crowded indoor spaces are. The rules still earning their keep until the 2-month shots: anyone holding her washes hands first, anyone with sniffles stays home, and strangers can admire but not touch. Where you can, keep skipping enclosed crowds — malls, planes, packed waiting rooms — for a few more weeks while her immune system matures and the first vaccines get on board."
+    detail: "A daily walk is still one of the cheapest good things you can do for both of you, and open air was never the risky part — crowded indoor spaces are. The rules still earning their keep until the 2-month shots: anyone holding him washes hands first, anyone with sniffles stays home, and strangers can admire but not touch. Where you can, keep skipping enclosed crowds — malls, planes, packed waiting rooms — for a few more weeks while his immune system matures and the first vaccines get on board."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/newborn-out.html" }
 feeding:
@@ -55,7 +55,7 @@ feeding:
       - { label: "LLLI", url: "https://llli.org/breastfeeding-info/growth/" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed13m.html" }
   - title: "Still feeding on demand — watch the baby, not the clock"
-    detail: "Breastfed babies at this age typically feed 8–12 times in 24 hours, roughly every 2–3 hours counted start-to-start, while formula-fed babies usually take about 3–4 oz (90–120 ml) every 3–4 hours. Read her cues rather than a schedule: rooting, hand-to-mouth, stirring, and lip-smacking mean feed soon; crying is the late signal, not the first. Diapers stay the report card — six or more good wet ones a day, plus steady weight gain, means intake is fine. Growth-spurt days will blow up the count temporarily, and that's expected."
+    detail: "Breastfed babies at this age typically feed 8–12 times in 24 hours, roughly every 2–3 hours counted start-to-start, while formula-fed babies usually take about 3–4 oz (90–120 ml) every 3–4 hours. Read his cues rather than a schedule: rooting, hand-to-mouth, stirring, and lip-smacking mean feed soon; crying is the late signal, not the first. Diapers stay the report card — six or more good wet ones a day, plus steady weight gain, means intake is fine. Growth-spurt days will blow up the count temporarily, and that's expected."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed13m.html" }
       - { label: "LLLI", url: "https://llli.org/breastfeeding-info/frequency-feeding-frequently-asked-questions-faqs/" }
@@ -70,12 +70,12 @@ sleep:
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/sleep13m.html" }
   - title: "Safe sleep rules haven't changed"
-    detail: "Back for every sleep — naps included — on a firm, flat surface, with nothing loose in the space: no blankets, pillows, bumpers, or positioners, and dress her for the room instead of adding covers. Keep her crib or bassinet in your room but not in your bed: room-sharing for at least the first 6 months is linked to roughly halving SIDS risk, while bed-sharing raises the risk of SIDS and suffocation. As the awake windows lengthen she'll fall asleep in swings, carriers, and car seats more often — move her to the flat crib when you reasonably can, since those inclined seats aren't safe-sleep surfaces."
+    detail: "Back for every sleep — naps included — on a firm, flat surface, with nothing loose in the space: no blankets, pillows, bumpers, or positioners, and dress him for the room instead of adding covers. Keep his crib or bassinet in your room but not in your bed: room-sharing for at least the first 6 months is linked to roughly halving SIDS risk, while bed-sharing raises the risk of SIDS and suffocation. As the awake windows lengthen he'll fall asleep in swings, carriers, and car seats more often — move him to the flat crib when you reasonably can, since those inclined seats aren't safe-sleep surfaces."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/A-Parents-Guide-to-Safe-Sleep.aspx" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/safe_sleep_for_babies" }
   - title: "A pacifier at sleep time is fair game now"
-    detail: "By five weeks breastfeeding is usually well established — comfortable, good supply, latching well, gaining weight — and once it is, offering a pacifier at naps and bedtime is associated with a lower risk of SIDS. Offer it as she settles, don't force it, and there's no need to pop it back in once she's asleep and it falls out. Never tie it on a cord or string around her neck or to the crib, and never dip it in anything sweet. If she spits it out or flatly refuses, that's fine too — it's an option, not an assignment."
+    detail: "By five weeks breastfeeding is usually well established — comfortable, good supply, latching well, gaining weight — and once it is, offering a pacifier at naps and bedtime is associated with a lower risk of SIDS. Offer it as he settles, don't force it, and there's no need to pop it back in once he's asleep and it falls out. Never tie it on a cord or string around his neck or to the crib, and never dip it in anything sweet. If he spits it out or flatly refuses, that's fine too — it's an option, not an assignment."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/A-Parents-Guide-to-Safe-Sleep.aspx" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/pacifiers" }
@@ -85,12 +85,12 @@ redFlags:
     sources:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/health-conditions-and-treatments/fever_and_temperature_taking" }
   - title: "Not feeding, forceful vomiting, dehydration, or acting unwell"
-    detail: "Call the doctor for feeding refusal, worries about weight gain, repeated or forceful (projectile) vomiting — different from the easy dribbly spit-up that's still normal — diarrhea, far fewer wet diapers, or a baby who's much sleepier than usual and hard to wake. By five weeks you know her baseline better than anyone; 'she's just not herself' is a legitimate clinical observation, and Health Link 811 will take it seriously at any hour. Bloody stools, or signs of dehydration like a sunken soft spot and no tears, mean seek care right away."
+    detail: "Call the doctor for feeding refusal, worries about weight gain, repeated or forceful (projectile) vomiting — different from the easy dribbly spit-up that's still normal — diarrhea, far fewer wet diapers, or a baby who's much sleepier than usual and hard to wake. By five weeks you know his baseline better than anyone; 'he's just not himself' is a legitimate clinical observation, and Health Link 811 will take it seriously at any hour. Bloody stools, or signs of dehydration like a sunken soft spot and no tears, mean seek care right away."
     sources:
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/feed13m.html" }
   - title: "Crying that's pushing you past your limit"
-    detail: "If the crying is driving you to the edge, put the baby down on her back somewhere safe like the crib, close the door, and step away for a few minutes to breathe — a crying baby alone in a crib is safe; an exhausted adult past the breaking point is the real danger. Never shake, hit, or throw a baby, ever: shaking can cause lifelong brain injury or death in seconds. Then reach out — your partner, a friend, or Health Link 811. Needing a break is normal at exactly the age crying peaks, and this is the week the tag-out plan earns its keep."
+    detail: "If the crying is driving you to the edge, put the baby down on his back somewhere safe like the crib, close the door, and step away for a few minutes to breathe — a crying baby alone in a crib is safe; an exhausted adult past the breaking point is the real danger. Never shake, hit, or throw a baby, ever: shaking can cause lifelong brain injury or death in seconds. Then reach out — your partner, a friend, or Health Link 811. Needing a break is normal at exactly the age crying peaks, and this is the week the tag-out plan earns its keep."
     sources:
       - { label: "PURPLE", url: "https://dontshake.org/purple-crying" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/colic_and_crying" }
@@ -110,7 +110,7 @@ alsoWorthKnowing:
       url: "https://www.youtube.com/watch?v=m_bjvp1S3Y8"
       channel: "Hawaii Pacific Health"
   - title: "Talk back to the coos — turn-taking is how language starts"
-    detail: "Those first vowel sounds aren't just cute; answering them is real teaching. When she coos, coo back, then pause and wait — that little gap you leave is where she learns that sounds go back and forth, the deep structure under every conversation she'll ever have. Reading, singing, and narrating the dishes all count as input, and eye contact plus your slow, sing-song 'parentese' holds her attention better than normal speech. You are, quite literally, her first and best language app."
+    detail: "Those first vowel sounds aren't just cute; answering them is real teaching. When he coos, coo back, then pause and wait — that little gap you leave is where he learns that sounds go back and forth, the deep structure under every conversation he'll ever have. Reading, singing, and narrating the dishes all count as input, and eye contact plus your slow, sing-song 'parentese' holds his attention better than normal speech. You are, quite literally, his first and best language app."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Hearing-and-Making-Sounds.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/learn13m.html" }
@@ -120,7 +120,7 @@ alsoWorthKnowing:
       - { label: "AHS", url: "https://myhealth.alberta.ca/Health/pages/conditions.aspx?hwid=tn9653" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/pregnancy-and-babies/depression_in_pregnant_women_and_mothers" }
   - title: "The germ bubble is nearly up for review"
-    detail: "The hand-washing and no-sick-visitors rules matter most in these early weeks, while her immune system is immature and she hasn't had her first vaccines — and that milestone is now just weeks away. Most families loosen up gradually after the 2-month shots, which is one more reason to make sure that appointment is locked in. Outings outdoors were never the problem in the first place, so keep taking your walks. And if a relative grumbles about the rules, feel free to blame this website — that's part of what it's for."
+    detail: "The hand-washing and no-sick-visitors rules matter most in these early weeks, while his immune system is immature and he hasn't had his first vaccines — and that milestone is now just weeks away. Most families loosen up gradually after the 2-month shots, which is one more reason to make sure that appointment is locked in. Outings outdoors were never the problem in the first place, so keep taking your walks. And if a relative grumbles about the rules, feel free to blame this website — that's part of what it's for."
     sources:
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/newborn-out.html" }
 diagrams:
@@ -128,7 +128,7 @@ diagrams:
   - { key: "crying-curve", section: "also" }
 gear:
   - item: "Activity gym / play mat"
-    why: "Now that the awake windows are stretching and getting social, a play gym gives that alert time somewhere to go — it doubles as a tummy-time surface and a back-lying station where she can bat at dangling toys and track high-contrast shapes. Look for a well-padded, machine-washable mat, arches that are genuinely stable (they get grabbed and leaned on later), high-contrast or black-and-white toys for these early weeks, and hanging pieces set low enough to actually reach as she grows. A mirror and a few swappable toys extend its useful life; skip anything with a vibrating incline or a sleep function, since a play gym is for supervised awake play, never sleep."
+    why: "Now that the awake windows are stretching and getting social, a play gym gives that alert time somewhere to go — it doubles as a tummy-time surface and a back-lying station where he can bat at dangling toys and track high-contrast shapes. Look for a well-padded, machine-washable mat, arches that are genuinely stable (they get grabbed and leaned on later), high-contrast or black-and-white toys for these early weeks, and hanging pieces set low enough to actually reach as he grows. A mirror and a few swappable toys extend its useful life; skip anything with a vibrating incline or a sleep function, since a play gym is for supervised awake play, never sleep."
     brands:
       - name: "Lovevery Play Gym"
         note: "Montessori-leaning gym with stage-based cards and toys that rotate in as the baby develops; the priciest option, but the one designed most deliberately around what each month needs."
@@ -171,7 +171,7 @@ gear:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/back-to-sleep-tummy-to-play.aspx" }
       - { label: "Nemours", url: "https://kidshealth.org/en/parents/learn13m.html" }
   - item: "Pacifier (if you're using one)"
-    why: "A pacifier is optional, but at this stage it earns a place for two reasons: strong non-nutritive sucking is a genuine soothing tool during the crying peak, and offering one at naps and bedtime — once breastfeeding is established — is associated with a lower risk of SIDS. Choose a one-piece silicone design (fewer parts to come apart, easier to sterilise, no cracks to trap bacteria), the right size for her age, and buy a couple so a lost one at 3 a.m. isn't a crisis. Never attach it to a cord, clip-and-ribbon, or the crib during sleep, never sweeten it, and replace it when the silicone shows any cracks or stickiness."
+    why: "A pacifier is optional, but at this stage it earns a place for two reasons: strong non-nutritive sucking is a genuine soothing tool during the crying peak, and offering one at naps and bedtime — once breastfeeding is established — is associated with a lower risk of SIDS. Choose a one-piece silicone design (fewer parts to come apart, easier to sterilise, no cracks to trap bacteria), the right size for his age, and buy a couple so a lost one at 3 a.m. isn't a crisis. Never attach it to a cord, clip-and-ribbon, or the crib during sleep, never sweeten it, and replace it when the silicone shows any cracks or stickiness."
     brands:
       - name: "Philips Avent Soothie"
         note: "The one-piece hospital-standard soother handed out in many NICUs and nurseries; plain, sturdy, and a shape lots of newborns already know from birth."

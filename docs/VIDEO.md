@@ -140,10 +140,10 @@ white bar — each labelled. Labels are short; detail belongs in the shot's fiel
 - Movement must be executable by one sleep-deprived parent: name the RS3 Mini mode
   (pan follow / lock / POV), the walk technique, Pocket 3 mode where used. No two-
   operator shots.
-- The three weeks form an arc: Week 1 "Homecoming" (arrival, the house meets her, the
+- The three weeks form an arc: Week 1 "Homecoming" (arrival, the house meets him, the
   fog and wonder), Week 2 "The Rhythm" (nights and days blur, feeds, tiny details,
   the cord falls, the crying begins), Week 3 "Waking Up" (longer alert windows, eye
-  contact, first outing, the house has absorbed her). Each film stands alone but the
+  contact, first outing, the house has absorbed him). Each film stands alone but the
   titles/closing shots should rhyme across weeks.
 - Cheap-gear recommendations live ONLY on the index (not repeated per guide): $100–300
   total, each item with what it fixes and roughly what it costs; guides may reference

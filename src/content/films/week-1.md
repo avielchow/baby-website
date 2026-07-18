@@ -3,7 +3,7 @@ week: 1
 title: "Homecoming"
 logline: >-
   An empty house holds its breath, a car seat crosses the threshold, and by the
-  end of one long, foggy, wonder-struck week, every room has learned her name.
+  end of one long, foggy, wonder-struck week, every room has learned his name.
 mood: "tender, hushed, wonder through exhaustion, a memory while it's happening"
 runtime: "~90 seconds"
 lastUpdated: 2026-07-17
@@ -29,7 +29,7 @@ shots:
       but indirect — the room should feel softly lit by the day, not by you.
       No sticks: an empty room lit "naturally" is the whole point, and any
       fill would kill the held-breath quality. Practical nursery lamp OFF for
-      this one; its glow belongs to Shot 15, when she's home.
+      this one; its glow belongs to Shot 15, when he's home.
     movement: >-
       RS3 Mini in Pan Follow, slowest follow speed. Start at the doorway,
       framing the whole room, and push in about one meter over 15 seconds —
@@ -37,7 +37,7 @@ shots:
       One move, one direction, no reframe. Shoot three takes and keep the
       calmest.
     direction: >-
-      No baby in this shot — shoot it before the hospital pickup or while she
+      No baby in this shot — shoot it before the hospital pickup or while he
       sleeps elsewhere with the other parent. Style the frame honestly: the
       folded clothes, the bare bassinet (safe-sleep bare — that's also just
       what a waiting bassinet looks like). Mark your start position with tape
@@ -120,7 +120,7 @@ shots:
       You get exactly one real arrival — treat it like the priceless single
       take it is. Whoever isn't carrying the seat shoots. Start recording
       before the car door opens and don't stop until the seat is set down.
-      If she's crying, keep rolling: a first cry crossing the threshold is
+      If he's crying, keep rolling: a first cry crossing the threshold is
       the truest sound this film will ever have.
     diagram:
       room: { w: 3, h: 5 }
@@ -135,9 +135,9 @@ shots:
   - n: 4
     name: "Crossing into the living room"
     purpose: >-
-      The house meets her: the wide geography shot where the car seat is set
+      The house meets him: the wide geography shot where the car seat is set
       down in the living room and the space visibly absorbs the new arrival.
-      This is where "a house" starts becoming "her house."
+      This is where "a house" starts becoming "his house."
     gear: "a7CII + 28mm on RS3 Mini"
     settings: >-
       4K24 full-width, 1/50, S-Log3, f/4 so the whole room reads, ISO 800
@@ -238,7 +238,7 @@ shots:
       record, and go sit down. The stillness is the point — micro-movements
       (a hand finding a finger, a jaw working) carry everything at f/2.
     direction: >-
-      Zero direction. Ask nothing, adjust nothing once she's latched. Set up
+      Zero direction. Ask nothing, adjust nothing once he's latched. Set up
       the tripod during the pre-feed fuss, frame loose enough to survive
       shifting positions, and let 30 minutes of footage give you the one
       90-second stretch where everything is calm. The baby's schedule always
@@ -260,35 +260,35 @@ shots:
     gear: "a7CII + 85mm on tripod, follow-focus ring mounted"
     settings: >-
       4K60 (note: APS-C crop, the 85mm frames like ~128mm — you'll be
-      surprisingly far back, which is good for staying out of her space),
+      surprisingly far back, which is good for staying out of his space),
       1/120 shutter for clean slow-mo, S-Log3, f/2.8 for a few millimeters
       more depth at this magnification, ISO 800 with a hard ceiling of 3200,
       WB locked 5600K. Manual focus only: at this distance AF hunting ruins
       takes. Set focus on a knuckle, then use the follow-focus ring to drift
       the plane from fingers to face in one 10-second pull.
     lighting: >-
-      Lay her on a plain blanket near the nursery window during a calm,
+      Lay him on a plain blanket near the nursery window during a calm,
       fed, awake-ish window — light raking from one side so every crease
       and hair catches. No added light near the baby, ever: if you need
       fill, it's the white blanket itself doing the bouncing. Nothing
       overhead, nothing on a stand within tipping radius — the tripod
-      itself stays beyond her blanket's edge, camera never passing over her.
+      itself stays beyond his blanket's edge, camera never passing over him.
     movement: >-
       Static tripod, and the "movement" is the focus pull: one slow rotation
       of the follow-focus ring per take, marked with tape at start and end
       points on the ring. Rehearse the pull twice on a stuffed animal before
-      she's in place so her patience isn't spent on your rehearsal.
+      he's in place so his patience isn't spent on your rehearsal.
     direction: >-
       Shoot in the post-feed drowsy window when limbs move slow. Offer a
       finger to grip off-frame with your free hand. Three minutes maximum,
-      then she's done whether you are or not. Batch this with Shot 14 —
+      then he's done whether you are or not. Batch this with Shot 14 —
       same room, same light, same nap cycle.
     diagram:
       room: { w: 4, h: 4 }
       window: { wall: top, from: 0.15, to: 0.6 }
       subject: { x: 0.45, y: 0.3, label: "Baby on blanket" }
       camera: { x: 0.5, y: 0.68, facing: 353, label: "a7CII · 85mm (~128mm in 60p crop)" }
-      note: "Tripod beyond blanket edge; camera never passes over her."
+      note: "Tripod beyond blanket edge; camera never passes over him."
   - n: 8
     name: "The fog"
     purpose: >-
@@ -315,7 +315,7 @@ shots:
       the parent forgets the camera — the moment the shoulders drop half
       an inch is the moment you're waiting for.
     direction: >-
-      Shoot each other on alternate evenings; whoever isn't holding her
+      Shoot each other on alternate evenings; whoever isn't holding him
       operates. Don't say "look tired" — just set the frame during a chest
       nap and leave the camera rolling ten minutes. The fog directs itself.
     diagram:
@@ -355,8 +355,8 @@ shots:
       Fully passive — start it and live your afternoon inside the frame.
       Parents drifting through, a cat claiming the sunbeam, the bassinet
       being moved and returned: the accidental blocking is the content.
-      Safe-sleep note: if she naps in the bassinet during capture, she's on
-      her back in a bare bassinet — the timelapse will show it, and it
+      Safe-sleep note: if he naps in the bassinet during capture, he's on
+      his back in a bare bassinet — the timelapse will show it, and it
       should.
     diagram:
       room: { w: 6, h: 4 }
@@ -370,7 +370,7 @@ shots:
     name: "3am"
     purpose: >-
       The hallway walk. Low, warm, half-dark: a parent pacing the corridor
-      with her against a shoulder in the middle of the night. The loneliest
+      with him against a shoulder in the middle of the night. The loneliest
       and most sacred shot in the film — the fog made physical.
     gear: "DJI Pocket 3, low mode"
     settings: >-
@@ -390,7 +390,7 @@ shots:
       Pocket 3 in Follow, held at hip height, walking slowly behind the
       pacing parent at matched speed — stay 3 meters back so the corridor
       compresses the figure into the lamp glow. One pass down the hall is
-      the take; if she settles mid-walk, the take ends and that's fine.
+      the take; if he settles mid-walk, the take ends and that's fine.
     direction: >-
       Shoot it the night it's really happening — you'll both be up anyway.
       Whoever is less destroyed picks up the Pocket 3 for ninety seconds.
@@ -433,11 +433,11 @@ shots:
     movement: >-
       Locked off, tripod at bed height. Frame wide enough to hold both lamp
       pools with the bassinet between them — symmetry does the emotional
-      work. Roll long; the shot's event is nothing more than her stirring
+      work. Roll long; the shot's event is nothing more than his stirring
       once and settling, and a hand appearing on the rail.
     direction: >-
-      Shoot during the settled stretch after a night feed. She sleeps on
-      her back in a bare bassinet — which is both the safety rule and the
+      Shoot during the settled stretch after a night feed. He sleeps on
+      his back in a bare bassinet — which is both the safety rule and the
       actual image. Parent in bed does nothing but be there; presence,
       not performance.
     diagram:
@@ -479,7 +479,7 @@ shots:
       scene and the bath needs two hands anyway.
     direction: >-
       Bath happens when the bath happens — warm room, warm water, everything
-      laid out first so filming never delays her comfort. Sponge-bath only
+      laid out first so filming never delays his comfort. Sponge-bath only
       this week (cord still healing). Expect protest; shoot through it and
       stay for the calm that follows the wrapping-in-towel, which is the
       actual money moment.
@@ -493,11 +493,11 @@ shots:
         - { x: 0.08, y: 0.25, kind: stick, label: "Stick A · 4300K bounced off cabinet (optional)" }
       note: "Window-lit water; stick far from the wet zone or skipped."
   - n: 13
-    name: "Stills — the wall learns her face"
+    name: "Stills — the wall learns his face"
     purpose: >-
       A texture beat of X100VI photographs cut as a rapid triptych: the
-      STAS gallery wall with one brand-new print of her tucked among the
-      old life, a teal frame, a cat asleep in her laundry. Stills interrupt
+      STAS gallery wall with one brand-new print of him tucked among the
+      old life, a teal frame, a cat asleep in his laundry. Stills interrupt
       the motion like memory interrupts time — which is the film's thesis.
     gear: "Fuji X100VI, handheld"
     settings: >-
@@ -513,12 +513,12 @@ shots:
       half a step sideways if you can see yourself in the glass.
     movement: >-
       N/A — stills. Shoot each subject from three distances (wide, medium,
-      detail) so the triptych has rhythm: wall, frame, her face in the
+      detail) so the triptych has rhythm: wall, frame, his face in the
       print. Twenty frames, three survivors.
     direction: >-
-      No baby needed on camera — her presence is the print on the rail and
-      the shape she's already left in the house. Hang the new photo on the
-      STAS rail before shooting; the act of adding her to the wall is worth
+      No baby needed on camera — his presence is the print on the rail and
+      the shape he's already left in the house. Hang the new photo on the
+      STAS rail before shooting; the act of adding him to the wall is worth
       an iPhone BTS clip too.
     diagram:
       room: { w: 6, h: 4 }
@@ -530,7 +530,7 @@ shots:
     name: "The bassinet watch"
     purpose: >-
       The penultimate beat: both parents at the bassinet's edge, just
-      watching her sleep — the thing every new parent does and no one
+      watching him sleep — the thing every new parent does and no one
       admits how long for. A slow push turns watching into reverence.
     gear: "a7CII + 85mm on RS3 Mini (balance tuned for the 85 beforehand)"
     settings: >-
@@ -541,19 +541,19 @@ shots:
       close the distance is a free, meaningful pull.
     lighting: >-
       Nursery window as key raking across the bassinet, parents on the
-      near side in half-light — she's the bright center, they're the
+      near side in half-light — he's the bright center, they're the
       quiet frame. No sticks; if their faces need a touch more, angle
       the white nursery door open behind camera as a bounce.
     movement: >-
       RS3 Mini in Lock mode: a dead-straight push from 3m to 1.5m over
       about 20 seconds, heel-to-toe, exhale through the move. The push
       passes BESIDE the bassinet line, never over it — plan the lane
-      before she's in the room. End the move settled and hold 5 seconds.
+      before he's in the room. End the move settled and hold 5 seconds.
     direction: >-
       Batch with Shot 7 in a good nap. Parents just watch — the only
       direction is "don't look at the camera," and after this week that
       needs no saying. Safe sleep on show: back, bare bassinet, nothing
-      but her.
+      but him.
     diagram:
       room: { w: 5, h: 4 }
       window: { wall: right, from: 0.2, to: 0.7 }
@@ -564,14 +564,14 @@ shots:
         type: push
         path: [{ x: 0.85, y: 0.85 }, { x: 0.68, y: 0.68 }]
         label: "RS3 Lock: straight push, lane beside — never over — the bassinet"
-      note: "She is the bright center; parents framed in half-light."
+      note: "He is the bright center; parents framed in half-light."
   - n: 15
     name: "The house, met"
     purpose: >-
       The answer to Shot 1: the same nursery, the same frame, the same
       push — but the bassinet is occupied, the lamp is on, a muslin hangs
       off the glider, and the parents are in the corner that used to be
-      empty. The house was waiting; now it's hers. Cut to black from here.
+      empty. The house was waiting; now it's his. Cut to black from here.
     gear: "a7CII + 28mm on RS3 Mini"
     settings: >-
       Identical to Shot 1 by design: 4K24 full-width, 1/50, S-Log3, f/4,
@@ -644,7 +644,7 @@ edit:
       (Cormorant or EB Garamond), white at 85% opacity, tracked wide, small —
       12-frame fade in, hold 3 seconds, 12-frame fade out, gone before the
       door in Shot 3. Subtitle "week one" in tiny caps beneath. End card after
-      the fade: her name and the date, same face, 3 seconds.
+      the fade: his name and the date, same face, 3 seconds.
     - >-
       Music sync pass: place the score bed, then nudge cuts a few frames so
       section changes land on musical phrase-ends, not drum-machine beats —
@@ -698,7 +698,7 @@ edit:
         the key grabs the wood floor), then inside the key: restore
         saturation the split-tone stole and pin hue back to natural. Newborn
         skin runs blotchy-red in week one — a gentle Hue vs Hue nudge of reds
-        toward peach evens her out without the plastic look.
+        toward peach evens him out without the plastic look.
     - n: 6
       name: "Halation"
       what: >-
@@ -747,9 +747,9 @@ edit:
       the night section.
     - >-
       Two full-silence-from-score moments, non-negotiable: the 3am hallway
-      (Shot 10 — footsteps, floor creaks, her small sounds and nothing else)
+      (Shot 10 — footsteps, floor creaks, his small sounds and nothing else)
       and the final 5 seconds of Shot 15 before the fade (room tone and, if
-      you captured it, her sleeping breath). These are where the film lands.
+      you captured it, his sleeping breath). These are where the film lands.
     - >-
       Levels: score peaks around -18 dBFS under picture, featured real audio
       peaks around -12 dBFS, overall loudness normalized to -14 LUFS
@@ -777,7 +777,7 @@ music: >-
 
 ## The story
 
-**Open — the held breath (Shots 1–2).** The film starts before she does. A slow
+**Open — the held breath (Shots 1–2).** The film starts before he does. A slow
 push into a nursery that has everything except its person: the bare bassinet,
 the olive tree, the teal frames, stacks of impossibly small folded clothes.
 No music yet under the title — just room tone, a house holding its breath. We
@@ -786,7 +786,7 @@ linger here longer than feels comfortable in the edit, because the audience
 
 **Middle — arrival, fog, and wonder (Shots 3–11).** The door opens and the film
 inhales: the car seat crosses the threshold low and huge in the Pocket 3's
-frame, the living room widens to receive her, and the house's original
+frame, the living room widens to receive him, and the house's original
 residents — three cats — conduct their formal inspection at whisker height.
 Then the tempo drops to the week's true speed: a window-lit feed that goes
 nowhere and doesn't need to, slow-motion fingers and feet and that swirl of
@@ -794,16 +794,16 @@ hair, and the honest shot — a parent's thousand-yard stare over a sleeping
 chest at dusk. A timelapse dissolves the day into night and the film enters
 the small hours: the 3am hallway walk in silhouette, resolving into the
 bedroom where the jade lamps pool their green-warm light on either side of
-her bassinet. The fog and the wonder are the same shot list; that's the point.
+his bassinet. The fog and the wonder are the same shot list; that's the point.
 
 **Close — morning, and the answer (Shots 12–15).** Morning arrives as warm
 water: the first sponge bath by the kitchen window, outrage into peace. A
-triptych of X100VI stills shows the gallery wall learning her face — her
+triptych of X100VI stills shows the gallery wall learning his face — his
 print now hanging among the old life on the STAS rail. Both parents stand at
 the bassinet doing the thing every new parent does (just watching), and then
 the film returns to Shot 1's exact frame and exact push — same room, same
 light, one lamp now on, bassinet now full, parents in the once-empty corner.
-The house was waiting. Now it's hers. Fade to black, her name, the date.
+The house was waiting. Now it's his. Fade to black, his name, the date.
 
 ## Mood & look
 
@@ -831,11 +831,11 @@ because someday ninety seconds will feel far too short.
 
 **The rule above all rules: the shot list is a menu, not a contract.** Fifteen
 shots across seven days is two-ish per day, and some days you will shoot
-zero. That's the plan working, not failing. Her schedule always wins; you're
+zero. That's the plan working, not failing. His schedule always wins; you're
 not making a film this week, you're living a week that a film falls out of.
 
 **Batch by room and light, not by shot number.**
-- *Before she's home (or during an out-of-room nap):* Shots 1 and 2 in one
+- *Before he's home (or during an out-of-room nap):* Shots 1 and 2 in one
   morning session — the nursery in its waiting state, plus the tape mark on
   the floor for Shot 15. Twenty minutes total.
 - *Arrival day:* Shot 3 (Pocket 3, one real take) and Shot 4 (a7CII, restaged
@@ -864,8 +864,8 @@ where it earns its keep, and a missing ND should change your aperture, never
 your shutter.
 
 **Safety, restated because it's non-negotiable:** no light above or near the
-baby where it could tip, nothing warm close to her, no camera or gimbal ever
-passing over her, staged sleep is always real safe sleep (back, bare
+baby where it could tip, nothing warm close to him, no camera or gimbal ever
+passing over him, staged sleep is always real safe sleep (back, bare
 bassinet), and every setup around a feeding or sleeping baby is short — set
-up during the fuss, shoot during the calm, stop the moment she says stop.
-She's the director. You're just the crew.
+up during the fuss, shoot during the calm, stop the moment he says stop.
+He's the director. You're just the crew.

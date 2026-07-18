@@ -144,7 +144,7 @@ redFlags:
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Developmental-Milestones-7-Months.aspx" }
   - title: "The usual 'call now' signs still apply"
-    detail: "Separate from development, the standard reasons to call haven't changed: a baby who won't feed or is losing weight, repeated forceful (projectile) vomiting, a fever in a baby who seems genuinely unwell, unusual sleepiness and being hard to wake, or any trouble breathing. Health Link 811 is available any hour to help you decide, and you know your baby's baseline better than anyone — 'she's just not herself' is a legitimate reason to reach out. Anything pointing to a swallowed button battery, magnet, or small object, or a real choking event, is an emergency — call 911."
+    detail: "Separate from development, the standard reasons to call haven't changed: a baby who won't feed or is losing weight, repeated forceful (projectile) vomiting, a fever in a baby who seems genuinely unwell, unusual sleepiness and being hard to wake, or any trouble breathing. Health Link 811 is available any hour to help you decide, and you know your baby's baseline better than anyone — 'he's just not himself' is a legitimate reason to reach out. Anything pointing to a swallowed button battery, magnet, or small object, or a real choking event, is an emergency — call 911."
     sources:
       - { label: "AAP", url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/Safety-for-Your-Child-6-to-12-Months.aspx" }
       - { label: "CPS", url: "https://caringforkids.cps.ca/handouts/safety-and-injury-prevention/keep_your_young_child_safe" }
