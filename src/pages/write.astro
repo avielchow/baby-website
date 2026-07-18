@@ -178,48 +178,36 @@ function when(ts: number): string {
 </BaseLayout>
 
 <script>
-  // Vercel caps any single request at ~4.5MB, so photos are uploaded ONE PER
-  // REQUEST via /api/write/photo, each compressed only as much as needed to
-  // fit (near-lossless stays the default; quality steps down only when a
-  // photo would bust the cap).
-  const PHOTO_BUDGET = 3.5 * 1024 * 1024;
+  // Photos upload DIRECTLY from the browser to the private Blob store
+  // (via a token from /api/write/upload-token), bypassing Vercel's ~4.5MB
+  // function body cap entirely — originals of any size, untouched.
+  import { upload } from '@vercel/blob/client';
 
-  async function renderToJpeg(file: File, maxDim: number, quality: number): Promise<File | null> {
+  /** HEIC/HEIF displays inconsistently across browsers — convert to full-res
+   *  near-lossless JPEG when this browser can decode it; else keep original. */
+  async function normalizePhoto(file: File): Promise<File> {
+    const isHeic = /hei[cf]/i.test(file.type) || /\.hei[cf]$/i.test(file.name);
+    if (!isHeic) return file;
     try {
       const bitmap = await createImageBitmap(file);
-      let { width, height } = bitmap;
-      const longest = Math.max(width, height);
-      if (longest > maxDim) {
-        const scale = maxDim / longest;
-        width = Math.round(width * scale);
-        height = Math.round(height * scale);
-      }
       const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
       const ctx = canvas.getContext('2d');
-      if (!ctx) return null;
-      ctx.drawImage(bitmap, 0, 0, width, height);
+      if (!ctx) return file;
+      ctx.drawImage(bitmap, 0, 0);
       bitmap.close?.();
-      const blob: Blob | null = await new Promise((res) => canvas.toBlob(res, 'image/jpeg', quality));
-      if (!blob) return null;
+      const blob: Blob | null = await new Promise((res) => canvas.toBlob(res, 'image/jpeg', 0.95));
+      if (!blob) return file;
       return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
     } catch {
-      return null; // a format this browser can't decode
+      return file;
     }
   }
 
-  /** Near-lossless when possible; steps down only until the photo fits. */
-  async function fitPhoto(file: File): Promise<File | null> {
-    const ladder: Array<[number, number]> = [[4096, 0.92], [4096, 0.82], [3200, 0.8], [2400, 0.75]];
-    for (const [dim, q] of ladder) {
-      const out = await renderToJpeg(file, dim, q);
-      if (out === null) break; // undecodable — fall through to the size check
-      if (out.size <= PHOTO_BUDGET) {
-        return out.size < file.size || file.size > PHOTO_BUDGET ? out : file;
-      }
-    }
-    return file.size <= PHOTO_BUDGET ? file : null;
+  function photoId(file: File): string {
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+    return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}.${ext}`;
   }
 
   function initWrite() {
@@ -257,13 +245,17 @@ function when(ts: number): string {
           const ids: string[] = [];
           for (let i = 0; i < files.length; i++) {
             submitBtn.textContent = `Uploading photo ${i + 1} of ${files.length}…`;
-            const fitted = await fitPhoto(files[i]);
-            if (!fitted) return fail(`"${files[i].name}" couldn't be processed by this browser. Try a JPEG or PNG.`);
-            const fd = new FormData();
-            fd.append('photo', fitted);
-            const res = await fetch('/api/write/photo', { method: 'POST', body: fd });
-            if (!res.ok) return fail(`Photo ${i + 1} failed to upload (${res.status}). Nothing was saved — try again.`);
-            ids.push((await res.json()).id);
+            const photo = await normalizePhoto(files[i]);
+            const id = photoId(photo);
+            await upload(`journal-photos/${id}`, photo, {
+              access: 'private',
+              handleUploadUrl: '/api/write/upload-token',
+              contentType: photo.type || 'image/jpeg',
+              onUploadProgress: ({ percentage }) => {
+                submitBtn.textContent = `Uploading photo ${i + 1} of ${files.length}… ${Math.round(percentage)}%`;
+              },
+            });
+            ids.push(id);
           }
           submitBtn.textContent = 'Saving…';
           // Submit the capture natively WITHOUT the files, WITH the ids.
