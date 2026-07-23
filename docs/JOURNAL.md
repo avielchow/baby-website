@@ -18,6 +18,9 @@ that also finds the comedy in the chaos. In practice:
   day, not Claude's voice.
 - No atmospheric scene-setting padding; get to the life. (Same register rule as other
   projects: direct and alive, not literary world-building.)
+- **Perspective (decided 2026-07-23):** entries are written by Dad (Aviel), first person.
+  Make that clear where it matters (e.g. a parenthetical in early entries) — "I" = Dad,
+  Jenn referred to by name.
 
 ## Entry structure
 
@@ -63,6 +66,10 @@ Two stages — quick capture any time, one polished post per week.
    nothing family-visible until Aviel says go).
 4. On approval: flip `draft: false`, commit, push (auto-deploys). Optionally clear the
    now-processed captures.
+5. **Capture-craft feedback (every entry, decided 2026-07-23):** after drafting, give Aviel
+   2–3 concrete suggestions for making his raw captures a more meaningful story next time —
+   what was strong, what was thin (interiority, sensory detail, dialogue), what to jot in
+   the moment.
 
 (The older path still works too: Aviel can brain-dump straight into a Claude Code session
 instead of using `/write`.)

@@ -16,9 +16,10 @@ One site, three jobs, in priority order:
 3. **Practical parenting hub** — the week-by-week must-knows and the month-by-month milestone
    timeline are daily-use tools for the parents themselves.
 
-**Context:** baby due **2026-07-18** (Alberta, Canada). A pre-delivery journal post kicks off
-the journal. The site refers to the baby as "Baby" until the birth-announcement post, then we
-do a site-wide rename to the real first name.
+**Context:** baby boy **born 2026-07-18** (Alberta, Canada; induction was scheduled
+2026-07-10 but held a week; 8.5 lb, forceps delivery after a 36+ hour hospital stay). The
+site refers to the baby as "Baby" until the birth-announcement post, then we do a site-wide
+rename to the real first name.
 
 ## Core features
 
@@ -44,6 +45,8 @@ Two rooms, one login form:
   blank page.
 - Voice: **warm & reflective blended with light & funny** — a letter you'd reread in 20 years
   that also finds the comedy in the chaos.
+- Perspective: the journal is written by **Dad (Aviel)**, first person, and entries make that
+  clear where it matters (decided 2026-07-23).
 
 ### 2. Photos & video
 - **Photos:** uploaded to **Vercel Blob** (Hobby free tier ≈ 1 GB storage — plenty for
@@ -124,7 +127,12 @@ hero). Guiding rule: every page art-directed, no large empty bands.
 ## Update workflow
 
 1. Aviel opens a Claude Code session and brain-dumps (or asks for the weekly prompt).
-2. Claude drafts the entry per JOURNAL.md, shows it for approval, then commits + pushes.
-3. Photos: Claude runs the upload script (`scripts/upload-photos.ts`, phase 2) → Blob URLs
+2. Claude drafts the entry per JOURNAL.md — first asking targeted questions (perspective,
+   title, tone, media placement, missing details) to nail voicing before writing — shows it
+   for approval, then commits + pushes.
+3. **Capture-craft feedback (every entry, decided 2026-07-23):** after drafting, Claude gives
+   Aviel 2–3 concrete suggestions on how to make his own raw captures tell a more meaningful
+   story next time (what was strong, what was thin, what to note in the moment).
+4. Photos: Claude runs the upload script (`scripts/upload-photos.ts`, phase 2) → Blob URLs
    → embedded in the entry. Videos: Aviel uploads to YouTube, gives Claude the link.
-4. Week pages are drafted ahead of time (target: 2 weeks ahead of baby's age) per CONTENT.md.
+5. Week pages are drafted ahead of time (target: 2 weeks ahead of baby's age) per CONTENT.md.
