@@ -16,10 +16,11 @@ One site, three jobs, in priority order:
 3. **Practical parenting hub** — the week-by-week must-knows and the month-by-month milestone
    timeline are daily-use tools for the parents themselves.
 
-**Context:** baby boy **born 2026-07-18** (Alberta, Canada; induction was scheduled
-2026-07-10 but held a week; 8.5 lb, forceps delivery after a 36+ hour hospital stay). The
-site refers to the baby as "Baby" until the birth-announcement post, then we do a site-wide
-rename to the real first name.
+**Context:** **Cody Holden Chow, born 2026-07-18** (Alberta, Canada; induction was scheduled
+2026-07-10 but held a week; 8.5 lb, forceps delivery after a 36+ hour hospital stay). Name
+announced 2026-07-23 in the "Holden On" birth-story entry; the site-wide rename from "Baby"
+to Cody is **done** (header wordmark, hero, about — pre-announcement journal entries keep
+"Baby" as period pieces).
 
 ## Core features
 
@@ -137,7 +138,8 @@ deep-dive topic pages for the giants (Starting Solids, the 4-month sleep shift).
   (bcrypt; empty disables the gate). Cookie payload `jr:`, unlock form at `/journal-unlock`
   (`src/lib/journal-auth.ts`, middleware). Plaintext lives only with the parents — never in
   the repo or docs, since it contains the baby's name.
-- Real names OK behind the gate; baby's name held back until the announcement post by choice.
+- Real names OK behind the gate; the baby's name was held back until the announcement post
+  ("Holden On", published 2026-07-23) and now appears site-wide.
 - Videos are unlisted-YouTube (see tradeoff above); photos never leave the gated site.
 
 ## Design
@@ -163,7 +165,9 @@ hero). Guiding rule: every page art-directed, no large empty bands.
 1. Aviel opens a Claude Code session and brain-dumps (or asks for the weekly prompt).
 2. Claude drafts the entry per JOURNAL.md — first asking targeted questions (perspective,
    title, tone, media placement, missing details) to nail voicing before writing — shows it
-   for approval, then commits + pushes.
+   for approval, then commits + pushes. Drafts can be previewed in the real site via
+   `npm run dev` → localhost:4321 (draft entries render with a badge in local dev only,
+   never in production; added 2026-07-23).
 3. **Capture-craft feedback (every entry, decided 2026-07-23):** after drafting, Claude gives
    Aviel 2–3 concrete suggestions on how to make his own raw captures tell a more meaningful
    story next time (what was strong, what was thin, what to note in the moment).

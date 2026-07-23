@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 
-const entries = (await getCollection('journal', ({ data }) => !data.draft))
+// Drafts are listed in local dev only (with a badge), never in production.
+const entries = (await getCollection('journal', ({ data }) => !data.draft || import.meta.env.DEV))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Sneak peek: pull each entry's media straight from its markdown body —
@@ -32,7 +33,10 @@ const previews = entries.map((entry) => {
       {previews.map(({ entry, photos, more, video }) => (
         <li class="entry">
           <p class="entry-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
-          <h2 class="entry-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h2>
+          <h2 class="entry-title">
+            <a href={`/journal/${entry.id}/`}>{entry.data.title}</a>
+            {entry.data.draft && <span class="draft-badge">Draft</span>}
+          </h2>
           {entry.data.teaser && <p class="entry-teaser">{entry.data.teaser}</p>}
           {(video || photos.length > 0) && (
             <a class="entry-media" href={`/journal/${entry.id}/`} aria-label={`Open “${entry.data.title}”`}>
@@ -98,6 +102,18 @@ const previews = entries.map((entry) => {
   }
 
   .entry-title a:hover { color: var(--accent-primary); }
+
+  .draft-badge {
+    font-size: var(--fs-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    vertical-align: middle;
+    margin-left: 0.5em;
+    padding: 0.15em 0.6em;
+    color: #fff;
+    background: var(--accent-primary);
+    border-radius: 999px;
+  }
 
   .entry-teaser {
     color: var(--text-secondary);

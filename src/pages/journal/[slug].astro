@@ -5,8 +5,10 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 const slug = Astro.params.slug;
 if (!slug) return Astro.redirect('/journal/', 302);
 
+// Drafts stay hidden in production but render in local dev (`npm run dev`)
+// so entries can be previewed before publishing.
 const entry = await getEntry('journal', slug);
-if (!entry || entry.data.draft) {
+if (!entry || (entry.data.draft && !import.meta.env.DEV)) {
   return new Response('Journal entry not found', { status: 404 });
 }
 
