@@ -1,6 +1,12 @@
 import { defineMiddleware } from 'astro:middleware';
 import { GATE_COOKIE, verify } from './lib/auth';
-import { JOURNAL_COOKIE, verifyJournalCookie } from './lib/journal-auth';
+import {
+  JOURNAL_COOKIE,
+  JOURNAL_READ_COOKIE,
+  journalReadEnabled,
+  verifyJournalCookie,
+  verifyJournalReadCookie,
+} from './lib/journal-auth';
 
 /**
  * The entire site is private. The gate protects every path EXCEPT the
@@ -60,6 +66,19 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (!tier) {
     const redirectTo = encodeURIComponent(pathname + search);
     return context.redirect(`/login?next=${redirectTo}`, 302);
+  }
+
+  // The /journal section takes a second, journal-specific password on top of
+  // the family login (the entries are the most personal part of the site).
+  // No-ops until JOURNAL_READ_PASSWORD_HASH is set.
+  if (pathname === '/journal' || pathname.startsWith('/journal/')) {
+    if (
+      journalReadEnabled() &&
+      !verifyJournalReadCookie(context.cookies.get(JOURNAL_READ_COOKIE)?.value)
+    ) {
+      const redirectTo = encodeURIComponent(pathname + search);
+      return context.redirect(`/journal-unlock?next=${redirectTo}`, 302);
+    }
   }
 
   return next();

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PasswordGate from '../components/PasswordGate.astro';
+import { JOURNAL_READ_COOKIE, journalReadEnabled, verifyJournalReadCookie } from '../lib/journal-auth';
+
+const url = new URL(Astro.request.url);
+const nextParam = url.searchParams.get('next') || '/journal';
+// Only ever bounce back into the journal — anything else falls back to its index.
+const next = nextParam.startsWith('/journal') ? nextParam : '/journal';
+const errorParam = url.searchParams.get('error');
+const error = errorParam === 'invalid' ? 'That password did not match. Try again.' : undefined;
+
+if (!journalReadEnabled() || verifyJournalReadCookie(Astro.cookies.get(JOURNAL_READ_COOKIE)?.value)) {
+  return Astro.redirect(next, 302);
+}
+---
+
+<BaseLayout title="Unlock the journal" bareLayout>
+  <PasswordGate
+    next={next}
+    error={error}
+    eyebrow="Journal"
+    title="One more password"
+    blurb="The journal is the most personal corner of the site, so it has its own key. Ask us for the journal password."
+    action="/api/journal-unlock"
+  />
+</BaseLayout>

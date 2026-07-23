@@ -19,6 +19,9 @@ export default defineConfig({
       COMMENT_ADMIN_KEY: envField.string({ context: 'server', access: 'secret', optional: true, default: '' }),
       // Password for the private /write journal-capture form (bcrypt hash).
       JOURNAL_WRITE_PASSWORD_HASH: envField.string({ context: 'server', access: 'secret', optional: true, default: '' }),
+      // Reader password for the /journal section (bcrypt hash) — required on
+      // top of the family login. Empty string = journal gate disabled.
+      JOURNAL_READ_PASSWORD_HASH: envField.string({ context: 'server', access: 'secret', optional: true, default: '' }),
       // Daily-questions email (Resend API + Vercel Cron). All optional so the
       // build/site work before they're set; the cron no-ops without a key.
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true, default: '' }),

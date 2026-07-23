@@ -27,7 +27,9 @@ rename to the real first name.
 
 Two rooms, one login form:
 
-- **Family journal** (`/journal`) — written knowing family reads it.
+- **Family journal** (`/journal`) — written knowing family reads it. Since 2026-07-23 it
+  takes a **journal-specific reader password** on top of the family login (see Privacy &
+  access) — the journal is the most personal corner of the site and the repo is public.
 - **Private journal** (`/private`) — parents only (Aviel + partner). **ARCHIVED
   2026-07-15** (`_private-archive/`, gitignored) and removed from the live site because
   the GitHub repo is still public — private entries must never ship to a public repo.
@@ -100,9 +102,19 @@ deep-dive topic pages for the giants (Starting Solids, the 4-month sleep shift).
   parents-only password that additionally unlocks `/private`. Both bcrypt-verified; the
   HMAC-signed cookie carries the tier; SSR middleware enforces it. `robots.txt` disallows
   all; no public indexing.
-- **The GitHub repo MUST be private** — all journal content (including private entries) is
-  markdown in this repo, so a public repo bypasses every gate. (Found public 2026-07-14;
-  flip via GitHub Settings → Danger Zone before real private content lands.)
+- **Repo visibility (decided 2026-07-23, supersedes the 2026-07-14 "must be private" rule):**
+  the GitHub repo may stay public for now. Accepted tradeoff: family-journal markdown
+  (including birth details) lives in the repo, so a determined person could read it on
+  GitHub — the passwords gate the *rendered site*, not the repo files. Mitigations: the
+  journal section takes its own reader password (below), no passwords or the baby's name
+  are ever committed, and photos stay in the private Blob store (never in the repo).
+  **The private `/private` journal remains archived and MUST NOT return until the repo is
+  made private** — that part of the old rule stands.
+- **Journal reader password (added 2026-07-23):** `/journal/*` requires a second,
+  journal-specific password on top of the family login. Env: `JOURNAL_READ_PASSWORD_HASH`
+  (bcrypt; empty disables the gate). Cookie payload `jr:`, unlock form at `/journal-unlock`
+  (`src/lib/journal-auth.ts`, middleware). Plaintext lives only with the parents — never in
+  the repo or docs, since it contains the baby's name.
 - Real names OK behind the gate; baby's name held back until the announcement post by choice.
 - Videos are unlisted-YouTube (see tradeoff above); photos never leave the gated site.
 
