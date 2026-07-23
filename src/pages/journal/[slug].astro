@@ -35,6 +35,141 @@ const dateLabel = entry.data.date.toLocaleDateString('en-CA', {
   </p>
 </ContentLayout>
 
+<script>
+  // Lightbox for journal photos: click a thumbnail to view full-screen,
+  // arrows / swipe-friendly buttons to move, Esc or backdrop tap to close.
+  // Event delegation, so it survives view transitions with no re-init.
+  function entryImages(): HTMLImageElement[] {
+    return Array.from(document.querySelectorAll<HTMLImageElement>('.journal-prose img'));
+  }
+
+  let overlay: HTMLDivElement | null = null;
+  let current = 0;
+
+  function ensureOverlay(): HTMLDivElement {
+    if (overlay && document.body.contains(overlay)) return overlay;
+    overlay = document.createElement('div');
+    overlay.className = 'lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-label', 'Photo viewer');
+    overlay.innerHTML = `
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <button class="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+      <figure>
+        <img alt="" />
+        <figcaption></figcaption>
+      </figure>
+      <button class="lightbox-next" aria-label="Next photo">&#8250;</button>
+    `;
+    overlay.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (t.closest('.lightbox-prev')) show(current - 1);
+      else if (t.closest('.lightbox-next')) show(current + 1);
+      else if (!t.closest('figure img')) close();
+    });
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  function show(index: number) {
+    const imgs = entryImages();
+    if (imgs.length === 0) return;
+    current = (index + imgs.length) % imgs.length;
+    const box = ensureOverlay();
+    const img = box.querySelector<HTMLImageElement>('figure img')!;
+    const caption = box.querySelector<HTMLElement>('figcaption')!;
+    img.src = imgs[current].src;
+    img.alt = imgs[current].alt;
+    caption.textContent = imgs[current].alt;
+    const multi = imgs.length > 1;
+    box.querySelector<HTMLElement>('.lightbox-prev')!.style.display = multi ? '' : 'none';
+    box.querySelector<HTMLElement>('.lightbox-next')!.style.display = multi ? '' : 'none';
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    overlay?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const img = (e.target as HTMLElement).closest?.('.journal-prose img');
+    if (!img) return;
+    e.preventDefault();
+    show(entryImages().indexOf(img as HTMLImageElement));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!overlay?.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+</script>
+
+<style is:global>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 20, 15, 0.92);
+    padding: 0.75rem;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox figure {
+    margin: 0;
+    max-width: calc(100vw - 1.5rem);
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lightbox figure img {
+    max-width: 100%;
+    max-height: calc(100dvh - 4rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .lightbox figcaption {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.875rem;
+    text-align: center;
+    min-height: 1.25em;
+  }
+
+  .lightbox button {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox button:hover { background: rgba(255, 255, 255, 0.25); }
+  .lightbox-close { top: 0.75rem; right: 0.75rem; }
+  .lightbox-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 0.5rem; top: 50%; transform: translateY(-50%); }
+</style>
+
 <style>
   .journal-prose {
     font-size: var(--fs-body-lg);
@@ -58,6 +193,57 @@ const dateLabel = entry.data.date.toLocaleDateString('en-CA', {
     border-left: 3px solid var(--accent-calm);
     color: var(--text-secondary);
     font-style: italic;
+  }
+
+  /* Photos render as a responsive thumbnail grid; tap/click opens the lightbox.
+     Standard: wrap groups in <div class="photo-grid"> (see JOURNAL.md). Bare
+     markdown images get the same thumbnail treatment. */
+  .journal-prose :global(.photo-grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-half);
+    margin: var(--space-2) 0;
+  }
+
+  .journal-prose :global(.photo-grid img),
+  .journal-prose :global(p > img) {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-button);
+    cursor: zoom-in;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .journal-prose :global(.photo-grid img:hover),
+  .journal-prose :global(p > img:hover) {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lifted);
+  }
+
+  .journal-prose :global(p > img) {
+    max-width: 320px;
+  }
+
+  @media (max-width: 480px) {
+    .journal-prose :global(.photo-grid) {
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+  }
+
+  /* Videos embed large and responsive: <div class="video-embed"><iframe …>. */
+  .journal-prose :global(.video-embed) {
+    margin: var(--space-2) 0;
+  }
+
+  .journal-prose :global(.video-embed iframe) {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    border-radius: var(--radius-card);
+    display: block;
   }
 
   .entry-tags {

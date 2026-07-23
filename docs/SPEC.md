@@ -55,9 +55,23 @@ Two rooms, one login form:
   web-sized images). Every photo is resized/compressed on upload (target ≤ 300 KB, max
   2000 px long edge) via a local upload script; originals stay in the family's own backup
   (not the site's job). Embedded natively in journal entries and a gallery.
+- **Photo display standard (decided 2026-07-23, all entries from now on):** photos render
+  as **responsive thumbnail grids** — click/tap opens a full-screen lightbox that fits the
+  viewer's screen (mobile and desktop), with prev/next arrows, captions from alt text, and
+  Esc/backdrop-tap to close. Authoring: wrap photos in `<div class="photo-grid">` with
+  `<img src="/api/capture-photo/<id>" alt="caption" loading="lazy" decoding="async" />`.
+  Styles + lightbox live in `src/pages/journal/[slug].astro`.
+- **⚠️ Captures are the photo store:** published entries reference capture photos directly
+  (`/api/capture-photo/<id>`). **Deleting a capture in `/write` permanently deletes its
+  photos** and breaks any entry embedding them (this happened 2026-07-23 — the final-week
+  latte-art photo is gone). Never delete a capture whose photos a published entry uses.
 - **Video:** uploaded to **YouTube as unlisted**, embedded via `youtube-nocookie.com`
   privacy-enhanced iframes. Free, unlimited, great player. Accepted tradeoff: technically
   viewable by anyone with the direct link.
+- **Video display standard (decided 2026-07-23, all entries from now on):** embeds render
+  **large and responsive** — full content width at 16:9 on any screen size. Authoring:
+  `<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/<id>"
+  title="…" allowfullscreen></iframe></div>` (no fixed width/height attributes).
 - If photo storage outgrows the free tier, first move is Cloudflare R2 (10 GB free) — decision
   deferred until needed.
 

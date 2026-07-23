@@ -61,6 +61,15 @@ Two stages — quick capture any time, one polished post per week.
 2. Draft the entry per this doc's voice/structure. Weave the captures into one reflective
    post; use tags to theme it and surface firsts. Photos referenced by
    `/api/capture-photo/<id>` (family can view them behind the gate).
+   **Photo standard (2026-07-23):** group photos in `<div class="photo-grid">` blocks of
+   `<img src="/api/capture-photo/<id>" alt="specific caption" loading="lazy"
+   decoding="async" />` — they render as thumbnails with a click-to-enlarge lightbox
+   (alt text becomes the caption; place grids next to the paragraphs they illustrate).
+   **Video standard (2026-07-23):** `<div class="video-embed"><iframe
+   src="https://www.youtube-nocookie.com/embed/<id>" title="…" allowfullscreen></iframe>
+   </div>` — large, responsive, 16:9. Never fixed-size iframes.
+   **Never delete a capture whose photos a published entry embeds** — deleting the capture
+   deletes the photos from Blob and breaks the entry.
 3. Write to `src/content/journal/YYYY-MM-DD-slug.md` with **`draft: true`** and show the
    full draft in the session for approval (per the "Draft for my approval" decision —
    nothing family-visible until Aviel says go).
