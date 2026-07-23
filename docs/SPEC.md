@@ -49,12 +49,20 @@ Two rooms, one login form:
   that also finds the comedy in the chaos.
 - Perspective: the journal is written by **Dad (Aviel)**, first person, and entries make that
   clear where it matters (decided 2026-07-23).
+- **Index sneak peek (decided 2026-07-23):** the `/journal` list page previews each entry's
+  media under its teaser — a strip of small thumbnails auto-extracted from the entry body
+  (first video as a play-badged 16:9 tile via YouTube's thumbnail CDN, then up to 3 photo
+  thumbs, "+N" badge for the rest). The whole strip links to the entry; no lightbox on the
+  index. Zero authoring effort — it reads the standard `photo-grid`/`video-embed` markup.
+- No standing "welcome" post — the journal starts at the first real entry (the 2026-07-14
+  welcome note was retired 2026-07-23).
 
 ### 2. Photos & video
-- **Photos:** uploaded to **Vercel Blob** (Hobby free tier ≈ 1 GB storage — plenty for
-  web-sized images). Every photo is resized/compressed on upload (target ≤ 300 KB, max
-  2000 px long edge) via a local upload script; originals stay in the family's own backup
-  (not the site's job). Embedded natively in journal entries and a gallery.
+- **Photos:** live in the **private Vercel Blob store** (`journal-photos/` prefix), uploaded
+  through the `/write` capture form — browser-compressed near-lossless before upload
+  (max 4096 px, JPEG q0.95; only enormous files shrink) and served behind auth via
+  `/api/capture-photo/<id>`. Originals stay in the family's own backup (not the site's
+  job). (Supersedes the earlier ≤ 300 KB local-upload-script plan, 2026-07-15.)
 - **Photo display standard (decided 2026-07-23, all entries from now on):** photos render
   as **responsive thumbnail grids** — click/tap opens a full-screen lightbox that fits the
   viewer's screen (mobile and desktop), with prev/next arrows, captions from alt text, and
@@ -159,6 +167,7 @@ hero). Guiding rule: every page art-directed, no large empty bands.
 3. **Capture-craft feedback (every entry, decided 2026-07-23):** after drafting, Claude gives
    Aviel 2–3 concrete suggestions on how to make his own raw captures tell a more meaningful
    story next time (what was strong, what was thin, what to note in the moment).
-4. Photos: Claude runs the upload script (`scripts/upload-photos.ts`, phase 2) → Blob URLs
-   → embedded in the entry. Videos: Aviel uploads to YouTube, gives Claude the link.
+4. Photos: Aviel uploads via `/write` (captures) → Claude embeds them from
+   `/api/capture-photo/<id>` per the photo display standard. Videos: Aviel uploads to
+   YouTube unlisted, gives Claude the link (in a capture or the session).
 5. Week pages are drafted ahead of time (target: 2 weeks ahead of baby's age) per CONTENT.md.
