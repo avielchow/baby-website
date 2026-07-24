@@ -112,5 +112,33 @@ Frontmatter (zod source of truth in `content.config.ts`):
   - **14 — "All of It, For Cody"** (capstone): C–G/B–Am7–C/G–Fadd9–Fm6–Gsus4–G7 —
     eight bars combining the course; LH chosen from the toolkit; melody assignment =
     compose and write down Cody's theme. Listen: Nuvole Bianche.
-- [ ] Beyond week 14 (when wanted): jazz extensions (11/13, altered dominants),
-  diminished passing chords, more modes, more keys.
+- [x] **Season two, weeks 15–26 shipped 2026-07-23** — the connections between the chords
+  (passing tones, substitutes, modes, meters), listens curl-verified:
+  - **15 — "The Sparkle Between"**: C–C♯dim7–Dm7–G7 (passing diminished; chromatic walk-up).
+    Listen: Ain't Misbehavin' (Fats Waller).
+  - **16 — "The Line That Climbs"**: C–Caug–C6–C7–F (ascending cliché, augmented chords,
+    voicing an inner line). Listen: Michelle.
+  - **17 — "The Wonder Note"**: Cadd9–D/C–Fmaj7♯11 (Lydian, the ♯4; floating pedal).
+    Listen: One Summer's Day (Hisaishi).
+  - **18 — "Nines, Everywhere"**: Cmaj9–Am9–Dm9–G9 (full ninth taxonomy + the voicing
+    rule). Listen: May Be (Yiruma).
+  - **19 — "The Minor Sentence"**: Bm7♭5–E7♭9–Am9–Am (minor ii–V–i, ø7, ♭9). Listen:
+    Autumn Leaves (Eva Cassidy).
+  - **20 — "The Preacher's Chord"**: Cmaj7–Am9–Dm7–F/G (the 11 chord, gospel pulse,
+    grace notes). Listen: Isn't She Lovely.
+  - **21 — "The Hopeful Minor"**: Am9–Cmaj7–D–Am (Dorian, drones, modal melody).
+    Listen: Scarborough Fair.
+  - **22 — "The Rock-a-Bye Turnaround"**: C–Am7–Fadd9–G7 in 12/8 (compound time, the
+    doo-wop changes, triplet roll). Listen: Hallelujah (Jeff Buckley).
+  - **23 — "The Promise, Postponed"**: 8 bars, C–F–G7–Am–F–C/E–G7–C (deceptive cadence,
+    double approach). Listen: Somewhere Over the Rainbow (IZ).
+  - **24 — "Sunshine After Rain"**: Cmaj7–Fm7–B♭9–Cmaj9 (the backdoor cadence — weeks
+    4+5 revealed as one device). Listen: The Christmas Song (Nat King Cole).
+  - **25 — "The Flat Side"**: Dm7–B♭maj7–F/A–Csus4–C in F major (flat-key geography,
+    Einaudi broken-octave pulse; the axis's third key). Listen: Una Mattina.
+  - **26 — "Season Two, For Cody"** (capstone): Cmaj9–C♯dim7–Dm9–G13–Em7–A7♭9–Dm7–F/G —
+    the 13 completes the extension tower; assignment = reharmonize Cody's theme.
+    Listen: Merry-Go-Round of Life (Hisaishi).
+- [ ] Beyond week 26 (when wanted): altered dominants (♯5/♯9), tritone substitution,
+  diminished-scale colors, remaining modes (Phrygian, Aeolian deep-dive), more keys
+  (B♭, E♭), stride and bossa left hands, sight-reading the songbook.
