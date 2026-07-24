@@ -8,8 +8,19 @@ import { BIRTH_ANCHOR, currentWeekNumber, daysUntilBirth, isPreBirth } from '../
 
 const weeks = (await getCollection('weeks', ({ data }) => !data.draft))
   .sort((a, b) => a.data.weekNumber - b.data.weekNumber);
-const journal = (await getCollection('journal', ({ data }) => !data.draft))
+
+// Moments teaser: the freshest photos from the journal entries' media markup
+// (same extraction as /moments), newest entries first, capped for one row.
+const journalEntries = (await getCollection('journal', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const recentPhotos: { src: string; alt: string }[] = [];
+for (const entry of journalEntries) {
+  for (const m of (entry.body ?? '').matchAll(/<img\s[^>]*?src="(\/api\/capture-photo\/[^"]+)"[^>]*?alt="([^"]*)"/g)) {
+    if (!recentPhotos.some((p) => p.src === m[1])) recentPhotos.push({ src: m[1], alt: m[2] });
+  }
+  if (recentPhotos.length >= 8) break;
+}
+const momentsTeaser = recentPhotos.slice(0, 8);
 
 const now = new Date();
 const preBirth = isPreBirth(now);
@@ -30,7 +41,6 @@ const sceneParam = Astro.url.searchParams.get('scene');
 if (sceneParam === 'day' || sceneParam === 'golden' || sceneParam === 'night') scene = sceneParam;
 
 const currentWeek = weeks.find((w) => w.data.weekNumber === Math.max(1, weekNum)) ?? weeks[0];
-const recentJournal = journal.slice(0, 3);
 const weekSlug = (n: number) => String(n).padStart(2, '0');
 
 // Home shows just the 4 most relevant weeks (around "now"); the hub has the rest.
@@ -41,7 +51,7 @@ const nearbyWeeks = weeks
 const guideWeeks = nearbyWeeks.length > 0 ? nearbyWeeks : weeks.slice(0, 4);
 ---
 
-<BaseLayout title="Home" description="A private week-by-week guide and journal.">
+<BaseLayout title="Home" description="A private week-by-week guide and the family's moments.">
   <section class="hero" data-scene={scene}>
     <div class="container hero-inner">
       <p class="eyebrow hero-eyebrow">Cody</p>
@@ -64,7 +74,7 @@ const guideWeeks = nearbyWeeks.length > 0 ? nearbyWeeks : weeks.slice(0, 4);
             {preBirth ? 'Get ready: week 1' : 'Open this week'}
           </a>
         )}
-        <a class="hero-link" href="/journal/">Read the journal &rarr;</a>
+        <a class="hero-link" href="/moments/">See the moments &rarr;</a>
       </div>
     </div>
     <HeroMeadow class="hero-art" mode={scene} />
@@ -144,23 +154,25 @@ const guideWeeks = nearbyWeeks.length > 0 ? nearbyWeeks : weeks.slice(0, 4);
   <section class="band">
     <div class="container">
       <div class="band-head reveal">
-        <h2>From the journal</h2>
+        <h2><a class="band-head-link" href="/moments/">Moments</a></h2>
         <LeafSprig width={64} />
       </div>
-      {recentJournal.length === 0 ? (
-        <p class="muted">No entries yet — the first one lands soon.</p>
+      {momentsTeaser.length === 0 ? (
+        <p class="muted">Photos and films will gather here soon.</p>
       ) : (
-        <ul class="journal-list">
-          {recentJournal.map((entry, i) => (
-            <li class="card card-lift journal-item reveal" style={`--reveal-delay: ${i * 80}ms`}>
-              <p class="journal-date">{entry.data.date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
-              <h3 class="journal-title"><a href={`/journal/${entry.id}/`}>{entry.data.title}</a></h3>
-              {entry.data.teaser && <p class="journal-teaser">{entry.data.teaser}</p>}
-            </li>
+        <a class="moments-row reveal" href="/moments/" aria-label="Open Moments — every photo and film">
+          {momentsTeaser.map((p, i) => (
+            <img
+              src={p.src}
+              alt={p.alt}
+              loading="lazy"
+              decoding="async"
+              style={`--reveal-delay: ${i * 60}ms`}
+            />
           ))}
-        </ul>
+        </a>
       )}
-      <p class="band-foot reveal"><a class="link-more" href="/journal/">All entries &rarr;</a></p>
+      <p class="band-foot reveal"><a class="link-more" href="/moments/">Every photo and film, week by week &rarr;</a></p>
     </div>
   </section>
 </BaseLayout>
@@ -321,40 +333,28 @@ const guideWeeks = nearbyWeeks.length > 0 ? nearbyWeeks : weeks.slice(0, 4);
     font-weight: 600;
   }
 
-  .journal-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    gap: var(--space-1);
+  .moments-row {
+    display: flex;
+    gap: var(--space-half);
+    flex-wrap: wrap;
   }
 
-  .journal-item {
-    padding: var(--space-2) var(--space-1) var(--space-1);
+  .moments-row img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: var(--radius-button);
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .journal-date {
-    margin: 0;
-    font-size: var(--fs-small);
-    font-weight: 700;
-    color: var(--sage-deep);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .moments-row:hover img {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lifted);
   }
 
-  .journal-title { margin: var(--space-half) 0; }
-
-  .journal-title a {
-    color: var(--text-primary);
-    text-decoration: none;
-  }
-
-  .journal-title a:hover { color: var(--accent-primary); }
-
-  .journal-teaser {
-    color: var(--text-secondary);
-    margin: 0;
+  @media (max-width: 480px) {
+    .moments-row img { width: 72px; height: 72px; }
   }
 
   .muted { color: var(--text-secondary); }
