@@ -1,0 +1,167 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../layouts/ContentLayout.astro';
+import MediaLightbox from '../components/MediaLightbox.astro';
+import { weekForDate, weekLabel } from '../lib/current-week';
+
+/**
+ * Moments — every photo and film from the journal, gathered week by week.
+ * Zero authoring effort: media is extracted from each published entry's body
+ * (the standard photo-grid / video-embed markup), grouped by the week of life
+ * the entry belongs to. Videos embed on top; photos hang as a masonry wall.
+ */
+const entries = (await getCollection('journal', ({ data }) => !data.draft || import.meta.env.DEV))
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+interface Photo { src: string; alt: string }
+interface Video { id: string; title: string }
+interface Bucket {
+  week: number;
+  label: string;
+  entries: { id: string; title: string }[];
+  videos: Video[];
+  photos: Photo[];
+}
+
+const buckets = new Map<number, Bucket>();
+for (const entry of entries) {
+  const body = entry.body ?? '';
+  const photos: Photo[] = [];
+  for (const m of body.matchAll(/<img\s[^>]*?src="(\/api\/capture-photo\/[^"]+)"[^>]*?alt="([^"]*)"/g)) {
+    photos.push({ src: m[1], alt: m[2] });
+  }
+  for (const m of body.matchAll(/!\[([^\]]*)\]\((\/api\/capture-photo\/[^)]+)\)/g)) {
+    photos.push({ src: m[2], alt: m[1] });
+  }
+  const videos: Video[] = [];
+  for (const m of body.matchAll(/<iframe[^>]*?src="https:\/\/www\.youtube-nocookie\.com\/embed\/([A-Za-z0-9_-]+)[^"]*"[^>]*?title="([^"]*)"/g)) {
+    videos.push({ id: m[1], title: m[2] });
+  }
+  if (photos.length === 0 && videos.length === 0) continue;
+
+  // Frontmatter dates parse as UTC midnight — 6h BEFORE Alberta midnight, which
+  // would file a birth-day entry under "before birth". Shift to noon UTC so the
+  // calendar date lands in the right Alberta week.
+  const week = weekForDate(new Date(entry.data.date.getTime() + 12 * 60 * 60 * 1000));
+  let bucket = buckets.get(week);
+  if (!bucket) {
+    bucket = { week, label: weekLabel(week), entries: [], videos: [], photos: [] };
+    buckets.set(week, bucket);
+  }
+  bucket.entries.push({ id: entry.id, title: entry.data.title });
+  for (const v of videos) if (!bucket.videos.some((x) => x.id === v.id)) bucket.videos.push(v);
+  for (const p of photos) if (!bucket.photos.some((x) => x.src === p.src)) bucket.photos.push(p);
+}
+
+// Newest week first; pre-birth weeks (negative) naturally sort last.
+const weeks = [...buckets.values()].sort((a, b) => b.week - a.week);
+---
+
+<ContentLayout
+  eyebrow="Moments"
+  title="The wall"
+  description="Every photo and film from the journal, week by week."
+>
+  {weeks.length === 0 ? (
+    <p>No moments yet — they'll gather here as journal entries are published.</p>
+  ) : (
+    weeks.map((bucket) => (
+      <section class="week-section">
+        <h2 class="week-title">{bucket.label}</h2>
+        <p class="week-entries">
+          From {bucket.entries.map((e, i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={`/journal/${e.id}/`}>{e.title}</a>
+            </>
+          ))}
+        </p>
+
+        {bucket.videos.map((v) => (
+          <div class="video-embed">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.id}`}
+              title={v.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+        ))}
+
+        {bucket.photos.length > 0 && (
+          <div class="wall lightbox-scope">
+            {bucket.photos.map((p) => (
+              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+            ))}
+          </div>
+        )}
+      </section>
+    ))
+  )}
+  <MediaLightbox />
+</ContentLayout>
+
+<style>
+  .week-section {
+    margin-bottom: var(--space-4, 4rem);
+  }
+
+  .week-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 500;
+    margin: 0 0 var(--space-half);
+  }
+
+  .week-entries {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    margin: 0 0 var(--space-1);
+  }
+
+  .week-entries a {
+    color: var(--accent-primary);
+    text-decoration: none;
+  }
+
+  .week-entries a:hover { text-decoration: underline; }
+
+  .video-embed {
+    margin: var(--space-1) 0 var(--space-2);
+  }
+
+  .video-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    border-radius: var(--radius-card);
+    display: block;
+  }
+
+  /* Masonry wall: CSS columns keep each photo's natural shape (no crops). */
+  .wall {
+    columns: 3 200px;
+    column-gap: var(--space-half);
+  }
+
+  .wall :global(img),
+  .wall img {
+    width: 100%;
+    display: block;
+    margin-bottom: var(--space-half);
+    break-inside: avoid;
+    border-radius: var(--radius-button);
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .wall img:hover {
+    transform: scale(1.01);
+    box-shadow: var(--shadow-lifted);
+  }
+
+  @media (max-width: 480px) {
+    .wall { columns: 2 130px; }
+  }
+</style>

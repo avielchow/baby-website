@@ -84,6 +84,20 @@ Two rooms, one login form:
 - If photo storage outgrows the free tier, first move is Cloudflare R2 (10 GB free) — decision
   deferred until needed.
 
+### 2b. Moments — the media wall (`/moments`, added 2026-07-23)
+
+- Auto-collects every photo and video from published journal entries — zero authoring
+  effort; it parses the standard `photo-grid`/`video-embed` markup from entry bodies.
+- Grouped **week by week** (`weekForDate`), newest week first, pre-birth weeks last.
+  Each week: header + links to its source entries, embedded YouTube videos on top
+  (full-width 16:9), then a **masonry photo wall** (CSS columns — natural shapes, no
+  crops) with the shared click-to-enlarge lightbox (`MediaLightbox.astro`).
+- **Access (decided 2026-07-23): family password only** — Moments deliberately sits
+  OUTSIDE the journal reader gate so relatives can browse media easily. Accepted
+  implication: journal photos/videos are visible with just the family password; the
+  journal's *words* stay behind the second password. The Journal nav tab is labeled
+  **"Journal (Private)"** to make the distinction visible.
+
 ### 3. Week-by-week + month-by-month guide (see CONTENT.md, MONTHLY.md)
 
 The guide runs at two cadences (decided 2026-07-15, [MONTHLY.md](MONTHLY.md)):
