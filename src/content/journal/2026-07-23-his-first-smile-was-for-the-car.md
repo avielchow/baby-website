@@ -11,6 +11,10 @@ Cody finally came home on Monday, July 20th. The drive was terrifying — such a
 
 We got home to the cats conducting a full investigation. We set him down in the crib, and I was surprised how strong his grip is — he wraps all his little fingers around my index finger and will not let go.
 
+<div class="photo-grid">
+  <img src="/api/capture-photo/mry67ee2vexsc7.jpg" alt="Quality control: cheek inspection" loading="lazy" decoding="async" />
+</div>
+
 We learned so much ahead of time, and there were still so many surprises. The biggest one, for me, was how hard Mom's recovery really is. Jenn couldn't do anything at first — even standing up took effort, and sitting down hurt a lot. And even with everything hurting, she still carried the emotional weight of a (temporarily) multigenerational home, of motherhood, of feeding expectations, of hormones, all at once. This was the week I really learned that all moms are supermoms. Go Mom.
 
 The second-biggest surprise was cluster feeding — this boy is *hungry*. I started to recognize the feeding cues and realized most of his crying was just him ordering more milk. On the plus side: diaper changes are surprisingly easy so far. On day three he peed all over the change pad mid-change and sprayed the wall, and honestly it was pretty funny.
