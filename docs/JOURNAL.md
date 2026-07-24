@@ -79,6 +79,10 @@ Two stages — quick capture any time, one polished post per week.
    2–3 concrete suggestions for making his raw captures a more meaningful story next time —
    what was strong, what was thin (interiority, sensory detail, dialogue), what to jot in
    the moment.
+6. **Backup (every publish, decided 2026-07-23):** run `npm run backup` after pushing an
+   entry — it mirrors the whole Blob store (photos, captures, comments) to the local
+   archive (see SPEC § Durability & backups). Captures may only be cleared AFTER a backup
+   has archived them.
 
 (The older path still works too: Aviel can brain-dump straight into a Claude Code session
 instead of using `/write`.)

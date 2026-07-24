@@ -6,6 +6,7 @@
  */
 import { get, put, del, list } from '@vercel/blob';
 import { BLOB_READ_WRITE_TOKEN } from 'astro:env/server';
+import { getCollection } from 'astro:content';
 import { weekForDate } from './current-week';
 
 const token = BLOB_READ_WRITE_TOKEN || undefined;
@@ -86,12 +87,46 @@ export async function addCapture(data: {
   return capture;
 }
 
-export async function deleteCapture(id: string): Promise<void> {
+/**
+ * Photo ids referenced by any published journal entry. Deleting these would
+ * break the entry (photos live ONLY in Blob — it happened once, 2026-07-23,
+ * and cost us a photo forever). Returns null if the check itself fails, and
+ * callers must treat null as "protect everything".
+ */
+async function publishedPhotoIds(): Promise<Set<string> | null> {
+  try {
+    const entries = await getCollection('journal', ({ data }) => !data.draft);
+    const ids = new Set<string>();
+    for (const entry of entries) {
+      for (const m of (entry.body ?? '').matchAll(/\/api\/capture-photo\/([A-Za-z0-9.]+)/g)) {
+        ids.add(m[1]);
+      }
+    }
+    return ids;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Delete a capture. Photos referenced by a published journal entry are KEPT
+ * (the entry needs them); only unreferenced photos are removed. If the
+ * reference check fails, no photos are deleted at all — orphaned blobs are
+ * recoverable, destroyed keepsakes are not.
+ */
+export async function deleteCapture(id: string): Promise<{ keptPhotos: string[] }> {
   const capture = await readJson<Capture>(`${CAP_PREFIX}${id}.json`);
+  const referenced = await publishedPhotoIds();
+  const keptPhotos: string[] = [];
   for (const photoId of capture?.photos ?? []) {
+    if (referenced === null || referenced.has(photoId)) {
+      keptPhotos.push(photoId);
+      continue;
+    }
     try { await del(`${PHOTO_PREFIX}${photoId}`, { token }); } catch { /* ignore */ }
   }
   await del(`${CAP_PREFIX}${id}.json`, { token });
+  return { keptPhotos };
 }
 
 /** Store one uploaded photo privately; returns its id (used in the URL path).

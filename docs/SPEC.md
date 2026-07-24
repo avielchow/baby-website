@@ -119,6 +119,29 @@ deep-dive topic pages for the giants (Starting Solids, the 4-month sleep shift).
   keep a simple delete path (admin key in env) for moderation.
 - Comments are keepsakes too — they render as part of the entry's permanent record.
 
+## Durability & backups (added 2026-07-23)
+
+The journal's WORDS are safe by design (markdown in git, versioned, on GitHub + local
+clones). Everything else — photos, raw captures, comments — lives only in the private
+Vercel Blob store, which has no versioning and no undelete. Two guards protect it:
+
+- **Backup mirror:** `npm run backup` (`scripts/backup-blob.mjs`) mirrors the ENTIRE Blob
+  store to `~/Backups/baby-website-blob` (override with `BACKUP_DIR=…`). Incremental,
+  append-only — local files are never deleted, and files that vanished from the remote
+  are reported and kept (the archive remembers what the cloud forgot). Writes a
+  `manifest.json` per run. Needs `.env` (gitignored) — refresh via
+  `vercel env pull .env --environment production`. **Cadence: after every published
+  entry** (Claude runs it as part of the publish workflow) and any time new photos are
+  captured. Recommended: periodically copy the archive folder to a second location
+  (external drive / second cloud).
+- **Capture-delete guard:** `deleteCapture()` (src/lib/captures.ts) refuses to delete any
+  photo referenced by a published journal entry, and if the reference check itself fails
+  it deletes no photos at all. (Guard added after the 2026-07-23 loss of the final-week
+  latte-art photo.)
+- **Videos:** unlisted YouTube is a convenience copy, not an archive — keep the original
+  video files in the family backup alongside the Blob archive. YouTube accounts can be
+  lost (e.g. Google's inactive-account deletion policy).
+
 ## Privacy & access
 
 - **Password-protected** (already built): two-tier — shared family password for the site,

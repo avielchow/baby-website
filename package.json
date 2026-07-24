@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "backup": "node --env-file=.env scripts/backup-blob.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^10.0.6",
