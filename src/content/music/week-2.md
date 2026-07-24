@@ -7,7 +7,7 @@ vibe: "Yiruma water — flowing, tender, a held breath that resolves"
 listen:
   title: "Yiruma, (이루마) - River Flows in You"
   url: "https://www.youtube.com/watch?v=7maJOI3QMu0"
-  channel: "YirumaVEVO"
+  channel: "YIRUMA place / 이루마 official"
 progression:
   summary: "Am9 – Fmaj7 – C/E – Gsus4 – G"
   chords:

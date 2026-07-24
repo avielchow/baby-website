@@ -82,13 +82,35 @@ Frontmatter (zod source of truth in `content.config.ts`):
 ## Scope & plan
 
 - [x] Spec (this file)
-- [ ] Schema + PianoChord + playback + /music index + /music/[slug] + nav "Music"
-- [ ] Weeks 1–2 as the sample pair:
-  - **Week 1 — "The Descending Line"**: C – G/B – Am7 – Fadd9 (I–V⁶–vi⁷–IVadd9), the
-    stepwise-bass pop heart with color from bar one. LH: the 1–5–10 spread. Melody:
-    chord-tone targets + passing tones. Theory: what add9/sus/slash chords actually are.
-  - **Week 2 — "The Axis, Recolored"**: Am9 – Fmaj7 – C/E – Gsus4→G (vi⁹–IVmaj⁷–I⁶–V),
-    the emotional pop axis with grown-up colors. LH: the six-note arpeggio wave (1–5–8–
-    10–8–5) + pedal. Melody: motif + sequence, and the appoggiatura. Theory: 9ths,
-    maj7s, and why a "wrong" note resolved sounds expensive.
-- [ ] Later weeks continue the ramp (borrowed iv, ♭VII, secondary dominants, new keys).
+- [x] Schema + PianoChord + playback + /music index + /music/[slug] + nav "Music"
+- [x] Weeks 1–2 (the sample pair): "The Descending Line" (C–G/B–Am7–Fadd9; 1–5–10 spread;
+  chord-tone melody; slash/7th/add9 theory) · "The Axis, Recolored" (Am9–Fmaj7–C/E–Gsus4→G;
+  six-note wave; motif+sequence+appoggiatura; 9ths/maj7s).
+- [x] **Weeks 3–14 shipped 2026-07-23** — the full ramp, one device per week, every
+  listen curl-verified against its official channel:
+  - **3 — "Tension You Can Trust"**: Dm7–G7sus4–G7–Cadd9 (ii–V–I + the 4–3 suspension).
+    LH heartbeat (1–5–8). Listen: Someone Like You.
+  - **4 — "The Borrowed Rain"**: Cadd9–F–Fm6–C (borrowed iv). LH slow bloom. Listen: Creep.
+  - **5 — "The Backdoor Sun"**: C–B♭add9–F/A–C (♭VII, Mixolydian). Anthem pulse;
+    pentatonic melody. Listen: Hey Jude.
+  - **6 — "The Rented Spotlight"**: C–E7–Am7–Fadd9 (secondary dominant V/vi). Walking-thumb
+    bass; chromatic neighbor. Listen: Can't Help Falling in Love.
+  - **7 — "The Long Way Home"**: Em7–Am7–Dm7–G7 (circle of fifths). Shell voicings;
+    guide-tone lines. Listen: Fly Me to the Moon.
+  - **8 — "Same Song, New Light"**: G–D/F♯–Em7–Cadd9 (week 1 transposed; transposition
+    craft). Broken-10th LH. Listen: Kiss the Rain.
+  - **9 — "The Lament"**: Am–Am/G–Fmaj7–E7 (A minor, lament bass, harmonic-minor V).
+    Tolling octaves. Listen: While My Guitar Gently Weeps.
+  - **10 — "The Still Point"**: C–F/C–G/C–Cadd9 (tonic pedal point). Pedal toll; ostinato
+    melody. Listen: Clocks.
+  - **11 — "One Line, Falling Slowly"**: C–Cmaj7–C7–F–Fm6 (line cliché C–B–B♭–A–A♭;
+    V7/IV). Counter-line melody. Listen: Something.
+  - **12 — "The Lift"**: C–Am7–D7/F♯–Gsus4–G (V/V, pivot-chord modulation C→G).
+    Listen: I Will Always Love You.
+  - **13 — "The Oldest Lullaby"**: C–G–Am–Em–F–C–F–G (Pachelbel wheel in C; ground bass;
+    variations). Listen: Canon in D (Voices of Music).
+  - **14 — "All of It, For Cody"** (capstone): C–G/B–Am7–C/G–Fadd9–Fm6–Gsus4–G7 —
+    eight bars combining the course; LH chosen from the toolkit; melody assignment =
+    compose and write down Cody's theme. Listen: Nuvole Bianche.
+- [ ] Beyond week 14 (when wanted): jazz extensions (11/13, altered dominants),
+  diminished passing chords, more modes, more keys.
