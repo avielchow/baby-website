@@ -5,6 +5,7 @@ import HeroMeadow from '../components/illustrations/HeroMeadow.astro';
 import WeekVignette from '../components/illustrations/WeekVignette.astro';
 import LeafSprig from '../components/illustrations/LeafSprig.astro';
 import { BIRTH_ANCHOR, currentWeekNumber, daysUntilBirth, isPreBirth } from '../lib/current-week';
+import { thumbUrl } from '../lib/capture-thumbs';
 
 const weeks = (await getCollection('weeks', ({ data }) => !data.draft))
   .sort((a, b) => a.data.weekNumber - b.data.weekNumber);
@@ -163,7 +164,7 @@ const guideWeeks = nearbyWeeks.length > 0 ? nearbyWeeks : weeks.slice(0, 4);
         <a class="moments-row reveal" href="/moments/" aria-label="Open Moments — every photo and film">
           {momentsTeaser.map((p, i) => (
             <img
-              src={p.src}
+              src={thumbUrl(p.src)}
               alt={p.alt}
               loading="lazy"
               decoding="async"

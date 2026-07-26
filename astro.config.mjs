@@ -1,11 +1,15 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
 import vercel from '@astrojs/vercel';
+import rehypeCaptureThumbs from './src/lib/rehype-capture-thumbs.mjs';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
+  markdown: {
+    rehypePlugins: [rehypeCaptureThumbs],
+  },
   env: {
     schema: {
       SITE_PASSWORD_HASH: envField.string({ context: 'server', access: 'secret' }),

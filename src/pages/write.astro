@@ -125,9 +125,10 @@ function when(ts: number): string {
             ))}
           </fieldset>
 
-          <div class="photo-field">
+          <div class="photo-field" id="photo-drop">
             <label for="cap-photos" class="photo-label">📷 Add photos</label>
             <input id="cap-photos" type="file" name="photos" accept="image/*" multiple />
+            <p class="drop-hint">…or drag photos anywhere onto this page. Drop as many as you like, in as many rounds as you like.</p>
             <div class="photo-previews" id="photo-previews" aria-live="polite"></div>
           </div>
 
@@ -162,7 +163,7 @@ function when(ts: number): string {
                     <div class="capture-photos">
                       {c.photos.map((p) => (
                         <a href={`/api/capture-photo/${p}`} target="_blank" rel="noopener noreferrer">
-                          <img src={`/api/capture-photo/${p}`} alt="" loading="lazy" />
+                          <img src={`/api/capture-photo/thumb-${p}`} alt="" loading="lazy" />
                         </a>
                       ))}
                     </div>
@@ -210,24 +211,120 @@ function when(ts: number): string {
     return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}.${ext}`;
   }
 
+  /** Downsized companion (~640px JPEG) served to grids/strips so browsing
+   *  doesn't stream multi-MB originals. null when the browser can't decode
+   *  the image — the API falls back to the original for missing thumbs. */
+  async function makeThumb(file: File): Promise<Blob | null> {
+    try {
+      const bitmap = await createImageBitmap(file);
+      const scale = Math.min(1, 640 / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close?.();
+      return await new Promise((res) => canvas.toBlob(res, 'image/jpeg', 0.8));
+    } catch {
+      return null;
+    }
+  }
+
+  function looksLikeImage(file: File): boolean {
+    return file.type.startsWith('image/') || /\.(hei[cf]|jpe?g|png|gif|webp|avif)$/i.test(file.name);
+  }
+
+  // Set by initWrite so the document-level drop handlers (bound once) always
+  // feed the current page's form after Astro view transitions.
+  let addDroppedFiles: ((files: File[]) => void) | null = null;
+  let globalDropBound = false;
+
+  function bindGlobalDrop() {
+    if (globalDropBound) return;
+    globalDropBound = true;
+
+    const draggingFiles = (e: DragEvent) => Array.from(e.dataTransfer?.types ?? []).includes('Files');
+    const dropzone = () => document.getElementById('photo-drop');
+    let depth = 0;
+
+    document.addEventListener('dragenter', (e) => {
+      if (!draggingFiles(e) || !addDroppedFiles) return;
+      depth++;
+      dropzone()?.classList.add('drag-active');
+    });
+    document.addEventListener('dragleave', (e) => {
+      if (!draggingFiles(e)) return;
+      depth = Math.max(0, depth - 1);
+      if (depth === 0) dropzone()?.classList.remove('drag-active');
+    });
+    document.addEventListener('dragover', (e) => {
+      if (draggingFiles(e)) e.preventDefault(); // required so the browser allows dropping
+    });
+    document.addEventListener('drop', (e) => {
+      if (!draggingFiles(e)) return;
+      e.preventDefault(); // never let the browser navigate to the dropped file
+      depth = 0;
+      dropzone()?.classList.remove('drag-active');
+      addDroppedFiles?.(Array.from(e.dataTransfer?.files ?? []));
+    });
+  }
+
   function initWrite() {
     const input = document.getElementById('cap-photos') as HTMLInputElement | null;
     const previews = document.getElementById('photo-previews');
     const captureForm = document.getElementById('capture-form') as HTMLFormElement | null;
     const submitBtn = document.querySelector<HTMLButtonElement>('.capture-actions button[type="submit"]');
 
+    addDroppedFiles = null;
     if (input && previews) {
-      input.addEventListener('change', () => {
+      // Pending photos live here (not in the input) so picker selections and
+      // drops accumulate instead of replacing each other. The input's files
+      // are kept in sync because the submit flow reads input.files.
+      let pending: File[] = [];
+
+      const render = () => {
+        const dt = new DataTransfer();
+        for (const f of pending) dt.items.add(f);
+        input.files = dt.files;
         previews.innerHTML = '';
-        for (const file of Array.from(input.files ?? [])) {
+        pending.forEach((file, idx) => {
+          const wrap = document.createElement('div');
+          wrap.className = 'photo-thumb-wrap';
           const img = document.createElement('img');
           img.src = URL.createObjectURL(file);
           img.className = 'photo-thumb';
           img.onload = () => URL.revokeObjectURL(img.src);
-          previews.appendChild(img);
-        }
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'photo-thumb-remove';
+          remove.setAttribute('aria-label', 'Remove photo');
+          remove.textContent = '×';
+          remove.addEventListener('click', () => {
+            pending.splice(idx, 1);
+            render();
+          });
+          wrap.append(img, remove);
+          previews.appendChild(wrap);
+        });
+      };
+
+      const addFiles = (files: File[]) => {
+        const images = files.filter(looksLikeImage);
+        if (images.length === 0) return;
+        pending.push(...images);
+        render();
+      };
+
+      input.addEventListener('change', () => {
+        // The picker replaces input.files with only the new selection; fold it
+        // into pending (render re-syncs input.files without re-firing change).
+        addFiles(Array.from(input.files ?? []));
       });
+
+      addDroppedFiles = addFiles;
     }
+    bindGlobalDrop();
 
     if (captureForm && input && submitBtn && !captureForm.dataset.photoBound) {
       captureForm.dataset.photoBound = '1';
@@ -255,6 +352,14 @@ function when(ts: number): string {
                 submitBtn.textContent = `Uploading photo ${i + 1} of ${files.length}… ${Math.round(percentage)}%`;
               },
             });
+            const thumb = await makeThumb(photo);
+            if (thumb) {
+              await upload(`journal-photos/thumb-${id}`, thumb, {
+                access: 'private',
+                handleUploadUrl: '/api/write/upload-token',
+                contentType: 'image/jpeg',
+              });
+            }
             ids.push(id);
           }
           submitBtn.textContent = 'Saving…';
@@ -508,7 +613,20 @@ function when(ts: number): string {
 
   .chip input:focus-visible + span { border-color: var(--sage-deep); }
 
-  .photo-field { display: flex; flex-direction: column; gap: var(--space-half); }
+  .photo-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-half);
+    border: 2px dashed var(--border-hairline);
+    border-radius: var(--radius-button);
+    padding: var(--space-1);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .photo-field.drag-active {
+    border-color: var(--sage);
+    background: var(--sage-wash);
+  }
 
   .photo-label {
     font-size: var(--fs-small);
@@ -518,13 +636,41 @@ function when(ts: number): string {
 
   #cap-photos { font-size: var(--fs-small); }
 
+  .drop-hint {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
   .photo-previews { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
+  .photo-previews :global(.photo-thumb-wrap) { position: relative; }
+
   .photo-previews :global(.photo-thumb) {
+    display: block;
     width: 5rem;
     height: 5rem;
     object-fit: cover;
     border-radius: var(--radius-button);
+  }
+
+  .photo-previews :global(.photo-thumb-remove) {
+    position: absolute;
+    top: -0.4rem;
+    right: -0.4rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: grid;
+    place-items: center;
+    font-size: 1rem;
+    line-height: 1;
+    color: #fff;
+    background: var(--rose-deep);
+    border: 2px solid var(--paper);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
   }
 
   .capture-actions {

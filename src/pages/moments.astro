@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import ContentLayout from '../layouts/ContentLayout.astro';
 import MediaLightbox from '../components/MediaLightbox.astro';
 import { weekForDate, weekLabel } from '../lib/current-week';
+import { thumbUrl } from '../lib/capture-thumbs';
 
 /**
  * Moments — every photo and film from the journal, gathered week by week.
@@ -91,7 +92,7 @@ const weeks = [...buckets.values()].sort((a, b) => b.week - a.week);
         {bucket.photos.length > 0 && (
           <div class="wall lightbox-scope">
             {bucket.photos.map((p) => (
-              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+              <img src={thumbUrl(p.src)} data-full={p.src} alt={p.alt} loading="lazy" decoding="async" />
             ))}
           </div>
         )}

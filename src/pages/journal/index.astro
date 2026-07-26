@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { thumbUrl } from '../../lib/capture-thumbs';
 
 // Drafts are listed in local dev only (with a badge), never in production.
 const entries = (await getCollection('journal', ({ data }) => !data.draft || import.meta.env.DEV))
@@ -48,7 +49,7 @@ const previews = entries.map((entry) => {
               )}
               {photos.map((src, i) => (
                 <span class="media-tile">
-                  <img src={src} alt="" loading="lazy" decoding="async" />
+                  <img src={thumbUrl(src)} alt="" loading="lazy" decoding="async" />
                   {i === photos.length - 1 && more > 0 && (
                     <span class="more-badge">+{more}</span>
                   )}

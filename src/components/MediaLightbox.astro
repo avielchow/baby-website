@@ -48,7 +48,8 @@
     const box = ensureOverlay();
     const img = box.querySelector<HTMLImageElement>('figure img')!;
     const caption = box.querySelector<HTMLElement>('figcaption')!;
-    img.src = imgs[current].src;
+    // Grids show downsized thumbs; data-full carries the original photo URL.
+    img.src = imgs[current].dataset.full || imgs[current].src;
     img.alt = imgs[current].alt;
     caption.textContent = imgs[current].alt;
     const multi = imgs.length > 1;

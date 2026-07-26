@@ -124,6 +124,7 @@ export async function deleteCapture(id: string): Promise<{ keptPhotos: string[] 
       continue;
     }
     try { await del(`${PHOTO_PREFIX}${photoId}`, { token }); } catch { /* ignore */ }
+    try { await del(`${PHOTO_PREFIX}thumb-${photoId}`, { token }); } catch { /* ignore */ }
   }
   await del(`${CAP_PREFIX}${id}.json`, { token });
   return { keptPhotos };

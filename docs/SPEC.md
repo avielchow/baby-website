@@ -17,7 +17,7 @@ One site, three jobs, in priority order:
    timeline are daily-use tools for the parents themselves.
 
 **Context:** **Cody Holden Chow, born 2026-07-18** (Alberta, Canada; induction was scheduled
-2026-07-10 but held a week; 8.5 lb, forceps delivery after a 36+ hour hospital stay). Name
+2026-07-10 but held a week; born 22:18, 8 lb 5 oz / 3.76 kg, 51.3 cm, forceps delivery after a 36+ hour hospital stay). Name
 announced 2026-07-23 in the "Holden On" birth-story entry; the site-wide rename from "Baby"
 to Cody is **done** (header wordmark, hero, about — pre-announcement journal entries keep
 "Baby" as period pieces).
