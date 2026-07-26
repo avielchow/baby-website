@@ -60,10 +60,19 @@ Two rooms, one login form:
 
 ### 2. Photos & video
 - **Photos:** live in the **private Vercel Blob store** (`journal-photos/` prefix), uploaded
-  through the `/write` capture form — browser-compressed near-lossless before upload
-  (max 4096 px, JPEG q0.95; only enormous files shrink) and served behind auth via
-  `/api/capture-photo/<id>`. Originals stay in the family's own backup (not the site's
-  job). (Supersedes the earlier ≤ 300 KB local-upload-script plan, 2026-07-15.)
+  through the `/write` capture form and served behind auth via `/api/capture-photo/<id>`.
+  **Upload policy (decided 2026-07-25, supersedes the 4096 px q0.95 near-lossless rule):**
+  default is **web size** — browser-compressed to max 2560 px JPEG q0.9 (~1–2 MB; looks
+  identical on screens, keeps the free 5 GB Blob tier for thousands of photos) — with a
+  **"Keep full resolution" toggle** on `/write` for print-worthy shots (camera sessions,
+  milestones). Every upload also gets a **640 px thumb** (`thumb-<id>`) that grids, index
+  strips, and walls serve; the lightbox loads the full file via `data-full`, and the photo
+  API caches immutable for 1 year (fixes the 2026-07-25 Fast Origin Transfer blowout —
+  uncompressed 8–28 MB originals were streaming on every browse).
+  `scripts/backfill-thumbs.mjs` (re-runnable) covers photos that predate thumbs;
+  `scripts/recompress-photos.mjs` (dry-run by default) can shrink oversized blobs in place,
+  stashing untouched originals in `~/Backups/baby-website-blob-originals/` first.
+  Originals stay in the family's own backup (not the site's job).
 - **Photo display standard (decided 2026-07-23, all entries from now on):** photos render
   as **responsive thumbnail grids** — click/tap opens a full-screen lightbox that fits the
   viewer's screen (mobile and desktop), with prev/next arrows, captions from alt text, and

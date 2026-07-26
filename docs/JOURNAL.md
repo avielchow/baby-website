@@ -109,10 +109,12 @@ Each capture also has a **date** (backdate-able; defaults to today) and a **week
 `Capture.week` (>=1 week of life, <0 pre-birth) via `weekForDate()`; used to file each note
 into the right week's post.
 
-Photos at `/write`: **multiple, no size or count limit**, compressed in the browser before
-upload at **near-lossless** quality (max 4096px, JPEG q0.95) — phone photos keep full quality;
-only enormous files shrink. (To store completely untouched originals, drop the `compress()`
-call in `write.astro`.)
+Photos at `/write`: **multiple, no size or count limit**, added via the picker or by
+dragging them anywhere onto the page (drops accumulate; thumbnails have remove buttons).
+Default upload is **web size** (max 2560px, JPEG q0.9 — identical on screens, ~10x smaller);
+tick **"Keep full resolution"** for print-worthy shots. Every upload also generates a 640px
+`thumb-<id>` blob that grids and strips serve — the lightbox loads the full file. True
+originals live in the family backup, not the site (decided 2026-07-25).
 
 ## Weekly prompts
 

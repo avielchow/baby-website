@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "backup": "node --env-file=.env scripts/backup-blob.mjs",
-    "backfill-thumbs": "node --env-file=.env scripts/backfill-thumbs.mjs"
+    "backfill-thumbs": "node --env-file=.env scripts/backfill-thumbs.mjs",
+    "recompress-photos": "node --env-file=.env scripts/recompress-photos.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^10.0.6",
@@ -23,6 +24,7 @@
     "bcryptjs": "^3.0.3"
   },
   "devDependencies": {
+    "exif-reader": "^2.0.3",
     "sharp": "^0.35.3"
   }
 }

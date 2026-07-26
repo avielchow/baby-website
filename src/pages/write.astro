@@ -129,6 +129,10 @@ function when(ts: number): string {
             <label for="cap-photos" class="photo-label">📷 Add photos</label>
             <input id="cap-photos" type="file" name="photos" accept="image/*" multiple />
             <p class="drop-hint">…or drag photos anywhere onto this page. Drop as many as you like, in as many rounds as you like.</p>
+            <label class="fullres-toggle">
+              <input type="checkbox" id="cap-fullres" />
+              <span>Keep full resolution — for print-worthy shots (camera sessions, milestones). Everyday photos upload at web size (~2500&nbsp;px), which looks identical on screens and keeps storage free.</span>
+            </label>
             <div class="photo-previews" id="photo-previews" aria-live="polite"></div>
           </div>
 
@@ -211,13 +215,10 @@ function when(ts: number): string {
     return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}.${ext}`;
   }
 
-  /** Downsized companion (~640px JPEG) served to grids/strips so browsing
-   *  doesn't stream multi-MB originals. null when the browser can't decode
-   *  the image — the API falls back to the original for missing thumbs. */
-  async function makeThumb(file: File): Promise<Blob | null> {
+  async function scaleToJpeg(file: File, maxEdge: number, quality: number): Promise<Blob | null> {
     try {
       const bitmap = await createImageBitmap(file);
-      const scale = Math.min(1, 640 / Math.max(bitmap.width, bitmap.height));
+      const scale = Math.min(1, maxEdge / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
       canvas.width = Math.max(1, Math.round(bitmap.width * scale));
       canvas.height = Math.max(1, Math.round(bitmap.height * scale));
@@ -225,10 +226,29 @@ function when(ts: number): string {
       if (!ctx) return null;
       ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
       bitmap.close?.();
-      return await new Promise((res) => canvas.toBlob(res, 'image/jpeg', 0.8));
+      return await new Promise((res) => canvas.toBlob(res, 'image/jpeg', quality));
     } catch {
       return null;
     }
+  }
+
+  /** Downsized companion (~640px JPEG) served to grids/strips so browsing
+   *  doesn't stream multi-MB originals. null when the browser can't decode
+   *  the image — the API falls back to the original for missing thumbs. */
+  function makeThumb(file: File): Promise<Blob | null> {
+    return scaleToJpeg(file, 640, 0.8);
+  }
+
+  /** Default upload size (decided 2026-07-25): ~2500px q0.9 — looks identical
+   *  on screens, ~10x smaller than phone originals, keeps Blob storage in the
+   *  free tier. The "keep full resolution" toggle skips this; true originals
+   *  always live in the family backup, not the site. */
+  async function compressForWeb(file: File): Promise<File> {
+    const WEB_MAX_EDGE = 2560;
+    if (file.size < 3 * 1024 * 1024) return file; // already small enough
+    const blob = await scaleToJpeg(file, WEB_MAX_EDGE, 0.9);
+    if (!blob || blob.size >= file.size) return file; // undecodable or not worth it
+    return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
   }
 
   function looksLikeImage(file: File): boolean {
@@ -339,10 +359,12 @@ function when(ts: number): string {
           alert(msg);
         };
         try {
+          const fullRes = (document.getElementById('cap-fullres') as HTMLInputElement | null)?.checked === true;
           const ids: string[] = [];
           for (let i = 0; i < files.length; i++) {
             submitBtn.textContent = `Uploading photo ${i + 1} of ${files.length}…`;
-            const photo = await normalizePhoto(files[i]);
+            let photo = await normalizePhoto(files[i]);
+            if (!fullRes) photo = await compressForWeb(photo);
             const id = photoId(photo);
             await upload(`journal-photos/${id}`, photo, {
               access: 'private',
@@ -642,6 +664,17 @@ function when(ts: number): string {
     color: var(--text-secondary);
     font-style: italic;
   }
+
+  .fullres-toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .fullres-toggle input { margin-top: 0.2em; accent-color: var(--sage); }
 
   .photo-previews { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
