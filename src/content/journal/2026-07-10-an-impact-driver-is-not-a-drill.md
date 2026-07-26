@@ -3,7 +3,7 @@ title: "An Impact Driver Is Not a Drill"
 date: 2026-07-10
 teaser: "Two weeks of leave, one accidentally-purchased impact driver, a stump that fought back, and a baby photo studio built on pure optimism."
 tags: ["family", "funny"]
-draft: true
+draft: false
 lastUpdated: 2026-07-25
 ---
 

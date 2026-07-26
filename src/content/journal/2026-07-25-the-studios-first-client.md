@@ -3,7 +3,7 @@ title: "The Studio's First Client"
 date: 2026-07-25
 teaser: "A first good night, contraband sushi, a very professional one-week-old model, and red-golden light to end the week."
 tags: ["first", "sleep", "funny", "milestone"]
-draft: true
+draft: false
 lastUpdated: 2026-07-25
 ---
 
