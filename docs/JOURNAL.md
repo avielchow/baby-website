@@ -89,8 +89,9 @@ instead of using `/write`.)
 
 ## Daily questions (built 2026-07-15)
 
-`src/data/daily-questions.ts` maps a **day of life** (day 1 = birth day, from `BIRTH_ANCHOR`)
-to **three prompts**: bespoke trios for days 1–30 + milestone days (40, 50, 60, 75, 90, 100,
+`src/data/daily-questions.ts` maps a **day of life** to **three prompts**. Day 1 = the first
+FULL day of life (`LIFE_ANCHOR`, 2026-07-19 — Cody was born 2026-07-18 at 22:18, so the birth
+day clamps into day 1 / week 1; week N ends the day he turns N weeks old; decided 2026-07-25): bespoke trios for days 1–30 + milestone days (40, 50, 60, 75, 90, 100,
 120, 150, 180, 200, 240, 270, 300, 365), and a deterministic 3-from-72 pool for other days.
 `questionsForDay(day)` is stable per day and always returns 3 distinct prompts.
 
