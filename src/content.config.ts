@@ -280,6 +280,40 @@ const musicWeeks = defineCollection({
   }),
 });
 
+/**
+ * Mom's recovery guide (docs/CONTENT.md sourcing rules apply — Tier 1 chips on
+ * every medical claim). One hub (order 0) + sub-pages, each a stack of
+ * sections holding the same rich bullet shape the week pages use.
+ */
+const recoverySection = z.object({
+  /** Anchor id, e.g. "first-days", "red-flags". */
+  key: z.string(),
+  label: z.string(),
+  /** Optional 1–3 sentence section intro paragraph. */
+  intro: z.string().optional(),
+  /** Visual tone: flag = rose (urgent), forceps = the assisted-birth track. */
+  tone: z.enum(['default', 'flag', 'forceps']).default('default'),
+  items: z.array(bullet).default([]),
+});
+
+const recovery = defineCollection({
+  loader: collectionLoader('recovery'),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    eyebrow: z.string().default('For Mom'),
+    /** 0 = the hub page (/recovery/); sub-pages sort by this on the hub. */
+    order: z.number().int().min(0),
+    /** Short card blurb when listed on the hub. */
+    blurb: z.string().optional(),
+    sections: z.array(recoverySection).default([]),
+    /** Full bibliography for the page-end sources block. */
+    sources: z.array(sourceRef).default([]),
+    draft: z.boolean().default(false),
+    lastUpdated: z.coerce.date(),
+  }),
+});
+
 const journalSchema = z.object({
   title: z.string(),
   /** Date the entry describes (used for sorting + display). */
@@ -309,4 +343,5 @@ export const collections = {
   films,
   music: musicWeeks,
   journal,
+  recovery,
 };

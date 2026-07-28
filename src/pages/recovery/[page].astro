@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RecoverySections from '../../components/RecoverySections.astro';
+
+const slug = Astro.params.page;
+const all = await getCollection('recovery', ({ data }) => !data.draft || import.meta.env.DEV);
+const entry = all.find((e) => e.id === slug && e.data.order > 0);
+if (!entry) return new Response('Recovery page not found', { status: 404 });
+const d = entry.data;
+---
+
+<ContentLayout
+  eyebrow={d.eyebrow}
+  title={d.title}
+  description={d.description}
+  lastUpdated={d.lastUpdated}
+>
+  <p class="recovery-disclaimer reveal">
+    A summary of trusted guidance (the chips on each item link the exact source page), not
+    medical advice. When in doubt call <strong>HealthLink&nbsp;811</strong>; for emergencies
+    call <strong>911</strong>.
+  </p>
+
+  <RecoverySections sections={d.sections} />
+
+  {d.sources.length > 0 && (
+    <section class="recovery-sources reveal" id="sources">
+      <h2>Sources</h2>
+      <ul>
+        {d.sources.map((s) => (
+          <li>
+            {s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <p class="recovery-nav">
+    <a href="/recovery/">&larr; Mom's recovery guide</a>
+  </p>
+</ContentLayout>
+
+<style>
+  .recovery-disclaimer {
+    background: var(--sage-wash);
+    border-radius: var(--radius-card);
+    padding: var(--space-1) var(--space-2);
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    max-width: none;
+  }
+
+  .recovery-sources {
+    margin-top: var(--space-3);
+  }
+
+  .recovery-sources li {
+    margin-bottom: 0.35rem;
+  }
+
+  .recovery-nav {
+    margin-top: var(--space-3);
+    font-weight: 600;
+  }
+</style>

@@ -177,6 +177,16 @@ const sections = [
     </section>
   )}
 
+  {d.weekNumber <= 8 && (
+    <aside class="mom-crosslink reveal">
+      <p>
+        <strong>Mom is recovering too.</strong> Healing after birth has its own timeline —
+        bleeding, soreness, mood, and when to call for help.
+        <a href="/recovery/">The recovery guide &rarr;</a>
+      </p>
+    </aside>
+  )}
+
   <Comments pageId={`week-${d.weekNumber}`} backPath={`/weeks/${weekParam}/`} />
 
   <p class="week-nav">
@@ -187,6 +197,24 @@ const sections = [
 <style>
   .week-section {
     margin-block: var(--space-3);
+  }
+
+  .mom-crosslink {
+    background: var(--sage-wash);
+    border-radius: var(--radius-card);
+    padding: var(--space-1) var(--space-2);
+    margin-block: var(--space-2);
+  }
+
+  .mom-crosslink p {
+    margin: 0;
+    color: var(--text-secondary);
+    max-width: none;
+  }
+
+  .mom-crosslink a {
+    font-weight: 700;
+    color: var(--sage-deep);
   }
 
   .section-head {

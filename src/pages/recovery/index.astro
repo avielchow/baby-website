@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RecoverySections from '../../components/RecoverySections.astro';
+import LeafSprig from '../../components/illustrations/LeafSprig.astro';
+
+const all = await getCollection('recovery', ({ data }) => !data.draft || import.meta.env.DEV);
+const hub = all.find((e) => e.data.order === 0);
+if (!hub) return new Response('Recovery guide not found', { status: 404 });
+const subpages = all
+  .filter((e) => e.data.order > 0)
+  .sort((a, b) => a.data.order - b.data.order);
+const d = hub.data;
+---
+
+<ContentLayout
+  eyebrow={d.eyebrow}
+  title={d.title}
+  description={d.description}
+  lastUpdated={d.lastUpdated}
+>
+  <LeafSprig slot="art" width={120} />
+
+  <p class="recovery-disclaimer reveal">
+    Written by us, for our family — a summary of trusted guidance (Alberta Health Services,
+    NHS, Mayo Clinic, ACOG and friends — the chips on each item link the exact page), not
+    medical advice. When in doubt call <strong>HealthLink&nbsp;811</strong>; for emergencies
+    call <strong>911</strong>.
+  </p>
+
+  {subpages.length > 0 && (
+    <nav class="subpage-grid reveal" aria-label="Recovery guide sections">
+      {subpages.map((p) => (
+        <a class="subpage-card" href={`/recovery/${p.id}/`}>
+          <span class="subpage-title">{p.data.title}</span>
+          {p.data.blurb && <span class="subpage-blurb">{p.data.blurb}</span>}
+          <span class="subpage-cta">Read &rarr;</span>
+        </a>
+      ))}
+    </nav>
+  )}
+
+  <RecoverySections sections={d.sections} />
+
+  {d.sources.length > 0 && (
+    <section class="recovery-sources reveal" id="sources">
+      <h2>Sources</h2>
+      <ul>
+        {d.sources.map((s) => (
+          <li>
+            {s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</ContentLayout>
+
+<style>
+  .recovery-disclaimer {
+    background: var(--sage-wash);
+    border-radius: var(--radius-card);
+    padding: var(--space-1) var(--space-2);
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    max-width: none;
+  }
+
+  .subpage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-1);
+    margin: var(--space-2) 0 var(--space-1);
+  }
+
+  .subpage-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: var(--paper);
+    border: 1.5px solid var(--border-hairline);
+    border-radius: var(--radius-card);
+    padding: var(--space-2);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .subpage-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lifted);
+    border-color: var(--sage);
+  }
+
+  .subpage-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+
+  .subpage-blurb {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+
+  .subpage-cta {
+    margin-top: auto;
+    font-weight: 700;
+    font-size: var(--fs-small);
+    color: var(--sage-deep);
+  }
+
+  .recovery-sources {
+    margin-top: var(--space-3);
+  }
+
+  .recovery-sources li {
+    margin-bottom: 0.35rem;
+  }
+</style>

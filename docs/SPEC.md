@@ -58,6 +58,20 @@ Two rooms, one login form:
 - No standing "welcome" post — the journal starts at the first real entry (the 2026-07-14
   welcome note was retired 2026-07-23).
 
+### 1b. Mom's recovery guide — `/recovery` (added 2026-07-28)
+
+**"For Mom"** in the nav: a postpartum recovery guide with the same sourcing standards as
+the week pages (CONTENT.md tiers, inline Tier-1 chips, verified videos). Structure decided
+via Q&A 2026-07-28: hub (`/recovery`) holds the always-visible red-flags block, the
+recovery timeline (first days → weeks 1–2 → 3–6 → beyond), breasts & feeding recovery,
+the practical file (Kegels, Alberta pelvic physio routes, contraception), and a short
+C-section sidebar; sub-pages: **forceps path** (assisted-birth deep dive — first-class
+track, `tone: forceps` styling), **mind & mood** (blues/PPD/anxiety/birth trauma/psychosis
++ verified Alberta help lines), **partner's playbook**. Voice: neutral both-parents. No
+comments on these pages (deliberate). Week pages 1–8 cross-link via a template-level
+callout. Content collection `recovery` in content.config.ts; renderer
+`RecoverySections.astro`.
+
 ### 2. Photos & video
 - **Photos:** live in the **private Vercel Blob store** (`journal-photos/` prefix), uploaded
   through the `/write` capture form and served behind auth via `/api/capture-photo/<id>`.
