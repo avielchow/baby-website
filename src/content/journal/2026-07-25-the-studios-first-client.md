@@ -4,12 +4,18 @@ date: 2026-07-25
 teaser: "A first good night, contraband sushi, a very professional one-week-old model, and red-golden light to end the week."
 tags: ["first", "sleep", "funny", "milestone"]
 draft: false
-lastUpdated: 2026-07-25
+lastUpdated: 2026-07-29
 ---
 
 It's 4:00 am, Cody is crying, and I am — somehow — calm. The best item of the whole first week isn't a swaddle or a soother: it's my Bose QC headphones. At night, when I'm the only one awake and it's just me and a crying baby, I put them on for diaper changes and everything gets quieter, including me. I leave them off when I sleep so his cries still wake me. But at 4:00 am, mid-change, they are doing more for this family than most of the baby gear.
 
 And then, Thursday night: our first genuinely good night. We bottle-fed Mom's pumped milk only, and it went so smoothly — a feed and a diaper change every two hours, with two to three hours of sleep in between. I woke up and couldn't believe the feeling. I feel so *awake*. I'd forgotten this setting existed.
+
+We put the night shift on film. This is what those hours actually look like — *Dad's Night*.
+
+<div class="video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/hF8TtFN5yeE" title="Dad's Night" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ## The studio's first client
 
