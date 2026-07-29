@@ -14,8 +14,24 @@ const d = entry.data;
 
 const playerData = JSON.stringify({
   tempo: d.tempo,
-  chords: d.progression.chords.map((c) => ({ bass: c.bass, notes: c.notes })),
+  week: d.week,
+  chords: d.progression.chords.map((c) => ({ bass: c.bass, notes: c.notes, color: c.color })),
 });
+
+const SESSIONS = [
+  {
+    name: 'The held thread',
+    blurb: 'One melody note refuses to move while the chords recolor it underneath — then it steps down to close each pass.',
+  },
+  {
+    name: 'Walking the changes',
+    blurb: 'The melody lands on a chord tone at every change and strolls stepwise between them — passing tones doing the singing.',
+  },
+  {
+    name: 'Ask & answer',
+    blurb: 'A rising two-bar question, a falling two-bar answer that lands on the color notes. The rest in the middle is the question mark.',
+  },
+];
 ---
 
 <ContentLayout eyebrow={`Music · Week ${d.week}`} title={`"${d.title}"`} description={d.vibe} lastUpdated={d.lastUpdated}>
@@ -36,7 +52,12 @@ const playerData = JSON.stringify({
     <p class="section-intro">Tap any chord to hear its exact voicing. Loop the whole thing and improvise over it — the loop is the backing band.</p>
     <div class="loop-bar card">
       <button type="button" class="btn" id="loop-btn" data-playing="false">▶ Loop the progression</button>
-      <span class="loop-hint">{d.tempo} BPM · one chord per bar · sound on</span>
+      <span class="speed-group" role="group" aria-label="Loop speed">
+        <button type="button" class="speed-btn is-active" data-speed="1">1×</button>
+        <button type="button" class="speed-btn" data-speed="1.5">1.5×</button>
+        <button type="button" class="speed-btn" data-speed="2">2×</button>
+      </span>
+      <span class="loop-hint" id="loop-hint">{d.tempo} BPM · one chord per bar · sound on</span>
     </div>
     <ol class="chord-list">
       {d.progression.chords.map((c, i) => (
@@ -53,6 +74,20 @@ const playerData = JSON.stringify({
       ))}
     </ol>
     <p class="legend"><span class="lg lg-bass"></span> bass (left hand) <span class="lg lg-tone"></span> chord tones <span class="lg lg-color"></span> the color notes</p>
+
+    <h3 class="sub-head">Three sample improv sessions — hear it before you play it</h3>
+    <p class="section-intro">Each one improvises over this week's loop using a technique from the workshop below. They're generated fresh from the chords, so every session is a little different — like practice is.</p>
+    <ol class="session-list">
+      {SESSIONS.map((s, i) => (
+        <li class="session card">
+          <button type="button" class="session-play" data-session={i} data-playing="false" aria-label={`Play improv session: ${s.name}`}>▶</button>
+          <div>
+            <p class="session-name">Session {i + 1} · {s.name}</p>
+            <p class="session-blurb">{s.blurb}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
   </section>
 
   <section class="week-section" id="lh">
@@ -107,17 +142,20 @@ const playerData = JSON.stringify({
 </ContentLayout>
 
 <script>
-  // Soft piano-ish WebAudio voice: tap a chord to hear it; loop the progression.
+  // Soft piano-ish WebAudio voice. Tap a chord to hear it; loop the progression
+  // (chords struck together, livelier bar pattern, adjustable speed); or play a
+  // generated improv session — accompaniment + a melody derived from the week's
+  // own voicings, one per workshop technique.
   let ctx: AudioContext | null = null;
   const getCtx = () => (ctx ??= new AudioContext());
 
   const SEMI: Record<string, number> = { C: 0, 'C#': 1, Db: 1, D: 2, 'D#': 3, Eb: 3, E: 4, F: 5, 'F#': 6, Gb: 6, G: 7, 'G#': 8, Ab: 8, A: 9, 'A#': 10, Bb: 10, B: 11 };
-  function freq(note: string): number | null {
+  function midi(note: string): number | null {
     const m = note.trim().match(/^([A-G][#b]?)(\d)$/);
     if (!m) return null;
-    const midi = (parseInt(m[2], 10) + 1) * 12 + SEMI[m[1]];
-    return 440 * Math.pow(2, (midi - 69) / 12);
+    return (parseInt(m[2], 10) + 1) * 12 + SEMI[m[1]];
   }
+  const mFreq = (m: number) => 440 * Math.pow(2, (m - 69) / 12);
 
   function voice(f: number, when: number, dur: number, gainDb = 1) {
     const ac = getCtx();
@@ -135,51 +173,205 @@ const playerData = JSON.stringify({
     lp.connect(g); g.connect(ac.destination);
   }
 
-  function playChord(bass: string, notes: string[], when: number, dur: number) {
-    const fb = freq(bass); if (fb) voice(fb, when, dur, 1.25);
-    notes.forEach((n, i) => { const f = freq(n); if (f) voice(f, when + 0.012 * i, dur, 0.9); });
+  const note = (m: number, when: number, dur: number, gain = 1) => voice(mFreq(m), when, dur, gain);
+
+  /** roll=0 → struck together (the loop); a small roll stays on single-chord taps. */
+  function playChordM(bassM: number | null, notesM: number[], when: number, dur: number, gain = 1, roll = 0) {
+    if (bassM !== null) note(bassM, when, dur, 1.25 * gain);
+    notesM.forEach((m, i) => note(m, when + roll * i, dur, 0.9 * gain));
   }
 
-  let loopTimer: number | null = null;
+  // Tiny deterministic PRNG so sessions vary run-to-run but never sound broken.
+  function mulberry32(seed: number) {
+    let a = seed >>> 0;
+    return () => {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  interface ChordM { bass: number | null; notes: number[]; color: number[] }
+
+  let stopActive: (() => void) | null = null;
+  const stopAll = () => { stopActive?.(); stopActive = null; };
+  let sessionNonce = 0;
 
   function init() {
-    // Tap-a-chord (dataset.bound guards against double-binding: init runs at
-    // module load AND on astro:page-load for the initial navigation)
+    const section = document.querySelector<HTMLElement>('#progression');
+    if (!section) return;
+    const data = JSON.parse(section.dataset.player || '{}');
+    const chords: ChordM[] = (data.chords || []).map((c: { bass: string; notes: string[]; color?: string[] }) => ({
+      bass: midi(c.bass),
+      notes: c.notes.map(midi).filter((m: number | null): m is number => m !== null),
+      color: (c.color || []).map(midi).filter((m: number | null): m is number => m !== null),
+    }));
+    const baseBarSec = (60 / (data.tempo || 72)) * 4;
+
+    // Tap-a-chord (dataset.bound guards double-binding: init runs at module
+    // load AND on astro:page-load for the initial navigation)
     document.querySelectorAll<HTMLButtonElement>('.chord-play').forEach((btn) => {
       if (btn.dataset.bound) return;
       btn.dataset.bound = '1';
       btn.addEventListener('click', () => {
-        const notes = JSON.parse(btn.dataset.notes || '[]');
-        playChord(btn.dataset.bass || '', notes, getCtx().currentTime + 0.02, 2.2);
+        const notes = (JSON.parse(btn.dataset.notes || '[]') as string[]).map(midi).filter((m): m is number => m !== null);
+        playChordM(midi(btn.dataset.bass || ''), notes, getCtx().currentTime + 0.02, 2.2, 1, 0.012);
       });
     });
-    // Loop
-    const section = document.querySelector<HTMLElement>('#progression');
+
+    // ---- The loop: together, livelier, and with a speed control ----
     const loopBtn = document.querySelector<HTMLButtonElement>('#loop-btn');
-    if (!section || !loopBtn || loopBtn.dataset.bound) return;
+    const hint = document.querySelector<HTMLElement>('#loop-hint');
+    const speedBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.speed-btn'));
+    if (!loopBtn || loopBtn.dataset.bound) return;
     loopBtn.dataset.bound = '1';
-    const data = JSON.parse(section.dataset.player || '{}');
-    const barSec = (60 / (data.tempo || 72)) * 4;
-    const stop = () => {
+    let speed = 1;
+    let loopTimer: number | null = null;
+
+    const loopBar = (bar: number, barSec: number) => {
+      const ac = getCtx();
+      const c = chords[bar % chords.length];
+      const t = ac.currentTime + 0.03;
+      // Beat 1: bass + chord struck together; beat 3: a softer re-strike for pulse.
+      playChordM(c.bass, c.notes, t, barSec * 0.95);
+      playChordM(null, c.notes, t + barSec / 2, barSec * 0.45, 0.55);
+    };
+
+    const stopLoop = () => {
       if (loopTimer !== null) { clearInterval(loopTimer); loopTimer = null; }
       loopBtn.dataset.playing = 'false';
       loopBtn.textContent = '▶ Loop the progression';
     };
-    loopBtn.addEventListener('click', () => {
-      if (loopBtn.dataset.playing === 'true') return stop();
-      const ac = getCtx();
+
+    const startLoop = () => {
+      stopAll();
       let bar = 0;
-      const scheduleBar = () => {
-        const c = data.chords[bar % data.chords.length];
-        playChord(c.bass, c.notes, ac.currentTime + 0.03, barSec * 0.98);
-        bar++;
-      };
-      scheduleBar();
-      loopTimer = window.setInterval(scheduleBar, barSec * 1000);
+      const barSec = baseBarSec / speed;
+      const tick = () => loopBar(bar++, barSec);
+      tick();
+      loopTimer = window.setInterval(tick, barSec * 1000);
       loopBtn.dataset.playing = 'true';
       loopBtn.textContent = '■ Stop';
+      stopActive = stopLoop;
+    };
+
+    loopBtn.addEventListener('click', () => (loopBtn.dataset.playing === 'true' ? stopAll() : startLoop()));
+
+    speedBtns.forEach((b) => {
+      b.addEventListener('click', () => {
+        speed = parseFloat(b.dataset.speed || '1');
+        speedBtns.forEach((x) => x.classList.toggle('is-active', x === b));
+        if (hint) hint.textContent = `${Math.round((data.tempo || 72) * speed)} BPM · one chord per bar · sound on`;
+        if (loopBtn.dataset.playing === 'true') startLoop(); // restart at new speed
+      });
     });
-    document.addEventListener('astro:before-swap', stop, { once: true });
+
+    // ---- Improv sessions: accompaniment + a generated melody ----
+    const UP = 12; // melody register: the voicing, one octave up
+    const pcPool = [...new Set(chords.flatMap((c) => c.notes.map((m) => m % 12)))];
+    const nearestPool = (target: number, avoid: number) => {
+      let best = target;
+      for (let d = 0; d <= 6; d++) {
+        for (const cand of [target - d, target + d]) {
+          if (pcPool.includes(((cand % 12) + 12) % 12) && cand !== avoid) return cand;
+        }
+      }
+      return best;
+    };
+    const nearestChordTone = (from: number, c: ChordM) => {
+      const tones = c.notes.map((m) => m + UP);
+      return tones.reduce((a, b) => (Math.abs(b - from) < Math.abs(a - from) ? b : a));
+    };
+    // The "thread": the exact pitch shared by the most voicings this week.
+    const counts = new Map<number, number>();
+    chords.forEach((c) => c.notes.forEach((m) => counts.set(m, (counts.get(m) || 0) + 1)));
+    const thread = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? chords[0]?.notes[0] ?? 60;
+
+    /** Schedule one bar of melody for session `si`; returns the last melody note. */
+    function melodyBar(si: number, bar: number, t: number, beat: number, prev: number, rnd: () => number): number {
+      const n = chords.length;
+      const c = chords[bar % n];
+      const next = chords[(bar + 1) % n];
+      const posInPass = bar % n;
+      if (si === 0) {
+        // The held thread: re-strike the common tone; step down to close each pass.
+        const m = thread + UP;
+        note(m, t, beat * 2.2, 1.05);
+        if (rnd() < 0.5) note(m, t + beat * 2, beat * 1.6, 0.8);
+        if (posInPass === n - 1) {
+          const fall = nearestChordTone(m - 2, c);
+          note(fall === m ? m - 3 : fall, t + beat * 3, beat * 1.4, 0.95);
+          return fall;
+        }
+        return m;
+      }
+      if (si === 1) {
+        // Walking the changes: land a chord tone on 1, pass stepwise toward the next.
+        const target = nearestChordTone(prev || chords[0].notes[chords[0].notes.length - 1] + UP, c);
+        note(target, t, beat * 1.4, 1.05);
+        const nextTarget = nearestChordTone(target, next);
+        const dir = nextTarget >= target ? 1 : -1;
+        const p1 = nearestPool(target + dir, target);
+        note(p1, t + beat * 2, beat * 0.9, 0.8);
+        if (rnd() < 0.65) note(nearestPool(p1 + dir, p1), t + beat * 3, beat * 0.9, 0.8);
+        return nextTarget;
+      }
+      // Ask & answer: rise through the first half of the pass, fall and land after.
+      const half = Math.ceil(n / 2);
+      const tones = c.notes.map((m) => m + UP).sort((a, b) => a - b);
+      if (posInPass < half) {
+        // Question, ascending — and leave air at the top.
+        tones.forEach((m, i) => { if (i < 3) note(m, t + beat * i, beat * 0.95, 0.95 + 0.05 * i); });
+        return tones[Math.min(2, tones.length - 1)];
+      }
+      const landing = (c.color[0] !== undefined ? c.color[0] : c.notes[0]) + UP;
+      if (posInPass === n - 1) {
+        note(landing, t, beat * 3.4, 1.1); // the answer lands on the color
+        return landing;
+      }
+      const down = [...tones].reverse();
+      down.forEach((m, i) => { if (i < 3 && rnd() < 0.9) note(m, t + beat * i, beat * 0.95, 0.95); });
+      return down[Math.min(2, down.length - 1)];
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.session-play').forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      const si = parseInt(btn.dataset.session || '0', 10);
+      let timer: number | null = null;
+      const stopSession = () => {
+        if (timer !== null) { clearInterval(timer); timer = null; }
+        btn.dataset.playing = 'false';
+        btn.textContent = '▶';
+      };
+      btn.addEventListener('click', () => {
+        if (btn.dataset.playing === 'true') return stopAll();
+        stopAll();
+        const ac = getCtx();
+        const barSec = baseBarSec;
+        const beat = barSec / 4;
+        const rnd = mulberry32((data.week || 1) * 97 + si * 131 + sessionNonce++);
+        let bar = 0;
+        let prev = 0;
+        const tick = () => {
+          const c = chords[bar % chords.length];
+          const t = ac.currentTime + 0.03;
+          // Accompaniment sits back so the melody reads as the voice on top.
+          playChordM(c.bass, c.notes, t, barSec * 0.95, 0.7);
+          playChordM(null, c.notes, t + barSec / 2, barSec * 0.4, 0.4);
+          prev = melodyBar(si, bar, t, beat, prev, rnd);
+          bar++;
+        };
+        tick();
+        timer = window.setInterval(tick, barSec * 1000);
+        btn.dataset.playing = 'true';
+        btn.textContent = '■';
+        stopActive = stopSession;
+      });
+    });
+
+    document.addEventListener('astro:before-swap', stopAll, { once: true });
   }
   init();
   document.addEventListener('astro:page-load', init);
@@ -198,6 +390,29 @@ const playerData = JSON.stringify({
 
   .loop-bar { display: flex; align-items: center; gap: var(--space-1); flex-wrap: wrap; padding: var(--space-1) var(--space-2); margin-bottom: var(--space-2); }
   .loop-hint { font-size: var(--fs-small); color: var(--text-secondary); }
+
+  .speed-group { display: inline-flex; border: 1.5px solid var(--border-hairline); border-radius: var(--radius-pill); overflow: hidden; }
+  .speed-btn {
+    font-size: var(--fs-small);
+    font-weight: 800;
+    padding: 0.35em 0.9em;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .speed-btn + .speed-btn { border-left: 1.5px solid var(--border-hairline); }
+  .speed-btn:hover { color: var(--sage-deep); }
+  .speed-btn.is-active { background: var(--sage); color: #fff; }
+
+  .session-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+  .session { display: flex; gap: var(--space-1); align-items: flex-start; padding: var(--space-1) var(--space-2); border-left: 4px solid var(--sage); }
+  .session-play { flex-shrink: 0; width: 2.6rem; height: 2.6rem; border: none; border-radius: var(--radius-pill); background: var(--sage); color: #fff; font-size: 1rem; cursor: pointer; transition: transform 0.2s var(--ease-spring), background 0.2s; }
+  .session-play:hover { background: var(--sage-deep); transform: scale(1.08); }
+  .session-play[data-playing='true'] { background: var(--rose-deep); }
+  .session-name { margin: 0.2rem 0 0.25rem; font-weight: 800; }
+  .session-blurb { margin: 0; color: var(--text-secondary); font-size: var(--fs-small); max-width: none; }
 
   .chord-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
   .chord { padding: var(--space-1) var(--space-2); }
