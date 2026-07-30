@@ -72,6 +72,20 @@ comments on these pages (deliberate). Week pages 1–8 cross-link via a template
 callout. Content collection `recovery` in content.config.ts; renderer
 `RecoverySections.astro`.
 
+### 1c. Milestone journey — `/milestones` (rebuilt 2026-07-30)
+
+The "growing vine" milestone page grew up into an interactive **two-year journey**
+(supersedes the month-stop index; decided via Q&A 2026-07-30). One vine draws itself in on
+scroll; **major** milestones are big blooms (8 petals open on scroll; the bloom center holds
+cute placeholder glyph art until a real capture photo replaces it), **minor** milestones are
+small buds that unfurl on tap. A bobbing Sprout marks "Cody is here" (age from
+`LIFE_ANCHOR`). **Living keepsake:** milestones get `achieved: { date, photo?, note? }` in
+`src/data/milestone-journey.ts` — updated in Claude sessions ("mark first-smile achieved
+July 20 with photo <id>"); photos come from the normal `/write` capture flow. Achieved
+blooms turn rose + sparkle. Range-framed windows, "garden not a scorecard" framing; majors
+link to the cited month/week pages for evidence-based detail. Placeholder art:
+`MilestoneGlyph.astro`. Reduced-motion supported.
+
 ### 2. Photos & video
 - **Photos:** live in the **private Vercel Blob store** (`journal-photos/` prefix), uploaded
   through the `/write` capture form and served behind auth via `/api/capture-photo/<id>`.
