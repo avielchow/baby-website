@@ -43,10 +43,6 @@ const isActive = (href: string) => {
         ))}
       </ul>
     </nav>
-
-    <form method="POST" action="/api/logout" class="logout-form">
-      <button type="submit" class="logout-btn">Sign out</button>
-    </form>
   </div>
 </header>
 
@@ -113,28 +109,6 @@ const isActive = (href: string) => {
   .nav-link.is-active {
     color: #fff;
     background: var(--sage);
-  }
-
-  .logout-form {
-    margin: 0;
-  }
-
-  .logout-btn {
-    padding: 0.4em 1em;
-    font-family: var(--font-body);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1.5px solid var(--border-hairline);
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    transition: border-color 0.15s ease, color 0.15s ease;
-  }
-
-  .logout-btn:hover {
-    border-color: var(--sage);
-    color: var(--sage-deep);
   }
 
   @media (max-width: 640px) {

@@ -195,10 +195,20 @@ Vercel Blob store, which has no versioning and no undelete. Two guards protect i
 
 ## Privacy & access
 
-- **Password-protected** (already built): two-tier — shared family password for the site,
-  parents-only password that additionally unlocks `/private`. Both bcrypt-verified; the
-  HMAC-signed cookie carries the tier; SSR middleware enforces it. `robots.txt` disallows
-  all; no public indexing.
+- **⚠️ ACCESS MODEL CHANGED 2026-09-17 — the site is now PUBLIC except the journal.** The
+  site-wide family password (`SITE_PASSWORD_HASH` / `baby2026`) is **no longer enforced**.
+  Only `/journal/*` (reader password) and `/write` (writer password) require a password.
+  Everything else — home, Moments, the whole photo/video collection, weeks guide, milestones,
+  films, music, recovery, about — is open to anyone on the internet, **including all of
+  Cody's photos and films** (deliberate, decided 2026-09-17). Implications the parents
+  accepted: photos/Moments can be cached/indexed and are no longer private; week-page
+  comment forms are now open to the public (name-only add; admin-key delete). The family-gate
+  plumbing (`lib/auth.ts`, `/login`, `/api/login`, `/api/logout`, `PasswordGate.astro`,
+  `SITE_PASSWORD_HASH`) is left INTACT but unenforced; re-gating = restore the family-gate
+  block in `src/middleware.ts` (see git history for 2026-09-17). `robots.txt` still present.
+- **Prior model (pre-2026-09-17, kept for reference):** two-tier — shared family password for
+  the site, parents-only password that additionally unlocked `/private`. Both bcrypt-verified;
+  HMAC-signed cookie carried the tier; SSR middleware enforced it.
 - **Repo visibility (decided 2026-07-23, supersedes the 2026-07-14 "must be private" rule):**
   the GitHub repo may stay public for now. Accepted tradeoff: family-journal markdown
   (including birth details) lives in the repo, so a determined person could read it on
@@ -207,11 +217,13 @@ Vercel Blob store, which has no versioning and no undelete. Two guards protect i
   are ever committed, and photos stay in the private Blob store (never in the repo).
   **The private `/private` journal remains archived and MUST NOT return until the repo is
   made private** — that part of the old rule stands.
-- **Journal reader password (added 2026-07-23):** `/journal/*` requires a second,
-  journal-specific password on top of the family login. Env: `JOURNAL_READ_PASSWORD_HASH`
-  (bcrypt; empty disables the gate). Cookie payload `jr:`, unlock form at `/journal-unlock`
-  (`src/lib/journal-auth.ts`, middleware). Plaintext lives only with the parents — never in
-  the repo or docs, since it contains the baby's name.
+- **Journal reader password (added 2026-07-23; now the ONLY site gate as of 2026-09-17):**
+  `/journal/*` requires the journal-specific reader password. Env: `JOURNAL_READ_PASSWORD_HASH`
+  (bcrypt; **empty disables the gate → journal goes fully public**, so this MUST stay set in
+  prod — verified set in Vercel Production 2026-09-17). Cookie payload `jr:`, unlock form at
+  `/journal-unlock` (`src/lib/journal-auth.ts`, middleware). Plaintext lives only with the
+  parents. Note: this now protects the journal *text/reflections* only — the photos embedded
+  in entries are also served publicly on Moments, so they are not private.
 - Real names OK behind the gate; the baby's name was held back until the announcement post
   ("Holden On", published 2026-07-23) and now appears site-wide.
 - Videos are unlisted-YouTube (see tradeoff above); photos never leave the gated site.
