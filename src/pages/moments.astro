@@ -4,6 +4,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
 import MediaLightbox from '../components/MediaLightbox.astro';
 import { weekForDate, weekLabel } from '../lib/current-week';
 import { thumbUrl } from '../lib/capture-thumbs';
+import { MOMENT_VIDEOS } from '../data/moment-videos';
 
 /**
  * Moments — every photo and film from the journal, gathered week by week.
@@ -54,6 +55,17 @@ for (const entry of entries) {
   for (const p of photos) if (!bucket.photos.some((x) => x.src === p.src)) bucket.photos.push(p);
 }
 
+// Merge in standalone films (not tied to a journal entry), bucketed by week.
+// Dedup by YouTube id so an entry that later embeds the same video wins.
+for (const v of MOMENT_VIDEOS) {
+  let bucket = buckets.get(v.week);
+  if (!bucket) {
+    bucket = { week: v.week, label: weekLabel(v.week), entries: [], videos: [], photos: [] };
+    buckets.set(v.week, bucket);
+  }
+  if (!bucket.videos.some((x) => x.id === v.id)) bucket.videos.push({ id: v.id, title: v.title });
+}
+
 // Newest week first; pre-birth weeks (negative) naturally sort last.
 const weeks = [...buckets.values()].sort((a, b) => b.week - a.week);
 ---
@@ -69,14 +81,16 @@ const weeks = [...buckets.values()].sort((a, b) => b.week - a.week);
     weeks.map((bucket) => (
       <section class="week-section">
         <h2 class="week-title">{bucket.label}</h2>
-        <p class="week-entries">
-          From {bucket.entries.map((e, i) => (
-            <>
-              {i > 0 && ' · '}
-              <a href={`/journal/${e.id}/`}>{e.title}</a>
-            </>
-          ))}
-        </p>
+        {bucket.entries.length > 0 && (
+          <p class="week-entries">
+            From {bucket.entries.map((e, i) => (
+              <>
+                {i > 0 && ' · '}
+                <a href={`/journal/${e.id}/`}>{e.title}</a>
+              </>
+            ))}
+          </p>
+        )}
 
         {bucket.videos.map((v) => (
           <div class="video-embed">
