@@ -16,5 +16,7 @@ export interface MomentVideo {
 
 export const MOMENT_VIDEOS: MomentVideo[] = [
   { id: 'SLrrx-Dvp4Q', title: 'Cody 4th Week!', week: 4 },
-  { id: 'kFGdZMiRf5A', title: 'Cody Week 5-6 Non-Film', week: 5 },
+  // 'Cody Week 5-6 Non-Film' (kFGdZMiRf5A) now lives in the Week 6 journal entry
+  // ("How Far We've Come"), which feeds Moments directly — removed here to avoid
+  // showing it under both Week 5 (standalone) and Week 6 (entry).
 ];
